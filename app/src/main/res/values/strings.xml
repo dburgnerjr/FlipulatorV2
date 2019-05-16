@@ -1,3 +1,87 @@
 <resources>
     <string name="app_name">Flipulator</string>
+    <string name="flipulator_free">Flipulator Free Version</string>
+    <string name="aboutflipfree">About</string>
+    <string name="calculate">Calculate</string>
+    <string name="donate">Donate</string>
+    <string name="upgrade">Upgrade</string>
+    <string name="share">Share</string>
+    <string name="openFiles">Open Files</string>
+    <string name="action_settings">Settings</string>
+    <string name="market_premium">market://details?id=com.danielburgnerjr.flipulatorpremium</string>
+    <string name="play_store_premium">https://play.google.com/store/apps/details?id=com.danielburgnerjr.flipulatorpremium</string>
+
+    <string name="banner_ad_unit_id">ca-app-pub-8379108590476103/7745389673</string>
+
+    <string name="what_is_it">What Is A Flipulator?</string>
+    <string name="flipulator">A Flipulator is a real estate investment calculator designed to determine the viability of rehabbing a house to determine profitability.
+                              Profitability is determined by using the flat fee and rehab type rehab models.</string>
+
+    <string name="address">Address:</string>
+    <string name="citystzip">City/State/ZIP Code:</string>
+    <string name="sq_footage">Square Footage:</string>
+    <string name="bedrooms">Bedrooms:</string>
+    <string name="bathrooms">Bathrooms:</string>
+    <string name="salePrice">Sale Price:</string>
+    <string name="FMVARV">FMV/ARV:</string>
+    <string name="budgetItems">Budget Items:</string>
+
+    <string name="rehab_number">Budget Flat Rate</string>
+    <string name="rehab_budget">Rehab Budget:</string>
+    <string name="rehab_type">Rehab Type</string>
+    <string name="rehab_class">Enter Rehab Type:</string>
+
+    <string name="closholdcosts">Closing/Holding:</string>
+    <string name="profit">Profit:</string>
+    <string name="roi">ROI:</string>
+    <string name="cashoncash">Cash on Cash Return:</string>
+
+    <string name="upgrade_details">The Premium version of the Flipulator will allow you to enter more information related to the rehab process.
+                                   Details include: reserves (property tax, insurance, utilities), sales/mortgage info and closing expenses/market info.</string>
+    <string name="coming_soon"><u>Coming soon to the Google Play Store.</u></string>
+
+    <string name="mission">I am a real estate investor whose mission is to provide easy to use tools for other real estate investors to
+                           effectively evaluate properties and maximize profitability.  My goals include the expansion of this app that will
+                           be available on the App Store and to provide a better user experience.  Your donation will help reach my goals and
+                           provide a better user experience for you.  Please make a donation today.</string>
+
+    <string name="donations__google_android_market">Google Play Store</string>
+    <string name="donations__google_android_market_not_supported_title">In-App Donations are not supported.</string>
+    <string name="donations__google_android_market_not_supported">In-App Donations are not supported. Is Google Play Store installed correctly?</string>
+    <string name="donations__google_android_market_description">Google takes 30 % off every donation!</string>
+    <string name="donations__paypal">PayPal</string>
+    <string name="donations__paypal_description">You can choose how much you want to donate after clicking the button!</string>
+    <string name="txtDonateNow">Donate!</string>
+    <string name="txtDonatePaypal">Donate with Paypal</string>
+    <string name="txtHowMuch">How much?</string>
+    <string name="donations__thanks_dialog_title">Thanks!</string>
+    <string name="donations__thanks_dialog">Thanks for donating!\nI really appreciate this!</string>
+    <string name="donations__alert_dialog_title">Error occurred</string>
+    <string name="donations__button_close">Close</string>
+
+    <string-array name="rehab_type">
+        <item>Low</item>
+        <item>Medium</item>
+        <item>High</item>
+        <item>Super-High</item>
+        <item>Bulldozer</item>
+    </string-array>
+
+    <string-array name="donation_google_catalog_values">
+        <item>$1.00</item>
+        <item>$5.00</item>
+        <item>$10.00</item>
+        <item>$25.00</item>
+        <item>$50.00</item>
+        <item>$100.00</item>
+    </string-array>
+
+    <string name="submit">Submit</string>
+    <string name="save">Save</string>
+    <string name="edit">Edit</string>
+    <string name="main_menu">Main Menu</string>
+    <string name="email">Email Results</string>
+    <string name="next">Next</string>
+    <string name="help">Help</string>
+
 </resources>
