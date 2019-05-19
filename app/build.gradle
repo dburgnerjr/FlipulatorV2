@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 28
@@ -21,12 +23,12 @@ android {
 
     productFlavors {
         free {
-            applicationId 'com.danielburgnerjr.flipulatorfree'
+            applicationIdSuffix 'free'
             versionName "2.0­free"
             dimension "type"
         }
         premium {
-            applicationId 'com.danielburgnerjr.flipulatorpremium'
+            applicationIdSuffix 'premium'
             versionName "2.0­premium"
             dimension "type"
         }
@@ -50,4 +52,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }
