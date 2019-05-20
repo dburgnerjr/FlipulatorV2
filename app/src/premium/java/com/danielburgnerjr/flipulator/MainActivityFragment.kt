@@ -1,4 +1,4 @@
-package com.danielburgnerjr.flipulatorpremium
+package com.danielburgnerjr.flipulator
 
 import java.io.File
 import android.app.Activity
@@ -29,10 +29,10 @@ class MainActivityFragment : Activity() {
         //Toast.makeText(getApplicationContext(), strPath, Toast.LENGTH_SHORT).show();
 
         val btnAbout = findViewById(R.id.btnAbout) as Button
-        btnAbout.setOnClickListener(object : OnClickListener() {
-            fun onClick(view: View) {
-                val intA = Intent(this@MainActivityFragment, AboutFlipulatorPremium::class.java)
-                startActivity(intA)
+        btnAbout.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View?) {
+                val intI = Intent(applicationContext, AboutActivity::class.java)
+                startActivity(intI)
             }
         })
 

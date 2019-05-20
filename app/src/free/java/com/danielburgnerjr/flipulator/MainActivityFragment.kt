@@ -16,34 +16,34 @@ import android.view.View
 import android.view.View.OnClickListener
 import android.widget.Button
 
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdView
+//import com.google.android.gms.ads.AdRequest
+//import com.google.android.gms.ads.AdView
 
 class MainActivityFragment : Activity() {
 
-    internal var strPackName: String
+    protected var strPackName: String? = null
     private var btnOpenFiles: Button? = null
 
-    @Override
-    protected fun onCreate(savedInstanceState: Bundle) {
+    override fun onCreate(savedInstanceState: Bundle) {
         strPackName = getApplicationContext().getPackageName()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val mAdView = findViewById(R.id.adView) as AdView
-        val adRequest = AdRequest.Builder().build()
-        mAdView.loadAd(adRequest)
-        val myDir = File(getApplicationContext().getExternalFilesDir(null) + "/FlipulatorFree")
-        val strPath = myDir.getPath()
-        RateThisApp.onLaunch(this)
+        //val mAdView = findViewById(R.id.adView) as AdView
+        //val adRequest = AdRequest.Builder().build()
+        //mAdView.loadAd(adRequest)
+        //val myDir = File(getApplicationContext().getExternalFilesDir(null) + "/FlipulatorFree")
+        //val strPath = myDir.getPath()
+        //RateThisApp.onLaunch(this)
 
         val btnAbout = findViewById(R.id.btnAbout) as Button
-        btnAbout.setOnClickListener(object : OnClickListener() {
-            fun onClick(view: View) {
-                val intI = Intent(this@MainActivity, AboutFlipulatorFree::class.java)
+        btnAbout.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View?) {
+                val intI = Intent(applicationContext, AboutActivity::class.java)
                 startActivity(intI)
             }
         })
 
+/*
         val btnCalculate = findViewById(R.id.btnCalculate) as Button
         btnCalculate.setOnClickListener(object : OnClickListener() {
             fun onClick(view: View) {
@@ -101,28 +101,11 @@ class MainActivityFragment : Activity() {
                 finish()
             }
         })
+*/
 
     }
 
-    @Override
-    fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu)
-        return true
-    }
-
-    @Override
-    fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        val id = item.getItemId()
-        return if (id == R.id.action_settings) {
-            true
-        } else super.onOptionsItemSelected(item)
-    }
-
-    fun onKeyDown(nKeyCode: Int, keEvent: KeyEvent): Boolean {
+    override fun onKeyDown(nKeyCode: Int, keEvent: KeyEvent): Boolean {
         if (nKeyCode == KeyEvent.KEYCODE_BACK) {
             exitByBackKey()
             return true
@@ -133,16 +116,16 @@ class MainActivityFragment : Activity() {
     protected fun exitByBackKey() {
         val adAlertBox = AlertDialog.Builder(this)
                 .setMessage("Do you want to exit application?")
-                .setPositiveButton("Yes", object : DialogInterface.OnClickListener() {
+                .setPositiveButton("Yes", object : DialogInterface.OnClickListener {
                     // do something when the button is clicked
-                    fun onClick(arg0: DialogInterface, arg1: Int) {
+                    override fun onClick(arg0: DialogInterface, arg1: Int) {
                         finish()
                         //close();
                     }
                 })
-                .setNegativeButton("No", object : DialogInterface.OnClickListener() {
+                .setNegativeButton("No", object : DialogInterface.OnClickListener {
                     // do something when the button is clicked
-                    fun onClick(arg0: DialogInterface, arg1: Int) {}
+                    override fun onClick(arg0: DialogInterface, arg1: Int) {}
                 })
                 .show()
     }
