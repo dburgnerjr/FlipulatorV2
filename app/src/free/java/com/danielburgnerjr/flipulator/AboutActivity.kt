@@ -1,9 +1,9 @@
 package com.danielburgnerjr.flipulator
 
-import android.app.Activity
+import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 
-class AboutActivity : Activity() {
+class AboutActivity : AppCompatActivity() {
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

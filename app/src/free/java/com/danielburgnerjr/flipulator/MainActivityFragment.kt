@@ -2,32 +2,50 @@ package com.danielburgnerjr.flipulator
 
 import java.io.File
 
-import android.app.Activity
+import android.support.v4.app.Fragment
 import android.app.AlertDialog
-import android.content.ActivityNotFoundException
 import android.content.DialogInterface
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.KeyEvent
-import android.view.Menu
-import android.view.MenuItem
+import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnClickListener
+import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
+
+import kotlinx.android.synthetic.main.fragment_main.*;
 
 //import com.google.android.gms.ads.AdRequest
 //import com.google.android.gms.ads.AdView
 
-class MainActivityFragment : Activity() {
+class MainActivityFragment : Fragment(), View.OnClickListener {
 
-    protected var strPackName: String? = null
     private var btnOpenFiles: Button? = null
 
-    override fun onCreate(savedInstanceState: Bundle) {
-        strPackName = getApplicationContext().getPackageName()
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
+        val view: View = inflater!!.inflate(R.layout.fragment_main, container, false)
+        val btnAbout: Button = view.findViewById(R.id.btnAbout)
+        btnAbout.setOnClickListener(this)
+        return view
+    }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.btnAbout -> {
+                val intI = Intent(getActivity()?.getApplicationContext(), AboutActivity::class.java)
+                startActivity(intI)
+            }
+
+            else -> {
+            }
+        }
+    }
+
+/*
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         //val mAdView = findViewById(R.id.adView) as AdView
         //val adRequest = AdRequest.Builder().build()
         //mAdView.loadAd(adRequest)
@@ -43,7 +61,7 @@ class MainActivityFragment : Activity() {
             }
         })
 
-/*
+
         val btnCalculate = findViewById(R.id.btnCalculate) as Button
         btnCalculate.setOnClickListener(object : OnClickListener() {
             fun onClick(view: View) {
@@ -101,32 +119,7 @@ class MainActivityFragment : Activity() {
                 finish()
             }
         })
+
+    }
 */
-
-    }
-
-    override fun onKeyDown(nKeyCode: Int, keEvent: KeyEvent): Boolean {
-        if (nKeyCode == KeyEvent.KEYCODE_BACK) {
-            exitByBackKey()
-            return true
-        }
-        return super.onKeyDown(nKeyCode, keEvent)
-    }
-
-    protected fun exitByBackKey() {
-        val adAlertBox = AlertDialog.Builder(this)
-                .setMessage("Do you want to exit application?")
-                .setPositiveButton("Yes", object : DialogInterface.OnClickListener {
-                    // do something when the button is clicked
-                    override fun onClick(arg0: DialogInterface, arg1: Int) {
-                        finish()
-                        //close();
-                    }
-                })
-                .setNegativeButton("No", object : DialogInterface.OnClickListener {
-                    // do something when the button is clicked
-                    override fun onClick(arg0: DialogInterface, arg1: Int) {}
-                })
-                .show()
-    }
 }
