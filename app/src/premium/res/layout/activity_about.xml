@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.danielburgnerjr.flipulatorpremium.AboutActivity" >
+    tools:context=".AboutActivity" >
 
     <LinearLayout
         android:id="@+id/WhatIsFlipulator"
@@ -20,6 +20,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
+            android:textSize="32sp"
+            android:textColor="#454545"
             android:text="@string/what_is_it" />
 
         <TextView
@@ -27,6 +29,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
+            android:textSize="20sp"
+            android:textColor="#454545"
             android:text="@string/flipulator" />
 
     </LinearLayout>
@@ -45,18 +49,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
+            android:textSize="32sp"
+            android:textColor="#454545"
             android:text="@string/credits" />
 
         <TextView
+            android:id="@+id/textMobile"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
+            android:textSize="20sp"
+            android:textColor="#454545"
             android:text="@string/mobile" />
 
         <TextView
+            android:id="@+id/textOriginalDesign"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="57dp"
+            android:layout_below="@+id/textMobile"
+            android:textSize="20sp"
+            android:textColor="#454545"
             android:text="@string/original_design" />
 
     </LinearLayout>

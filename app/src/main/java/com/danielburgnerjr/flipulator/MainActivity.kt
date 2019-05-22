@@ -18,24 +18,6 @@ class MainActivity : AppCompatActivity() {
         strPackName = getApplicationContext().getPackageName()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        val id = item.getItemId()
-
-
-        return if (id == R.id.action_settings) {
-            true
-        } else super.onOptionsItemSelected(item)
-
-    }
     override fun onKeyDown(nKeyCode: Int, keEvent: KeyEvent): Boolean {
         if (nKeyCode == KeyEvent.KEYCODE_BACK) {
             exitByBackKey()
