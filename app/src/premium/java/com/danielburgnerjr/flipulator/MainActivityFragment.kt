@@ -22,9 +22,11 @@ class MainActivityFragment : Fragment(), View.OnClickListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        val view: View = inflater!!.inflate(R.layout.fragment_main, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_main, container, false)
         val btnAbout: Button = view.findViewById(R.id.btnAbout)
         btnAbout.setOnClickListener(this)
+        val btnShare: Button = view.findViewById(R.id.btnShare)
+        btnShare.setOnClickListener(this)
         return view
     }
 
@@ -33,6 +35,17 @@ class MainActivityFragment : Fragment(), View.OnClickListener {
             R.id.btnAbout -> {
                 val intI = Intent(getActivity()?.getApplicationContext(), AboutActivity::class.java)
                 startActivity(intI)
+            }
+
+            R.id.btnShare -> {
+                val strPackName: String = getResources().getString(R.string.package_name)
+                val intI = Intent(Intent.ACTION_SEND)
+                intI.setType("text/plain")
+                intI.putExtra(Intent.EXTRA_SUBJECT, "Flipulator Premium")
+                var sAux = "\nLet me recommend you this application\n\n"
+                sAux = sAux + "https://play.google.com/store/apps/details?id=" + strPackName + "\n\n"
+                intI.putExtra(Intent.EXTRA_TEXT, sAux)
+                startActivity(Intent.createChooser(intI, "choose one"))
             }
 
             else -> {

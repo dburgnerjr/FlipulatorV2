@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Flipulator</string>
+    <string name="app_name">Flipulator Premium</string>
     <string name="flipulator_premium">Flipulator Premium Version</string>
+    <string name="package_name">com.danielburgnerjr.flipulatorpremium</string>
     <string name="aboutflippremium">About</string>
     <string name="calculate">Calculate</string>
     <string name="donate">Donate</string>

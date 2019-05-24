@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">Flipulator</string>
+    <string name="app_name">Flipulator Free</string>
     <string name="flipulator_free">Flipulator Free Version</string>
+    <string name="package_name">com.danielburgnerjr.flipulatorfree</string>
     <string name="aboutflipfree">About</string>
     <string name="calculate">Calculate</string>
     <string name="donate">Donate</string>

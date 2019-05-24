@@ -22,6 +22,7 @@
         android:layout_below="@+id/imgLogo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
+        android:textColor="#454545"
         android:text="@string/flipulator_free" />
 
     <Button
