@@ -30,6 +30,8 @@ class MainActivityFragment : Fragment(), View.OnClickListener {
         btnAbout.setOnClickListener(this)
         val btnShare: Button = view.findViewById(R.id.btnShare)
         btnShare.setOnClickListener(this)
+        val btnDonate: Button = view.findViewById(R.id.btnDonate)
+        btnDonate.setOnClickListener(this)
         return view
     }
 
@@ -37,6 +39,11 @@ class MainActivityFragment : Fragment(), View.OnClickListener {
         when (v?.id) {
             R.id.btnAbout -> {
                 val intI = Intent(getActivity()?.getApplicationContext(), AboutActivity::class.java)
+                startActivity(intI)
+            }
+
+            R.id.btnDonate -> {
+                val intI = Intent(getActivity()?.getApplicationContext(), DonateActivity::class.java)
                 startActivity(intI)
             }
 
