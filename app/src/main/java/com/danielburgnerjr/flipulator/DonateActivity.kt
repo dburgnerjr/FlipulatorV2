@@ -2,22 +2,15 @@ package com.danielburgnerjr.flipulator
 
 import android.app.Activity
 import android.app.AlertDialog
-import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.view.View.OnClickListener
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
-import android.widget.Toast
-
-import com.danielburgnerjr.flipulator.util.IabHelper
-import com.danielburgnerjr.flipulator.util.IabResult
-import com.danielburgnerjr.flipulator.util.Purchase
 
 class DonateActivity : Activity() {
 
@@ -44,7 +37,7 @@ class DonateActivity : Activity() {
 
     // Callback for when a purchase is finished
     internal var mPurchaseFinishedListener: IabHelper.OnIabPurchaseFinishedListener = object : IabHelper.OnIabPurchaseFinishedListener {
-        fun onIabPurchaseFinished(result: IabResult, purchase: Purchase) {
+        override fun onIabPurchaseFinished(result: IabResult?, purchase: Purchase?) {
             if (mDebug)
                 Log.d(TAG, "Purchase finished: $result, purchase: $purchase")
 
