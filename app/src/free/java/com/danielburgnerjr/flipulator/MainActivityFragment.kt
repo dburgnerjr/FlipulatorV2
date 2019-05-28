@@ -4,9 +4,11 @@ import java.io.File
 
 import android.support.v4.app.Fragment
 import android.app.AlertDialog
+import android.content.ActivityNotFoundException
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.net.Uri
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +16,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 
-import kotlinx.android.synthetic.main.fragment_main.*;
 
 //import com.google.android.gms.ads.AdRequest
 //import com.google.android.gms.ads.AdView
@@ -30,6 +31,8 @@ class MainActivityFragment : Fragment(), View.OnClickListener {
         btnAbout.setOnClickListener(this)
         val btnShare: Button = view.findViewById(R.id.btnShare)
         btnShare.setOnClickListener(this)
+        val btnUpgrade: Button = view.findViewById(R.id.btnUpgrade)
+        btnUpgrade.setOnClickListener(this)
         val btnDonate: Button = view.findViewById(R.id.btnDonate)
         btnDonate.setOnClickListener(this)
         return view
@@ -56,6 +59,16 @@ class MainActivityFragment : Fragment(), View.OnClickListener {
                 sAux = sAux + "https://play.google.com/store/apps/details?id=" + strPackName + "\n\n"
                 intI.putExtra(Intent.EXTRA_TEXT, sAux)
                 startActivity(Intent.createChooser(intI, "choose one"))
+            }
+
+            R.id.btnUpgrade -> {
+                val uri = Uri.parse(getResources().getString(R.string.market_premium))
+                val newActivity = Intent(Intent.ACTION_VIEW, uri)
+                try {
+                    startActivity(newActivity)
+                } catch (e: ActivityNotFoundException) {
+                    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getResources().getString(R.string.play_store_premium))))
+                }
             }
 
             else -> {

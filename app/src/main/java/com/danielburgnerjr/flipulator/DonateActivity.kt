@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.billingclient.api.BillingClient;
+import com.android.billingclient.api.BillingClient.BillingResponseCode
 import com.android.billingclient.api.BillingClientStateListener;
 import com.android.billingclient.api.BillingFlowParams;
 import com.android.billingclient.api.Purchase;
@@ -28,12 +29,9 @@ import com.android.billingclient.api.SkuDetails;
 import com.android.billingclient.api.SkuDetailsParams;
 import com.android.billingclient.api.SkuDetailsResponseListener;
 
-import java.util.ArrayList;
-import java.util.List;
+class DonateActivity : AppCompatActivity(), PurchasesUpdatedListener {
 
-import kotlinx.android.synthetic.main.donate_activity.*;
-
-class DonateActivity : AppCompatActivity() {
+    private val TAG = "InAppBilling"
 
     var mSharedPreferences: SharedPreferences? = null
     private val CATALOG_DEBUG = arrayOf("android.test.purchased", "android.test.canceled", "android.test.refunded", "android.test.item_unavailable")
@@ -47,17 +45,17 @@ class DonateActivity : AppCompatActivity() {
 
         val mGoogleSpinner: Spinner = findViewById(R.id.spnDonate)
         val strOptions = resources.getStringArray(R.array.donation_google_catalog_values)
-        var strSelectedOption: String
+        var strSelectedOption: String = ""
+        var strPosition: String = ""
 
         val arAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, strOptions)
 
-        mGoogleSpinner?.adapter = arAdapter
-        mGoogleSpinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        mGoogleSpinner.adapter = arAdapter
+        mGoogleSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View,
                                         position: Int, id: Long) {
-                when (position) {
-                    //strSelectedOption = strOptions[position];
-                }
+                strSelectedOption = parent.getItemAtPosition(position).toString();
+                strPosition = position.toString();
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
@@ -65,10 +63,35 @@ class DonateActivity : AppCompatActivity() {
             }
         }
 
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+
+        // Establish connection to billing client
+        mBillingClient = BillingClient.newBuilder(this@DonateActivity).setListener(this).build()
+        mBillingClient.startConnection(object : BillingClientStateListener {
+            fun onBillingSetupFinished(@BillingClient.BillingResponseCode billingResponseCode: Int) {
+                if (billingResponseCode == BillingClient.BillingResponseCode.OK) {
+                    // The billing client is ready. You can query purchases here.
+
+                }
+            }
+
+            override fun onBillingServiceDisconnected() {
+                //TODO implement your own retry policy
+                //Toast.makeText(this@DonateActivity, resources.getString(R.string.billing_connection_failure), Toast.LENGTH_SHORT)
+                // Try to restart the connection on the next request to
+                // Google Play by calling the startConnection() method.
+            }
+        })
+
         val btnDonateNow: Button = findViewById(R.id.btnDonateNow)
         btnDonateNow.setOnClickListener(object: View.OnClickListener {
             override fun onClick(view: View): Unit {
-                Toast.makeText(this@DonateActivity, "Coming soon", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@DonateActivity, "Thank you for your donation of: " + strSelectedOption + " " + strPosition, Toast.LENGTH_SHORT).show()
+                val flowParams = BillingFlowParams.newBuilder()
+                        .setSku(GOOGLE_CATALOG[Integer.parseInt(strPosition)])
+                        .setType(BillingClient.SkuType.INAPP)
+                        .build()
+                val responseCode = mBillingClient.launchBillingFlow(this@DonateActivity, flowParams)
             }
         });
 
@@ -89,25 +112,6 @@ class DonateActivity : AppCompatActivity() {
         btnPayPal.visibility = View.GONE
 
 /*
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-
-        // Establish connection to billing client
-        mBillingClient = BillingClient.newBuilder(this@DonateActivity).setListener(this).build()
-        mBillingClient.startConnection(object : BillingClientStateListener {
-            fun onBillingSetupFinished(@BillingClient.BillingResponse billingResponseCode: Int) {
-                if (billingResponseCode == BillingClient.BillingResponse.OK) {
-                    // The billing client is ready. You can query purchases here.
-
-                }
-            }
-
-            override fun onBillingServiceDisconnected() {
-                //TODO implement your own retry policy
-                Toast.makeText(this@DonateActivity, resources.getString(R.string.billing_connection_failure), Toast.LENGTH_SHORT)
-                // Try to restart the connection on the next request to
-                // Google Play by calling the startConnection() method.
-            }
-        })
 
 
         mBuyButton = findViewById<View>(R.id.buyButton) as Button
@@ -126,5 +130,26 @@ class DonateActivity : AppCompatActivity() {
         queryPurchases()
         queryPrefPurchases()
 */
+    }
+
+    fun onPurchasesUpdated(responseCode: Int, @Nullable List<com.android.billingclient.api.Purchase> purchases) {
+
+        //Handle the responseCode for the purchase
+        //If response code is OK,  handle the purchase
+        //If user already owns the item, then indicate in the shared prefs that item is owned
+        //If cancelled/other code, log the error
+
+        if (responseCode == BillingClient.BillingResponseCode.OK && purchases != null) {
+            for (Purchase purchase : purchases) {
+                handlePurchase(purchase);
+            }
+        } else if (responseCode == BillingClient.BillingResponseCode.USER_CANCELED) {
+            // Handle an error caused by a user cancelling the purchase flow.
+            Log.d(TAG, "User Canceled" + responseCode);
+        } else {
+            Log.d(TAG, "Other code" + responseCode);
+            // Handle any other error codes.
+        }
+
     }
 }
