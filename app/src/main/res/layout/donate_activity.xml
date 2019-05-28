@@ -21,6 +21,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15sp"
+            android:textColor="#454545"
+            android:textSize="32sp"
             android:text="@string/donate" />
 
         <TextView
@@ -28,6 +30,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="36sp"
+            android:textSize="20sp"
+            android:textColor="#454545"
             android:text="@string/mission" />
 
         <TextView
@@ -35,6 +39,8 @@
             android:layout_height="wrap_content"
             android:paddingTop="5dp"
             android:text="@string/donations__google_android_market"
+            android:textColor="#454545"
+            android:textSize="32sp"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <LinearLayout
@@ -57,6 +63,7 @@
                 android:layout_height="40sp"
                 android:layout_weight="1"
                 android:text="@string/txtDonateNow"
+                android:textSize="20sp"
                 android:background="#690"
                 android:textColor="#ffffff" />
         </LinearLayout>
@@ -68,6 +75,8 @@
             android:layout_height="wrap_content"
             android:paddingTop="5dp"
             android:text="@string/donations__paypal"
+            android:textColor="#454545"
+            android:textSize="32sp"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -77,6 +86,8 @@
             android:layout_gravity="center_vertical"
             android:paddingBottom="5dp"
             android:paddingTop="5dp"
+            android:textColor="#454545"
+            android:textSize="20sp"
             android:text="@string/donations__paypal_description"
             android:textAppearance="@android:style/TextAppearance.Small" />
 
@@ -88,6 +99,7 @@
             android:layout_marginLeft="8dp"
             android:background="#690"
             android:textColor="#ffffff"
+            android:textSize="20sp"
             android:text="@string/txtDonatePaypal" />
 
     </LinearLayout>
