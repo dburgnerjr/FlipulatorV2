@@ -109,7 +109,7 @@ class DonateActivity : AppCompatActivity(), PurchasesUpdatedListener {
         if (mBillingClient.isReady) {
             val params = SkuDetailsParams
                     .newBuilder()
-                    .setSkusList(GOOGLE_CATALOG)
+                    .setSkusList(CATALOG_DEBUG)
                     .setType(BillingClient.SkuType.INAPP)
                     .build()
             mBillingClient.querySkuDetailsAsync(params) { responseCode, skuDetailsList ->
