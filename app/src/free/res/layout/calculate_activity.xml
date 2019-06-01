@@ -28,6 +28,7 @@
                     android:layout_width="0sp"
                     android:layout_height="35sp"
                     android:layout_weight="0.5"
+                    android:textColor="#454545"
                     android:text="@string/address" />
 
                 <EditText
@@ -36,6 +37,7 @@
                     android:layout_height="35sp"
                     android:layout_weight="0.5"
                     android:textSize="12sp"
+                    android:textColor="#454545"
                     android:ems="10"
                     android:inputType="text" />
             </LinearLayout>
@@ -51,6 +53,7 @@
                     android:layout_width="0sp"
                     android:layout_height="35sp"
                     android:layout_weight="0.5"
+                    android:textColor="#454545"
                     android:text="@string/citystzip" />
 
                 <EditText
@@ -59,6 +62,7 @@
                     android:layout_height="35sp"
                     android:layout_weight="0.5"
                     android:textSize="12sp"
+                    android:textColor="#454545"
                     android:ems="10"
                     android:inputType="text" />
 
@@ -75,6 +79,7 @@
                     android:layout_width="0sp"
                     android:layout_height="35sp"
                     android:layout_weight="0.5"
+                    android:textColor="#454545"
                     android:text="@string/sq_footage" />
 
                 <EditText
@@ -83,6 +88,7 @@
                     android:layout_height="35sp"
                     android:layout_weight="0.5"
                     android:textSize="12sp"
+                    android:textColor="#454545"
                     android:ems="10"
                     android:inputType="numberDecimal" />
             </LinearLayout>
@@ -98,6 +104,7 @@
                     android:layout_width="0sp"
                     android:layout_height="35sp"
                     android:layout_weight="0.5"
+                    android:textColor="#454545"
                     android:text="@string/bedrooms" />
 
                 <EditText
@@ -106,6 +113,7 @@
                     android:layout_height="35sp"
                     android:layout_weight="0.5"
                     android:textSize="12sp"
+                    android:textColor="#454545"
                     android:ems="10"
                     android:inputType="numberDecimal" />
             </LinearLayout>
@@ -121,6 +129,7 @@
                     android:layout_width="0sp"
                     android:layout_height="35sp"
                     android:layout_weight="0.5"
+                    android:textColor="#454545"
                     android:text="@string/bathrooms" />
 
                 <EditText
@@ -129,6 +138,7 @@
                     android:layout_height="35sp"
                     android:layout_weight="0.5"
                     android:textSize="12sp"
+                    android:textColor="#454545"
                     android:ems="10"
                     android:inputType="numberDecimal" />
             </LinearLayout>
@@ -144,6 +154,7 @@
                     android:layout_width="0sp"
                     android:layout_height="35sp"
                     android:layout_weight="0.5"
+                    android:textColor="#454545"
                     android:text="@string/salePrice" />
 
                 <EditText
@@ -152,6 +163,7 @@
                     android:layout_height="35sp"
                     android:layout_weight="0.5"
                     android:textSize="12sp"
+                    android:textColor="#454545"
                     android:ems="10"
                     android:inputType="numberDecimal" />
             </LinearLayout>
@@ -167,6 +179,7 @@
                     android:layout_width="0sp"
                     android:layout_height="35sp"
                     android:layout_weight="0.5"
+                    android:textColor="#454545"
                     android:text="@string/FMVARV" />
 
                 <EditText
@@ -175,6 +188,7 @@
                     android:layout_height="35sp"
                     android:layout_weight="0.5"
                     android:textSize="12sp"
+                    android:textColor="#454545"
                     android:ems="10"
                     android:inputType="numberDecimal" />
             </LinearLayout>
@@ -190,6 +204,7 @@
                     android:layout_width="0sp"
                     android:layout_height="25sp"
                     android:layout_weight="1"
+                    android:textColor="#454545"
                     android:text="@string/budgetItems" />
             </LinearLayout>
 
@@ -211,6 +226,7 @@
                     android:maxLines="4"
                     android:gravity="top|left"
                     android:textSize="12sp"
+                    android:textColor="#454545"
                     android:ems="10"
                     android:imeOptions="actionDone" />
             </LinearLayout>
@@ -229,6 +245,7 @@
                     android:layout_height="30sp"
                     android:layout_weight="0.5"
                     android:textSize="15sp"
+                    android:textColor="#454545"
                     android:text="@string/rehab_number" />
 
                 <RadioButton
@@ -237,6 +254,7 @@
                     android:layout_height="30sp"
                     android:layout_weight="0.5"
                     android:textSize="15sp"
+                    android:textColor="#454545"
                     android:text="@string/rehab_type" />
             </RadioGroup>
 
@@ -252,6 +270,7 @@
                     android:layout_width="0sp"
                     android:layout_height="35sp"
                     android:layout_weight="0.5"
+                    android:textColor="#454545"
                     android:text="@string/rehab_budget" />
 
                 <EditText
@@ -260,6 +279,7 @@
                     android:layout_height="35sp"
                     android:layout_weight="0.5"
                     android:textSize="12sp"
+                    android:textColor="#454545"
                     android:ems="10"
                     android:imeOptions="actionDone"
                     android:inputType="numberDecimal" />
@@ -277,6 +297,7 @@
                     android:layout_width="0sp"
                     android:layout_height="35sp"
                     android:layout_weight="0.5"
+                    android:textColor="#454545"
                     android:text="@string/rehab_class" />
 
                 <Spinner
@@ -286,6 +307,114 @@
                     android:layout_weight="0.5"
                     android:ems="10" />
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llResClosHoldCost"
+                android:layout_width="fill_parent"
+                android:layout_height="35sp"
+                android:layout_below="@+id/llRehabBudget"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tvClosHoldCosts"
+                    android:layout_width="0sp"
+                    android:layout_height="35sp"
+                    android:layout_weight="0.5"
+                    android:textColor="#454545"
+                    android:text="@string/closholdcosts" />
+
+                <EditText
+                    android:id="@+id/txtClosHoldCosts"
+                    android:layout_width="0sp"
+                    android:layout_height="35sp"
+                    android:layout_weight="0.5"
+                    android:textSize="12sp"
+                    android:textColor="#454545"
+                    android:hint="@string/closholdcosts"
+                    android:ems="10" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llResProfit"
+                android:layout_width="fill_parent"
+                android:layout_height="35sp"
+                android:layout_below="@+id/llResClosHoldCost"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tvProfit"
+                    android:layout_width="0sp"
+                    android:layout_height="35sp"
+                    android:layout_weight="0.5"
+                    android:textColor="#454545"
+                    android:text="@string/profit" />
+
+                <EditText
+                    android:id="@+id/txtProfit"
+                    android:layout_width="0sp"
+                    android:layout_height="35sp"
+                    android:layout_weight="0.5"
+                    android:textSize="12sp"
+                    android:textColor="#454545"
+                    android:textStyle="bold"
+                    android:hint="@string/profit"
+                    android:ems="10" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llResROI"
+                android:layout_width="fill_parent"
+                android:layout_height="35sp"
+                android:layout_below="@+id/llResProfit"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tvROI"
+                    android:layout_width="0sp"
+                    android:layout_height="35sp"
+                    android:layout_weight="0.5"
+                    android:textColor="#454545"
+                    android:text="@string/roi" />
+
+                <EditText
+                    android:id="@+id/txtROI"
+                    android:layout_width="0sp"
+                    android:layout_height="35sp"
+                    android:layout_weight="0.5"
+                    android:textSize="12sp"
+                    android:textColor="#454545"
+                    android:textStyle="bold"
+                    android:hint="@string/roi"
+                    android:ems="10" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llResCashCash"
+                android:layout_width="fill_parent"
+                android:layout_height="35sp"
+                android:layout_below="@+id/llResROI"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tvCashOnCash"
+                    android:layout_width="0sp"
+                    android:layout_height="35sp"
+                    android:layout_weight="0.5"
+                    android:textColor="#454545"
+                    android:text="@string/cashoncash" />
+
+                <EditText
+                    android:id="@+id/txtCashOnCash"
+                    android:layout_width="0sp"
+                    android:layout_height="35sp"
+                    android:layout_weight="0.5"
+                    android:textSize="12sp"
+                    android:textColor="#454545"
+                    android:textStyle="bold"
+                    android:hint="@string/cashoncash"
+                    android:ems="10" />
+            </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/llBlankView"
                 android:layout_width="match_parent"
@@ -299,7 +428,7 @@
             </LinearLayout>
         </RelativeLayout>
     </ScrollView>
-<!--
+
     <LinearLayout
         android:id="@+id/llHelpSubmit"
         android:layout_width="match_parent"
@@ -326,9 +455,9 @@
             android:background="#690"
             android:textColor="#ffffff" />
     </LinearLayout>
--->
 
-<!--
+
+
     <LinearLayout
         android:id="@+id/llAdCalcView"
         android:layout_width="match_parent"
@@ -337,6 +466,7 @@
         android:layout_centerHorizontal="true"
         android:orientation="horizontal" >
 
+<!--
         <com.google.android.gms.ads.AdView
             android:id="@+id/adCalcView"
             android:layout_width="match_parent"
@@ -344,7 +474,8 @@
             ads:adSize="BANNER"
             ads:adUnitId="@string/banner_ad_unit_id" >
         </com.google.android.gms.ads.AdView>
-    </LinearLayout>
 -->
+    </LinearLayout>
+
 
 </RelativeLayout>

@@ -38,16 +38,16 @@
             android:label="About"
             android:theme="@style/AppTheme" >
         </activity>
+        <activity
+            android:name=".CalculateActivity"
+            android:label="Calculate"
+            android:windowSoftInputMode="stateVisible|adjustPan"
+            android:theme="@style/AppTheme" >
+        </activity>
         <!--
       <activity
            android:name=".OpenFilesActivity"
            android:label="Open Files"
-           android:theme="@style/AppTheme" >
-       </activity>
-       <activity
-           android:name=".CalculateActivity"
-           android:label="Calculate"
-           android:windowSoftInputMode="stateVisible|adjustPan"
            android:theme="@style/AppTheme" >
        </activity>
        <activity

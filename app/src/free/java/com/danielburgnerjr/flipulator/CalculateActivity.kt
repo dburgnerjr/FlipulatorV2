@@ -27,7 +27,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener
 class CalculateActivity : Activity() {
 
     internal val cntC: Context = this
-    private var calR: Calculate? = null                // Calculate object from ResultsActivity
+    //private var calR: Calculate? = null                // Calculate object from ResultsActivity
     private var intR: Intent? = null                // Intent object from ResultsActivity
 
     private var etAddress: EditText? = null            // address
@@ -48,6 +48,15 @@ class CalculateActivity : Activity() {
     private var spnRehabType: Spinner? = null        // rehab type
     private var btnHelp: Button? = null                // help
     private var dB: Double = 0.toDouble()                    // budget
+    private var tvClosHoldCosts: TextView? = null    // closing/holding costs textview
+    private var etClosHoldCosts: EditText? = null    // closing/holding costs
+    private var tvProfit: TextView? = null    // Profit textview
+    private var etProfit: EditText? = null            // profit
+    private var tvROI: TextView? = null    // ROI textview
+    private var etROI: EditText? = null                // return on investment
+    private var tvCashOnCash: TextView? = null    // cash on cash textview
+    private var etCashOnCash: EditText? = null        // cash on cash return
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,6 +67,7 @@ class CalculateActivity : Activity() {
         mAdCalcView.loadAd(adRequest)
 */
 
+
         etAddress = findViewById(R.id.txtAddress) as EditText
         etCityStZip = findViewById(R.id.txtCityStZip) as EditText
         etSquareFootage = findViewById(R.id.txtSq_Footage) as EditText
@@ -66,12 +76,14 @@ class CalculateActivity : Activity() {
         etSalesPrice = findViewById(R.id.txtSalePrice) as EditText
         etFMVARV = findViewById(R.id.txtFMVARV) as EditText
         etBudgetItems = findViewById(R.id.txtBudgetItems) as EditText
-        btnHelp = findViewById(R.id.txtHelp) as Button
 
+        btnHelp = findViewById(R.id.txtHelp) as Button
+/*
         val aradAdapter = ArrayAdapter.createFromResource(
                 this, R.array.rehab_type, android.R.layout.simple_spinner_item)
         aradAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         val aradRehabType = ArrayAdapter<String>(this, R.layout.rehab_type, R.array.rehab_type)
+*/
 
         rgRehab = findViewById(R.id.rdoRehab) as RadioGroup
         rbRehab1 = findViewById(R.id.rdoRehabNumber) as RadioButton
@@ -80,14 +92,32 @@ class CalculateActivity : Activity() {
         etRehabBudget = findViewById(R.id.txtRehabBudget) as EditText
         tvRehabType = findViewById(R.id.tvRehabType) as TextView
         spnRehabType = findViewById(R.id.spnRehabType) as Spinner
+        tvClosHoldCosts = findViewById(R.id.tvClosHoldCosts) as TextView
+        etClosHoldCosts = findViewById(R.id.txtClosHoldCosts) as EditText
+        tvProfit = findViewById(R.id.tvProfit) as TextView
+        etProfit = findViewById(R.id.txtProfit) as EditText
+        tvROI = findViewById(R.id.tvROI) as TextView
+        etROI = findViewById(R.id.txtROI) as EditText
+        tvCashOnCash = findViewById(R.id.tvCashOnCash) as TextView
+        etCashOnCash = findViewById(R.id.txtCashOnCash) as EditText
+
         btnHelp = findViewById(R.id.txtHelp) as Button
-        spnRehabType!!.adapter = aradAdapter
+        //spnRehabType!!.adapter = aradAdapter
+
 
         tvRehabFlatRate!!.visibility = View.GONE
         etRehabBudget!!.visibility = View.GONE
         tvRehabType!!.visibility = View.GONE
         spnRehabType!!.visibility = View.GONE
-
+        tvClosHoldCosts!!.visibility = View.GONE
+        etClosHoldCosts!!.visibility = View.GONE
+        tvProfit!!.visibility = View.GONE
+        etProfit!!.visibility = View.GONE
+        tvROI!!.visibility = View.GONE
+        etROI!!.visibility = View.GONE
+        tvCashOnCash!!.visibility = View.GONE
+        etCashOnCash!!.visibility = View.GONE
+/*
         rgRehab!!.setOnCheckedChangeListener { rgG, nChecked ->
             if (nChecked == R.id.rdoRehabNumber) {
                 tvRehabFlatRate!!.visibility = View.VISIBLE
@@ -136,8 +166,10 @@ class CalculateActivity : Activity() {
             // show it
             alertDialog.show()
         }
+*/
 
         // gets Intent and Calculate object
+/*
         intR = intent
         calR = intR!!.getSerializableExtra("Calculate") as Calculate
         // if Calculate object is null, fields are blank
@@ -185,10 +217,21 @@ class CalculateActivity : Activity() {
                 }
             }
         }
+*/
     }
 
+
     fun nextPage(view: View) {
+        tvClosHoldCosts!!.visibility = View.VISIBLE
+        etClosHoldCosts!!.visibility = View.VISIBLE
+        tvProfit!!.visibility = View.VISIBLE
+        etProfit!!.visibility = View.VISIBLE
+        tvROI!!.visibility = View.VISIBLE
+        etROI!!.visibility = View.VISIBLE
+        tvCashOnCash!!.visibility = View.VISIBLE
+        etCashOnCash!!.visibility = View.VISIBLE
         // checks if all fields are filled in, prompts user to fill in fields if any are missing
+/*
         if ("" == etAddress!!.text.toString()) {
             Toast.makeText(applicationContext, "Must Enter Address", Toast.LENGTH_SHORT).show()
         } else if ("" == etCityStZip!!.text.toString()) {
@@ -246,7 +289,9 @@ class CalculateActivity : Activity() {
             startActivity(intI)
             finish()
         }
+*/
     }
+
 
     override fun onKeyDown(nKeyCode: Int, keEvent: KeyEvent): Boolean {
         if (nKeyCode == KeyEvent.KEYCODE_BACK) {
