@@ -78,12 +78,11 @@ class CalculateActivity : Activity() {
         etBudgetItems = findViewById(R.id.txtBudgetItems) as EditText
 
         btnHelp = findViewById(R.id.txtHelp) as Button
-/*
+
+        //val aradRehabType = ArrayAdapter<String>(this, R.layout.rehab_type, R.array.rehab_type_class)
         val aradAdapter = ArrayAdapter.createFromResource(
-                this, R.array.rehab_type, android.R.layout.simple_spinner_item)
+                this, R.array.rehab_type_class, android.R.layout.simple_spinner_item)
         aradAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        val aradRehabType = ArrayAdapter<String>(this, R.layout.rehab_type, R.array.rehab_type)
-*/
 
         rgRehab = findViewById(R.id.rdoRehab) as RadioGroup
         rbRehab1 = findViewById(R.id.rdoRehabNumber) as RadioButton
@@ -102,7 +101,7 @@ class CalculateActivity : Activity() {
         etCashOnCash = findViewById(R.id.txtCashOnCash) as EditText
 
         btnHelp = findViewById(R.id.txtHelp) as Button
-        //spnRehabType!!.adapter = aradAdapter
+        spnRehabType!!.adapter = aradAdapter
 
 
         tvRehabFlatRate!!.visibility = View.GONE
@@ -117,7 +116,7 @@ class CalculateActivity : Activity() {
         etROI!!.visibility = View.GONE
         tvCashOnCash!!.visibility = View.GONE
         etCashOnCash!!.visibility = View.GONE
-/*
+
         rgRehab!!.setOnCheckedChangeListener { rgG, nChecked ->
             if (nChecked == R.id.rdoRehabNumber) {
                 tvRehabFlatRate!!.visibility = View.VISIBLE
@@ -136,7 +135,6 @@ class CalculateActivity : Activity() {
                 spnRehabType!!.visibility = View.INVISIBLE
             }
         }
-
 
         // add button listener
         btnHelp!!.setOnClickListener {
@@ -166,7 +164,6 @@ class CalculateActivity : Activity() {
             // show it
             alertDialog.show()
         }
-*/
 
         // gets Intent and Calculate object
 /*
@@ -219,7 +216,6 @@ class CalculateActivity : Activity() {
         }
 */
     }
-
 
     fun nextPage(view: View) {
         tvClosHoldCosts!!.visibility = View.VISIBLE

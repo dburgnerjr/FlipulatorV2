@@ -60,7 +60,7 @@
     <string name="donations__alert_dialog_title">Error occurred</string>
     <string name="donations__button_close">Close</string>
 
-    <string-array name="rehab_type">
+    <string-array name="rehab_type_class">
         <item>Low</item>
         <item>Medium</item>
         <item>High</item>
