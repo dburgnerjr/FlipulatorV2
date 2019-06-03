@@ -68,7 +68,7 @@ class CalculateActivity : Activity() {
 */
 
 
-        etAddress = findViewById(R.id.txtAddress) as EditText
+        etAddress = findViewById<EditText>(R.id.txtAddress)
         etCityStZip = findViewById(R.id.txtCityStZip) as EditText
         etSquareFootage = findViewById(R.id.txtSq_Footage) as EditText
         etBedrooms = findViewById(R.id.txtBedrooms) as EditText
@@ -218,16 +218,8 @@ class CalculateActivity : Activity() {
     }
 
     fun nextPage(view: View) {
-        tvClosHoldCosts!!.visibility = View.VISIBLE
-        etClosHoldCosts!!.visibility = View.VISIBLE
-        tvProfit!!.visibility = View.VISIBLE
-        etProfit!!.visibility = View.VISIBLE
-        tvROI!!.visibility = View.VISIBLE
-        etROI!!.visibility = View.VISIBLE
-        tvCashOnCash!!.visibility = View.VISIBLE
-        etCashOnCash!!.visibility = View.VISIBLE
         // checks if all fields are filled in, prompts user to fill in fields if any are missing
-/*
+
         if ("" == etAddress!!.text.toString()) {
             Toast.makeText(applicationContext, "Must Enter Address", Toast.LENGTH_SHORT).show()
         } else if ("" == etCityStZip!!.text.toString()) {
@@ -244,8 +236,19 @@ class CalculateActivity : Activity() {
             Toast.makeText(applicationContext, "Must Enter Fair Market Value or After Repair Value", Toast.LENGTH_SHORT).show()
         } else if ("" == etBudgetItems!!.text.toString()) {
             Toast.makeText(applicationContext, "Must Enter Budget Items", Toast.LENGTH_SHORT).show()
+        } else if (rgRehab!!.checkedRadioButtonId == -1) {
+            Toast.makeText(applicationContext, "Must Enter Rehab Type", Toast.LENGTH_SHORT).show()
         } else {
-            val intI = Intent(this@CalculateActivity, ResultsActivity::class.java)
+            Toast.makeText(applicationContext, "" + rgRehab!!.getCheckedRadioButtonId(), Toast.LENGTH_SHORT).show()
+            tvClosHoldCosts!!.visibility = View.VISIBLE
+            etClosHoldCosts!!.visibility = View.VISIBLE
+            tvProfit!!.visibility = View.VISIBLE
+            etProfit!!.visibility = View.VISIBLE
+            tvROI!!.visibility = View.VISIBLE
+            etROI!!.visibility = View.VISIBLE
+            tvCashOnCash!!.visibility = View.VISIBLE
+            etCashOnCash!!.visibility = View.VISIBLE
+/*            val intI = Intent(this@CalculateActivity, ResultsActivity::class.java)
 
             // creates new Calculate object and sets info from fields into object variables
             val calC = Calculate()
@@ -284,8 +287,9 @@ class CalculateActivity : Activity() {
             intI.putExtra("Calculate", calC)
             startActivity(intI)
             finish()
+            */
         }
-*/
+
     }
 
 
