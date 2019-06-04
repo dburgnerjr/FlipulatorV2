@@ -1,5 +1,6 @@
 package com.danielburgnerjr.flipulator.model
 
+import android.widget.Toast
 import java.io.Serializable
 
 class Calculate : Serializable {
@@ -39,6 +40,7 @@ class Calculate : Serializable {
         } else {
             this.budget = (125 * this.squareFootage).toDouble()
         }
+        System.out.println("Budget: " + this.budget)
     }
 
     override fun toString(): String {

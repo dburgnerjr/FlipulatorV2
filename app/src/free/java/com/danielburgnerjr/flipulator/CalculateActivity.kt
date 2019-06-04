@@ -21,13 +21,19 @@ import android.widget.TextView
 import android.widget.Toast
 import android.widget.RadioGroup.OnCheckedChangeListener
 
+import com.danielburgnerjr.flipulator.model.Calculate
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemSelectedListener
+
+
+
 //import com.google.android.gms.ads.AdRequest;
 //import com.google.android.gms.ads.AdView;
 
 class CalculateActivity : Activity() {
 
     internal val cntC: Context = this
-    //private var calR: Calculate? = null                // Calculate object from ResultsActivity
+    private var calR: Calculate? = null                // Calculate object from ResultsActivity
     private var intR: Intent? = null                // Intent object from ResultsActivity
 
     private var etAddress: EditText? = null            // address
@@ -38,10 +44,6 @@ class CalculateActivity : Activity() {
     private var etSalesPrice: EditText? = null        // sales price
     private var etFMVARV: EditText? = null            // fair mkt value/after repair value
     private var etBudgetItems: EditText? = null        // budget items
-    private var rgRehab: RadioGroup? = null            // radio group rehab
-    private var rbRehab: RadioButton? = null        // rehab button id
-    private var rbRehab1: RadioButton? = null        // rehab number
-    private var rbRehab2: RadioButton? = null        // rehab type
     private var tvRehabFlatRate: TextView? = null    // rehab budget flat rate textview
     private var etRehabBudget: EditText? = null        // rehab budget
     private var tvRehabType: TextView? = null        // rehab type textview
@@ -66,8 +68,6 @@ class CalculateActivity : Activity() {
         val adRequest = AdRequest.Builder().build()
         mAdCalcView.loadAd(adRequest)
 */
-
-
         etAddress = findViewById<EditText>(R.id.txtAddress)
         etCityStZip = findViewById(R.id.txtCityStZip) as EditText
         etSquareFootage = findViewById(R.id.txtSq_Footage) as EditText
@@ -84,9 +84,6 @@ class CalculateActivity : Activity() {
                 this, R.array.rehab_type_class, android.R.layout.simple_spinner_item)
         aradAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
-        rgRehab = findViewById(R.id.rdoRehab) as RadioGroup
-        rbRehab1 = findViewById(R.id.rdoRehabNumber) as RadioButton
-        rbRehab2 = findViewById(R.id.rdoRehabType) as RadioButton
         tvRehabFlatRate = findViewById(R.id.tvRehabBudget) as TextView
         etRehabBudget = findViewById(R.id.txtRehabBudget) as EditText
         tvRehabType = findViewById(R.id.tvRehabType) as TextView
@@ -103,11 +100,24 @@ class CalculateActivity : Activity() {
         btnHelp = findViewById(R.id.txtHelp) as Button
         spnRehabType!!.adapter = aradAdapter
 
+        spnRehabType!!.setOnItemSelectedListener(object : OnItemSelectedListener {
+            override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View, position: Int, id: Long) {
+                if (position > 0) {
+                    val strRTSel = parentView.getItemAtPosition(position).toString()
+                    calR = Calculate()
+                    calR!!.squareFootage = etSquareFootage!!.text.toString().toInt()
+                    when (strRTSel) {
+                        "Low", "Medium", "High", "Super-High", "Bulldozer" -> calR!!.calcBudgetRehabType(strRTSel)
+                    }
+                    etRehabBudget!!.setText(calR!!.budget.toString())
+                }
+            }
 
-        tvRehabFlatRate!!.visibility = View.GONE
-        etRehabBudget!!.visibility = View.GONE
-        tvRehabType!!.visibility = View.GONE
-        spnRehabType!!.visibility = View.GONE
+            override fun onNothingSelected(parentView: AdapterView<*>) {
+                // your code here
+            }
+        })
+
         tvClosHoldCosts!!.visibility = View.GONE
         etClosHoldCosts!!.visibility = View.GONE
         tvProfit!!.visibility = View.GONE
@@ -116,25 +126,6 @@ class CalculateActivity : Activity() {
         etROI!!.visibility = View.GONE
         tvCashOnCash!!.visibility = View.GONE
         etCashOnCash!!.visibility = View.GONE
-
-        rgRehab!!.setOnCheckedChangeListener { rgG, nChecked ->
-            if (nChecked == R.id.rdoRehabNumber) {
-                tvRehabFlatRate!!.visibility = View.VISIBLE
-                etRehabBudget!!.visibility = View.VISIBLE
-                tvRehabType!!.visibility = View.INVISIBLE
-                spnRehabType!!.visibility = View.INVISIBLE
-            } else if (nChecked == R.id.rdoRehabType) {
-                tvRehabFlatRate!!.visibility = View.INVISIBLE
-                etRehabBudget!!.visibility = View.INVISIBLE
-                tvRehabType!!.visibility = View.VISIBLE
-                spnRehabType!!.visibility = View.VISIBLE
-            } else {
-                tvRehabFlatRate!!.visibility = View.INVISIBLE
-                etRehabBudget!!.visibility = View.INVISIBLE
-                tvRehabType!!.visibility = View.INVISIBLE
-                spnRehabType!!.visibility = View.INVISIBLE
-            }
-        }
 
         // add button listener
         btnHelp!!.setOnClickListener {
@@ -236,10 +227,10 @@ class CalculateActivity : Activity() {
             Toast.makeText(applicationContext, "Must Enter Fair Market Value or After Repair Value", Toast.LENGTH_SHORT).show()
         } else if ("" == etBudgetItems!!.text.toString()) {
             Toast.makeText(applicationContext, "Must Enter Budget Items", Toast.LENGTH_SHORT).show()
-        } else if (rgRehab!!.checkedRadioButtonId == -1) {
-            Toast.makeText(applicationContext, "Must Enter Rehab Type", Toast.LENGTH_SHORT).show()
+        } else if (("Flat Rate" == spnRehabType!!.getSelectedItem().toString()) && ("" == etRehabBudget!!.text.toString())) {
+            Toast.makeText(applicationContext, "Must Enter Flat Rate Budget or Rehab Type", Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(applicationContext, "" + rgRehab!!.getCheckedRadioButtonId(), Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "" + spnRehabType!!.getSelectedItem().toString(), Toast.LENGTH_SHORT).show()
             tvClosHoldCosts!!.visibility = View.VISIBLE
             etClosHoldCosts!!.visibility = View.VISIBLE
             tvProfit!!.visibility = View.VISIBLE

@@ -231,38 +231,34 @@
                     android:imeOptions="actionDone" />
             </LinearLayout>
 
-            <RadioGroup
-                android:id="@+id/rdoRehab"
+            <LinearLayout
+                android:id="@+id/llRehabType"
                 android:layout_width="match_parent"
-                android:layout_height="30sp"
-                android:layout_gravity="center_horizontal"
+                android:layout_height="match_parent"
                 android:layout_below="@+id/llBudgetItemsTxt"
                 android:orientation="horizontal" >
 
-                <RadioButton
-                    android:id="@+id/rdoRehabNumber"
-                    android:layout_width="match_parent"
-                    android:layout_height="30sp"
+                <TextView
+                    android:id="@+id/tvRehabType"
+                    android:layout_width="0sp"
+                    android:layout_height="35sp"
                     android:layout_weight="0.5"
-                    android:textSize="15sp"
                     android:textColor="#454545"
-                    android:text="@string/rehab_number" />
+                    android:text="@string/rehab_class" />
 
-                <RadioButton
-                    android:id="@+id/rdoRehabType"
-                    android:layout_width="match_parent"
-                    android:layout_height="30sp"
+                <Spinner
+                    android:id="@+id/spnRehabType"
+                    android:layout_width="0sp"
+                    android:layout_height="40sp"
                     android:layout_weight="0.5"
-                    android:textSize="15sp"
-                    android:textColor="#454545"
-                    android:text="@string/rehab_type" />
-            </RadioGroup>
+                    android:ems="10" />
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/llRehabBudget"
                 android:layout_width="match_parent"
                 android:layout_height="35sp"
-                android:layout_below="@+id/rdoRehab"
+                android:layout_below="@+id/llRehabType"
                 android:orientation="horizontal" >
 
                 <TextView
@@ -283,29 +279,6 @@
                     android:ems="10"
                     android:imeOptions="actionDone"
                     android:inputType="numberDecimal" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llRehabType"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/rdoRehab"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/tvRehabType"
-                    android:layout_width="0sp"
-                    android:layout_height="35sp"
-                    android:layout_weight="0.5"
-                    android:textColor="#454545"
-                    android:text="@string/rehab_class" />
-
-                <Spinner
-                    android:id="@+id/spnRehabType"
-                    android:layout_width="0sp"
-                    android:layout_height="40sp"
-                    android:layout_weight="0.5"
-                    android:ems="10" />
             </LinearLayout>
 
             <LinearLayout

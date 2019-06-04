@@ -61,6 +61,7 @@
     <string name="donations__button_close">Close</string>
 
     <string-array name="rehab_type_class">
+        <item>Flat Rate</item>
         <item>Low</item>
         <item>Medium</item>
         <item>High</item>
