@@ -1,52 +1,152 @@
 package com.danielburgnerjr.flipulator.model
 
-import android.widget.Toast
 import java.io.Serializable
 
 class Calculate : Serializable {
 
-    var address: String? = null        // address
-    var cityStZip: String? = null    // city state ZIP code
-    var squareFootage: Int = 0        // square footage
-    var bedrooms: Int = 0            // number of bedrooms
-    var bathrooms: Double = 0.toDouble()        // number of bathrooms
-    var salesPrice: Double = 0.toDouble()        // sales price
-    var fmvarv: Double = 0.toDouble()            // FMV/ARV
+    var strAddress: String? = null        // address
+    var strCityStZip: String? = null    // city state ZIP code
+    var nSquareFootage: Int = 0        // square footage
+    var nBedrooms: Int = 0            // number of bedrooms
+    var dBathrooms: Double = 0.toDouble()        // number of bathrooms
+    var dSalesPrice: Double = 0.toDouble()        // sales price
+    var dFMVARV: Double = 0.toDouble()            // FMV/ARV
     // returns budget
-    var budget: Double = 0.toDouble()         // budget
+    var dBudget: Double = 0.toDouble()         // budget
     // returns rehab flag
-    var rehabFlag: Int = 0            // 0 = rehab flat rate, 1 = rehab class
-    var budgetItems: String? = null    // list of items that need repair
+    var strBudgetItems: String? = null    // list of items that need repair
     var dClosHoldCosts: Double = 0.toDouble()    // closing/holding costs
     var dProfit: Double = 0.toDouble()            // profit
     var dROI: Double = 0.toDouble()            // return on investment
     var dCashOnCash: Double = 0.toDouble()        // cash on cash return
 
+    fun getAddress(): String? {
+        return strAddress
+    }
+
+    fun setAddress(strAdd: String) {
+        this.strAddress = strAdd
+    }
+
+    fun getCityStZip(): String? {
+        return strCityStZip
+    }
+
+    fun setCityStZip(strCSZ: String) {
+        this.strCityStZip = strCSZ
+    }
+
+    fun getSquareFootage(): Int {
+        return nSquareFootage
+    }
+
+    fun setSquareFootage(nSF: Int) {
+        this.nSquareFootage = nSF
+    }
+
+    fun getBedrooms(): Int {
+        return nBedrooms
+    }
+
+    fun setBedrooms(nBR: Int) {
+        this.nBedrooms = nBR
+    }
+
+    fun getBathrooms(): Double {
+        return dBathrooms
+    }
+
+    fun setBathrooms(dBA: Double) {
+        this.dBathrooms = dBA
+    }
+
+    fun getSalesPrice(): Double {
+        return dSalesPrice
+    }
+
+    fun setSalesPrice(dSP: Double) {
+        this.dSalesPrice = dSP
+    }
+
+    fun getFMVARV(): Double {
+        return dFMVARV
+    }
+
+    fun setFMVARV(dF: Double) {
+        this.dFMVARV = dF
+    }
+
+    fun getBudget(): Double {
+        return dBudget        // returns budget
+    }
+
+    fun setBudget(dB: Double) {
+        this.dBudget = dB
+    }
+
+    fun getBudgetItems(): String? {
+        return strBudgetItems
+    }
+
+    fun setBudgetItems(strBI: String) {
+        this.strBudgetItems = strBI
+    }
+
+    fun getClosHoldCosts(): Double {
+        return dClosHoldCosts
+    }
+
+    fun setClosHoldCosts(dRV: Double) {
+        this.dClosHoldCosts = dRV * .1
+    }
+
+    fun getProfit(): Double {
+        return dProfit
+    }
+
+    fun setProfit(dSP: Double, dRV: Double, dB: Double) {
+        this.dProfit = dRV - dSP - dB - this.dClosHoldCosts
+    }
+
+    fun getROI(): Double {
+        return dROI        // returns ROI
+    }
+
+    fun setROI(dRV: Double) {
+        this.dROI = this.dProfit / dRV * 100
+    }
+
+    fun getCashOnCash(): Double {
+        return dCashOnCash        // returns cash on cash
+    }
+
+    fun setCashOnCash(dB: Double) {
+        this.dCashOnCash = this.dProfit / (dB + this.dClosHoldCosts) * 100
+    }
 
     fun calcBudgetRehabType(strT: String) {
 
         // determines budget based on type and square footage
         if (strT == "Low") {
-            this.budget = (15 * this.squareFootage).toDouble()
+            this.dBudget = (15 * this.nSquareFootage).toDouble()
         } else if (strT == "Medium") {
-            if (this.squareFootage < 1500)
-                this.budget = (25 * this.squareFootage).toDouble()
+            if (this.nSquareFootage < 1500)
+                this.dBudget = (25 * this.nSquareFootage).toDouble()
             else
-                this.budget = (20 * this.squareFootage).toDouble()
+                this.dBudget = (20 * this.nSquareFootage).toDouble()
         } else if (strT == "High") {
-            this.budget = (30 * this.squareFootage).toDouble()
+            this.dBudget = (30 * this.nSquareFootage).toDouble()
         } else if (strT == "Super-High") {
-            this.budget = (40 * this.squareFootage).toDouble()
+            this.dBudget = (40 * this.nSquareFootage).toDouble()
         } else {
-            this.budget = (125 * this.squareFootage).toDouble()
+            this.dBudget = (125 * this.nSquareFootage).toDouble()
         }
-        System.out.println("Budget: " + this.budget)
     }
 
     override fun toString(): String {
-        return "Location\nAddress: " + address + "\nCity, State ZIP: " + cityStZip +
-                "\nSquare Footage: " + squareFootage + "\nBedrooms: " + bedrooms + "\nBathrooms: " + bathrooms +
-                "\nBudget: " + budget + "\nBudget Items: " + budgetItems
+        return "Location\nAddress: " + strAddress + "\nCity, State ZIP: " + strCityStZip +
+                "\nSquare Footage: " + nSquareFootage + "\nBedrooms: " + nBedrooms + "\nBathrooms: " + dBathrooms +
+                "\nBudget: " + dBudget + "\nBudget Items: " + strBudgetItems
     }
 
     companion object {

@@ -105,11 +105,11 @@ class CalculateActivity : Activity() {
                 if (position > 0) {
                     val strRTSel = parentView.getItemAtPosition(position).toString()
                     calR = Calculate()
-                    calR!!.squareFootage = etSquareFootage!!.text.toString().toInt()
+                    calR!!.setSquareFootage(etSquareFootage!!.text.toString().toInt())
                     when (strRTSel) {
                         "Low", "Medium", "High", "Super-High", "Bulldozer" -> calR!!.calcBudgetRehabType(strRTSel)
                     }
-                    etRehabBudget!!.setText(calR!!.budget.toString())
+                    etRehabBudget!!.setText("$" + calR!!.getBudget().toString())
                 }
             }
 
