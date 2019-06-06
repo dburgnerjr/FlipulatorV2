@@ -391,16 +391,39 @@
             <LinearLayout
                 android:id="@+id/llBlankView"
                 android:layout_width="match_parent"
-                android:layout_height="100sp"
-                android:layout_below="@+id/llRehabType"
+                android:layout_height="200sp"
+                android:layout_below="@+id/llResCashCash"
                 android:orientation="horizontal" >
 
                 <View
                     android:layout_width="0sp"
-                    android:layout_height="100sp" />
+                    android:layout_height="200sp" />
             </LinearLayout>
         </RelativeLayout>
     </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/llEditInfo"
+        android:layout_width="fill_parent"
+        android:layout_height="35sp"
+        android:layout_above="@+id/llHelpSubmit"
+        android:orientation="horizontal" >
+
+        <View
+            android:layout_width="100sp"
+            android:layout_height="35sp"
+            android:layout_weight="0.5"
+            android:background="#690" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="100sp"
+            android:layout_height="35sp"
+            android:layout_weight="0.5"
+            android:text="@string/save"
+            android:background="#690"
+            android:textColor="#ffffff" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/llHelpSubmit"

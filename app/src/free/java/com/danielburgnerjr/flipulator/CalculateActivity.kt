@@ -3,26 +3,13 @@ package com.danielburgnerjr.flipulator
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.view.View.OnClickListener
 import android.view.KeyEvent
-import android.view.Menu
-import android.view.MenuItem
-import android.widget.ArrayAdapter
-import android.widget.EditText
-import android.widget.Button
-import android.widget.RadioButton
-import android.widget.RadioGroup
-import android.widget.Spinner
-import android.widget.TextView
-import android.widget.Toast
-import android.widget.RadioGroup.OnCheckedChangeListener
+import android.widget.*
 
 import com.danielburgnerjr.flipulator.model.Calculate
-import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 
 
@@ -32,9 +19,8 @@ import android.widget.AdapterView.OnItemSelectedListener
 
 class CalculateActivity : Activity() {
 
-    internal val cntC: Context = this
-    private var calR: Calculate? = null                // Calculate object from ResultsActivity
-    private var intR: Intent? = null                // Intent object from ResultsActivity
+    private val cntC: Context = this
+    private var calR: Calculate? = null                // Calculate object
 
     private var etAddress: EditText? = null            // address
     private var etCityStZip: EditText? = null        // city state zip code
@@ -58,6 +44,9 @@ class CalculateActivity : Activity() {
     private var etROI: EditText? = null                // return on investment
     private var tvCashOnCash: TextView? = null    // cash on cash textview
     private var etCashOnCash: EditText? = null        // cash on cash return
+    private var btnSave: Button? = null
+    private var llEditInfo: LinearLayout? = null
+    private var strRTSel: String? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,45 +58,44 @@ class CalculateActivity : Activity() {
         mAdCalcView.loadAd(adRequest)
 */
         etAddress = findViewById<EditText>(R.id.txtAddress)
-        etCityStZip = findViewById(R.id.txtCityStZip) as EditText
-        etSquareFootage = findViewById(R.id.txtSq_Footage) as EditText
-        etBedrooms = findViewById(R.id.txtBedrooms) as EditText
-        etBathrooms = findViewById(R.id.txtBathrooms) as EditText
-        etSalesPrice = findViewById(R.id.txtSalePrice) as EditText
-        etFMVARV = findViewById(R.id.txtFMVARV) as EditText
-        etBudgetItems = findViewById(R.id.txtBudgetItems) as EditText
+        etCityStZip = findViewById<EditText>(R.id.txtCityStZip)
+        etSquareFootage = findViewById<EditText>(R.id.txtSq_Footage)
+        etBedrooms = findViewById<EditText>(R.id.txtBedrooms)
+        etBathrooms = findViewById<EditText>(R.id.txtBathrooms)
+        etSalesPrice = findViewById<EditText>(R.id.txtSalePrice)
+        etFMVARV = findViewById<EditText>(R.id.txtFMVARV)
+        etBudgetItems = findViewById<EditText>(R.id.txtBudgetItems)
+        btnSave = findViewById<Button>(R.id.btnSave)
+        llEditInfo = findViewById<LinearLayout>(R.id.llEditInfo)
 
-        btnHelp = findViewById(R.id.txtHelp) as Button
-
-        //val aradRehabType = ArrayAdapter<String>(this, R.layout.rehab_type, R.array.rehab_type_class)
         val aradAdapter = ArrayAdapter.createFromResource(
                 this, R.array.rehab_type_class, android.R.layout.simple_spinner_item)
         aradAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
-        tvRehabFlatRate = findViewById(R.id.tvRehabBudget) as TextView
-        etRehabBudget = findViewById(R.id.txtRehabBudget) as EditText
-        tvRehabType = findViewById(R.id.tvRehabType) as TextView
-        spnRehabType = findViewById(R.id.spnRehabType) as Spinner
-        tvClosHoldCosts = findViewById(R.id.tvClosHoldCosts) as TextView
-        etClosHoldCosts = findViewById(R.id.txtClosHoldCosts) as EditText
-        tvProfit = findViewById(R.id.tvProfit) as TextView
-        etProfit = findViewById(R.id.txtProfit) as EditText
-        tvROI = findViewById(R.id.tvROI) as TextView
-        etROI = findViewById(R.id.txtROI) as EditText
-        tvCashOnCash = findViewById(R.id.tvCashOnCash) as TextView
-        etCashOnCash = findViewById(R.id.txtCashOnCash) as EditText
+        tvRehabFlatRate = findViewById<TextView>(R.id.tvRehabBudget)
+        etRehabBudget = findViewById<EditText>(R.id.txtRehabBudget)
+        tvRehabType = findViewById<TextView>(R.id.tvRehabType)
+        spnRehabType = findViewById<Spinner>(R.id.spnRehabType)
+        tvClosHoldCosts = findViewById<TextView>(R.id.tvClosHoldCosts)
+        etClosHoldCosts = findViewById<EditText>(R.id.txtClosHoldCosts)
+        tvProfit = findViewById<TextView>(R.id.tvProfit)
+        etProfit = findViewById<EditText>(R.id.txtProfit)
+        tvROI = findViewById<TextView>(R.id.tvROI)
+        etROI = findViewById<EditText>(R.id.txtROI)
+        tvCashOnCash = findViewById<TextView>(R.id.tvCashOnCash)
+        etCashOnCash = findViewById<EditText>(R.id.txtCashOnCash)
 
-        btnHelp = findViewById(R.id.txtHelp) as Button
+        btnHelp = findViewById<Button>(R.id.txtHelp)
         spnRehabType!!.adapter = aradAdapter
 
         spnRehabType!!.setOnItemSelectedListener(object : OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View, position: Int, id: Long) {
                 if (position > 0) {
-                    val strRTSel = parentView.getItemAtPosition(position).toString()
+                    strRTSel = parentView.getItemAtPosition(position).toString()
                     calR = Calculate()
                     calR!!.setSquareFootage(etSquareFootage!!.text.toString().toInt())
                     when (strRTSel) {
-                        "Low", "Medium", "High", "Super-High", "Bulldozer" -> calR!!.calcBudgetRehabType(strRTSel)
+                        "Low", "Medium", "High", "Super-High", "Bulldozer" -> calR!!.calcBudgetRehabType(strRTSel!!)
                     }
                     etRehabBudget!!.setText("$" + calR!!.getBudget().toString())
                 }
@@ -126,6 +114,8 @@ class CalculateActivity : Activity() {
         etROI!!.visibility = View.GONE
         tvCashOnCash!!.visibility = View.GONE
         etCashOnCash!!.visibility = View.GONE
+        llEditInfo!!.visibility = View.GONE
+        btnSave!!.visibility = View.GONE
 
         // add button listener
         btnHelp!!.setOnClickListener {
@@ -239,46 +229,26 @@ class CalculateActivity : Activity() {
             etROI!!.visibility = View.VISIBLE
             tvCashOnCash!!.visibility = View.VISIBLE
             etCashOnCash!!.visibility = View.VISIBLE
-/*            val intI = Intent(this@CalculateActivity, ResultsActivity::class.java)
+            llEditInfo!!.visibility = View.VISIBLE
+            btnSave!!.visibility = View.VISIBLE
 
             // creates new Calculate object and sets info from fields into object variables
-            val calC = Calculate()
-            calC.setAddress(etAddress!!.text.toString())
-            calC.setCityStZip(etCityStZip!!.text.toString())
-            calC.setSquareFootage(Integer.parseInt(etSquareFootage!!.text.toString()))
-            calC.setBedrooms(Integer.parseInt(etBedrooms!!.text.toString()))
-            calC.setBathrooms(java.lang.Double.parseDouble(etBathrooms!!.text.toString()))
-            calC.setFMVARV(Integer.parseInt(etFMVARV!!.text.toString()))
-            calC.setSalesPrice(Integer.parseInt(etSalesPrice!!.text.toString()))
-            calC.setBudgetItems(etBudgetItems!!.text.toString())
-            val nSelected = rgRehab!!.checkedRadioButtonId
-            rbRehab = findViewById<View>(nSelected) as RadioButton
-
-            // determines Rehab object by radio button input
-            when (nSelected) {
-
-                R.id.rdoRehabNumber -> {
-                    if ("" == etRehabBudget!!.text.toString()) {
-                        Toast.makeText(applicationContext, "Must Enter Rehab Budget", Toast.LENGTH_SHORT).show()
-                    } else {
-                        dB = java.lang.Double.parseDouble(etRehabBudget!!.text.toString())
-                        calC.setBudget(dB)
-                    }
-                    calC.setRehabFlag(0)
-                }
-
-                R.id.rdoRehabType -> {
-                    val strRTSel = spnRehabType!!.selectedItem.toString()
-                    calC.calcBudgetRehabType(strRTSel)
-                    calC.setRehabFlag(1)
-                }
-            }
-
-            // stores Calculate object in Intent
-            intI.putExtra("Calculate", calC)
-            startActivity(intI)
-            finish()
-            */
+            calR!!.setAddress(etAddress!!.text.toString())
+            calR!!.setCityStZip(etCityStZip!!.text.toString())
+            calR!!.setSquareFootage(Integer.parseInt(etSquareFootage!!.text.toString()))
+            calR!!.setBedrooms(Integer.parseInt(etBedrooms!!.text.toString()))
+            calR!!.setBathrooms(java.lang.Double.parseDouble(etBathrooms!!.text.toString()))
+            calR!!.setFMVARV(java.lang.Double.parseDouble(etFMVARV!!.text.toString()))
+            calR!!.setSalesPrice(java.lang.Double.parseDouble(etSalesPrice!!.text.toString()))
+            calR!!.setBudgetItems(etBudgetItems!!.text.toString())
+            calR!!.setClosHoldCosts(calR!!.getFMVARV())
+            etClosHoldCosts!!.setText("$" + calR!!.getClosHoldCosts().toString())
+            calR!!.setProfit(calR!!.getSalesPrice(), calR!!.getFMVARV(), calR!!.getBudget())
+            etProfit!!.setText("$" + calR!!.getProfit().toString())
+            calR!!.setROI(calR!!.getFMVARV())
+            etROI!!.setText(calR!!.getROI().toString() + "%")
+            calR!!.setCashOnCash(calR!!.getBudget())
+            etCashOnCash!!.setText(calR!!.getCashOnCash().toString() + "%")
         }
 
     }
