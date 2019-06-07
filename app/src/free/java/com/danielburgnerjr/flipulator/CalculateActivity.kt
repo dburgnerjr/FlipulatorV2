@@ -3,16 +3,18 @@ package com.danielburgnerjr.flipulator
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.KeyEvent
 import android.widget.*
+import android.widget.AdapterView.OnItemSelectedListener
+import android.widget.Toast
 
 import com.danielburgnerjr.flipulator.model.Calculate
-import android.widget.AdapterView.OnItemSelectedListener
 
-
+import java.io.IOException
 
 //import com.google.android.gms.ads.AdRequest;
 //import com.google.android.gms.ads.AdView;
@@ -21,6 +23,7 @@ class CalculateActivity : Activity() {
 
     private val cntC: Context = this
     private var calR: Calculate? = null                // Calculate object
+    private var intR: Intent? = null                   // Intent
 
     private var etAddress: EditText? = null            // address
     private var etCityStZip: EditText? = null        // city state zip code
@@ -246,13 +249,75 @@ class CalculateActivity : Activity() {
             calR!!.setProfit(calR!!.getSalesPrice(), calR!!.getFMVARV(), calR!!.getBudget())
             etProfit!!.setText("$" + calR!!.getProfit().toString())
             calR!!.setROI(calR!!.getFMVARV())
-            etROI!!.setText(calR!!.getROI().toString() + "%")
+            etROI!!.setText(String.format("%.1f", calR!!.getROI()) + "%")
             calR!!.setCashOnCash(calR!!.getBudget())
-            etCashOnCash!!.setText(calR!!.getCashOnCash().toString() + "%")
+            etCashOnCash!!.setText(String.format("%.1f", calR!!.getCashOnCash()) + "%")
         }
 
     }
 
+    //@Throws(FileNotFoundException::class, IOException::class, WriteException::class)
+    fun saveFile(view: View) {
+        Toast.makeText(applicationContext, "Coming soon", Toast.LENGTH_SHORT).show()
+        // saves results to text file
+/*
+        val myDir = File(applicationContext.getExternalFilesDir(null)!!.toString() + "/FlipulatorFree")
+        myDir.mkdirs()
+        val strFileNameXls = calC.getAddress() + " " + calC.getCityStZip() + ".xls"
+        val file = File(myDir, strFileNameXls)
+
+        // create Excel spreadsheet
+        createSpreadsheet(myDir, strFileNameXls)
+
+        val strSavedFile = "File saved as: $strFileNameXls"
+        Toast.makeText(applicationContext, strSavedFile, Toast.LENGTH_SHORT).show()
+*/
+    }
+
+    fun emailFile(view: View) {
+        val adAlertBox = AlertDialog.Builder(this)
+                .setMessage("Do you want to email results as text or as an Excel spreadsheet?")
+                .setPositiveButton("Text") { arg0, arg1 ->
+                    // do something when the button is clicked
+                    emailPlainText()
+                }
+                .setNegativeButton("Excel") { arg0, arg1 ->
+                    // do something when the button is clicked
+                    Toast.makeText(applicationContext, "Coming soon", Toast.LENGTH_SHORT).show()
+/*
+                    try {
+                        emailExcelSpreadsheet()
+                    } catch (e: IOException) {
+                        Toast.makeText(applicationContext, e.toString(), Toast.LENGTH_SHORT).show()
+                    } catch (e: WriteException) {
+                        Toast.makeText(applicationContext, e.toString(), Toast.LENGTH_SHORT).show()
+                    }
+*/
+                }
+                .show()
+    }
+
+    fun emailPlainText() {
+        // email results of calculate to those parties concerned
+        var strMessage = "Address:                " + calR!!.getAddress() + "\n"
+        strMessage += "City, State ZIP:        " + calR!!.getCityStZip() + "\n"
+        strMessage += "Square Footage:         " + calR!!.getSquareFootage() + "\n"
+        strMessage += "Bedrooms/Bathrooms:     " + calR!!.getBedrooms() + " BR " + calR!!.getBathrooms() + " BA\n"
+        strMessage += "After Repair Value:    $" + String.format("%.0f", calR!!.getFMVARV()) + "\n"
+        strMessage += "Sales Price:           $" + String.format("%.0f", calR!!.getSalesPrice()) + "\n"
+        strMessage += "Estimated Budget:      $" + String.format("%.0f", calR!!.getBudget()) + "\n"
+        strMessage += "Budget Items:           " + calR!!.getBudgetItems() + "\n"
+        strMessage += "Closing/Holding Costs: $" + String.format("%.0f", calR!!.getClosHoldCosts()) + "\n"
+        strMessage += "Profit:                $" + String.format("%.0f", calR!!.getProfit()) + "\n"
+        strMessage += "ROI:                    " + String.format("%.1f", calR!!.getROI()) + "%\n"
+        strMessage += "Cash on Cash Return:    " + String.format("%.1f", calR!!.getCashOnCash()) + "%\n"
+        val intEmailActivity = Intent(Intent.ACTION_SEND)
+        intEmailActivity.putExtra(Intent.EXTRA_EMAIL, arrayOf<String>())
+        intEmailActivity.putExtra(Intent.EXTRA_SUBJECT, "Flipulator Free results for: " + calR!!.getAddress() + " " + calR!!.getCityStZip())
+        intEmailActivity.putExtra(Intent.EXTRA_TEXT, strMessage)
+        intEmailActivity.type = "plain/text"
+        startActivity(intEmailActivity)
+    }
 
     override fun onKeyDown(nKeyCode: Int, keEvent: KeyEvent): Boolean {
         if (nKeyCode == KeyEvent.KEYCODE_BACK) {
