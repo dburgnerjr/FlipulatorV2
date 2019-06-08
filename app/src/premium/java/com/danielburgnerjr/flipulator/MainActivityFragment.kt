@@ -25,6 +25,8 @@ class MainActivityFragment : Fragment(), View.OnClickListener {
         val view: View = inflater.inflate(R.layout.fragment_main, container, false)
         val btnAbout: Button = view.findViewById(R.id.btnAbout)
         btnAbout.setOnClickListener(this)
+        val btnCalculate: Button = view.findViewById(R.id.btnCalculate)
+        btnCalculate.setOnClickListener(this)
         val btnShare: Button = view.findViewById(R.id.btnShare)
         btnShare.setOnClickListener(this)
         val btnDonate: Button = view.findViewById(R.id.btnDonate)
@@ -36,6 +38,12 @@ class MainActivityFragment : Fragment(), View.OnClickListener {
         when (v?.id) {
             R.id.btnAbout -> {
                 val intI = Intent(getActivity()?.getApplicationContext(), AboutActivity::class.java)
+                startActivity(intI)
+            }
+
+
+            R.id.btnCalculate -> {
+                val intI = Intent(getActivity()?.getApplicationContext(), LocationActivity::class.java)
                 startActivity(intI)
             }
 
