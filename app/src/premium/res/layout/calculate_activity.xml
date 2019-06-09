@@ -17,6 +17,8 @@
             android:layout_width="0dp"
             android:layout_height="35sp"
             android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
             android:text="@string/address" />
 
         <EditText
@@ -25,7 +27,9 @@
             android:layout_height="35sp"
             android:layout_weight="0.5"
             android:ems="10"
-            android:textSize="12sp"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:hint="@string/address"
             android:inputType="text" />
     </LinearLayout>
 
@@ -40,6 +44,8 @@
             android:layout_width="0dp"
             android:layout_height="35sp"
             android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
             android:text="@string/city" />
 
         <EditText
@@ -48,7 +54,9 @@
             android:layout_height="35sp"
             android:layout_weight="0.5"
             android:ems="10"
-            android:textSize="12sp"
+            android:textSize="16sp"
+            android:hint="@string/city"
+            android:textColor="#454545"
             android:inputType="text" />
     </LinearLayout>
 
@@ -63,6 +71,8 @@
             android:layout_width="0dp"
             android:layout_height="35sp"
             android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
             android:text="@string/state" />
 
         <EditText
@@ -71,7 +81,9 @@
             android:layout_height="35sp"
             android:layout_weight="0.5"
             android:ems="10"
-            android:textSize="12sp"
+            android:textColor="#454545"
+            android:hint="@string/state"
+            android:textSize="16sp"
             android:inputType="text" />
     </LinearLayout>
 
@@ -86,6 +98,8 @@
             android:layout_width="0dp"
             android:layout_height="35sp"
             android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
             android:text="@string/zip_code" />
 
         <EditText
@@ -94,7 +108,9 @@
             android:layout_height="35sp"
             android:layout_weight="0.5"
             android:ems="10"
-            android:textSize="12sp"
+            android:hint="@string/zip_code"
+            android:textColor="#454545"
+            android:textSize="16sp"
             android:inputType="text" />
     </LinearLayout>
 
@@ -109,6 +125,8 @@
             android:layout_width="0dp"
             android:layout_height="35sp"
             android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
             android:text="@string/sq_footage" />
 
         <EditText
@@ -117,7 +135,9 @@
             android:layout_height="35sp"
             android:layout_weight="0.5"
             android:ems="10"
-            android:textSize="12sp"
+            android:hint="@string/sq_footage"
+            android:textColor="#454545"
+            android:textSize="16sp"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -132,6 +152,8 @@
             android:layout_width="0dp"
             android:layout_height="35sp"
             android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
             android:text="@string/bedrooms" />
 
         <EditText
@@ -140,7 +162,9 @@
             android:layout_height="35sp"
             android:layout_weight="0.5"
             android:ems="10"
-            android:textSize="12sp"
+            android:textColor="#454545"
+            android:hint="@string/bedrooms"
+            android:textSize="16sp"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -155,6 +179,8 @@
             android:layout_width="0dp"
             android:layout_height="35sp"
             android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
             android:text="@string/bathrooms" />
 
         <EditText
@@ -163,8 +189,35 @@
             android:layout_height="35sp"
             android:layout_weight="0.5"
             android:ems="10"
-            android:textSize="12sp"
+            android:textColor="#454545"
+            android:hint="@string/bathrooms"
+            android:textSize="16sp"
             android:inputType="numberDecimal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llFinanceType"
+        android:layout_width="fill_parent"
+        android:layout_height="35sp"
+        android:layout_below="@+id/llBathrooms"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="35sp"
+            android:layout_weight="0.5"
+            android:text="@string/finance_class"
+            android:textColor="#454545"
+            android:textSize="16sp" />
+
+        <Spinner
+            android:id="@+id/spnFinanceType"
+            android:layout_width="0dp"
+            android:layout_height="35sp"
+            android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:ems="10" />
     </LinearLayout>
 
     <LinearLayout

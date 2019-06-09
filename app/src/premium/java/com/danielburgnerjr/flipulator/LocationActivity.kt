@@ -11,13 +11,13 @@ import android.view.View.OnClickListener
 import android.view.KeyEvent
 import android.widget.EditText
 import android.widget.Button
+import android.widget.Spinner
 import android.widget.Toast
 
 class LocationActivity : Activity() {
 
     private val cntC: Context = this
 /*
-    private var setS: Settings? = null
     private var locL: Location? = null
     private var smSM: SalesMortgage? = null
     private var rR: Rehab? = null
@@ -32,25 +32,24 @@ class LocationActivity : Activity() {
     private var etSquareFootage: EditText? = null    // square footage
     private var etBedrooms: EditText? = null        // number of bedrooms
     private var etBathrooms: EditText? = null        // number of bathrooms
+    private var spnFinanceType: Spinner? = null
     private var btnHelp: Button? = null                // help
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.calculate_activity)
-/*
 
         val intI = intent
 
-        setS = intI.getSerializableExtra("Settings") as Settings
-
-        etAddress = findViewById(R.id.txtAddress) as EditText
-        etCity = findViewById(R.id.txtCity) as EditText
-        etState = findViewById(R.id.txtState) as EditText
-        etZIPCode = findViewById(R.id.txtZIP_Code) as EditText
-        etSquareFootage = findViewById(R.id.txtSq_Footage) as EditText
-        etBedrooms = findViewById(R.id.txtBedrooms) as EditText
-        etBathrooms = findViewById(R.id.txtBathrooms) as EditText
-        btnHelp = findViewById(R.id.txtHelp) as Button
+        etAddress = findViewById<EditText>(R.id.txtAddress)
+        etCity = findViewById<EditText>(R.id.txtCity)
+        etState = findViewById<EditText>(R.id.txtState)
+        etZIPCode = findViewById<EditText>(R.id.txtZIP_Code)
+        etSquareFootage = findViewById<EditText>(R.id.txtSq_Footage)
+        etBedrooms = findViewById<EditText>(R.id.txtBedrooms)
+        etBathrooms = findViewById<EditText>(R.id.txtBathrooms)
+        spnFinanceType = findViewById<Spinner>(R.id.spnFinanceType)
+        btnHelp = findViewById<Button>(R.id.txtHelp)
 
         // add button listener
         btnHelp!!.setOnClickListener {
@@ -60,7 +59,8 @@ class LocationActivity : Activity() {
             alertDialogBuilder.setTitle("Location Help")
 
             // set dialog message
-            alertDialogBuilder.setMessage("Enter the address, city, state, ZIP code and square footage of the property, " + "including the number of bedrooms and bathrooms.")
+            alertDialogBuilder.setMessage("Enter the address, city, state, ZIP code and square footage of the property, " +
+                    "including the number of bedrooms and bathrooms.  Please include the finance type.")
                     .setCancelable(false)
                     .setNeutralButton("OK") { dialog, id ->
                         // if this button is clicked, close
@@ -74,7 +74,7 @@ class LocationActivity : Activity() {
             // show it
             alertDialog.show()
         }
-
+/*
         locL = intI.getSerializableExtra("Location") as Location
         // if Location object is null, fields are blank
         if (locL == null) {
@@ -103,17 +103,9 @@ class LocationActivity : Activity() {
     }
 
     fun prevPage(view: View) {
-/*
-        val intI = Intent(this, SettingsActivity::class.java)
-        intI.putExtra("Settings", setS)
-        intI.putExtra("Location", locL)
-        intI.putExtra("SalesMortgage", smSM)
-        intI.putExtra("Rehab", rR)
-        intI.putExtra("Reserves", resR)
-        intI.putExtra("ClosExpPropMktInfo", cemC)
+        val intI = Intent(this, MainActivity::class.java)
         startActivity(intI)
         finish()
-*/
     }
 
     fun nextPage(view: View) {
