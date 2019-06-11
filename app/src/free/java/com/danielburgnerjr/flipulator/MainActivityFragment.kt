@@ -8,6 +8,7 @@ import android.content.ActivityNotFoundException
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.os.Environment
 import android.net.Uri
 import android.view.KeyEvent
 import android.view.LayoutInflater
@@ -22,7 +23,8 @@ import android.widget.Toast
 
 class MainActivityFragment : Fragment(), View.OnClickListener {
 
-    private var btnOpenFiles: Button? = null
+    val myDir = Environment.getDataDirectory().toString() + "/FlipulatorFree"
+    val strPath = File(myDir)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -33,6 +35,13 @@ class MainActivityFragment : Fragment(), View.OnClickListener {
         btnCalculate.setOnClickListener(this)
         val btnDonate: Button = view.findViewById(R.id.btnDonate)
         btnDonate.setOnClickListener(this)
+        val btnOpenFiles: Button = view.findViewById(R.id.btnOpenFiles)
+        val fFileArray = strPath.listFiles()
+        if (fFileArray == null) {
+            btnOpenFiles!!.setVisibility(View.INVISIBLE)
+        } else {
+            btnOpenFiles.setOnClickListener(this)
+        }
         val btnShare: Button = view.findViewById(R.id.btnShare)
         btnShare.setOnClickListener(this)
         val btnUpgrade: Button = view.findViewById(R.id.btnUpgrade)
@@ -54,6 +63,11 @@ class MainActivityFragment : Fragment(), View.OnClickListener {
 
             R.id.btnDonate -> {
                 val intI = Intent(getActivity()?.getApplicationContext(), DonateActivity::class.java)
+                startActivity(intI)
+            }
+
+            R.id.btnOpenFiles -> {
+                val intI = Intent(getActivity()?.getApplicationContext(), OpenFilesActivity::class.java)
                 startActivity(intI)
             }
 
