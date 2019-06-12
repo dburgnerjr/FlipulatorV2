@@ -16,8 +16,9 @@ import com.danielburgnerjr.flipulator.model.Calculate
 
 import java.io.IOException
 
-//import com.google.android.gms.ads.AdRequest;
-//import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds
 
 class CalculateActivity : Activity() {
 
@@ -55,11 +56,12 @@ class CalculateActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.calculate_activity)
-/*
+
+        MobileAds.initialize(this, getString(R.string.admob_app_id));
         val mAdCalcView = findViewById(R.id.adCalcView) as AdView
         val adRequest = AdRequest.Builder().build()
         mAdCalcView.loadAd(adRequest)
-*/
+
         etAddress = findViewById<EditText>(R.id.txtAddress)
         etCityStZip = findViewById<EditText>(R.id.txtCityStZip)
         etSquareFootage = findViewById<EditText>(R.id.txtSq_Footage)

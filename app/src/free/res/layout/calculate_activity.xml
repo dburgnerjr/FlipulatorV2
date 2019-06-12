@@ -457,8 +457,6 @@
             android:textColor="#ffffff" />
     </LinearLayout>
 
-
-
     <LinearLayout
         android:id="@+id/llAdCalcView"
         android:layout_width="match_parent"
@@ -467,16 +465,12 @@
         android:layout_centerHorizontal="true"
         android:orientation="horizontal" >
 
-<!--
         <com.google.android.gms.ads.AdView
             android:id="@+id/adCalcView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             ads:adSize="BANNER"
-            ads:adUnitId="@string/banner_ad_unit_id" >
+            ads:adUnitId="@string/banner_ad_unit_id_test" >
         </com.google.android.gms.ads.AdView>
--->
     </LinearLayout>
-
-
 </RelativeLayout>

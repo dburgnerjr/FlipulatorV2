@@ -17,9 +17,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 
-
-//import com.google.android.gms.ads.AdRequest
-//import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 
 class MainActivityFragment : Fragment(), View.OnClickListener {
 
@@ -29,6 +29,12 @@ class MainActivityFragment : Fragment(), View.OnClickListener {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val view: View = inflater.inflate(R.layout.fragment_main, container, false)
+
+        MobileAds.initialize(getActivity(), getString(R.string.admob_app_id));
+        val mAdView = view.findViewById(R.id.adView) as AdView
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
+
         val btnAbout: Button = view.findViewById(R.id.btnAbout)
         btnAbout.setOnClickListener(this)
         val btnCalculate: Button = view.findViewById(R.id.btnCalculate)
