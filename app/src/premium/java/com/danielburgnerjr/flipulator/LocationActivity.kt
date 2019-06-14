@@ -14,9 +14,12 @@ import android.widget.Button
 import android.widget.Spinner
 import android.widget.Toast
 
+import com.danielburgnerjr.flipulator.model.Calculate
+
 class LocationActivity : Activity() {
 
     private val cntC: Context = this
+    private val calC: Calculate? = null
 /*
     private var locL: Location? = null
     private var smSM: SalesMortgage? = null
@@ -109,7 +112,7 @@ class LocationActivity : Activity() {
     }
 
     fun nextPage(view: View) {
-/*
+
         if ("" == etAddress!!.text.toString()) {
             Toast.makeText(applicationContext, "Must Enter Address", Toast.LENGTH_SHORT).show()
         } else if ("" == etCity!!.text.toString()) {
@@ -124,18 +127,19 @@ class LocationActivity : Activity() {
             Toast.makeText(applicationContext, "Must Enter Bedrooms", Toast.LENGTH_SHORT).show()
         } else if ("" == etBathrooms!!.text.toString()) {
             Toast.makeText(applicationContext, "Must Enter Bathrooms", Toast.LENGTH_SHORT).show()
+        } else if ("" == etBathrooms!!.text.toString()) {
+            Toast.makeText(applicationContext, "Must Enter Bathrooms", Toast.LENGTH_SHORT).show()
         } else {
-            val intI = Intent(this, SalesMortgageActivity::class.java)
+            //val intI = Intent(this, SalesMortgageActivity::class.java)
 
-            val locL = Location()
-            locL.setAddress(etAddress!!.text.toString())
-            locL.setCity(etCity!!.text.toString())
-            locL.setState(etState!!.text.toString())
-            locL.setZIPCode(etZIPCode!!.text.toString())
-            locL.setSquareFootage(Integer.parseInt(etSquareFootage!!.text.toString()))
-            locL.setBedrooms(Integer.parseInt(etBedrooms!!.text.toString()))
-            locL.setBathrooms(java.lang.Double.parseDouble(etBathrooms!!.text.toString()))
-
+            calC!!.setAddress(etAddress!!.text.toString())
+            calC.setCity(etCity!!.text.toString())
+            calC.setState(etState!!.text.toString())
+            calC.setZipCode(etZIPCode!!.text.toString())
+            calC.setSquareFootage(Integer.parseInt(etSquareFootage!!.text.toString()))
+            calC.setBedrooms(Integer.parseInt(etBedrooms!!.text.toString()))
+            calC.setBathrooms(java.lang.Double.parseDouble(etBathrooms!!.text.toString()))
+/*
             intI.putExtra("Settings", setS)
             intI.putExtra("Location", locL)
             if (smSM != null) {
@@ -152,8 +156,8 @@ class LocationActivity : Activity() {
             }
             startActivity(intI)
             finish()
-        }
 */
+        }
     }
 
     override fun onKeyDown(nKeyCode: Int, keEvent: KeyEvent): Boolean {

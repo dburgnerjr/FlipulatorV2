@@ -3,7 +3,6 @@ package com.danielburgnerjr.flipulator
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -13,8 +12,6 @@ import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.Toast
 
 import com.danielburgnerjr.flipulator.model.Calculate
-
-import java.io.IOException
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
