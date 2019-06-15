@@ -9,7 +9,7 @@
     <LinearLayout
         android:id="@+id/llAddress"
         android:layout_width="match_parent"
-        android:layout_height="35sp"
+        android:layout_height="40sp"
         android:layout_marginTop="10dp"
         android:orientation="horizontal" >
 
@@ -24,7 +24,7 @@
         <EditText
             android:id="@+id/txtAddress"
             android:layout_width="0dp"
-            android:layout_height="35sp"
+            android:layout_height="40sp"
             android:layout_weight="0.5"
             android:ems="10"
             android:textColor="#454545"
@@ -36,7 +36,7 @@
     <LinearLayout
         android:id="@+id/llCity"
         android:layout_width="fill_parent"
-        android:layout_height="35sp"
+        android:layout_height="40sp"
         android:layout_below="@+id/llAddress"
         android:orientation="horizontal" >
 
@@ -51,7 +51,7 @@
         <EditText
             android:id="@+id/txtCity"
             android:layout_width="0dp"
-            android:layout_height="35sp"
+            android:layout_height="40sp"
             android:layout_weight="0.5"
             android:ems="10"
             android:textSize="16sp"
@@ -63,7 +63,7 @@
     <LinearLayout
         android:id="@+id/llState"
         android:layout_width="fill_parent"
-        android:layout_height="35sp"
+        android:layout_height="40sp"
         android:layout_below="@+id/llCity"
         android:orientation="horizontal" >
 
@@ -78,7 +78,7 @@
         <EditText
             android:id="@+id/txtState"
             android:layout_width="0dp"
-            android:layout_height="35sp"
+            android:layout_height="40sp"
             android:layout_weight="0.5"
             android:ems="10"
             android:textColor="#454545"
@@ -90,7 +90,7 @@
     <LinearLayout
         android:id="@+id/llZip"
         android:layout_width="fill_parent"
-        android:layout_height="35sp"
+        android:layout_height="40sp"
         android:layout_below="@+id/llState"
         android:orientation="horizontal" >
 
@@ -105,7 +105,7 @@
         <EditText
             android:id="@+id/txtZIP_Code"
             android:layout_width="0dp"
-            android:layout_height="35sp"
+            android:layout_height="40sp"
             android:layout_weight="0.5"
             android:ems="10"
             android:hint="@string/zip_code"
@@ -123,7 +123,7 @@
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="35sp"
+            android:layout_height="40sp"
             android:layout_weight="0.5"
             android:textColor="#454545"
             android:textSize="16sp"
@@ -132,7 +132,7 @@
         <EditText
             android:id="@+id/txtSq_Footage"
             android:layout_width="0dp"
-            android:layout_height="35sp"
+            android:layout_height="40sp"
             android:layout_weight="0.5"
             android:ems="10"
             android:hint="@string/sq_footage"
@@ -144,7 +144,7 @@
     <LinearLayout
         android:id="@+id/llBedrooms"
         android:layout_width="fill_parent"
-        android:layout_height="35sp"
+        android:layout_height="40sp"
         android:layout_below="@+id/llSquareFootage"
         android:orientation="horizontal" >
 
@@ -159,7 +159,7 @@
         <EditText
             android:id="@+id/txtBedrooms"
             android:layout_width="0dp"
-            android:layout_height="35sp"
+            android:layout_height="40sp"
             android:layout_weight="0.5"
             android:ems="10"
             android:textColor="#454545"
@@ -171,7 +171,7 @@
     <LinearLayout
         android:id="@+id/llBathrooms"
         android:layout_width="fill_parent"
-        android:layout_height="35sp"
+        android:layout_height="40sp"
         android:layout_below="@+id/llBedrooms"
         android:orientation="horizontal" >
 
@@ -186,7 +186,7 @@
         <EditText
             android:id="@+id/txtBathrooms"
             android:layout_width="0dp"
-            android:layout_height="35sp"
+            android:layout_height="40sp"
             android:layout_weight="0.5"
             android:ems="10"
             android:textColor="#454545"

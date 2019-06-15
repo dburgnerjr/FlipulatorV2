@@ -235,6 +235,7 @@ class CalculateActivity : Activity() {
             btnSave!!.visibility = View.VISIBLE
 
             // creates new Calculate object and sets info from fields into object variables
+            calR = Calculate()
             calR!!.setAddress(etAddress!!.text.toString())
             calR!!.setCityStZip(etCityStZip!!.text.toString())
             calR!!.setSquareFootage(Integer.parseInt(etSquareFootage!!.text.toString()))

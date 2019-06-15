@@ -113,6 +113,14 @@ public class Calculate {
         this.bathrooms = dBA
     }
 
+    fun getFinance(): Int? {
+        return this.finance
+    }
+
+    fun setFinance(nF: Int) {
+        this.finance = nF
+    }
+
     fun getMonthlyPmt(): Double {
         return this.dMonthlyPmt
     }

@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.KeyEvent
+import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Button
 import android.widget.Spinner
@@ -19,7 +20,7 @@ import com.danielburgnerjr.flipulator.model.Calculate
 class LocationActivity : Activity() {
 
     private val cntC: Context = this
-    private val calC: Calculate? = null
+    private var calC: Calculate? = null
 /*
     private var locL: Location? = null
     private var smSM: SalesMortgage? = null
@@ -42,7 +43,7 @@ class LocationActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.calculate_activity)
 
-        val intI = intent
+        val intI = Intent()
 
         etAddress = findViewById<EditText>(R.id.txtAddress)
         etCity = findViewById<EditText>(R.id.txtCity)
@@ -51,8 +52,13 @@ class LocationActivity : Activity() {
         etSquareFootage = findViewById<EditText>(R.id.txtSq_Footage)
         etBedrooms = findViewById<EditText>(R.id.txtBedrooms)
         etBathrooms = findViewById<EditText>(R.id.txtBathrooms)
-        spnFinanceType = findViewById<Spinner>(R.id.spnFinanceType)
+        spnFinanceType = findViewById(R.id.spnFinanceType)
         btnHelp = findViewById<Button>(R.id.txtHelp)
+
+        val aradAdapter = ArrayAdapter.createFromResource(
+                this, R.array.finance_type, android.R.layout.simple_spinner_item)
+        aradAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spnFinanceType!!.adapter = aradAdapter
 
         // add button listener
         btnHelp!!.setOnClickListener {
@@ -127,18 +133,18 @@ class LocationActivity : Activity() {
             Toast.makeText(applicationContext, "Must Enter Bedrooms", Toast.LENGTH_SHORT).show()
         } else if ("" == etBathrooms!!.text.toString()) {
             Toast.makeText(applicationContext, "Must Enter Bathrooms", Toast.LENGTH_SHORT).show()
-        } else if ("" == etBathrooms!!.text.toString()) {
-            Toast.makeText(applicationContext, "Must Enter Bathrooms", Toast.LENGTH_SHORT).show()
         } else {
             //val intI = Intent(this, SalesMortgageActivity::class.java)
 
+            calC = Calculate()
             calC!!.setAddress(etAddress!!.text.toString())
-            calC.setCity(etCity!!.text.toString())
-            calC.setState(etState!!.text.toString())
-            calC.setZipCode(etZIPCode!!.text.toString())
-            calC.setSquareFootage(Integer.parseInt(etSquareFootage!!.text.toString()))
-            calC.setBedrooms(Integer.parseInt(etBedrooms!!.text.toString()))
-            calC.setBathrooms(java.lang.Double.parseDouble(etBathrooms!!.text.toString()))
+            calC!!.setCity(etCity!!.text.toString())
+            calC!!.setState(etState!!.text.toString())
+            calC!!.setZipCode(etZIPCode!!.text.toString())
+            calC!!.setSquareFootage(Integer.parseInt(etSquareFootage!!.text.toString()))
+            calC!!.setBedrooms(Integer.parseInt(etBedrooms!!.text.toString()))
+            calC!!.setBathrooms(java.lang.Double.parseDouble(etBathrooms!!.text.toString()))
+            Toast.makeText(applicationContext, "All values saved to Calculate object.", Toast.LENGTH_SHORT).show()
 /*
             intI.putExtra("Settings", setS)
             intI.putExtra("Location", locL)
