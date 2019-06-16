@@ -1,6 +1,8 @@
 package com.danielburgnerjr.flipulator.model
 
-public class Calculate {
+import java.io.Serializable
+
+public class Calculate : Serializable {
 
     // location/settings info
     private var address: String? = null                // address
@@ -21,6 +23,7 @@ public class Calculate {
     private var interestRate: Double = 0.toDouble()    // interest rate
     private var term: Int = 0                          // term
     private var dMonthlyPmt: Double = 0.toDouble()     // monthly payment
+    private var dBudget: Double = 0.toDouble()         // budget
 
     // reserves info
     private var mortgage: Double = 0.toDouble()        // mortgage
@@ -141,6 +144,14 @@ public class Calculate {
         }
     }
 
+    fun getBudget(): Double {
+        return dBudget        // returns budget
+    }
+
+    fun setBudget(dB: Double) {
+        this.dBudget = dB
+    }
+
     fun setTotalExpenses() {
         this.totalExpenses = this.mortgage + this.insurance + this.taxes + this.water + this.gas + this.electric
     }
@@ -175,6 +186,30 @@ public class Calculate {
 
     fun setCashOnCash() {
         this.cashOnCash = this.netProfit / this.oopExp * 100
+    }
+
+    fun calcBudgetRehabType(strT: String) {
+        // determines budget based on type and square footage
+        if (strT == "Low") {
+            this.dBudget = (15 * this.squareFootage).toDouble()
+        } else if (strT == "Medium") {
+            if (this.squareFootage < 1500)
+                this.dBudget = (25 * this.squareFootage).toDouble()
+            else
+                this.dBudget = (20 * this.squareFootage).toDouble()
+        } else if (strT == "High") {
+            this.dBudget = (30 * this.squareFootage).toDouble()
+        } else if (strT == "Super-High") {
+            this.dBudget = (40 * this.squareFootage).toDouble()
+        } else {
+            this.dBudget = (125 * this.squareFootage).toDouble()
+        }
+    }
+
+    override fun toString(): String {
+        return "Location\nAddress: " + address + "\nCity, State ZIP: " + city  + ", " + state + " " + zipCode +
+                "\nSquare Footage: " + squareFootage + "\nBedrooms: " + bedrooms + "\nBathrooms: " + bathrooms +
+                "\nBudget: " + dBudget
     }
 
 }

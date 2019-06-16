@@ -21,13 +21,6 @@ class LocationActivity : Activity() {
 
     private val cntC: Context = this
     private var calC: Calculate? = null
-/*
-    private var locL: Location? = null
-    private var smSM: SalesMortgage? = null
-    private var rR: Rehab? = null
-    private var resR: Reserves? = null
-    private var cemC: ClosExpPropMktInfo? = null
-*/
 
     private var etAddress: EditText? = null            // address
     private var etCity: EditText? = null            // city
@@ -43,7 +36,7 @@ class LocationActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.calculate_activity)
 
-        val intI = Intent()
+        val intI = getIntent()
 
         etAddress = findViewById<EditText>(R.id.txtAddress)
         etCity = findViewById<EditText>(R.id.txtCity)
@@ -83,10 +76,12 @@ class LocationActivity : Activity() {
             // show it
             alertDialog.show()
         }
-/*
-        locL = intI.getSerializableExtra("Location") as Location
-        // if Location object is null, fields are blank
-        if (locL == null) {
+
+        if (intI.getSerializableExtra("Calculate") != null)
+            calC = intI.getSerializableExtra("Calculate") as Calculate
+
+        // if Calculate object is null, fields are blank
+        if (calC == null) {
             etAddress!!.setText("")
             etCity!!.setText("")
             etState!!.setText("")
@@ -95,20 +90,15 @@ class LocationActivity : Activity() {
             etBedrooms!!.setText("")
             etBathrooms!!.setText("")
         } else {
-            // set fields to member variables of Location object
-            etAddress!!.setText(locL!!.getAddress())
-            etCity!!.setText(locL!!.getCity())
-            etState!!.setText(locL!!.getState())
-            etZIPCode!!.setText(locL!!.getZIPCode())
-            etSquareFootage!!.setText(locL!!.getSquareFootage() + "")
-            etBedrooms!!.setText(locL!!.getBedrooms() + "")
-            etBathrooms!!.setText(locL!!.getBathrooms() + "")
+            // set fields to member variables of Calculate object
+            etAddress!!.setText(calC!!.getAddress())
+            etCity!!.setText(calC!!.getCity())
+            etState!!.setText(calC!!.getState())
+            etZIPCode!!.setText(calC!!.getZipCode())
+            etSquareFootage!!.setText(calC!!.getSquareFootage().toString())
+            etBedrooms!!.setText(calC!!.getBedrooms().toString())
+            etBathrooms!!.setText(calC!!.getBathrooms().toString())
         }
-        smSM = intI.getSerializableExtra("SalesMortgage") as SalesMortgage
-        rR = intI.getSerializableExtra("Rehab") as Rehab
-        resR = intI.getSerializableExtra("Reserves") as Reserves
-        cemC = intI.getSerializableExtra("ClosExpPropMktInfo") as ClosExpPropMktInfo
-*/
     }
 
     fun prevPage(view: View) {
@@ -134,7 +124,7 @@ class LocationActivity : Activity() {
         } else if ("" == etBathrooms!!.text.toString()) {
             Toast.makeText(applicationContext, "Must Enter Bathrooms", Toast.LENGTH_SHORT).show()
         } else {
-            //val intI = Intent(this, SalesMortgageActivity::class.java)
+            val intI = Intent(this, SalesMortgageActivity::class.java)
 
             calC = Calculate()
             calC!!.setAddress(etAddress!!.text.toString())
@@ -144,25 +134,11 @@ class LocationActivity : Activity() {
             calC!!.setSquareFootage(Integer.parseInt(etSquareFootage!!.text.toString()))
             calC!!.setBedrooms(Integer.parseInt(etBedrooms!!.text.toString()))
             calC!!.setBathrooms(java.lang.Double.parseDouble(etBathrooms!!.text.toString()))
-            Toast.makeText(applicationContext, "All values saved to Calculate object.", Toast.LENGTH_SHORT).show()
-/*
-            intI.putExtra("Settings", setS)
-            intI.putExtra("Location", locL)
-            if (smSM != null) {
-                intI.putExtra("SalesMortgage", smSM)
-            }
-            if (rR != null) {
-                intI.putExtra("Rehab", rR)
-            }
-            if (resR != null) {
-                intI.putExtra("Reserves", resR)
-            }
-            if (cemC != null) {
-                intI.putExtra("ClosExpPropMktInfo", cemC)
-            }
+            //calC!!.setFinance(Integer.parseInt(spnFinanceType!!.))
+
+            intI.putExtra("Calculate", calC)
             startActivity(intI)
             finish()
-*/
         }
     }
 
