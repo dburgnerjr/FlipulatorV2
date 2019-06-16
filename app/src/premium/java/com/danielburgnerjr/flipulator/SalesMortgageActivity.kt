@@ -62,7 +62,6 @@ class SalesMortgageActivity : Activity() {
         spnRehabType = findViewById(R.id.spnRehabType) as Spinner
         btnHelp = findViewById<View>(R.id.txtHelp) as Button
         spnRehabType!!.adapter = aradAdapter
-        Toast.makeText(applicationContext, "Sales/Mortgage Activity: " + calC.toString(), Toast.LENGTH_SHORT).show()
 
         spnRehabType!!.setOnItemSelectedListener(object : OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View, position: Int, id: Long) {
@@ -71,7 +70,7 @@ class SalesMortgageActivity : Activity() {
                     when (strRTSel) {
                         "Low", "Medium", "High", "Super-High", "Bulldozer" -> calC!!.calcBudgetRehabType(strRTSel!!)
                     }
-                    etRehabBudget!!.setText("$" + calC!!.getBudget().toString())
+                    etRehabBudget!!.setText(calC!!.getBudget().toString())
                 }
             }
 
@@ -206,12 +205,16 @@ class SalesMortgageActivity : Activity() {
         } else if (("Flat Rate" == spnRehabType!!.getSelectedItem().toString()) && ("" == etRehabBudget!!.text.toString())) {
             Toast.makeText(applicationContext, "Must Enter Flat Rate Budget or Rehab Type", Toast.LENGTH_SHORT).show()
         } else {
-/*
-            val intI = Intent(this, ReservesActivity::class.java)
-            intI.putExtra("Location", locL)
-            intI.putExtra("Settings", setS)
-*/
 
+            //val intI = Intent(this, ReservesActivity::class.java)
+            calC!!.setSalesPrice(java.lang.Double.parseDouble(etSalesPrice!!.text.toString()))
+            calC!!.setPercentDown(java.lang.Double.parseDouble(etPercentDown!!.text.toString()))
+            calC!!.setOfferBid(java.lang.Double.parseDouble(etOfferBid!!.text.toString()))
+            calC!!.setInterestRate(java.lang.Double.parseDouble(etInterestRate!!.text.toString()))
+            calC!!.setTerm(Integer.parseInt(etTerm!!.text.toString()))
+            calC!!.setBudgetItems(etBudgetItems!!.text.toString())
+            calC!!.setBudget(java.lang.Double.parseDouble(etRehabBudget!!.text.toString()))
+            Toast.makeText(applicationContext,  calC.toString(), Toast.LENGTH_SHORT).show()
 /*
             val smSM = SalesMortgage()
             smSM.setSalesPrice(java.lang.Double.parseDouble(etSalesPrice!!.text.toString()))

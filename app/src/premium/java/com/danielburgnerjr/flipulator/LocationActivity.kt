@@ -9,6 +9,8 @@ import android.os.Bundle
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.KeyEvent
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Button
@@ -30,6 +32,7 @@ class LocationActivity : Activity() {
     private var etBedrooms: EditText? = null        // number of bedrooms
     private var etBathrooms: EditText? = null        // number of bathrooms
     private var spnFinanceType: Spinner? = null
+    private var nFinance: Int = 0
     private var btnHelp: Button? = null                // help
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,6 +55,16 @@ class LocationActivity : Activity() {
                 this, R.array.finance_type, android.R.layout.simple_spinner_item)
         aradAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spnFinanceType!!.adapter = aradAdapter
+
+        spnFinanceType!!.setOnItemSelectedListener(object : OnItemSelectedListener {
+            override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View, position: Int, id: Long) {
+                nFinance = position
+            }
+
+            override fun onNothingSelected(parentView: AdapterView<*>) {
+                // your code here
+            }
+        })
 
         // add button listener
         btnHelp!!.setOnClickListener {
@@ -134,7 +147,7 @@ class LocationActivity : Activity() {
             calC!!.setSquareFootage(Integer.parseInt(etSquareFootage!!.text.toString()))
             calC!!.setBedrooms(Integer.parseInt(etBedrooms!!.text.toString()))
             calC!!.setBathrooms(java.lang.Double.parseDouble(etBathrooms!!.text.toString()))
-            //calC!!.setFinance(Integer.parseInt(spnFinanceType!!.))
+            calC!!.setFinance(nFinance)
 
             intI.putExtra("Calculate", calC)
             startActivity(intI)

@@ -22,6 +22,7 @@ public class Calculate : Serializable {
     private var loanAmount: Double = 0.toDouble()      // loan amount
     private var interestRate: Double = 0.toDouble()    // interest rate
     private var term: Int = 0                          // term
+    private var strBudgetItems: String? = null         // budget items
     private var dMonthlyPmt: Double = 0.toDouble()     // monthly payment
     private var dBudget: Double = 0.toDouble()         // budget
 
@@ -124,6 +125,54 @@ public class Calculate : Serializable {
         this.finance = nF
     }
 
+    fun getSalesPrice(): Double? {
+        return this.salesPrice
+    }
+
+    fun setSalesPrice(dSP: Double) {
+        this.salesPrice = dSP
+    }
+
+    fun getPercentDown(): Double? {
+        return this.percentDown
+    }
+
+    fun setPercentDown(dPD: Double) {
+        this.percentDown = dPD
+    }
+
+    fun getOfferBid(): Double? {
+        return this.offerBid
+    }
+
+    fun setOfferBid(dOB: Double) {
+        this.offerBid = dOB
+    }
+
+    fun getInterestRate(): Double? {
+        return this.interestRate
+    }
+
+    fun setInterestRate(dIR: Double) {
+        this.interestRate = dIR
+    }
+
+    fun getTerm(): Int? {
+        return this.term
+    }
+
+    fun setTerm(nT: Int) {
+        this.term = nT
+    }
+
+    fun getBudgetItems(): String? {
+        return this.strBudgetItems
+    }
+
+    fun setBudgetItems(strBI: String) {
+        this.strBudgetItems = strBI
+    }
+
     fun getMonthlyPmt(): Double {
         return this.dMonthlyPmt
     }
@@ -209,7 +258,9 @@ public class Calculate : Serializable {
     override fun toString(): String {
         return "Location\nAddress: " + address + "\nCity, State ZIP: " + city  + ", " + state + " " + zipCode +
                 "\nSquare Footage: " + squareFootage + "\nBedrooms: " + bedrooms + "\nBathrooms: " + bathrooms +
-                "\nBudget: " + dBudget
+                "\nBudget: " + dBudget + "\nSales Price: " + salesPrice + "\nPercent Down: " + percentDown +
+                "\nOffer Bid: " + offerBid + "\nInterest Rate: " + interestRate + "\nTern: " + term +
+                "\nBudget Items: " + strBudgetItems + "\nFinance Type: " + finance
     }
 
 }
