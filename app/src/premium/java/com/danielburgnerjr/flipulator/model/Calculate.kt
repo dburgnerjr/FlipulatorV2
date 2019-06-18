@@ -25,6 +25,7 @@ public class Calculate : Serializable {
     private var strBudgetItems: String? = null         // budget items
     private var dMonthlyPmt: Double = 0.toDouble()     // monthly payment
     private var dBudget: Double = 0.toDouble()         // budget
+    private var nRehab: Int = 0                        // rehab type
 
     // reserves info
     private var mortgage: Double = 0.toDouble()        // mortgage
@@ -173,8 +174,20 @@ public class Calculate : Serializable {
         this.strBudgetItems = strBI
     }
 
+    fun getRehab(): Int {
+        return this.nRehab
+    }
+
+    fun setRehab(nR: Int) {
+        this.nRehab = nR
+    }
+
     fun getMonthlyPmt(): Double {
         return this.dMonthlyPmt
+    }
+
+    fun setMonthlyPmt(dMP: Double) {
+        this.dMonthlyPmt = dMP
     }
 
     fun setDownPayment(dPD: Double, dOB: Double) {
@@ -199,6 +212,54 @@ public class Calculate : Serializable {
 
     fun setBudget(dB: Double) {
         this.dBudget = dB
+    }
+
+    fun getMortgage(): Double? {
+        return this.mortgage
+    }
+
+    fun setMortgage(dM: Double) {
+        this.mortgage = dM
+    }
+
+    fun getInsurance(): Double? {
+        return this.insurance
+    }
+
+    fun setInsurance(dI: Double) {
+        this.insurance = dI
+    }
+
+    fun getTaxes(): Double? {
+        return this.taxes
+    }
+
+    fun setTaxes(dT: Double) {
+        this.taxes = dT
+    }
+
+    fun getWater(): Double? {
+        return this.water
+    }
+
+    fun setWater(dW: Double) {
+        this.water = dW
+    }
+
+    fun getGas(): Double? {
+        return this.gas
+    }
+
+    fun setGas(dG: Double) {
+        this.gas = dG
+    }
+
+    fun getElectric(): Double? {
+        return this.electric
+    }
+
+    fun setElectric(dE: Double) {
+        this.electric = dE
     }
 
     fun setTotalExpenses() {

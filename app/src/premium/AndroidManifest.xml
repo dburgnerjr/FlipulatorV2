@@ -41,6 +41,11 @@
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateVisible|adjustPan" >
         </activity>
+        <activity
+            android:name=".ReservesActivity"
+            android:label="Reserves (6 Months)"
+            android:theme="@style/AppTheme" >
+        </activity>
         <!--
         <activity
             android:name=".OpenFilesActivity"
@@ -55,11 +60,6 @@
         <activity
             android:name=".DonateActivity"
             android:label="Donate"
-            android:theme="@style/AppTheme" >
-        </activity>
-        <activity
-            android:name=".ReservesActivity"
-            android:label="Reserves (6 Months)"
             android:theme="@style/AppTheme" >
         </activity>
         <activity

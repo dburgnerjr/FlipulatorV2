@@ -37,6 +37,7 @@ class SalesMortgageActivity : Activity() {
     private var spnRehabType: Spinner? = null
     private var btnHelp: Button? = null                // help
     private var strRTSel: String? = null
+    private var nRehab: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,6 +73,7 @@ class SalesMortgageActivity : Activity() {
                     }
                     etRehabBudget!!.setText(calC!!.getBudget().toString())
                 }
+                nRehab = position
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>) {
@@ -107,77 +109,31 @@ class SalesMortgageActivity : Activity() {
             alertDialog.show()
         }
 
-        /*
-        smSM = (SalesMortgage) intI.getSerializableExtra("SalesMortgage");
-        // if SalesMortgage object is null, fields are blank
-        if (smSM == null) {
-            etSalesPrice.setText("");
-            etPercentDown.setText("");
-            etOfferBid.setText("");
-            etInterestRate.setText("");
-            etTerm.setText("");
+        if (intI.getSerializableExtra("Calculate") != null)
+            calC = intI.getSerializableExtra("Calculate") as Calculate
+
+        // if Calculate object is null, fields are blank
+        if (calC == null) {
+            etSalesPrice!!.setText("")
+            etPercentDown!!.setText("")
+            etOfferBid!!.setText("")
+            etInterestRate!!.setText("")
+            etTerm!!.setText("")
+            etBudgetItems!!.setText("")
+            spnRehabType!!.setSelection(0)
+            etRehabBudget!!.setText("")
         } else {
-            // set fields to member variables of SalesMortgage object
-            etSalesPrice.setText((int)smSM.getSalesPrice() + "");
-            etPercentDown.setText((int)smSM.getPercentDown() + "");
-            etOfferBid.setText((int)smSM.getOfferBid() + "");
-            etInterestRate.setText((int)smSM.getInterestRate() + "");
-            etTerm.setText(smSM.getTerm() + "");
+            // set fields to member variables of Calculate object
+            etSalesPrice!!.setText(calC!!.getSalesPrice().toString())
+            etPercentDown!!.setText(calC!!.getPercentDown().toString())
+            etOfferBid!!.setText(calC!!.getOfferBid().toString())
+            etInterestRate!!.setText(calC!!.getInterestRate().toString())
+            etTerm!!.setText(calC!!.getTerm().toString())
+            etBudgetItems!!.setText(calC!!.getBudgetItems())
+            spnRehabType!!.setSelection(calC!!.getRehab())
+            etRehabBudget!!.setText(calC!!.getBudget().toString())
         }
 
-        setS = (Settings) intI.getSerializableExtra("Settings");
-        // if Settings rehab flag is 0, show rehab budget flat rate
-        if (setS.getRehab() == 0) {
-            tvRehabFlatRate.setVisibility(View.VISIBLE);
-            etRehabBudget.setVisibility(View.VISIBLE);
-            tvRehabType.setVisibility(View.INVISIBLE);
-            spnRehabType.setVisibility(View.INVISIBLE);
-        } else {
-            // show rehab class
-            tvRehabFlatRate.setVisibility(View.INVISIBLE);
-            etRehabBudget.setVisibility(View.INVISIBLE);
-            tvRehabType.setVisibility(View.VISIBLE);
-            spnRehabType.setVisibility(View.VISIBLE);
-        }
-
-        rR = (Rehab) intI.getSerializableExtra("Rehab");
-        // if Rehab object is null, fields are blank
-        if (rR == null) {
-            etBudgetItems.setText("");
-            if (setS.getRehab() == 0) {
-                etRehabBudget.setText("");
-            } else {
-                spnRehabType.setSelection(0);
-            }
-        } else {
-            etBudgetItems.setText(rR.getBudgetItems());
-            if (setS.getRehab() == 0) {
-                etRehabBudget.setText((int)rR.getBudget() + "");
-            } else {
-                int nCostSF = (int)(rR.getBudget()/locL.getSquareFootage());
-                switch (nCostSF) {
-                    case 15:
-                        spnRehabType.setSelection(0);
-                        break;
-                    case 20:
-                    case 25:
-                        spnRehabType.setSelection(1);
-                        break;
-                    case 30:
-                        spnRehabType.setSelection(2);
-                        break;
-                    case 40:
-                        spnRehabType.setSelection(3);
-                        break;
-                    case 125:
-                        spnRehabType.setSelection(4);
-                        break;
-                }
-            }
-        }
-        resR = (Reserves) intI.getSerializableExtra("Reserves");
-        cemC = (ClosExpPropMktInfo) intI.getSerializableExtra("ClosExpPropMktInfo");
-*/
     }
 
     fun prevPage(view: View) {
@@ -205,75 +161,22 @@ class SalesMortgageActivity : Activity() {
         } else if (("Flat Rate" == spnRehabType!!.getSelectedItem().toString()) && ("" == etRehabBudget!!.text.toString())) {
             Toast.makeText(applicationContext, "Must Enter Flat Rate Budget or Rehab Type", Toast.LENGTH_SHORT).show()
         } else {
-
-            //val intI = Intent(this, ReservesActivity::class.java)
+            val intI = Intent(this, ReservesActivity::class.java)
             calC!!.setSalesPrice(java.lang.Double.parseDouble(etSalesPrice!!.text.toString()))
             calC!!.setPercentDown(java.lang.Double.parseDouble(etPercentDown!!.text.toString()))
             calC!!.setOfferBid(java.lang.Double.parseDouble(etOfferBid!!.text.toString()))
             calC!!.setInterestRate(java.lang.Double.parseDouble(etInterestRate!!.text.toString()))
             calC!!.setTerm(Integer.parseInt(etTerm!!.text.toString()))
             calC!!.setBudgetItems(etBudgetItems!!.text.toString())
+            calC!!.setRehab(nRehab)
             calC!!.setBudget(java.lang.Double.parseDouble(etRehabBudget!!.text.toString()))
-            Toast.makeText(applicationContext,  calC.toString(), Toast.LENGTH_SHORT).show()
-/*
-            val smSM = SalesMortgage()
-            smSM.setSalesPrice(java.lang.Double.parseDouble(etSalesPrice!!.text.toString()))
-            smSM.setPercentDown(java.lang.Double.parseDouble(etPercentDown!!.text.toString()))
-            smSM.setOfferBid(java.lang.Double.parseDouble(etOfferBid!!.text.toString()))
-            smSM.setDownPayment(java.lang.Double.parseDouble(etPercentDown!!.text.toString()), java.lang.Double.parseDouble(etOfferBid!!.text.toString()))
-            smSM.setLoanAmount()
-            smSM.setInterestRate(java.lang.Double.parseDouble(etInterestRate!!.text.toString()))
-            smSM.setTerm(Integer.parseInt(etTerm!!.text.toString()))
-            // if finance rehab flag is not selected, set monthly payment as follows
-            if (setS.getFinance() !== 2) {
-                smSM.setMonthlyPmt()
-                intI.putExtra("SalesMortgage", smSM)
+            if (calC!!.getFinance() != 2) {
+                calC!!.setMonthlyPmt();
             }
-*/
 
-/*
-            val rR: Rehab
-            val strBI = etBudgetItems!!.text.toString()
-            if (setS.getRehab() === 0) {
-                if ("" == etRehabBudget!!.text.toString()) {
-                    Toast.makeText(applicationContext, "Must Enter Rehab Budget", Toast.LENGTH_SHORT).show()
-                } else {
-                    val dB = java.lang.Double.parseDouble(etRehabBudget!!.text.toString())
-                    rR = RehabFlatRate(dB, strBI)
-                    // if finance rehab flag is selected, set monthly payment as follows
-                    if (setS.getFinance() === 2) {
-                        smSM.setMonthlyPmt(rR.getBudget())
-                        intI.putExtra("SalesMortgage", smSM)
-                    }
-                    intI.putExtra("Rehab", rR)
-                    if (resR != null) {
-                        intI.putExtra("Reserves", resR)
-                    }
-                    if (cemC != null) {
-                        intI.putExtra("ClosExpPropMktInfo", cemC)
-                    }
-                    startActivity(intI)
-                    finish()
-                }
-            } else {
-                val strRTSel = spnRehabType!!.selectedItem.toString()
-                rR = RehabType(locL.getSquareFootage(), strRTSel, strBI)
-                // if finance rehab flag is selected, set monthly payment as follows
-                if (setS.getFinance() === 2) {
-                    smSM.setMonthlyPmt(rR.getBudget())
-                    intI.putExtra("SalesMortgage", smSM)
-                }
-                intI.putExtra("Rehab", rR)
-                if (resR != null) {
-                    intI.putExtra("Reserves", resR)
-                }
-                if (cemC != null) {
-                    intI.putExtra("ClosExpPropMktInfo", cemC)
-                }
-                startActivity(intI)
-                finish()
-            }
-*/
+            intI.putExtra("Calculate", calC)
+            startActivity(intI)
+            finish()
         }
     }
 
