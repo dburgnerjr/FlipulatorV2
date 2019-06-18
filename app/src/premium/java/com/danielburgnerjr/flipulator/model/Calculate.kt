@@ -266,6 +266,54 @@ public class Calculate : Serializable {
         this.totalExpenses = this.mortgage + this.insurance + this.taxes + this.water + this.gas + this.electric
     }
 
+    fun getRealEstComm(): Double {
+        return realEstComm
+    }
+
+    fun setRealEstComm(dREC: Double) {
+        this.realEstComm = dREC
+    }
+
+    fun getBuyClosCost(): Double {
+        return buyClosCost
+    }
+
+    fun setBuyClosCost(dBCC: Double) {
+        this.buyClosCost = dBCC
+    }
+
+    fun getSellClosCost(): Double {
+        return sellClosCost
+    }
+
+    fun setSellClosCost(dSCC: Double) {
+        this.sellClosCost = dSCC
+    }
+
+    fun getFMVARV(): Double {
+        return fmvarv
+    }
+
+    fun setFMVARV(dF: Double) {
+        this.fmvarv = dF
+    }
+
+    fun getComparables(): Double {
+        return comparables
+    }
+
+    fun setComparables(dC: Double) {
+        this.comparables = dC
+    }
+
+    fun getSellingPrice(): Double {
+        return sellingPrice
+    }
+
+    fun setSellingPrice(dSP: Double) {
+        this.sellingPrice = dSP
+    }
+
     fun setRECost(dSP: Double, dCP: Double) {
         this.reCost = dSP * (dCP / 100)
     }

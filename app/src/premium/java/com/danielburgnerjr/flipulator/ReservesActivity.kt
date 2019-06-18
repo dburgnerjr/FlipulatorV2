@@ -68,6 +68,21 @@ class ReservesActivity : Activity() {
             alertDialog.show()
         }
 
+        // if Calculate object is null, fields are blank
+        if (calC == null) {
+            etInsurance!!.setText("")
+            etTaxes!!.setText("")
+            etElectric!!.setText("")
+            etGas!!.setText("")
+            etWater!!.setText("")
+        } else {
+            // set fields to member variables of Calculate object
+            etInsurance!!.setText(calC!!.getInsurance().toString())
+            etTaxes!!.setText(calC!!.getTaxes().toString())
+            etElectric!!.setText(calC!!.getElectric().toString())
+            etGas!!.setText(calC!!.getGas().toString())
+            etWater!!.setText(calC!!.getWater().toString())
+        }
     }
 
     fun prevPage(view: View) {
@@ -91,9 +106,9 @@ class ReservesActivity : Activity() {
         } else if ("" == etElectric!!.text.toString()) {
             Toast.makeText(applicationContext, "Must Enter Electric Bill For 6 Mos", Toast.LENGTH_SHORT).show()
         } else {
-/*
+
             val intI = Intent(this, ClosExpPropMktInfoActivity::class.java)
-*/
+
             calC!!.setMortgage(calC!!.getMonthlyPmt() * 6)
             calC!!.setInsurance(java.lang.Double.parseDouble(etInsurance!!.text.toString()))
             calC!!.setTaxes(java.lang.Double.parseDouble(etTaxes!!.text.toString()))
@@ -101,12 +116,10 @@ class ReservesActivity : Activity() {
             calC!!.setGas(java.lang.Double.parseDouble(etGas!!.text.toString()))
             calC!!.setElectric(java.lang.Double.parseDouble(etElectric!!.text.toString()))
             calC!!.setTotalExpenses()
-            Toast.makeText(applicationContext,  calC.toString(), Toast.LENGTH_SHORT).show()
-/*
+
             intI.putExtra("Calculate", calC)
             startActivity(intI)
             finish()
-*/
         }
     }
 

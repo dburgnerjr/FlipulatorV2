@@ -139,7 +139,9 @@ class LocationActivity : Activity() {
         } else {
             val intI = Intent(this, SalesMortgageActivity::class.java)
 
-            calC = Calculate()
+            if (calC == null)
+                calC = Calculate()
+
             calC!!.setAddress(etAddress!!.text.toString())
             calC!!.setCity(etCity!!.text.toString())
             calC!!.setState(etState!!.text.toString())
