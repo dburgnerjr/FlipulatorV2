@@ -3,11 +3,9 @@ package com.danielburgnerjr.flipulator
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.view.View.OnClickListener
 import android.view.KeyEvent
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
@@ -33,6 +31,7 @@ class LocationActivity : Activity() {
     private var etBathrooms: EditText? = null        // number of bathrooms
     private var spnFinanceType: Spinner? = null
     private var nFinance: Int = 0
+    private var strFinance: String = ""
     private var btnHelp: Button? = null                // help
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,6 +58,7 @@ class LocationActivity : Activity() {
         spnFinanceType!!.setOnItemSelectedListener(object : OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View, position: Int, id: Long) {
                 nFinance = position
+                strFinance = parentView.getItemAtPosition(position).toString()
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>) {

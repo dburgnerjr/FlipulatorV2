@@ -13,6 +13,7 @@ public class Calculate : Serializable {
     private var bedrooms: Int = 0                      // number of bedrooms
     private var bathrooms: Double = 0.toDouble()       // number of bathrooms
     private var finance: Int = 0                       // finance class
+    private var strFinance: String = ""                // String value finance
 
     // sales/mortgage activity info
     private var salesPrice: Double = 0.toDouble()      // sales price
@@ -124,6 +125,14 @@ public class Calculate : Serializable {
 
     fun setFinance(nF: Int) {
         this.finance = nF
+    }
+
+    fun getFinanceValue(): String? {
+        return this.strFinance
+    }
+
+    fun setFinanceValue(strF: String) {
+        this.strFinance = strF
     }
 
     fun getSalesPrice(): Double? {

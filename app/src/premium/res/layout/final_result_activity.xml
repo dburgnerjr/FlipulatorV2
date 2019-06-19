@@ -1,0 +1,775 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:id="@+id/scvFinalResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/llSettingsFR"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtSettings"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/settings" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llRehabFinance"
+                android:layout_width="fill_parent"
+                android:layout_height="35sp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtRehabFinance"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/rehab_class" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llLocationFR"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtLocation"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/location" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llLocAddress"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtLocationAddress"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/address" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llLocCityStZip"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtLocationCityStZip"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/citystzip" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/llLocSquareFootage"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtLocationSqFootage"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/sq_footage" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llLocBedBath"
+                android:layout_width="fill_parent"
+                android:layout_height="35sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtLocationBedBath"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/bed_bath" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llSalesInfoFR"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtSalesInfo"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/sales" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llSalesPrice"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtSalePrice"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/salePrice" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llPercentDown"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtPercentDown"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/percentDown" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llOfferBid"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtOfferBid"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/offerBid" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llRehabBudget"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtRehabBudget"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/rehab_budget" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llBudgetItems"
+                android:layout_width="fill_parent"
+                android:layout_height="85sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtBudgetItems"
+                    android:layout_width="0dp"
+                    android:layout_height="70sp"
+                    android:layout_weight="1"
+                    android:text="@string/budgetItems" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llMortgageFR"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtMortgageInfo"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/mortgage" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llDownPayment"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtDownPayment"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/downPayment" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llLoanAmount"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtLoanAmount"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/loanAmount" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llInterestRate"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtInterestRate"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/interestRate" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llTerm"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtTerm"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/term" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llMonthlyPmt"
+                android:layout_width="fill_parent"
+                android:layout_height="35sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtMonthlyPmt"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/monthlyPmt" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llReservesFR"
+                android:layout_width="fill_parent"
+                android:layout_height="40sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtReserves"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="0.5"
+                    android:text="@string/reserves" />
+
+                <Spinner
+                    android:id="@+id/spnTimeFrame"
+                    android:layout_width="0sp"
+                    android:layout_height="40sp"
+                    android:layout_weight="0.5"
+                    android:ems="10" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llMortPmt"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtMortPmt"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/mortPmt" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llInsurance"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtInsurance"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/insurance" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llPropertyTaxes"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtPropertyTaxes"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/taxes" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llElectric"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtElectric"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/electric" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llGas"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtGas"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/gas" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llWater"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtWater"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/water" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llTotalReserves"
+                android:layout_width="fill_parent"
+                android:layout_height="35sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtTotalReserves"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/totres" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llClosingExpensesFR"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtClosingExpenses"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/closingExp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llRealEstComm"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtRealEstComm"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/realestcomm" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llRealEstCommPer"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtRealEstCommPer"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/commission" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llBuyerClosCost"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtBuyerClosCost"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/buyerClosCost" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llBuyerClosCostPer"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtBuyerClosCostPer"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/bccPercentage" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llSellerClosCost"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtSellerClosCost"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/sellClosCost" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llSellerClosCostPer"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtSellerClosCostPer"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/sccPercentage" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llTotalCosts"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtTotalCosts"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/totalCosts" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llOutOfPocketExpenses"
+                android:layout_width="fill_parent"
+                android:layout_height="35sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtOutOfPocketExpenses"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/outOfPocketExp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llPropMarketInfoFR"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtPropMarketInfo"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/propMktInfo" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llFMVARV"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtFMVARV"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/FMVARV" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llComparables"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtComparables"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/comparables" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llSellingPrice"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtSellingPrice"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/sellingPrice" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llBuyerCosts"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtBuyerCosts"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/buyerCosts" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llGrossProfit"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtGrossProfit"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/grossProfit" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llCapGains"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtCapGains"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/capGains" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llNetProfit"
+                android:layout_width="fill_parent"
+                android:layout_height="35sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtNetProfit"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/netProfit" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llReturnOnInvestment"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtReturnOnInvestment"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/returnInvestment" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llMoneyOut"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtMoneyOut"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/moneyOut" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llMoneyIn"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtMoneyIn"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/moneyIn" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llPercReturn"
+                android:layout_width="fill_parent"
+                android:layout_height="20sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtPercReturn"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/percReturn" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llCashCashRet"
+                android:layout_width="fill_parent"
+                android:layout_height="100sp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/txtCashCashRet"
+                    android:layout_width="0dp"
+                    android:layout_height="20sp"
+                    android:layout_weight="1"
+                    android:text="@string/cashCashRet" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/llPrevSave"
+        android:layout_width="fill_parent"
+        android:layout_height="35sp"
+        android:layout_above="@+id/llResEmail"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btnPrevious"
+            android:layout_width="100sp"
+            android:layout_height="35sp"
+            android:layout_weight="0.5"
+            android:text="@string/prev"
+            android:onClick="prevPage"
+            android:background="#690"
+            android:textColor="#ffffff" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="100sp"
+            android:layout_height="35sp"
+            android:layout_weight="0.5"
+            android:text="@string/save"
+            android:onClick="saveFile"
+            android:background="#690"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llResEmail"
+        android:layout_width="fill_parent"
+        android:layout_height="35sp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btnMainMenu"
+            android:layout_width="100sp"
+            android:layout_height="35sp"
+            android:layout_weight="0.5"
+            android:onClick="mainMenu"
+            android:text="@string/main_menu"
+            android:background="#690"
+            android:textColor="#ffffff" />
+
+        <Button
+            android:id="@+id/btnEmail"
+            android:layout_width="100sp"
+            android:layout_height="35sp"
+            android:layout_weight="0.5"
+            android:onClick="nextPage"
+            android:text="@string/email"
+            android:background="#690"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+
+</RelativeLayout>

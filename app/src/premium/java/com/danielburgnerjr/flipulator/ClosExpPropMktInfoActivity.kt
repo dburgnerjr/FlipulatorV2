@@ -3,14 +3,10 @@ package com.danielburgnerjr.flipulator
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.view.View.OnClickListener
 import android.view.KeyEvent
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.EditText
 import android.widget.Button
 import android.widget.Toast
@@ -112,7 +108,7 @@ class ClosExpPropMktInfoActivity : Activity() {
         } else if ("" == etSellingPrice!!.text.toString()) {
             Toast.makeText(applicationContext, "Must Enter Selling Price", Toast.LENGTH_SHORT).show()
         } else {
-            //val intI = Intent(this, FinalResultActivity::class.java)
+            val intI = Intent(this, FinalResultActivity::class.java)
 
             calC!!.setRealEstComm(java.lang.Double.parseDouble(etRealEstComm!!.text.toString()))
             calC!!.setBuyClosCost(java.lang.Double.parseDouble(etBuyClosCost!!.text.toString()))
@@ -122,9 +118,9 @@ class ClosExpPropMktInfoActivity : Activity() {
             calC!!.setSellingPrice(java.lang.Double.parseDouble(etSellingPrice!!.text.toString()))
             Toast.makeText(applicationContext,  calC.toString(), Toast.LENGTH_SHORT).show()
 
-            //intI.putExtra("Calculate", calC)
-            //startActivity(intI)
-            //finish()
+            intI.putExtra("Calculate", calC)
+            startActivity(intI)
+            finish()
         }
     }
 
