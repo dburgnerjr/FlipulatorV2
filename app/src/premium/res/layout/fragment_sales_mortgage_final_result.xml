@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/llSalesInfoFR"
+        android:layout_width="fill_parent"
+        android:layout_height="20sp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/txtSalesInfo"
+            android:layout_width="0dp"
+            android:layout_height="20sp"
+            android:layout_weight="1"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:text="@string/sales" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llSalePrice"
+        android:layout_width="match_parent"
+        android:layout_height="40sp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:text="@string/salePrice" />
+
+        <EditText
+            android:id="@+id/txtSalePrice"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:ems="10"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llPercentDown"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:layout_below="@+id/llSalePrice"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:text="@string/percentDown" />
+
+        <EditText
+            android:id="@+id/txtPercentDown"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:ems="10"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llOfferBid"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:layout_below="@+id/llPercentDown"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:text="@string/offerBid" />
+
+        <EditText
+            android:id="@+id/txtOfferBid"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:ems="10"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llInterestRate"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:layout_below="@+id/llOfferBid"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:text="@string/interestRate" />
+
+        <EditText
+            android:id="@+id/txtInterestRate"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:ems="10"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llTerm"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:layout_below="@+id/llInterestRate"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:text="@string/term" />
+
+        <EditText
+            android:id="@+id/txtTerm"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:ems="10"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llBudgetItems"
+        android:layout_width="match_parent"
+        android:layout_height="25sp"
+        android:layout_below="@+id/llTerm"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="0sp"
+            android:layout_height="25sp"
+            android:layout_weight="1"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:text="@string/budgetItems" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llBudgetItemsTxt"
+        android:layout_width="match_parent"
+        android:layout_height="70sp"
+        android:layout_below="@+id/llBudgetItems"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/txtBudgetItems"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical"
+            android:inputType="textMultiLine"
+            android:lines="4"
+            android:minLines="2"
+            android:maxLines="4"
+            android:gravity="top|left"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:ems="10"
+            android:imeOptions="actionDone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llRehabBudget"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:layout_below="@+id/llBudgetItemsTxt"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tvRehabBudget"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:text="@string/rehab_budget" />
+
+        <EditText
+            android:id="@+id/txtRehabBudget"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:ems="10"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+</RelativeLayout>

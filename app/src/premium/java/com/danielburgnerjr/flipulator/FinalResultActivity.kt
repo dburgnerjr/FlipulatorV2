@@ -1,6 +1,5 @@
 package com.danielburgnerjr.flipulator
 
-import android.app.Activity
 import android.app.AlertDialog
 import android.net.Uri
 import android.os.Bundle
@@ -16,7 +15,7 @@ import android.widget.TextView
 import android.widget.Toast
 import android.content.DialogInterface
 import android.content.Intent
-
+import android.support.v4.app.FragmentActivity
 import com.danielburgnerjr.flipulator.model.Calculate
 
 import java.io.*
@@ -41,11 +40,10 @@ import jxl.write.WriteException
 import jxl.write.biff.RowsExceededException
 */
 
-class FinalResultActivity : Activity() {
-
-    private var calC: Calculate? = null
+class FinalResultActivity : FragmentActivity() {
 
     private var spnTimeFrame: Spinner? = null
+    private var calC: Calculate? = null
 /*
     private var timesBold: WritableCellFormat? = null
     private var times: WritableCellFormat? = null
@@ -65,7 +63,7 @@ class FinalResultActivity : Activity() {
         val intI = getIntent()
 
         calC = intI.getSerializableExtra("Calculate") as Calculate
-
+/*
         val tvSettings = findViewById<View>(R.id.txtRehabFinance) as TextView
         tvSettings.setText(calC!!.getFinanceValue())
 
@@ -225,6 +223,7 @@ class FinalResultActivity : Activity() {
                 // sometimes you need nothing here
             }
         }
+*/
     }
 
     // returns to main menu

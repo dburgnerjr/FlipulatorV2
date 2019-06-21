@@ -150,6 +150,7 @@ class LocationActivity : Activity() {
             calC!!.setBedrooms(Integer.parseInt(etBedrooms!!.text.toString()))
             calC!!.setBathrooms(java.lang.Double.parseDouble(etBathrooms!!.text.toString()))
             calC!!.setFinance(nFinance)
+            calC!!.setFinanceValue(strFinance)
 
             intI.putExtra("Calculate", calC)
             startActivity(intI)

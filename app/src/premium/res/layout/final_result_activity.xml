@@ -17,9 +17,19 @@
             <fragment xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:id="@+id/fragment_location_final_result"
+                android:name="com.danielburgnerjr.flipulator.LocationFinalResultFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:layout="@layout/fragment_location_fin_result" />
+
+<!--
+            <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/fragment_sales_mortgage_fin_result"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:layout="@layout/fragment_sales_mortgage_final_result" />
+-->
 
             <LinearLayout
                 android:id="@+id/llSalesInfoFR"
