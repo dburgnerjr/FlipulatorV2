@@ -14,107 +14,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <LinearLayout
-                android:id="@+id/llSettingsFR"
-                android:layout_width="fill_parent"
-                android:layout_height="20sp"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/txtSettings"
-                    android:layout_width="0dp"
-                    android:layout_height="20sp"
-                    android:layout_weight="1"
-                    android:text="@string/settings" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llRehabFinance"
-                android:layout_width="fill_parent"
-                android:layout_height="35sp"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/txtRehabFinance"
-                    android:layout_width="0dp"
-                    android:layout_height="20sp"
-                    android:layout_weight="1"
-                    android:text="@string/rehab_class" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llLocationFR"
-                android:layout_width="fill_parent"
-                android:layout_height="20sp"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/txtLocation"
-                    android:layout_width="0dp"
-                    android:layout_height="20sp"
-                    android:layout_weight="1"
-                    android:text="@string/location" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llLocAddress"
-                android:layout_width="fill_parent"
-                android:layout_height="20sp"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/txtLocationAddress"
-                    android:layout_width="0dp"
-                    android:layout_height="20sp"
-                    android:layout_weight="1"
-                    android:text="@string/address" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llLocCityStZip"
-                android:layout_width="fill_parent"
-                android:layout_height="20sp"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/txtLocationCityStZip"
-                    android:layout_width="0dp"
-                    android:layout_height="20sp"
-                    android:layout_weight="1"
-                    android:text="@string/citystzip" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/llLocSquareFootage"
-                android:layout_width="fill_parent"
-                android:layout_height="20sp"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/txtLocationSqFootage"
-                    android:layout_width="0dp"
-                    android:layout_height="20sp"
-                    android:layout_weight="1"
-                    android:text="@string/sq_footage" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llLocBedBath"
-                android:layout_width="fill_parent"
-                android:layout_height="35sp"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/txtLocationBedBath"
-                    android:layout_width="0dp"
-                    android:layout_height="20sp"
-                    android:layout_weight="1"
-                    android:text="@string/bed_bath" />
-            </LinearLayout>
+            <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/fragment_location_final_result"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:layout="@layout/fragment_location_fin_result" />
 
             <LinearLayout
                 android:id="@+id/llSalesInfoFR"

@@ -111,6 +111,7 @@
 
     <string name="rehab_class">Select Rehab Class</string>
     <string name="finance_class">Select Finance Class</string>
+    <string name="finance_class_fr">Finance Class:</string>
     <string name="rehab_number">Budget Flat Rate</string>
     <string name="rehab_type">Rehab Type</string>
     <string name="rehab_budget">Rehab Budget:</string>
