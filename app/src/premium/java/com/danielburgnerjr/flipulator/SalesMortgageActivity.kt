@@ -168,8 +168,12 @@ class SalesMortgageActivity : Activity() {
             calC!!.setBudgetItems(etBudgetItems!!.text.toString())
             calC!!.setRehab(nRehab)
             calC!!.setBudget(java.lang.Double.parseDouble(etRehabBudget!!.text.toString()))
+            calC!!.setDownPayment()
+            calC!!.setLoanAmount()
             if (calC!!.getFinance() != 2) {
-                calC!!.setMonthlyPmt();
+                calC!!.setMonthlyPmt()
+            } else {
+                calC!!.setMonthlyPmt(calC!!.getBudget())
             }
 
             intI.putExtra("Calculate", calC)

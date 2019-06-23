@@ -195,12 +195,19 @@ public class Calculate : Serializable {
         return this.dMonthlyPmt
     }
 
-    fun setMonthlyPmt(dMP: Double) {
-        this.dMonthlyPmt = dMP
+    fun setMonthlyPmt(dR: Double) {
+        if (this.percentDown == 100.0)
+            this.dMonthlyPmt = 0.0
+        else
+            this.dMonthlyPmt = ((this.loanAmount+dR)*((this.interestRate/12)/100))
     }
 
-    fun setDownPayment(dPD: Double, dOB: Double) {
-        this.downPayment = dPD / 100 * dOB
+    fun setDownPayment() {
+        this.downPayment = (this.percentDown/100) * this.offerBid
+    }
+
+    fun getDownPayment(): Double {
+        return this.downPayment
     }
 
     fun setLoanAmount() {

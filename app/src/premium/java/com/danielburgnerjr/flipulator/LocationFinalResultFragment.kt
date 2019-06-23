@@ -24,6 +24,7 @@ class LocationFinalResultFragment : Fragment() {
 
         val tvFinanceValue = view.findViewById<View>(R.id.txtFinanceType) as TextView
         tvFinanceValue.setText(calC!!.getFinanceValue())
+        tvFinanceValue.setEnabled(false)
 
         val tvFRAddress = view.findViewById<View>(R.id.txtAddressFR) as TextView
         val tvFRCityStZip = view.findViewById<View>(R.id.txtCityStZip) as TextView
@@ -34,6 +35,11 @@ class LocationFinalResultFragment : Fragment() {
         tvFRCityStZip.setText(calC!!.getCity() + ", " + calC!!.getState() + " " + calC!!.getZipCode())
         tvSF.setText(calC!!.getSquareFootage().toString())
         tvBedBath.setText(calC!!.getBedrooms().toString() + " BR/" + calC!!.getBathrooms().toString() + " BA")
+        tvFRAddress.setEnabled(false)
+        tvFRCityStZip.setEnabled(false)
+        tvSF.setEnabled(false)
+        tvBedBath.setEnabled(false)
+
         return view
     }
 }
