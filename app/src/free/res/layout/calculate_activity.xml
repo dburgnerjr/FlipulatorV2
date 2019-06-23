@@ -20,50 +20,54 @@
             <LinearLayout
                 android:id="@+id/llStreetAddress"
                 android:layout_width="match_parent"
-                android:layout_height="35sp"
+                android:layout_height="40sp"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal" >
 
                 <TextView
                     android:layout_width="0sp"
-                    android:layout_height="35sp"
+                    android:layout_height="40sp"
                     android:layout_weight="0.5"
                     android:textColor="#454545"
+                    android:textSize="16sp"
                     android:text="@string/address" />
 
                 <EditText
                     android:id="@+id/txtAddress"
                     android:layout_width="0sp"
-                    android:layout_height="35sp"
+                    android:layout_height="40sp"
                     android:layout_weight="0.5"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     android:textColor="#454545"
                     android:ems="10"
+                    android:hint="@string/address"
                     android:inputType="text" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/llCityStZip"
                 android:layout_width="match_parent"
-                android:layout_height="35sp"
+                android:layout_height="40sp"
                 android:layout_below="@+id/llStreetAddress"
                 android:orientation="horizontal" >
 
                 <TextView
                     android:layout_width="0sp"
-                    android:layout_height="35sp"
+                    android:layout_height="40sp"
                     android:layout_weight="0.5"
                     android:textColor="#454545"
+                    android:textSize="16sp"
                     android:text="@string/citystzip" />
 
                 <EditText
                     android:id="@+id/txtCityStZip"
                     android:layout_width="0sp"
-                    android:layout_height="35sp"
+                    android:layout_height="40sp"
                     android:layout_weight="0.5"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     android:textColor="#454545"
                     android:ems="10"
+                    android:hint="@string/citystzip"
                     android:inputType="text" />
 
             </LinearLayout>
@@ -71,147 +75,158 @@
             <LinearLayout
                 android:id="@+id/llSquareFootage"
                 android:layout_width="match_parent"
-                android:layout_height="35sp"
+                android:layout_height="40sp"
                 android:layout_below="@+id/llCityStZip"
                 android:orientation="horizontal" >
 
                 <TextView
                     android:layout_width="0sp"
-                    android:layout_height="35sp"
+                    android:layout_height="40sp"
                     android:layout_weight="0.5"
                     android:textColor="#454545"
+                    android:textSize="16sp"
                     android:text="@string/sq_footage" />
 
                 <EditText
                     android:id="@+id/txtSq_Footage"
                     android:layout_width="0sp"
-                    android:layout_height="35sp"
+                    android:layout_height="40sp"
                     android:layout_weight="0.5"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     android:textColor="#454545"
                     android:ems="10"
+                    android:hint="@string/sq_footage"
                     android:inputType="numberDecimal" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/llBedrooms"
                 android:layout_width="match_parent"
-                android:layout_height="35sp"
+                android:layout_height="40sp"
                 android:layout_below="@+id/llSquareFootage"
                 android:orientation="horizontal" >
 
                 <TextView
                     android:layout_width="0sp"
-                    android:layout_height="35sp"
+                    android:layout_height="40sp"
                     android:layout_weight="0.5"
                     android:textColor="#454545"
+                    android:textSize="16sp"
                     android:text="@string/bedrooms" />
 
                 <EditText
                     android:id="@+id/txtBedrooms"
                     android:layout_width="0sp"
-                    android:layout_height="35sp"
+                    android:layout_height="40sp"
                     android:layout_weight="0.5"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     android:textColor="#454545"
                     android:ems="10"
+                    android:hint="@string/bedrooms"
                     android:inputType="numberDecimal" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/llBathrooms"
                 android:layout_width="match_parent"
-                android:layout_height="35sp"
+                android:layout_height="40sp"
                 android:layout_below="@+id/llBedrooms"
                 android:orientation="horizontal" >
 
                 <TextView
                     android:layout_width="0sp"
-                    android:layout_height="35sp"
+                    android:layout_height="40sp"
                     android:layout_weight="0.5"
                     android:textColor="#454545"
+                    android:textSize="16sp"
                     android:text="@string/bathrooms" />
 
                 <EditText
                     android:id="@+id/txtBathrooms"
                     android:layout_width="0sp"
-                    android:layout_height="35sp"
+                    android:layout_height="40sp"
                     android:layout_weight="0.5"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     android:textColor="#454545"
                     android:ems="10"
+                    android:hint="@string/bathrooms"
                     android:inputType="numberDecimal" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/llSalePrice"
                 android:layout_width="match_parent"
-                android:layout_height="35sp"
+                android:layout_height="40sp"
                 android:layout_below="@+id/llBathrooms"
                 android:orientation="horizontal" >
 
                 <TextView
                     android:layout_width="0sp"
-                    android:layout_height="35sp"
+                    android:layout_height="40sp"
                     android:layout_weight="0.5"
                     android:textColor="#454545"
+                    android:textSize="16sp"
                     android:text="@string/salePrice" />
 
                 <EditText
                     android:id="@+id/txtSalePrice"
                     android:layout_width="0sp"
-                    android:layout_height="35sp"
+                    android:layout_height="40sp"
                     android:layout_weight="0.5"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     android:textColor="#454545"
                     android:ems="10"
+                    android:hint="@string/salePrice"
                     android:inputType="numberDecimal" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/llFMVARV"
                 android:layout_width="match_parent"
-                android:layout_height="35sp"
+                android:layout_height="40sp"
                 android:layout_below="@+id/llSalePrice"
                 android:orientation="horizontal" >
 
                 <TextView
                     android:layout_width="0sp"
-                    android:layout_height="35sp"
+                    android:layout_height="40sp"
                     android:layout_weight="0.5"
                     android:textColor="#454545"
+                    android:textSize="16sp"
                     android:text="@string/FMVARV" />
 
                 <EditText
                     android:id="@+id/txtFMVARV"
                     android:layout_width="0sp"
-                    android:layout_height="35sp"
+                    android:layout_height="40sp"
                     android:layout_weight="0.5"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     android:textColor="#454545"
                     android:ems="10"
+                    android:hint="@string/FMVARV"
                     android:inputType="numberDecimal" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/llBudgetItems"
                 android:layout_width="match_parent"
-                android:layout_height="25sp"
+                android:layout_height="30sp"
                 android:layout_below="@+id/llFMVARV"
                 android:orientation="horizontal" >
 
                 <TextView
                     android:layout_width="0sp"
-                    android:layout_height="25sp"
+                    android:layout_height="30sp"
                     android:layout_weight="1"
                     android:textColor="#454545"
+                    android:textSize="16sp"
                     android:text="@string/budgetItems" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/llBudgetItemsTxt"
                 android:layout_width="match_parent"
-                android:layout_height="70sp"
+                android:layout_height="80sp"
                 android:layout_below="@+id/llBudgetItems"
                 android:orientation="horizontal" >
 
@@ -224,10 +239,11 @@
                     android:lines="4"
                     android:minLines="2"
                     android:maxLines="4"
-                    android:gravity="top|left"
-                    android:textSize="12sp"
+                    android:gravity="top|start"
+                    android:textSize="16sp"
                     android:textColor="#454545"
                     android:ems="10"
+                    android:hint="@string/budgetItems"
                     android:imeOptions="actionDone" />
             </LinearLayout>
 
@@ -241,9 +257,10 @@
                 <TextView
                     android:id="@+id/tvRehabType"
                     android:layout_width="0sp"
-                    android:layout_height="35sp"
+                    android:layout_height="40sp"
                     android:layout_weight="0.5"
                     android:textColor="#454545"
+                    android:textSize="16sp"
                     android:text="@string/rehab_class" />
 
                 <Spinner
@@ -251,32 +268,35 @@
                     android:layout_width="0sp"
                     android:layout_height="40sp"
                     android:layout_weight="0.5"
+                    android:textSize="16sp"
                     android:ems="10" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/llRehabBudget"
                 android:layout_width="match_parent"
-                android:layout_height="35sp"
+                android:layout_height="40sp"
                 android:layout_below="@+id/llRehabType"
                 android:orientation="horizontal" >
 
                 <TextView
                     android:id="@+id/tvRehabBudget"
                     android:layout_width="0sp"
-                    android:layout_height="35sp"
+                    android:layout_height="40sp"
                     android:layout_weight="0.5"
                     android:textColor="#454545"
+                    android:textSize="16sp"
                     android:text="@string/rehab_budget" />
 
                 <EditText
                     android:id="@+id/txtRehabBudget"
                     android:layout_width="0sp"
-                    android:layout_height="35sp"
+                    android:layout_height="40sp"
                     android:layout_weight="0.5"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     android:textColor="#454545"
                     android:ems="10"
+                    android:hint="@string/rehab_budget"
                     android:imeOptions="actionDone"
                     android:inputType="numberDecimal" />
             </LinearLayout>
@@ -284,108 +304,116 @@
             <LinearLayout
                 android:id="@+id/llResClosHoldCost"
                 android:layout_width="fill_parent"
-                android:layout_height="35sp"
+                android:layout_height="40sp"
                 android:layout_below="@+id/llRehabBudget"
                 android:orientation="horizontal" >
 
                 <TextView
                     android:id="@+id/tvClosHoldCosts"
                     android:layout_width="0sp"
-                    android:layout_height="35sp"
+                    android:layout_height="40sp"
                     android:layout_weight="0.5"
                     android:textColor="#454545"
+                    android:textSize="16sp"
                     android:text="@string/closholdcosts" />
 
                 <EditText
                     android:id="@+id/txtClosHoldCosts"
                     android:layout_width="0sp"
-                    android:layout_height="35sp"
+                    android:layout_height="40sp"
                     android:layout_weight="0.5"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     android:textColor="#454545"
                     android:hint="@string/closholdcosts"
-                    android:ems="10" />
+                    android:ems="10"
+                    android:inputType="numberDecimal" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/llResProfit"
                 android:layout_width="fill_parent"
-                android:layout_height="35sp"
+                android:layout_height="40sp"
                 android:layout_below="@+id/llResClosHoldCost"
                 android:orientation="horizontal" >
 
                 <TextView
                     android:id="@+id/tvProfit"
                     android:layout_width="0sp"
-                    android:layout_height="35sp"
+                    android:layout_height="40sp"
                     android:layout_weight="0.5"
+                    android:textSize="16sp"
                     android:textColor="#454545"
                     android:text="@string/profit" />
 
                 <EditText
                     android:id="@+id/txtProfit"
                     android:layout_width="0sp"
-                    android:layout_height="35sp"
+                    android:layout_height="40sp"
                     android:layout_weight="0.5"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     android:textColor="#454545"
                     android:textStyle="bold"
                     android:hint="@string/profit"
-                    android:ems="10" />
+                    android:ems="10"
+                    android:inputType="numberDecimal" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/llResROI"
                 android:layout_width="fill_parent"
-                android:layout_height="35sp"
+                android:layout_height="40sp"
                 android:layout_below="@+id/llResProfit"
                 android:orientation="horizontal" >
 
                 <TextView
                     android:id="@+id/tvROI"
                     android:layout_width="0sp"
-                    android:layout_height="35sp"
+                    android:layout_height="40sp"
                     android:layout_weight="0.5"
                     android:textColor="#454545"
+                    android:textSize="16sp"
                     android:text="@string/roi" />
 
                 <EditText
                     android:id="@+id/txtROI"
                     android:layout_width="0sp"
-                    android:layout_height="35sp"
+                    android:layout_height="40sp"
                     android:layout_weight="0.5"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     android:textColor="#454545"
                     android:textStyle="bold"
                     android:hint="@string/roi"
-                    android:ems="10" />
+                    android:ems="10"
+                    android:inputType="numberDecimal" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/llResCashCash"
                 android:layout_width="fill_parent"
-                android:layout_height="35sp"
+                android:layout_height="40sp"
                 android:layout_below="@+id/llResROI"
                 android:orientation="horizontal" >
 
                 <TextView
                     android:id="@+id/tvCashOnCash"
                     android:layout_width="0sp"
-                    android:layout_height="35sp"
+                    android:layout_height="40sp"
                     android:layout_weight="0.5"
                     android:textColor="#454545"
+                    android:textSize="16sp"
                     android:text="@string/cashoncash" />
 
                 <EditText
                     android:id="@+id/txtCashOnCash"
                     android:layout_width="0sp"
-                    android:layout_height="35sp"
+                    android:layout_height="40sp"
                     android:layout_weight="0.5"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     android:textColor="#454545"
                     android:textStyle="bold"
                     android:hint="@string/cashoncash"
-                    android:ems="10" />
+                    android:ems="10"
+                    android:inputType="numberDecimal" />
             </LinearLayout>
 
             <LinearLayout
@@ -408,15 +436,14 @@
         android:layout_height="35sp"
         android:layout_above="@+id/llHelpSubmit"
         android:orientation="horizontal" >
-
         <Button
             android:id="@+id/btnEmail"
             android:layout_width="100sp"
             android:layout_height="35sp"
             android:layout_weight="0.5"
-            android:text="@string/email"
-            android:onClick="emailFile"
             android:background="#690"
+            android:onClick="emailFile"
+            android:text="@string/email"
             android:textColor="#ffffff" />
 
         <Button

@@ -13,15 +13,18 @@ import android.widget.Toast
 
 import com.danielburgnerjr.flipulator.model.Calculate
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
+import android.content.DialogInterface
+
+
 
 class CalculateActivity : Activity() {
 
     private val cntC: Context = this
     private var calR: Calculate? = null                // Calculate object
-    private var intR: Intent? = null                   // Intent
+    //private var intR: Intent? = null                   // Intent
 
     private var etAddress: EditText? = null            // address
     private var etCityStZip: EditText? = null        // city state zip code
@@ -36,7 +39,6 @@ class CalculateActivity : Activity() {
     private var tvRehabType: TextView? = null        // rehab type textview
     private var spnRehabType: Spinner? = null        // rehab type
     private var btnHelp: Button? = null                // help
-    private var dB: Double = 0.toDouble()                    // budget
     private var tvClosHoldCosts: TextView? = null    // closing/holding costs textview
     private var etClosHoldCosts: EditText? = null    // closing/holding costs
     private var tvProfit: TextView? = null    // Profit textview
@@ -54,11 +56,12 @@ class CalculateActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.calculate_activity)
 
-        MobileAds.initialize(this, getString(R.string.admob_app_id));
-        val mAdCalcView = findViewById(R.id.adCalcView) as AdView
+        MobileAds.initialize(this, getString(R.string.admob_app_id))
+        val mAdCalcView = findViewById<AdView>(R.id.adCalcView)
         val adRequest = AdRequest.Builder().build()
         mAdCalcView.loadAd(adRequest)
 
+        calR = Calculate()
         etAddress = findViewById<EditText>(R.id.txtAddress)
         etCityStZip = findViewById<EditText>(R.id.txtCityStZip)
         etSquareFootage = findViewById<EditText>(R.id.txtSq_Footage)
@@ -90,23 +93,22 @@ class CalculateActivity : Activity() {
         btnHelp = findViewById<Button>(R.id.txtHelp)
         spnRehabType!!.adapter = aradAdapter
 
-        spnRehabType!!.setOnItemSelectedListener(object : OnItemSelectedListener {
+        spnRehabType!!.onItemSelectedListener = object : OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View, position: Int, id: Long) {
                 if (position > 0) {
                     strRTSel = parentView.getItemAtPosition(position).toString()
-                    calR = Calculate()
                     calR!!.setSquareFootage(etSquareFootage!!.text.toString().toInt())
                     when (strRTSel) {
                         "Low", "Medium", "High", "Super-High", "Bulldozer" -> calR!!.calcBudgetRehabType(strRTSel!!)
                     }
-                    etRehabBudget!!.setText("$" + calR!!.getBudget().toString())
+                    etRehabBudget!!.setText(String.format("$%.0f", calR!!.getBudget()))
                 }
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>) {
                 // your code here
             }
-        })
+        }
 
         tvClosHoldCosts!!.visibility = View.GONE
         etClosHoldCosts!!.visibility = View.GONE
@@ -202,7 +204,6 @@ class CalculateActivity : Activity() {
 
     fun nextPage(view: View) {
         // checks if all fields are filled in, prompts user to fill in fields if any are missing
-
         if ("" == etAddress!!.text.toString()) {
             Toast.makeText(applicationContext, "Must Enter Address", Toast.LENGTH_SHORT).show()
         } else if ("" == etCityStZip!!.text.toString()) {
@@ -219,10 +220,9 @@ class CalculateActivity : Activity() {
             Toast.makeText(applicationContext, "Must Enter Fair Market Value or After Repair Value", Toast.LENGTH_SHORT).show()
         } else if ("" == etBudgetItems!!.text.toString()) {
             Toast.makeText(applicationContext, "Must Enter Budget Items", Toast.LENGTH_SHORT).show()
-        } else if (("Flat Rate" == spnRehabType!!.getSelectedItem().toString()) && ("" == etRehabBudget!!.text.toString())) {
+        } else if (("Flat Rate" == spnRehabType!!.selectedItem.toString()) && ("" == etRehabBudget!!.text.toString())) {
             Toast.makeText(applicationContext, "Must Enter Flat Rate Budget or Rehab Type", Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(applicationContext, "" + spnRehabType!!.getSelectedItem().toString(), Toast.LENGTH_SHORT).show()
             tvClosHoldCosts!!.visibility = View.VISIBLE
             etClosHoldCosts!!.visibility = View.VISIBLE
             tvProfit!!.visibility = View.VISIBLE
@@ -234,8 +234,7 @@ class CalculateActivity : Activity() {
             llEditInfo!!.visibility = View.VISIBLE
             btnSave!!.visibility = View.VISIBLE
 
-            // creates new Calculate object and sets info from fields into object variables
-            calR = Calculate()
+            // sets info from fields into object variables
             calR!!.setAddress(etAddress!!.text.toString())
             calR!!.setCityStZip(etCityStZip!!.text.toString())
             calR!!.setSquareFootage(Integer.parseInt(etSquareFootage!!.text.toString()))
@@ -245,15 +244,28 @@ class CalculateActivity : Activity() {
             calR!!.setSalesPrice(java.lang.Double.parseDouble(etSalesPrice!!.text.toString()))
             calR!!.setBudgetItems(etBudgetItems!!.text.toString())
             calR!!.setClosHoldCosts(calR!!.getFMVARV())
-            etClosHoldCosts!!.setText("$" + calR!!.getClosHoldCosts().toString())
             calR!!.setProfit(calR!!.getSalesPrice(), calR!!.getFMVARV(), calR!!.getBudget())
-            etProfit!!.setText("$" + calR!!.getProfit().toString())
             calR!!.setROI(calR!!.getFMVARV())
-            etROI!!.setText(String.format("%.1f", calR!!.getROI()) + "%")
             calR!!.setCashOnCash(calR!!.getBudget())
-            etCashOnCash!!.setText(String.format("%.1f", calR!!.getCashOnCash()) + "%")
-        }
+            if (calR!!.getProfit() < 30000.0) {
+                val adAlertBox = AlertDialog.Builder(this)
+                        .setMessage("Your profit is below $30K! Would you like to make changes now?")
+                        .setPositiveButton("Yes") { arg0, arg1 -> }
+                        .setNegativeButton("No") { arg0, arg1 -> }
+                        .show()
+            }
 
+            etClosHoldCosts!!.setText(String.format("$%.0f", calR!!.getClosHoldCosts()))
+            etClosHoldCosts!!.setEnabled(false)
+            etProfit!!.setText(String.format("$%.0f", calR!!.getProfit()))
+            etProfit!!.setEnabled(false)
+            var strROI = String.format("%.1f", calR!!.getROI()) + "%"
+            etROI!!.setText(strROI)
+            etROI!!.setEnabled(false)
+            var strCashOnCash = String.format("%.1f", calR!!.getCashOnCash()) + "%"
+            etCashOnCash!!.setText(strCashOnCash)
+            etCashOnCash!!.setEnabled(false)
+        }
     }
 
     //@Throws(FileNotFoundException::class, IOException::class, WriteException::class)
@@ -297,7 +309,7 @@ class CalculateActivity : Activity() {
                 .show()
     }
 
-    fun emailPlainText() {
+    private fun emailPlainText() {
         // email results of calculate to those parties concerned
         var strMessage = "Address:                " + calR!!.getAddress() + "\n"
         strMessage += "City, State ZIP:        " + calR!!.getCityStZip() + "\n"
@@ -327,7 +339,7 @@ class CalculateActivity : Activity() {
         return super.onKeyDown(nKeyCode, keEvent)
     }
 
-    protected fun exitByBackKey() {
+    private fun exitByBackKey() {
         val adAlertBox = AlertDialog.Builder(this)
                 .setMessage("Do you want to go back to main menu?")
                 .setPositiveButton("Yes") { arg0, arg1 ->

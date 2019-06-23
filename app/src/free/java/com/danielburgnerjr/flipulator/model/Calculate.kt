@@ -105,6 +105,7 @@ class Calculate : Serializable {
     }
 
     fun setProfit(dSP: Double, dRV: Double, dB: Double) {
+
         this.dProfit = dRV - dSP - dB - this.dClosHoldCosts
     }
 
