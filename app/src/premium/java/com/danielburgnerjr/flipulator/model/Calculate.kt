@@ -282,6 +282,10 @@ public class Calculate : Serializable {
         this.totalExpenses = this.mortgage + this.insurance + this.taxes + this.water + this.gas + this.electric
     }
 
+    fun getTotalExpenses(): Double? {
+        return this.totalExpenses
+    }
+
     fun getRealEstComm(): Double {
         return realEstComm
     }

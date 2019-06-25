@@ -6,6 +6,9 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.TextView
 
 import com.danielburgnerjr.flipulator.model.Calculate
@@ -14,43 +17,74 @@ class ReservesFinalResultFragment : Fragment() {
 
     private var calC: Calculate? = null
     private var intI: Intent? = null
+    private var spnTimeFrame: Spinner? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        val view: View = inflater.inflate(R.layout.fragment_sales_mortgage_final_result, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_reserves_final_result, container, false)
         intI = getActivity()!!.getIntent()
 
         calC = intI!!.getSerializableExtra("Calculate") as Calculate
 
-        val tvSalesPrice = view.findViewById<View>(R.id.txtSalePriceFR) as TextView
-        val tvPercentDown = view.findViewById<View>(R.id.txtPercentDownFR) as TextView
-        val tvOfferBid = view.findViewById<View>(R.id.txtOfferBidFR) as TextView
-        val tvRehabBudget = view.findViewById<View>(R.id.txtRehabBudgetFR) as TextView
-        val tvRehabBudgetItems = view.findViewById<View>(R.id.txtBudgetItemsFR) as TextView
-        val tvDownPayment = view.findViewById<View>(R.id.txtDownPayment) as TextView
-        val tvInterestRate = view.findViewById<View>(R.id.txtInterestRateFR) as TextView
-        val tvTerm = view.findViewById<View>(R.id.txtTermFR) as TextView
-        val tvMonthlyPmt = view.findViewById<View>(R.id.txtMonthlyPmt) as TextView
+        val aradAdapter = ArrayAdapter.createFromResource(
+                getActivity(), R.array.time_frame, android.R.layout.simple_spinner_item)
+        aradAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
-        tvSalesPrice.setText(calC!!.getSalesPrice().toString())
-        tvPercentDown.setText(calC!!.getPercentDown().toString())
-        tvOfferBid.setText(calC!!.getOfferBid().toString())
-        tvRehabBudget.setText(calC!!.getBudget().toString())
-        tvRehabBudgetItems.setText(calC!!.getBudgetItems())
-        tvDownPayment.setText(calC!!.getDownPayment().toString())
-        tvInterestRate.setText(calC!!.getInterestRate().toString())
-        tvTerm.setText(calC!!.getTerm().toString())
-        tvMonthlyPmt.setText(calC!!.getMonthlyPmt().toString())
+        spnTimeFrame = view.findViewById<View>(R.id.spnTimeFrame) as Spinner
+        spnTimeFrame!!.adapter = aradAdapter
 
-        tvSalesPrice.setEnabled(false)
-        tvPercentDown.setEnabled(false)
-        tvOfferBid.setEnabled(false)
-        tvRehabBudget.setEnabled(false)
-        tvRehabBudgetItems.setEnabled(false)
-        tvDownPayment.setEnabled(false)
-        tvInterestRate.setEnabled(false)
-        tvTerm.setEnabled(false)
-        tvMonthlyPmt.setEnabled(false)
+        val tvMortPmt = view.findViewById<View>(R.id.txtMortPmtFR) as TextView
+        val tvInsurance = view.findViewById<View>(R.id.txtInsuranceFR) as TextView
+        val tvTaxes = view.findViewById<View>(R.id.txtTaxesFR) as TextView
+        val tvWater = view.findViewById<View>(R.id.txtWaterFR) as TextView
+        val tvGas = view.findViewById<View>(R.id.txtGasFR) as TextView
+        val tvElectric = view.findViewById<View>(R.id.txtElectricFR) as TextView
+        val tvTotalExpenses = view.findViewById<View>(R.id.txtTotalReserves) as TextView
+
+        spnTimeFrame!!.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(adapterView: AdapterView<*>, view: View, i: Int, l: Long) {
+                spnTimeFrame!!.setSelection(i, true)
+                val item = adapterView.getItemAtPosition(i)
+                var dTimeFrameFactor = 1.0
+                // set time frame factor based on time frame value
+                if (i == 0) {
+                    dTimeFrameFactor = 1.0
+                }
+                if (i == 1) {
+                    dTimeFrameFactor = 1.5
+                }
+                if (i == 2) {
+                    dTimeFrameFactor = 2.0
+                }
+
+                var dMortgage = calC!!.getMortgage()!!.times(dTimeFrameFactor)
+                tvMortPmt.setText(dMortgage.toString())
+                var dInsurance = calC!!.getInsurance()!!.times(dTimeFrameFactor)
+                tvInsurance.setText(dInsurance.toString())
+                var dTaxes = calC!!.getTaxes()!!.times(dTimeFrameFactor)
+                tvTaxes.setText(dTaxes.toString())
+                var dWater = calC!!.getWater()!!.times(dTimeFrameFactor)
+                tvWater.setText(dWater.toString())
+                var dGas = calC!!.getGas()!!.times(dTimeFrameFactor)
+                tvGas.setText(dGas.toString())
+                var dElectric = calC!!.getElectric()!!.times(dTimeFrameFactor)
+                tvElectric.setText(dElectric.toString())
+                var dTotalExpenses = calC!!.getTotalExpenses()!!.times(dTimeFrameFactor)
+                tvTotalExpenses.setText(dTotalExpenses.toString())
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // sometimes you need nothing here
+            }
+        }
+
+        tvMortPmt.setEnabled(false)
+        tvInsurance.setEnabled(false)
+        tvTaxes.setEnabled(false)
+        tvWater.setEnabled(false)
+        tvGas.setEnabled(false)
+        tvElectric.setEnabled(false)
+        tvTotalExpenses.setEnabled(false)
 
         return view
     }

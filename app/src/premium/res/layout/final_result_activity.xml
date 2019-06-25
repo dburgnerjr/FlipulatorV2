@@ -28,141 +28,20 @@
                 android:layout_height="match_parent"
                 tools:layout="@layout/fragment_sales_mortgage_final_result" />
 
-            <LinearLayout
-                android:id="@+id/llReservesFR"
-                android:layout_width="fill_parent"
-                android:layout_height="40sp"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/txtReserves"
-                    android:layout_width="0dp"
-                    android:layout_height="40sp"
-                    android:layout_weight="0.5"
-                    android:textColor="#454545"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:text="@string/reserves" />
-
-                <Spinner
-                    android:id="@+id/spnTimeFrame"
-                    android:layout_width="0sp"
-                    android:layout_height="40sp"
-                    android:layout_weight="0.5"
-                    android:textColor="#454545"
-                    android:textSize="16sp"
-                    android:ems="10" />
-            </LinearLayout>
 
             <fragment xmlns:tools="http://schemas.android.com/tools"
                 android:id="@+id/fragment_reserves_fin_result"
                 android:name="com.danielburgnerjr.flipulator.ReservesFinalResultFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_below="@+id/fragment_sales_mortgage_fin_result"
                 tools:layout="@layout/fragment_reserves_final_result" />
-<!--
-            <LinearLayout
-                android:id="@+id/llMortPmt"
-                android:layout_width="fill_parent"
-                android:layout_height="20sp"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/txtMortPmt"
-                    android:layout_width="0dp"
-                    android:layout_height="20sp"
-                    android:layout_weight="1"
-                    android:text="@string/mortPmt" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llInsurance"
-                android:layout_width="fill_parent"
-                android:layout_height="20sp"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/txtInsurance"
-                    android:layout_width="0dp"
-                    android:layout_height="20sp"
-                    android:layout_weight="1"
-                    android:text="@string/insurance" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llPropertyTaxes"
-                android:layout_width="fill_parent"
-                android:layout_height="20sp"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/txtPropertyTaxes"
-                    android:layout_width="0dp"
-                    android:layout_height="20sp"
-                    android:layout_weight="1"
-                    android:text="@string/taxes" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llElectric"
-                android:layout_width="fill_parent"
-                android:layout_height="20sp"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/txtElectric"
-                    android:layout_width="0dp"
-                    android:layout_height="20sp"
-                    android:layout_weight="1"
-                    android:text="@string/electric" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llGas"
-                android:layout_width="fill_parent"
-                android:layout_height="20sp"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/txtGas"
-                    android:layout_width="0dp"
-                    android:layout_height="20sp"
-                    android:layout_weight="1"
-                    android:text="@string/gas" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llWater"
-                android:layout_width="fill_parent"
-                android:layout_height="20sp"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/txtWater"
-                    android:layout_width="0dp"
-                    android:layout_height="20sp"
-                    android:layout_weight="1"
-                    android:text="@string/water" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llTotalReserves"
-                android:layout_width="fill_parent"
-                android:layout_height="35sp"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/txtTotalReserves"
-                    android:layout_width="0dp"
-                    android:layout_height="20sp"
-                    android:layout_weight="1"
-                    android:text="@string/totres" />
-            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/llClosingExpensesFR"
                 android:layout_width="fill_parent"
                 android:layout_height="20sp"
+                android:layout_below="@+id/fragment_reserves_fin_result"
                 android:orientation="horizontal" >
 
                 <TextView
@@ -466,7 +345,6 @@
                     android:layout_weight="1"
                     android:text="@string/cashCashRet" />
             </LinearLayout>
--->
         </LinearLayout>
 
     </ScrollView>

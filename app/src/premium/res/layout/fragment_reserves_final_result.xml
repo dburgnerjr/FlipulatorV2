@@ -6,9 +6,36 @@
     android:orientation="vertical" >
 
     <LinearLayout
+        android:id="@+id/llReservesFR"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/txtReserves"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="@string/reserves" />
+
+        <Spinner
+            android:id="@+id/spnTimeFrame"
+            android:layout_width="0sp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:ems="10" />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/llMortPmtFR"
         android:layout_width="fill_parent"
         android:layout_height="40sp"
+        android:layout_below="@+id/llReservesFR"
         android:orientation="horizontal" >
 
         <TextView
@@ -35,7 +62,7 @@
         android:id="@+id/llInsuranceFR"
         android:layout_width="match_parent"
         android:layout_height="40sp"
-        android:layout_marginTop="10dp"
+        android:layout_below="@+id/llMortPmtFR"
         android:orientation="horizontal" >
 
         <TextView
@@ -61,7 +88,7 @@
         android:id="@+id/llTaxesFR"
         android:layout_width="fill_parent"
         android:layout_height="40sp"
-        android:layout_below="@+id/llInsurance"
+        android:layout_below="@+id/llInsuranceFR"
         android:orientation="horizontal" >
 
         <TextView
@@ -87,7 +114,7 @@
         android:id="@+id/llWaterFR"
         android:layout_width="fill_parent"
         android:layout_height="40sp"
-        android:layout_below="@+id/llTaxes"
+        android:layout_below="@+id/llTaxesFR"
         android:orientation="horizontal" >
 
         <TextView
@@ -113,7 +140,7 @@
         android:id="@+id/llGasFR"
         android:layout_width="fill_parent"
         android:layout_height="40sp"
-        android:layout_below="@+id/llWater"
+        android:layout_below="@+id/llWaterFR"
         android:orientation="horizontal" >
 
         <TextView
@@ -139,7 +166,7 @@
         android:id="@+id/llElectricFR"
         android:layout_width="fill_parent"
         android:layout_height="40sp"
-        android:layout_below="@+id/llGas"
+        android:layout_below="@+id/llGasFR"
         android:orientation="horizontal" >
 
         <TextView
@@ -165,13 +192,14 @@
         android:id="@+id/llTotalReserves"
         android:layout_width="fill_parent"
         android:layout_height="40sp"
+        android:layout_below="@+id/llElectricFR"
         android:orientation="horizontal" >
 
         <TextView
             android:id="@+id/tvTotalReserves"
             android:layout_width="0dp"
             android:layout_height="40sp"
-            android:layout_weight="1"
+            android:layout_weight="0.5"
             android:textColor="#454545"
             android:textSize="16sp"
             android:text="@string/totres" />
