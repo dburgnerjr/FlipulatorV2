@@ -14,16 +14,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
+            <fragment xmlns:tools="http://schemas.android.com/tools"
                 android:id="@+id/fragment_location_final_result"
                 android:name="com.danielburgnerjr.flipulator.LocationFinalResultFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:layout="@layout/fragment_location_fin_result" />
 
-            <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
+            <fragment xmlns:tools="http://schemas.android.com/tools"
                 android:id="@+id/fragment_sales_mortgage_fin_result"
                 android:name="com.danielburgnerjr.flipulator.SalesMortgageFinalResultFragment"
                 android:layout_width="match_parent"
@@ -39,8 +37,11 @@
                 <TextView
                     android:id="@+id/txtReserves"
                     android:layout_width="0dp"
-                    android:layout_height="20sp"
+                    android:layout_height="40sp"
                     android:layout_weight="0.5"
+                    android:textColor="#454545"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     android:text="@string/reserves" />
 
                 <Spinner
@@ -48,9 +49,18 @@
                     android:layout_width="0sp"
                     android:layout_height="40sp"
                     android:layout_weight="0.5"
+                    android:textColor="#454545"
+                    android:textSize="16sp"
                     android:ems="10" />
             </LinearLayout>
 
+            <fragment xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/fragment_reserves_fin_result"
+                android:name="com.danielburgnerjr.flipulator.ReservesFinalResultFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:layout="@layout/fragment_reserves_final_result" />
+<!--
             <LinearLayout
                 android:id="@+id/llMortPmt"
                 android:layout_width="fill_parent"
@@ -456,7 +466,7 @@
                     android:layout_weight="1"
                     android:text="@string/cashCashRet" />
             </LinearLayout>
-
+-->
         </LinearLayout>
 
     </ScrollView>

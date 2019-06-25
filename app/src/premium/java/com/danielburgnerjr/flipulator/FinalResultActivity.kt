@@ -64,43 +64,6 @@ class FinalResultActivity : FragmentActivity() {
 
         calC = intI.getSerializableExtra("Calculate") as Calculate
 /*
-        val tvSettings = findViewById<View>(R.id.txtRehabFinance) as TextView
-        tvSettings.setText(calC!!.getFinanceValue())
-
-        val tvFRAddress = findViewById<View>(R.id.txtLocationAddress) as TextView
-        val tvFRCityStZip = findViewById<View>(R.id.txtLocationCityStZip) as TextView
-        val tvSF = findViewById<View>(R.id.txtLocationSqFootage) as TextView
-        val tvBedBath = findViewById<View>(R.id.txtLocationBedBath) as TextView
-
-        tvFRAddress.text = "Address:\t\t\t\t\t\t\t " + locL!!.getAddress()
-        tvFRCityStZip.text = "City/State/ZIP Code:\t\t " + locL!!.getCity() + ", " + locL!!.getState() + " " + locL!!.getZIPCode()
-        tvSF.text = "Square Footage:\t\t\t\t " + locL!!.getSquareFootage() + ""
-        tvBedBath.text = "BR/BA:\t\t\t\t\t\t\t\t " + locL!!.getBedrooms() + " BR/" + locL!!.getBathrooms() + " BA"
-
-        val tvSalePrice = findViewById<View>(R.id.txtSalePrice) as TextView
-        val tvPercentDown = findViewById<View>(R.id.txtPercentDown) as TextView
-        val tvOfferBid = findViewById<View>(R.id.txtOfferBid) as TextView
-        val tvRehabBudget = findViewById<View>(R.id.txtRehabBudget) as TextView
-        val tvBudgetItems = findViewById<View>(R.id.txtBudgetItems) as TextView
-
-        tvSalePrice.text = "Sale Price:\t\t\t\t\t\t\t $" + String.format("%.0f", smSM!!.getSalesPrice())
-        tvPercentDown.text = "Percent Down %:\t\t\t\t " + String.format("%.0f", smSM!!.getPercentDown()) + "%"
-        tvOfferBid.text = "Offer/Bid Price:\t\t\t\t $" + String.format("%.0f", smSM!!.getOfferBid())
-        tvRehabBudget.text = "Rehab Budget:\t\t\t\t\t $" + String.format("%.0f", rR!!.getBudget())
-        tvBudgetItems.text = "Budget Items:\t\t\t\t\t " + rR!!.getBudgetItems()
-
-        val tvDownPayment = findViewById<View>(R.id.txtDownPayment) as TextView
-        val tvLoanAmount = findViewById<View>(R.id.txtLoanAmount) as TextView
-        val tvInterestRate = findViewById<View>(R.id.txtInterestRate) as TextView
-        val tvTerm = findViewById<View>(R.id.txtTerm) as TextView
-        val tvMonthlyPmt = findViewById<View>(R.id.txtMonthlyPmt) as TextView
-
-        tvDownPayment.text = "Down Payment:\t\t\t\t $" + String.format("%.0f", smSM!!.getDownPayment())
-        tvLoanAmount.text = "Loan Amount:\t\t\t\t\t $" + String.format("%.0f", smSM!!.getLoanAmount())
-        tvInterestRate.text = "Interest Rate %:\t\t\t\t " + String.format("%.0f", smSM!!.getInterestRate()) + "%"
-        tvTerm.text = "Term (months):\t\t\t\t " + smSM!!.getTerm()
-        tvMonthlyPmt.text = "Monthly Pmt:\t\t\t\t\t $" + String.format("%.0f", smSM!!.getMonthlyPmt())
-
         frF = FinalResult()
         frF!!.setRECost(cemC!!.getSellingPrice(), cemC!!.getRealEstComm())
         frF!!.setBCCost(smSM!!.getSalesPrice(), cemC!!.getBuyClosCost())
