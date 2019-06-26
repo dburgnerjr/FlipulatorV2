@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/llClosingExpensesFR"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/txtClosingExpenses"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="1"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="@string/closingExp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llRealEstCommFR"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:layout_below="@+id/llClosingExpensesFR"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/txtRealEstComm"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:text="@string/realestcomm" />
+
+        <EditText
+            android:id="@+id/txtRECommFR"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:ems="10"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llRealEstCommPerFR"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:layout_below="@+id/llRealEstCommFR"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/txtRealEstCommPer"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:text="@string/commission" />
+
+        <EditText
+            android:id="@+id/txtRECommPercFR"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:ems="10"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llBuyerClosCostFR"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:layout_below="@+id/llRealEstCommPerFR"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/txtBuyerClosCost"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:text="@string/buyerClosCost" />
+
+        <EditText
+            android:id="@+id/txtBuyerClosCostFR"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:ems="10"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llBuyerClosCostPerFR"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:layout_below="@+id/llBuyerClosCostFR"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/txtBuyerClosCostPer"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:text="@string/bccPercentage" />
+
+        <EditText
+            android:id="@+id/txtBuyerClosCostPerFR"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:ems="10"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llSellerClosCostFR"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:layout_below="@+id/llBuyerClosCostPerFR"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/txtSellerClosCost"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:text="@string/sellClosCost" />
+
+        <EditText
+            android:id="@+id/txtSellerClosCostFR"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:ems="10"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llSellerClosCostPerFR"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:layout_below="@+id/llSellerClosCostFR"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/txtSellerClosCostPer"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:text="@string/sccPercentage" />
+
+        <EditText
+            android:id="@+id/txtSellerClosCostPerFR"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:ems="10"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llTotalCostsFR"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:layout_below="@+id/llSellerClosCostPerFR"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/txtTotalCosts"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:text="@string/totalCosts" />
+
+        <EditText
+            android:id="@+id/txtTotalCostsFR"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:ems="10"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llOutOfPocketExpensesFR"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:layout_below="@+id/llTotalCostsFR"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/txtOutOfPocketExpenses"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:text="@string/outOfPocketExp" />
+
+        <EditText
+            android:id="@+id/txtOOPExpFR"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:ems="10"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
+</RelativeLayout>

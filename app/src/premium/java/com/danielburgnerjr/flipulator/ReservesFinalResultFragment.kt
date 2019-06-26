@@ -56,6 +56,7 @@ class ReservesFinalResultFragment : Fragment() {
                 if (i == 2) {
                     dTimeFrameFactor = 2.0
                 }
+                calC!!.setTimeFrameFactor(dTimeFrameFactor)
 
                 var dMortgage = calC!!.getMortgage()!!.times(dTimeFrameFactor)
                 tvMortPmt.setText(dMortgage.toString())
@@ -89,4 +90,3 @@ class ReservesFinalResultFragment : Fragment() {
         return view
     }
 }
-

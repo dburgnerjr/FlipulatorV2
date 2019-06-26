@@ -36,6 +36,7 @@ public class Calculate : Serializable {
     private var gas: Double = 0.toDouble()             // gas
     private var electric: Double = 0.toDouble()        // electric
     private var totalExpenses: Double = 0.toDouble()   // total expenses
+    private var timeFrameFactor: Double = 1.0          // time frame factor
 
     // closing costs/market info
     private var realEstComm: Double = 0.toDouble()     // real estate commission
@@ -135,7 +136,7 @@ public class Calculate : Serializable {
         this.strFinance = strF
     }
 
-    fun getSalesPrice(): Double? {
+    fun getSalesPrice(): Double {
         return this.salesPrice
     }
 
@@ -151,7 +152,7 @@ public class Calculate : Serializable {
         this.percentDown = dPD
     }
 
-    fun getOfferBid(): Double? {
+    fun getOfferBid(): Double {
         return this.offerBid
     }
 
@@ -334,24 +335,52 @@ public class Calculate : Serializable {
         this.sellingPrice = dSP
     }
 
+    fun getTimeFrameFactor(): Double {
+        return timeFrameFactor
+    }
+
+    fun setTimeFrameFactor(dTFF: Double) {
+        this.timeFrameFactor = dTFF
+    }
+
     fun setRECost(dSP: Double, dCP: Double) {
         this.reCost = dSP * (dCP / 100)
+    }
+
+    fun getRECost(): Double {
+        return reCost
     }
 
     fun setBCCost(dSP: Double, dCP: Double) {
         this.bcCost = dSP * (dCP / 100)
     }
 
+    fun getBCCost(): Double {
+        return bcCost
+    }
+
     fun setSCCost(dSP: Double, dCP: Double) {
         this.scCost = dSP * (dCP / 100)
+    }
+
+    fun getSCCost(): Double {
+        return scCost
     }
 
     fun setTotalCost(dO: Double, dRH: Double, dRS: Double) {
         this.totalCost = dO + dRH + dRS + this.reCost + this.bcCost
     }
 
+    fun getTotalCost(): Double {
+        return totalCost
+    }
+
     fun setOOPExp(dDP: Double, dRS: Double, dRH: Double) {
         this.oopExp = dDP + dRH + dRS + this.bcCost
+    }
+
+    fun getOOPExp(): Double {
+        return oopExp
     }
 
     fun setCapGains() {
