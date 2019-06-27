@@ -29,131 +29,18 @@
                 tools:layout="@layout/fragment_sales_mortgage_final_result" />
 
             <fragment xmlns:tools="http://schemas.android.com/tools"
-                android:id="@+id/fragment_reserves_fin_result"
-                android:name="com.danielburgnerjr.flipulator.ReservesFinalResultFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:layout="@layout/fragment_reserves_final_result" />
-
-            <fragment xmlns:tools="http://schemas.android.com/tools"
                 android:id="@+id/fragment_closing_expenses_fin_result"
                 android:name="com.danielburgnerjr.flipulator.ClosingExpensesFinalResultFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:layout="@layout/fragment_closing_expenses_final_result" />
 
-            <LinearLayout
-                android:id="@+id/llPropMarketInfoFR"
-                android:layout_width="fill_parent"
-                android:layout_height="20sp"
-                android:layout_below="@+id/fragment_closing_expenses_fin_result"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/txtPropMarketInfo"
-                    android:layout_width="0dp"
-                    android:layout_height="20sp"
-                    android:layout_weight="1"
-                    android:text="@string/propMktInfo" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llFMVARV"
-                android:layout_width="fill_parent"
-                android:layout_height="20sp"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/txtFMVARV"
-                    android:layout_width="0dp"
-                    android:layout_height="20sp"
-                    android:layout_weight="1"
-                    android:text="@string/FMVARV" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llComparables"
-                android:layout_width="fill_parent"
-                android:layout_height="20sp"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/txtComparables"
-                    android:layout_width="0dp"
-                    android:layout_height="20sp"
-                    android:layout_weight="1"
-                    android:text="@string/comparables" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llSellingPrice"
-                android:layout_width="fill_parent"
-                android:layout_height="20sp"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/txtSellingPrice"
-                    android:layout_width="0dp"
-                    android:layout_height="20sp"
-                    android:layout_weight="1"
-                    android:text="@string/sellingPrice" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llBuyerCosts"
-                android:layout_width="fill_parent"
-                android:layout_height="20sp"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/txtBuyerCosts"
-                    android:layout_width="0dp"
-                    android:layout_height="20sp"
-                    android:layout_weight="1"
-                    android:text="@string/buyerCosts" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llGrossProfit"
-                android:layout_width="fill_parent"
-                android:layout_height="20sp"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/txtGrossProfit"
-                    android:layout_width="0dp"
-                    android:layout_height="20sp"
-                    android:layout_weight="1"
-                    android:text="@string/grossProfit" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llCapGains"
-                android:layout_width="fill_parent"
-                android:layout_height="20sp"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/txtCapGains"
-                    android:layout_width="0dp"
-                    android:layout_height="20sp"
-                    android:layout_weight="1"
-                    android:text="@string/capGains" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llNetProfit"
-                android:layout_width="fill_parent"
-                android:layout_height="35sp"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/txtNetProfit"
-                    android:layout_width="0dp"
-                    android:layout_height="20sp"
-                    android:layout_weight="1"
-                    android:text="@string/netProfit" />
-            </LinearLayout>
+            <fragment xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/fragment_reserves_fin_result"
+                android:name="com.danielburgnerjr.flipulator.ReservesFinalResultFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:layout="@layout/fragment_reserves_final_result" />
 
             <LinearLayout
                 android:id="@+id/llReturnOnInvestment"

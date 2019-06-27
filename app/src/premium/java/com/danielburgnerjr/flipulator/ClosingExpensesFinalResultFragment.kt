@@ -31,8 +31,9 @@ class ClosingExpensesFinalResultFragment : Fragment() {
         val txtBuyerClosCostPer = view.findViewById<View>(R.id.txtBuyerClosCostPerFR) as TextView
         val txtSellerClosCost = view.findViewById<View>(R.id.txtSellerClosCostFR) as TextView
         val txtSellerClosCostPer = view.findViewById<View>(R.id.txtSellerClosCostPerFR) as TextView
-        val txtTotalCostsFR = view.findViewById<View>(R.id.txtTotalCostsFR) as TextView
-        val txtOOPExpFR = view.findViewById<View>(R.id.txtOOPExpFR) as TextView
+        val txtFMVARVFR = view.findViewById<View>(R.id.txtFMVARVFR) as TextView
+        val txtComparablesFR = view.findViewById<View>(R.id.txtComparablesFR) as TextView
+        val txtSellingPriceFR = view.findViewById<View>(R.id.txtSellingPriceFR) as TextView
 
         calC!!.setRECost(calC!!.getSellingPrice(), calC!!.getRealEstComm())
         txtRealEstComm.setText(calC!!.getRECost().toString())
@@ -43,23 +44,19 @@ class ClosingExpensesFinalResultFragment : Fragment() {
         calC!!.setSCCost(calC!!.getSalesPrice(), calC!!.getSellClosCost())
         txtSellerClosCost.setText(calC!!.getSCCost().toString())
         txtSellerClosCostPer.setText(calC!!.getSellClosCost().toString())
-        calC!!.setTotalCost(calC!!.getOfferBid(), calC!!.getBudget(), calC!!.getTotalExpenses()!!.times(calC!!.getTimeFrameFactor()))
-        txtTotalCostsFR.setText(calC!!.getTotalCost().toString())
-        if (calC!!.getFinance() !== 2) {
-            calC!!.setOOPExp(calC!!.getDownPayment(), calC!!.getTotalExpenses()!!.times(calC!!.getTimeFrameFactor()), calC!!.getBudget())
-        }
-        // if finance rehab flag is selected, set out of pocket expenses as follows
-        if (calC!!.getFinance() === 2) {
-            calC!!.setOOPExp(calC!!.getDownPayment(), calC!!.getTotalExpenses()!!.times(calC!!.getTimeFrameFactor()), 0.0)
-        }
-        txtOOPExpFR.setText(calC!!.getOOPExp().toString())
+        txtFMVARVFR.setText(calC!!.getFMVARV().toString())
+        txtComparablesFR.setText(calC!!.getComparables().toString())
+        txtSellingPriceFR.setText(calC!!.getSellingPrice().toString())
 
         txtRealEstComm.setEnabled(false)
         txtRealEstCommPer.setEnabled(false)
         txtBuyerClosCost.setEnabled(false)
         txtBuyerClosCostPer.setEnabled(false)
-        txtTotalCostsFR.setEnabled(false)
-        txtOOPExpFR.setEnabled(false)
+        txtSellerClosCost.setEnabled(false)
+        txtSellerClosCostPer.setEnabled(false)
+        txtFMVARVFR.setEnabled(false)
+        txtComparablesFR.setEnabled(false)
+        txtSellingPriceFR.setEnabled(false)
 
         return view
     }

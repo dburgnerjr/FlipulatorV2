@@ -53,9 +53,6 @@ public class Calculate : Serializable {
     private var totalCost: Double = 0.toDouble()       // total costs
     private var oopExp: Double = 0.toDouble()          // out of pocket expenses
     private var grossProfit: Double = 0.toDouble()     // gross profit
-        set(dSP) {
-            field = dSP - this.totalCost
-        }
     private var capGains: Double = 0.toDouble()        // capital gains
     private var netProfit: Double = 0.toDouble()       // net profit
     private var roi: Double = 0.toDouble()             // return on investment
@@ -375,6 +372,14 @@ public class Calculate : Serializable {
         return totalCost
     }
 
+    fun getGrossProfit(): Double {
+        return grossProfit
+    }
+
+    fun setGrossProfit(dSP: Double) {
+        this.grossProfit = dSP - this.totalCost
+    }
+
     fun setOOPExp(dDP: Double, dRS: Double, dRH: Double) {
         this.oopExp = dDP + dRH + dRS + this.bcCost
     }
@@ -387,8 +392,16 @@ public class Calculate : Serializable {
         this.capGains = this.grossProfit * .3
     }
 
+    fun getCapGains(): Double {
+        return capGains
+    }
+
     fun setNetProfit() {
         this.netProfit = this.grossProfit - this.capGains
+    }
+
+    fun getNetProfit(): Double {
+        return netProfit
     }
 
     fun setCashOnCash() {

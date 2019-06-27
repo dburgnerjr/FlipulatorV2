@@ -40,6 +40,12 @@ class ReservesFinalResultFragment : Fragment() {
         val tvGas = view.findViewById<View>(R.id.txtGasFR) as TextView
         val tvElectric = view.findViewById<View>(R.id.txtElectricFR) as TextView
         val tvTotalExpenses = view.findViewById<View>(R.id.txtTotalReserves) as TextView
+        val txtTotalCostsFR = view.findViewById<View>(R.id.txtTotalCostsFR) as TextView
+        val txtOOPExpFR = view.findViewById<View>(R.id.txtOOPExpFR) as TextView
+        val txtBuyerCostsFR = view.findViewById<View>(R.id.txtBuyerCostsFR) as TextView
+        val txtGrossProfitFR = view.findViewById<View>(R.id.txtGrossProfitFR) as TextView
+        val txtCapGainsFR = view.findViewById<View>(R.id.txtCapGainsFR) as TextView
+        val txtNetProfitFR = view.findViewById<View>(R.id.txtNetProfitFR) as TextView
 
         spnTimeFrame!!.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(adapterView: AdapterView<*>, view: View, i: Int, l: Long) {
@@ -72,6 +78,25 @@ class ReservesFinalResultFragment : Fragment() {
                 tvElectric.setText(dElectric.toString())
                 var dTotalExpenses = calC!!.getTotalExpenses()!!.times(dTimeFrameFactor)
                 tvTotalExpenses.setText(dTotalExpenses.toString())
+                calC!!.setTotalCost(calC!!.getOfferBid(), calC!!.getBudget(), calC!!.getTotalExpenses()!!.times(calC!!.getTimeFrameFactor()))
+                txtTotalCostsFR.setText(calC!!.getTotalCost().toString())
+                if (calC!!.getFinance() !== 2) {
+                    calC!!.setOOPExp(calC!!.getDownPayment(), calC!!.getTotalExpenses()!!.times(calC!!.getTimeFrameFactor()), calC!!.getBudget())
+                }
+                // if finance rehab flag is selected, set out of pocket expenses as follows
+                if (calC!!.getFinance() === 2) {
+                    calC!!.setOOPExp(calC!!.getDownPayment(), calC!!.getTotalExpenses()!!.times(calC!!.getTimeFrameFactor()), 0.0)
+                }
+                txtOOPExpFR.setText(calC!!.getOOPExp().toString())
+                calC!!.setTotalCost(calC!!.getOfferBid(), calC!!.getBudget(), calC!!.getTotalExpenses()!!.times(calC!!.getTimeFrameFactor()))
+                calC!!.setGrossProfit(calC!!.getSellingPrice())
+                calC!!.setCapGains()
+                calC!!.setNetProfit()
+                txtBuyerCostsFR.setText(calC!!.getTotalCost().toString())
+                txtGrossProfitFR.setText(calC!!.getGrossProfit().toString())
+                txtCapGainsFR.setText(calC!!.getCapGains().toString())
+                txtNetProfitFR.setText(calC!!.getNetProfit().toString())
+
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
@@ -86,6 +111,12 @@ class ReservesFinalResultFragment : Fragment() {
         tvGas.setEnabled(false)
         tvElectric.setEnabled(false)
         tvTotalExpenses.setEnabled(false)
+        txtTotalCostsFR.setEnabled(false)
+        txtOOPExpFR.setEnabled(false)
+        txtBuyerCostsFR.setEnabled(false)
+        txtGrossProfitFR.setEnabled(false)
+        txtCapGainsFR.setEnabled(false)
+        txtNetProfitFR.setEnabled(false)
 
         return view
     }

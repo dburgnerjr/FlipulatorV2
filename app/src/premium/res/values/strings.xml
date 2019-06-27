@@ -85,6 +85,7 @@
     <string name="totres">Total Reserves:</string>
 
     <string name="closingExp">Closing Expenses</string>
+    <string name="costInvestment">Cost Of Investment</string>
     <string name="realestcomm">Real Estate Comm:</string>
     <string name="commission">Commission %:</string>
     <string name="buyerClosCost">Buyer Clos Cost:</string>

@@ -215,4 +215,184 @@
             android:inputType="numberDecimal" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/llCostOfInvestment"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:layout_below="@+id/llTotalReserves"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/txtCostOfInvestment"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="1"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="@string/costInvestment" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llTotalCostsFR"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:layout_below="@+id/llCostOfInvestment"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/txtTotalCosts"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:text="@string/totalCosts" />
+
+        <EditText
+            android:id="@+id/txtTotalCostsFR"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:ems="10"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llOutOfPocketExpensesFR"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:layout_below="@+id/llTotalCostsFR"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/txtOutOfPocketExpenses"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:text="@string/outOfPocketExp" />
+
+        <EditText
+            android:id="@+id/txtOOPExpFR"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:ems="10"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llBuyerCostsFR"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:layout_below="@+id/llOutOfPocketExpensesFR"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/txtBuyerCosts"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:text="@string/buyerCosts" />
+
+        <EditText
+            android:id="@+id/txtBuyerCostsFR"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:ems="10"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llGrossProfitFR"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:layout_below="@+id/llBuyerCostsFR"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/txtGrossProfit"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:text="@string/grossProfit" />
+
+        <EditText
+            android:id="@+id/txtGrossProfitFR"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:ems="10"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llCapGainsFR"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:layout_below="@+id/llGrossProfitFR"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/txtCapGains"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:text="@string/capGains" />
+
+        <EditText
+            android:id="@+id/txtCapGainsFR"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:ems="10"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llNetProfitFR"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:layout_below="@+id/llCapGainsFR"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/txtNetProfit"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:text="@string/netProfit" />
+
+        <EditText
+            android:id="@+id/txtNetProfitFR"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:ems="10"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
 </RelativeLayout>

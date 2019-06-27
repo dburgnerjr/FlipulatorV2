@@ -185,23 +185,41 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/llTotalCostsFR"
+        android:id="@+id/llPropMarketInfoFR"
         android:layout_width="fill_parent"
         android:layout_height="40sp"
         android:layout_below="@+id/llSellerClosCostPerFR"
         android:orientation="horizontal" >
 
         <TextView
-            android:id="@+id/txtTotalCosts"
+            android:id="@+id/txtPropMarketInfo"
+            android:layout_width="0dp"
+            android:layout_height="20sp"
+            android:layout_weight="1"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="@string/propMktInfo" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llFMVARVFR"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:layout_below="@+id/llPropMarketInfoFR"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/txtFMVARV"
             android:layout_width="0dp"
             android:layout_height="40sp"
             android:layout_weight="0.5"
             android:textColor="#454545"
             android:textSize="16sp"
-            android:text="@string/totalCosts" />
+            android:text="@string/FMVARV" />
 
         <EditText
-            android:id="@+id/txtTotalCostsFR"
+            android:id="@+id/txtFMVARVFR"
             android:layout_width="0dp"
             android:layout_height="40sp"
             android:layout_weight="0.5"
@@ -212,23 +230,50 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/llOutOfPocketExpensesFR"
+        android:id="@+id/llComparablesFR"
         android:layout_width="fill_parent"
         android:layout_height="40sp"
-        android:layout_below="@+id/llTotalCostsFR"
+        android:layout_below="@+id/llFMVARVFR"
         android:orientation="horizontal" >
 
         <TextView
-            android:id="@+id/txtOutOfPocketExpenses"
+            android:id="@+id/txtComparables"
             android:layout_width="0dp"
             android:layout_height="40sp"
             android:layout_weight="0.5"
             android:textColor="#454545"
             android:textSize="16sp"
-            android:text="@string/outOfPocketExp" />
+            android:text="@string/comparables" />
 
         <EditText
-            android:id="@+id/txtOOPExpFR"
+            android:id="@+id/txtComparablesFR"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:ems="10"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llSellingPriceFR"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:layout_below="@+id/llComparablesFR"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/txtSellingPrice"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:text="@string/sellingPrice" />
+
+        <EditText
+            android:id="@+id/txtSellingPriceFR"
             android:layout_width="0dp"
             android:layout_height="40sp"
             android:layout_weight="0.5"
