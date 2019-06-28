@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
@@ -392,6 +391,136 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llReturnOnInvestment"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:layout_below="@+id/llNetProfitFR"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/txtReturnOnInvestment"
+            android:layout_width="0dp"
+            android:layout_height="20sp"
+            android:layout_weight="1"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="@string/returnInvestment" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llMoneyOut"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:layout_below="@+id/llReturnOnInvestment"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/txtMoneyOut"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:text="@string/moneyOut" />
+
+        <EditText
+            android:id="@+id/txtMoneyOutFR"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:ems="10"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llMoneyIn"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:layout_below="@+id/llMoneyOut"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/txtMoneyIn"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:text="@string/moneyIn" />
+
+        <EditText
+            android:id="@+id/txtMoneyInFR"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:ems="10"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llPercReturn"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:layout_below="@+id/llMoneyIn"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/txtPercReturn"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="@string/percReturn" />
+
+        <EditText
+            android:id="@+id/txtPercReturnFR"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:ems="10"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:inputType="numberDecimal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llCashCashRet"
+        android:layout_width="fill_parent"
+        android:layout_height="150sp"
+        android:layout_below="@+id/llPercReturn"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/txtCashCashRet"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="@string/cashCashRet" />
+
+        <EditText
+            android:id="@+id/txtCashCashRetFR"
+            android:layout_width="0dp"
+            android:layout_height="40sp"
+            android:layout_weight="0.5"
+            android:ems="10"
+            android:textColor="#454545"
+            android:textSize="16sp"
+            android:textStyle="bold"
             android:inputType="numberDecimal" />
     </LinearLayout>
 

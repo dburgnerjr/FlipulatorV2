@@ -56,9 +56,6 @@ public class Calculate : Serializable {
     private var capGains: Double = 0.toDouble()        // capital gains
     private var netProfit: Double = 0.toDouble()       // net profit
     private var roi: Double = 0.toDouble()             // return on investment
-        set(dSP) {
-            field = this.netProfit / dSP * 100
-        }
     private var cashOnCash: Double = 0.toDouble()      // cash on cash return
 
     fun getAddress(): String? {
@@ -404,6 +401,17 @@ public class Calculate : Serializable {
         return netProfit
     }
 
+    fun getROI(): Double {
+        return roi
+    }
+
+    fun setROI(dSP: Double) {
+        this.roi = this.netProfit / dSP * 100
+    }
+
+    fun getCashOnCash(): Double {
+        return cashOnCash
+    }
     fun setCashOnCash() {
         this.cashOnCash = this.netProfit / this.oopExp * 100
     }

@@ -46,6 +46,10 @@ class ReservesFinalResultFragment : Fragment() {
         val txtGrossProfitFR = view.findViewById<View>(R.id.txtGrossProfitFR) as TextView
         val txtCapGainsFR = view.findViewById<View>(R.id.txtCapGainsFR) as TextView
         val txtNetProfitFR = view.findViewById<View>(R.id.txtNetProfitFR) as TextView
+        val txtMoneyOutFR = view.findViewById<View>(R.id.txtMoneyOutFR) as TextView
+        val txtMoneyInFR = view.findViewById<View>(R.id.txtMoneyInFR) as TextView
+        val txtPercReturnFR = view.findViewById<View>(R.id.txtPercReturnFR) as TextView
+        val txtCashCashRetFR = view.findViewById<View>(R.id.txtCashCashRetFR) as TextView
 
         spnTimeFrame!!.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(adapterView: AdapterView<*>, view: View, i: Int, l: Long) {
@@ -92,11 +96,16 @@ class ReservesFinalResultFragment : Fragment() {
                 calC!!.setGrossProfit(calC!!.getSellingPrice())
                 calC!!.setCapGains()
                 calC!!.setNetProfit()
+                calC!!.setROI(calC!!.getSellingPrice())
+                calC!!.setCashOnCash()
                 txtBuyerCostsFR.setText(calC!!.getTotalCost().toString())
                 txtGrossProfitFR.setText(calC!!.getGrossProfit().toString())
                 txtCapGainsFR.setText(calC!!.getCapGains().toString())
                 txtNetProfitFR.setText(calC!!.getNetProfit().toString())
-
+                txtMoneyOutFR.setText(calC!!.getOOPExp().toString())
+                txtMoneyInFR.setText(calC!!.getNetProfit().toString())
+                txtPercReturnFR.setText(calC!!.getROI().toString())
+                txtCashCashRetFR.setText(calC!!.getCashOnCash().toString())
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
@@ -117,6 +126,10 @@ class ReservesFinalResultFragment : Fragment() {
         txtGrossProfitFR.setEnabled(false)
         txtCapGainsFR.setEnabled(false)
         txtNetProfitFR.setEnabled(false)
+        txtMoneyOutFR.setEnabled(false)
+        txtMoneyInFR.setEnabled(false)
+        txtPercReturnFR.setEnabled(false)
+        txtCashCashRetFR.setEnabled(false)
 
         return view
     }
