@@ -6,9 +6,6 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
 import android.widget.TextView
 
 import com.danielburgnerjr.flipulator.model.Calculate
@@ -36,17 +33,26 @@ class ClosingExpensesFinalResultFragment : Fragment() {
         val txtSellingPriceFR = view.findViewById<View>(R.id.txtSellingPriceFR) as TextView
 
         calC!!.setRECost(calC!!.getSellingPrice(), calC!!.getRealEstComm())
-        txtRealEstComm.setText(calC!!.getRECost().toString())
-        txtRealEstCommPer.setText(calC!!.getRealEstComm().toString())
+        var strRealEstComm = String.format("$%.0f", calC!!.getRECost())
+        txtRealEstComm.setText(strRealEstComm)
+        var strRealEstCommPer = String.format("%.0f", calC!!.getRealEstComm()) + "%"
+        txtRealEstCommPer.setText(strRealEstCommPer)
         calC!!.setBCCost(calC!!.getSalesPrice(), calC!!.getBuyClosCost())
-        txtBuyerClosCost.setText(calC!!.getBCCost().toString())
-        txtBuyerClosCostPer.setText(calC!!.getBuyClosCost().toString())
+        var strBuyerClosCost = String.format("$%.0f", calC!!.getBCCost())
+        txtBuyerClosCost.setText(strBuyerClosCost)
+        var strBuyerClosCostPer = String.format("%.0f", calC!!.getBuyClosCost()) + "%"
+        txtBuyerClosCostPer.setText(strBuyerClosCostPer)
         calC!!.setSCCost(calC!!.getSalesPrice(), calC!!.getSellClosCost())
-        txtSellerClosCost.setText(calC!!.getSCCost().toString())
-        txtSellerClosCostPer.setText(calC!!.getSellClosCost().toString())
-        txtFMVARVFR.setText(calC!!.getFMVARV().toString())
-        txtComparablesFR.setText(calC!!.getComparables().toString())
-        txtSellingPriceFR.setText(calC!!.getSellingPrice().toString())
+        var strSellerClosCost = String.format("$%.0f", calC!!.getSCCost())
+        txtSellerClosCost.setText(strSellerClosCost)
+        var strSellerClosCostPer = String.format("%.0f", calC!!.getSellClosCost() + "%"
+        txtSellerClosCostPer.setText(strSellerClosCostPer)
+        var strFMVARV = String.format("$%.0f", calC!!.getFMVARV())
+        txtFMVARVFR.setText(strFMVARV)
+        var strComparables = String.format("$%.0f", calC!!.getComparables())
+        txtComparablesFR.setText(strComparables)
+        var strSellingPrice = String.format("$%.0f", calC!!.getSellingPrice())
+        txtSellingPriceFR.setText(strSellingPrice)
 
         txtRealEstComm.setEnabled(false)
         txtRealEstCommPer.setEnabled(false)
