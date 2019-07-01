@@ -13,12 +13,12 @@ class Calculate : Serializable {
     var dFMVARV: Double = 0.toDouble()            // FMV/ARV
     // returns budget
     var dBudget: Double = 0.toDouble()         // budget
-    // returns rehab flag
     var strBudgetItems: String? = null    // list of items that need repair
     var dClosHoldCosts: Double = 0.toDouble()    // closing/holding costs
     var dProfit: Double = 0.toDouble()            // profit
     var dROI: Double = 0.toDouble()            // return on investment
     var dCashOnCash: Double = 0.toDouble()        // cash on cash return
+    var strRTSel: String? = null
 
     fun getAddress(): String? {
         return strAddress
@@ -105,7 +105,6 @@ class Calculate : Serializable {
     }
 
     fun setProfit(dSP: Double, dRV: Double, dB: Double) {
-
         this.dProfit = dRV - dSP - dB - this.dClosHoldCosts
     }
 
@@ -125,8 +124,14 @@ class Calculate : Serializable {
         this.dCashOnCash = this.dProfit / (dB + this.dClosHoldCosts) * 100
     }
 
-    fun calcBudgetRehabType(strT: String) {
+    fun getRTSel(): String? {
+        return strRTSel
+    }
 
+    fun setRTSel(strSel: String) {
+        this.strRTSel = strSel
+    }
+    fun calcBudgetRehabType(strT: String) {
         // determines budget based on type and square footage
         if (strT == "Low") {
             this.dBudget = (15 * this.nSquareFootage).toDouble()

@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.view.KeyEvent
@@ -12,13 +13,16 @@ import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.Toast
 
 import com.danielburgnerjr.flipulator.model.Calculate
+import com.danielburgnerjr.flipulator.util.ExcelSpreadsheet
 
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
-import android.content.DialogInterface
 
+import java.io.File
+import java.io.IOException
 
+import jxl.write.WriteException
 
 class CalculateActivity : Activity() {
 
@@ -50,7 +54,7 @@ class CalculateActivity : Activity() {
     private var btnSave: Button? = null
     private var llEditInfo: LinearLayout? = null
     private var strRTSel: String? = null
-
+    private var xlsSpreadsheet: ExcelSpreadsheet? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,6 +66,7 @@ class CalculateActivity : Activity() {
         mAdCalcView.loadAd(adRequest)
 
         calR = Calculate()
+        xlsSpreadsheet = ExcelSpreadsheet()
         etAddress = findViewById<EditText>(R.id.txtAddress)
         etCityStZip = findViewById<EditText>(R.id.txtCityStZip)
         etSquareFootage = findViewById<EditText>(R.id.txtSq_Footage)
@@ -98,6 +103,7 @@ class CalculateActivity : Activity() {
                 if (position > 0) {
                     strRTSel = parentView.getItemAtPosition(position).toString()
                     calR!!.setSquareFootage(etSquareFootage!!.text.toString().toInt())
+                    calR!!.setRTSel(strRTSel!!)
                     when (strRTSel) {
                         "Low", "Medium", "High", "Super-High", "Bulldozer" -> calR!!.calcBudgetRehabType(strRTSel!!)
                     }
@@ -272,18 +278,16 @@ class CalculateActivity : Activity() {
     fun saveFile(view: View) {
         Toast.makeText(applicationContext, "Coming soon", Toast.LENGTH_SHORT).show()
         // saves results to text file
-/*
+
         val myDir = File(applicationContext.getExternalFilesDir(null)!!.toString() + "/FlipulatorFree")
         myDir.mkdirs()
-        val strFileNameXls = calC.getAddress() + " " + calC.getCityStZip() + ".xls"
-        val file = File(myDir, strFileNameXls)
+        val strFileNameXls = calR!!.getAddress() + " " + calR!!.getCityStZip() + ".xls"
 
         // create Excel spreadsheet
-        createSpreadsheet(myDir, strFileNameXls)
+        xlsSpreadsheet!!.createSpreadsheet(myDir, calR!!, strFileNameXls)
 
         val strSavedFile = "File saved as: $strFileNameXls"
         Toast.makeText(applicationContext, strSavedFile, Toast.LENGTH_SHORT).show()
-*/
     }
 
     fun emailFile(view: View) {
@@ -295,8 +299,7 @@ class CalculateActivity : Activity() {
                 }
                 .setNegativeButton("Excel") { arg0, arg1 ->
                     // do something when the button is clicked
-                    Toast.makeText(applicationContext, "Coming soon", Toast.LENGTH_SHORT).show()
-/*
+                    //Toast.makeText(applicationContext, "Coming soon", Toast.LENGTH_SHORT).show()
                     try {
                         emailExcelSpreadsheet()
                     } catch (e: IOException) {
@@ -304,7 +307,6 @@ class CalculateActivity : Activity() {
                     } catch (e: WriteException) {
                         Toast.makeText(applicationContext, e.toString(), Toast.LENGTH_SHORT).show()
                     }
-*/
                 }
                 .show()
     }
@@ -328,6 +330,25 @@ class CalculateActivity : Activity() {
         intEmailActivity.putExtra(Intent.EXTRA_SUBJECT, "Flipulator Free results for: " + calR!!.getAddress() + " " + calR!!.getCityStZip())
         intEmailActivity.putExtra(Intent.EXTRA_TEXT, strMessage)
         intEmailActivity.type = "plain/text"
+        startActivity(intEmailActivity)
+    }
+
+    @Throws(IOException::class, WriteException::class)
+    fun emailExcelSpreadsheet() {
+        val myDir = File(applicationContext.getExternalFilesDir(null)!!.toString() + "/FlipulatorFree")
+        myDir.mkdirs()
+        val strFileNameXls = calR!!.getAddress() + " " + calR!!.getCityStZip() + ".xls"
+        val file = File(myDir, strFileNameXls)
+
+        if (!file.exists()) {
+            xlsSpreadsheet!!.createSpreadsheet(myDir, calR!!, strFileNameXls)
+        }
+
+        val intEmailActivity = Intent(Intent.ACTION_SEND)
+        intEmailActivity.putExtra(Intent.EXTRA_EMAIL, arrayOf<String>())
+        intEmailActivity.putExtra(Intent.EXTRA_SUBJECT, "Flipulator Free results for: " + calR!!.getAddress() + " " + calR!!.getCityStZip())
+        intEmailActivity.putExtra(Intent.EXTRA_STREAM, Uri.parse("file:///$file"))
+        intEmailActivity.type = "application/excel"
         startActivity(intEmailActivity)
     }
 
