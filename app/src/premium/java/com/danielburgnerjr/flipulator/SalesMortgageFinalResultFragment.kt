@@ -32,22 +32,17 @@ class SalesMortgageFinalResultFragment : Fragment() {
         val tvTerm = view.findViewById<View>(R.id.txtTermFR) as TextView
         val tvMonthlyPmt = view.findViewById<View>(R.id.txtMonthlyPmt) as TextView
 
-        var strSalesPrice = String.format("$%.0f", calC!!.getSalesPrice())
-        tvSalesPrice.setText(strSalesPrice)
-        var strPercentDown = String.format("%.0f", calC!!.getPercentDown()) + "%"
+        tvSalesPrice.setText(String.format("$%.0f", calC!!.getSalesPrice()))
+        val strPercentDown = String.format("%.0f", calC!!.getPercentDown()) + "%"
         tvPercentDown.setText(strPercentDown)
-        var strOfferBid = String.format("$%.0f", calC!!.getOfferBid())
-        tvOfferBid.setText(strOfferBid)
-        var strRehabBudget = String.format("$%.0f", calC!!.getBudget())
-        tvRehabBudget.setText(strRehabBudget)
+        tvOfferBid.setText(String.format("$%.0f", calC!!.getOfferBid()))
+        tvRehabBudget.setText(String.format("$%.0f", calC!!.getBudget()))
         tvRehabBudgetItems.setText(calC!!.getBudgetItems())
-        var strDownPayment = String.format("$%.0f", calC!!.getDownPayment())
-        tvDownPayment.setText(strDownPayment)
-        var strInterestRate = String.format("%.0f", calC!!.getInterestRate()) + "%"
+        tvDownPayment.setText(String.format("$%.0f", calC!!.getDownPayment()))
+        val strInterestRate = String.format("%.0f", calC!!.getInterestRate()) + "%"
         tvInterestRate.setText(strInterestRate)
         tvTerm.setText(calC!!.getTerm().toString())
-        var strMonthlyPmt = String.format("$%.0f", calC!!.getMonthlyPmt())
-        tvMonthlyPmt.setText(strMonthlyPmt)
+        tvMonthlyPmt.setText(String.format("$%.0f", calC!!.getMonthlyPmt()))
 
         tvSalesPrice.setEnabled(false)
         tvPercentDown.setEnabled(false)

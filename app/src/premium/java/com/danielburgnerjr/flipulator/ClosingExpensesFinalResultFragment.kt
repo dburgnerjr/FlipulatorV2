@@ -33,26 +33,20 @@ class ClosingExpensesFinalResultFragment : Fragment() {
         val txtSellingPriceFR = view.findViewById<View>(R.id.txtSellingPriceFR) as TextView
 
         calC!!.setRECost(calC!!.getSellingPrice(), calC!!.getRealEstComm())
-        var strRealEstComm = String.format("$%.0f", calC!!.getRECost())
-        txtRealEstComm.setText(strRealEstComm)
-        var strRealEstCommPer = String.format("%.0f", calC!!.getRealEstComm()) + "%"
+        txtRealEstComm.setText(String.format("$%.0f", calC!!.getRECost()))
+        val strRealEstCommPer = String.format("%.0f", calC!!.getRealEstComm()) + "%"
         txtRealEstCommPer.setText(strRealEstCommPer)
         calC!!.setBCCost(calC!!.getSalesPrice(), calC!!.getBuyClosCost())
-        var strBuyerClosCost = String.format("$%.0f", calC!!.getBCCost())
-        txtBuyerClosCost.setText(strBuyerClosCost)
-        var strBuyerClosCostPer = String.format("%.0f", calC!!.getBuyClosCost()) + "%"
+        txtBuyerClosCost.setText(String.format("$%.0f", calC!!.getBCCost()))
+        val strBuyerClosCostPer = String.format("%.0f", calC!!.getBuyClosCost()) + "%"
         txtBuyerClosCostPer.setText(strBuyerClosCostPer)
         calC!!.setSCCost(calC!!.getSalesPrice(), calC!!.getSellClosCost())
-        var strSellerClosCost = String.format("$%.0f", calC!!.getSCCost())
-        txtSellerClosCost.setText(strSellerClosCost)
-        var strSellerClosCostPer = String.format("%.0f", calC!!.getSellClosCost() + "%"
+        txtSellerClosCost.setText(String.format("$%.0f", calC!!.getSCCost()))
+        val strSellerClosCostPer = String.format("%.0f", calC!!.getSellClosCost()) + "%"
         txtSellerClosCostPer.setText(strSellerClosCostPer)
-        var strFMVARV = String.format("$%.0f", calC!!.getFMVARV())
-        txtFMVARVFR.setText(strFMVARV)
-        var strComparables = String.format("$%.0f", calC!!.getComparables())
-        txtComparablesFR.setText(strComparables)
-        var strSellingPrice = String.format("$%.0f", calC!!.getSellingPrice())
-        txtSellingPriceFR.setText(strSellingPrice)
+        txtFMVARVFR.setText(String.format("$%.0f", calC!!.getFMVARV()))
+        txtComparablesFR.setText(String.format("$%.0f", calC!!.getComparables()))
+        txtSellingPriceFR.setText(String.format("$%.0f", calC!!.getSellingPrice()))
 
         txtRealEstComm.setEnabled(false)
         txtRealEstCommPer.setEnabled(false)

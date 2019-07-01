@@ -209,6 +209,10 @@ public class Calculate : Serializable {
         this.loanAmount = this.offerBid - this.downPayment
     }
 
+    fun getLoanAmount(): Double {
+        return this.loanAmount
+    }
+
     fun setMonthlyPmt() {
         if (this.percentDown == 100.0) {
             this.dMonthlyPmt = 0.toDouble()

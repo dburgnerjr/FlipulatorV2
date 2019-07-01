@@ -69,7 +69,7 @@ class SalesMortgageActivity : Activity() {
                     when (strRTSel) {
                         "Low", "Medium", "High", "Super-High", "Bulldozer" -> calC!!.calcBudgetRehabType(strRTSel!!)
                     }
-                    etRehabBudget!!.setText(calC!!.getBudget().toString())
+                    etRehabBudget!!.setText(String.format("$%.0f", calC!!.getBudget()))
                 }
                 nRehab = position
             }
@@ -167,7 +167,8 @@ class SalesMortgageActivity : Activity() {
             calC!!.setTerm(Integer.parseInt(etTerm!!.text.toString()))
             calC!!.setBudgetItems(etBudgetItems!!.text.toString())
             calC!!.setRehab(nRehab)
-            calC!!.setBudget(java.lang.Double.parseDouble(etRehabBudget!!.text.toString()))
+            if (("Flat Rate" == spnRehabType!!.getSelectedItem().toString()))
+                calC!!.setBudget(java.lang.Double.parseDouble(etRehabBudget!!.text.toString()))
             calC!!.setDownPayment()
             calC!!.setLoanAmount()
             if (calC!!.getFinance() != 2) {

@@ -60,133 +60,24 @@ class FinalResultActivity : FragmentActivity() {
         spnTimeFrame = findViewById<View>(R.id.spnTimeFrame) as Spinner
         spnTimeFrame!!.adapter = aradAdapter
 
-        val intI = getIntent()
+        var intI = getIntent()
 
         calC = intI.getSerializableExtra("Calculate") as Calculate
-/*
-        frF = FinalResult()
-        frF!!.setRECost(cemC!!.getSellingPrice(), cemC!!.getRealEstComm())
-        frF!!.setBCCost(smSM!!.getSalesPrice(), cemC!!.getBuyClosCost())
-        frF!!.setSCCost(smSM!!.getSalesPrice(), cemC!!.getSellClosCost())
 
-        val tvRealEstComm = findViewById<View>(R.id.txtRealEstComm) as TextView
-        val tvRealEstCommPer = findViewById<View>(R.id.txtRealEstCommPer) as TextView
-        val tvBuyerClosCost = findViewById<View>(R.id.txtBuyerClosCost) as TextView
-        val tvBuyerClosCostPer = findViewById<View>(R.id.txtBuyerClosCostPer) as TextView
-        val tvSellerClosCost = findViewById<View>(R.id.txtSellerClosCost) as TextView
-        val tvSellerClosCostPer = findViewById<View>(R.id.txtSellerClosCostPer) as TextView
-
-        tvRealEstComm.text = "Real Estate Comm:\t\t\t $" + String.format("%.0f", frF!!.getRECost())
-        tvRealEstCommPer.text = "Commission %:\t\t\t\t " + String.format("%.0f", cemC!!.getRealEstComm()) + "%"
-        tvBuyerClosCost.text = "Buyer Clos Cost:\t\t\t\t $" + String.format("%.0f", frF!!.getBCCost())
-        tvBuyerClosCostPer.text = "Buyer Closing Cost %:\t " + String.format("%.0f", cemC!!.getBuyClosCost()) + "%"
-        tvSellerClosCost.text = "Sell Clos Cost:\t\t\t\t\t $" + String.format("%.0f", frF!!.getSCCost())
-        tvSellerClosCostPer.text = "Seller Closing Cost %:\t " + String.format("%.0f", cemC!!.getSellClosCost()) + "%"
-
-        val tvFMVARV = findViewById<View>(R.id.txtFMVARV) as TextView
-        val tvComparables = findViewById<View>(R.id.txtComparables) as TextView
-        val tvSellingPrice = findViewById<View>(R.id.txtSellingPrice) as TextView
-
-        tvFMVARV.text = "FMV/ARV:\t\t\t\t\t\t\t $" + String.format("%.0f", cemC!!.getFMVARV())
-        tvComparables.text = "Comparables:\t\t\t\t\t $" + String.format("%.0f", cemC!!.getComparables())
-        tvSellingPrice.text = "Selling Price:\t\t\t\t\t $" + String.format("%.0f", cemC!!.getSellingPrice())
-
-        spnTimeFrame!!.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(adapterView: AdapterView<*>, view: View, i: Int, l: Long) {
-                spnTimeFrame!!.setSelection(i, true)
-                val item = adapterView.getItemAtPosition(i)
-                var dTimeFrameFactor = 1.0
-                // set time frame factor based on time frame value
-                if (i == 0) {
-                    dTimeFrameFactor = 1.0
-                }
-                if (i == 1) {
-                    dTimeFrameFactor = 1.5
-                }
-                if (i == 2) {
-                    dTimeFrameFactor = 2.0
-                }
-
-                val tvResMort = findViewById<View>(R.id.txtMortPmt) as TextView
-                val tvResTaxes = findViewById<View>(R.id.txtPropertyTaxes) as TextView
-                val tvResIns = findViewById<View>(R.id.txtInsurance) as TextView
-                val tvResElect = findViewById<View>(R.id.txtElectric) as TextView
-                val tvResWater = findViewById<View>(R.id.txtWater) as TextView
-                val tvResGas = findViewById<View>(R.id.txtGas) as TextView
-                val tvTotRes = findViewById<View>(R.id.txtTotalReserves) as TextView
-
-                // calculates reserves based on time frame factor
-                tvResMort.text = "Mortgage:\t\t\t\t\t\t\t $" + String.format("%.0f", rsR!!.getMortgage() * dTimeFrameFactor)
-                tvResTaxes.text = "Property Taxes:\t\t\t\t $" + String.format("%.0f", rsR!!.getTaxes() * dTimeFrameFactor)
-                tvResIns.text = "Insurance:\t\t\t\t\t\t\t $" + String.format("%.0f", rsR!!.getInsurance() * dTimeFrameFactor)
-                tvResElect.text = "Electric:\t\t\t\t\t\t\t\t $" + String.format("%.0f", rsR!!.getElectric() * dTimeFrameFactor)
-                tvResWater.text = "Water:\t\t\t\t\t\t\t\t $" + String.format("%.0f", rsR!!.getWater() * dTimeFrameFactor)
-                tvResGas.text = "Gas:\t\t\t\t\t\t\t\t\t $" + String.format("%.0f", rsR!!.getGas() * dTimeFrameFactor)
-                tvTotRes.text = "Total Reserves:\t\t\t\t $" + String.format("%.0f", rsR!!.getTotalExpenses() * dTimeFrameFactor)
-
-                frF!!.setTotalCost(smSM!!.getOfferBid(), rR!!.getBudget(), rsR!!.getTotalExpenses() * dTimeFrameFactor)
-                // if finance rehab flag is not selected, set out of pocket expenses as follows
-                if (setS!!.getFinance() !== 2) {
-                    frF!!.setOOPExp(smSM!!.getDownPayment(), rsR!!.getTotalExpenses() * dTimeFrameFactor, rR!!.getBudget())
-                }
-                // if finance rehab flag is selected, set out of pocket expenses as follows
-                if (setS!!.getFinance() === 2) {
-                    frF!!.setOOPExp(smSM!!.getDownPayment(), rsR!!.getTotalExpenses() * dTimeFrameFactor, 0.0)
-                }
-                frF!!.setGrossProfit(cemC!!.getSellingPrice())
-                frF!!.setCapGains()
-                frF!!.setNetProfit()
-                if (frF!!.getGrossProfit() < 30000.0) {
-                    val adAlertBox = AlertDialog.Builder(this@FinalResultActivity)
-                            .setMessage("Your gross profit is below $30K! Would you like to make changes now?")
-                            .setPositiveButton("Yes") { arg0, arg1 ->
-                                // do something when the button is clicked
-                                val intB = Intent(this@FinalResultActivity, SettingsActivity::class.java)
-                                intB.putExtra("Settings", setS)
-                                intB.putExtra("Location", locL)
-                                intB.putExtra("SalesMortgage", smSM)
-                                intB.putExtra("Rehab", rR)
-                                intB.putExtra("Reserves", rsR)
-                                intB.putExtra("ClosExpPropMktInfo", cemC)
-                                startActivity(intB)
-                                finish()
-                            }
-                            .setNegativeButton("No") { arg0, arg1 -> }
-                            .show()
-                }
-                frF!!.setROI(cemC!!.getSellingPrice())
-                frF!!.setCashOnCash()
-
-                val tvTotalCosts = findViewById<View>(R.id.txtTotalCosts) as TextView
-                val tvOutOfPocket = findViewById<View>(R.id.txtOutOfPocketExpenses) as TextView
-
-                tvTotalCosts.text = "Total Costs:\t\t\t\t\t\t $" + String.format("%.0f", frF!!.getTotalCost())
-                tvOutOfPocket.text = "Out of Pocket Exp:\t\t\t $" + String.format("%.0f", frF!!.getOOPExp())
-
-                val tvBuyerCosts = findViewById<View>(R.id.txtBuyerCosts) as TextView
-                val tvGrossProfit = findViewById<View>(R.id.txtGrossProfit) as TextView
-                val tvCapGains = findViewById<View>(R.id.txtCapGains) as TextView
-                val tvNetProfit = findViewById<View>(R.id.txtNetProfit) as TextView
-                val tvMoneyOut = findViewById<View>(R.id.txtMoneyOut) as TextView
-                val tvMoneyIn = findViewById<View>(R.id.txtMoneyIn) as TextView
-                val tvPercReturn = findViewById<View>(R.id.txtPercReturn) as TextView
-                val tvCashCashRet = findViewById<View>(R.id.txtCashCashRet) as TextView
-
-                tvBuyerCosts.text = "Buy + Costs:\t\t\t\t\t\t $" + String.format("%.0f", frF!!.getTotalCost())
-                tvGrossProfit.text = "Gross Profit:\t\t\t\t\t\t $" + String.format("%.0f", frF!!.getGrossProfit())
-                tvCapGains.text = "Capital Gains:\t\t\t\t\t $" + String.format("%.0f", frF!!.getCapGains())
-                tvNetProfit.text = "Net Profit:\t\t\t\t\t\t\t $" + String.format("%.0f", frF!!.getNetProfit())
-                tvMoneyOut.text = "Money Out:\t\t\t\t\t\t $" + String.format("%.0f", frF!!.getOOPExp())
-                tvMoneyIn.text = "Money In:\t\t\t\t\t\t\t $" + String.format("%.0f", frF!!.getNetProfit())
-                tvPercReturn.text = "% Return:\t\t\t\t\t\t\t " + String.format("%.1f", frF!!.getROI()) + "%"
-                tvCashCashRet.text = "Cash on Cash Return:\t " + String.format("%.1f", frF!!.getCashOnCash()) + "%"
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>) {
-                // sometimes you need nothing here
-            }
+        if (calC!!.getGrossProfit() < 30000.0) {
+            val adAlertBox = AlertDialog.Builder(this@FinalResultActivity)
+                    .setMessage("Your gross profit is below $30K! Would you like to make changes now?")
+                    .setPositiveButton("Yes") { arg0, arg1 ->
+                        // do something when the button is clicked
+                        intI = Intent(this@FinalResultActivity, LocationActivity::class.java)
+                        if (intI != null)
+                            intI!!.putExtra("Calculate", calC)
+                        startActivity(intI)
+                        finish()
+                    }
+                    .setNegativeButton("No") { arg0, arg1 -> }
+                    .show()
         }
-*/
     }
 
     // returns to main menu
@@ -210,8 +101,7 @@ class FinalResultActivity : FragmentActivity() {
                 .setMessage("Do you want to email results as text or as an Excel spreadsheet?")
                 .setPositiveButton("Text") { arg0, arg1 ->
                     // do something when the button is clicked
-                    //emailPlainText()
-                    //close();
+                    emailPlainText()
                 }
                 .setNegativeButton("Excel") { arg0, arg1 ->
                     // do something when the button is clicked
@@ -2227,57 +2117,57 @@ class FinalResultActivity : FragmentActivity() {
     }
 */
 
-/*
+
     fun emailPlainText() {
         // email results of calculate to those parties concerned
-        var strMessage = "Address:\t\t\t\t\t\t\t   " + locL!!.getAddress() + "\n"
-        strMessage += "City/State/ZIP Code:\t\t " + locL!!.getCity() + ", " + locL!!.getState() + " " + locL!!.getZIPCode() + "\n"
-        strMessage += "Square Footage:\t\t\t\t  " + locL!!.getSquareFootage() + "\n"
-        strMessage += "Bedrooms/Bathrooms:\t\t  " + locL!!.getBedrooms() + " BR " + locL!!.getBathrooms() + " BA\n"
-        strMessage += "Sale Price:\t\t\t\t\t\t $" + String.format("%.0f", smSM!!.getSalesPrice()) + "\n"
-        strMessage += "Percent Down %:\t\t\t\t  " + String.format("%.0f", smSM!!.getPercentDown()) + "%\n"
-        strMessage += "Offer/Bid Price:\t\t\t\t$" + String.format("%.0f", smSM!!.getOfferBid()) + "\n"
-        strMessage += "Rehab Budget:\t\t\t\t\t $" + String.format("%.0f", rR!!.getBudget()) + "\n"
-        strMessage += "Budget Items:\t\t\t\t\t " + rR!!.getBudgetItems() + "\n"
-        strMessage += "Down Payment:\t\t\t\t   $" + String.format("%.0f", smSM!!.getDownPayment()) + "\n"
-        strMessage += "Loan Amount:\t\t\t\t\t  $" + String.format("%.0f", smSM!!.getLoanAmount()) + "\n"
-        strMessage += "Interest Rate %:\t\t\t\t " + String.format("%.0f", smSM!!.getInterestRate()) + "%\n"
-        strMessage += "Term (months):\t\t\t\t   " + smSM!!.getTerm() + "\n"
-        strMessage += "Monthly Pmt:\t\t\t\t\t  $" + String.format("%.0f", smSM!!.getMonthlyPmt()) + "\n"
-        strMessage += "Mortgage:\t\t\t\t\t\t\t $" + String.format("%.0f", rsR!!.getMortgage()) + "\n"
-        strMessage += "Property Taxes:\t\t\t\t $" + String.format("%.0f", rsR!!.getTaxes()) + "\n"
-        strMessage += "Insurance:\t\t\t\t\t\t\t $" + String.format("%.0f", rsR!!.getInsurance()) + "\n"
-        strMessage += "Electric:\t\t\t\t\t\t\t\t $" + String.format("%.0f", rsR!!.getElectric()) + "\n"
-        strMessage += "Water:\t\t\t\t\t\t\t\t $" + String.format("%.0f", rsR!!.getWater()) + "\n"
-        strMessage += "Gas:\t\t\t\t\t\t\t\t\t $" + String.format("%.0f", rsR!!.getGas()) + "\n"
-        strMessage += "Total Reserves:\t\t\t\t $" + String.format("%.0f", rsR!!.getTotalExpenses()) + "\n"
-        strMessage += "Real Estate Comm:\t\t\t $" + String.format("%.0f", frF!!.getRECost()) + "\n"
-        strMessage += "Commission %:\t\t\t\t " + String.format("%.0f", cemC!!.getRealEstComm()) + "%\n"
-        strMessage += "Buyer Clos Cost:\t\t\t\t $" + String.format("%.0f", frF!!.getBCCost()) + "\n"
-        strMessage += "Closing Cost %:\t\t\t\t " + String.format("%.0f", cemC!!.getBuyClosCost()) + "%\n"
-        strMessage += "Sell Clos Cost:\t\t\t\t\t $" + String.format("%.0f", frF!!.getSCCost()) + "\n"
-        strMessage += "Closing Cost %:\t\t\t\t " + String.format("%.0f", cemC!!.getSellClosCost()) + "%\n"
-        strMessage += "Total Costs:\t\t\t\t\t\t $" + String.format("%.0f", frF!!.getTotalCost()) + "\n"
-        strMessage += "Out of Pocket Exp:\t\t\t $" + String.format("%.0f", frF!!.getOOPExp()) + "\n"
-        strMessage += "FMV/ARV:\t\t\t\t\t\t\t $" + String.format("%.0f", cemC!!.getFMVARV()) + "\n"
-        strMessage += "Comparables:\t\t\t\t\t $" + String.format("%.0f", cemC!!.getComparables()) + "\n"
-        strMessage += "Selling Price:\t\t\t\t\t $" + String.format("%.0f", cemC!!.getSellingPrice()) + "\n"
-        strMessage += "Buy + Costs:\t\t\t\t\t\t $" + String.format("%.0f", frF!!.getTotalCost()) + "\n"
-        strMessage += "Gross Profit:\t\t\t\t\t\t $" + String.format("%.0f", frF!!.getGrossProfit()) + "\n"
-        strMessage += "Capital Gains:\t\t\t\t\t $" + String.format("%.0f", frF!!.getCapGains()) + "\n"
-        strMessage += "Net Profit:\t\t\t\t\t\t\t $" + String.format("%.0f", frF!!.getNetProfit()) + "\n"
-        strMessage += "Money Out:\t\t\t\t\t\t $" + String.format("%.0f", frF!!.getOOPExp()) + "\n"
-        strMessage += "Money In:\t\t\t\t\t\t\t $" + String.format("%.0f", frF!!.getNetProfit()) + "\n"
-        strMessage += "% Return:\t\t\t\t\t\t\t " + String.format("%.1f", frF!!.getROI()) + "%\n"
-        strMessage += "Cash on Cash Return:\t " + String.format("%.1f", frF!!.getCashOnCash()) + "%\n"
+        var strMessage = "Address:\t\t\t\t\t\t\t   " + calC!!.getAddress() + "\n"
+        strMessage += "City/State/ZIP Code:\t\t " + calC!!.getCity() + ", " + calC!!.getState() + " " + calC!!.getZipCode() + "\n"
+        strMessage += "Square Footage:\t\t\t\t  " + calC!!.getSquareFootage() + "\n"
+        strMessage += "Bedrooms/Bathrooms:\t\t  " + calC!!.getBedrooms() + " BR " + calC!!.getBathrooms() + " BA\n"
+        strMessage += "Sale Price:\t\t\t\t\t\t $" + String.format("%.0f", calC!!.getSalesPrice()) + "\n"
+        strMessage += "Percent Down %:\t\t\t\t  " + String.format("%.0f", calC!!.getPercentDown()) + "%\n"
+        strMessage += "Offer/Bid Price:\t\t\t\t$" + String.format("%.0f", calC!!.getOfferBid()) + "\n"
+        strMessage += "Rehab Budget:\t\t\t\t\t $" + String.format("%.0f", calC!!.getBudget()) + "\n"
+        strMessage += "Budget Items:\t\t\t\t\t " + calC!!.getBudgetItems() + "\n"
+        strMessage += "Down Payment:\t\t\t\t   $" + String.format("%.0f", calC!!.getDownPayment()) + "\n"
+        strMessage += "Loan Amount:\t\t\t\t\t  $" + String.format("%.0f", calC!!.getLoanAmount()) + "\n"
+        strMessage += "Interest Rate %:\t\t\t\t " + String.format("%.0f", calC!!.getInterestRate()) + "%\n"
+        strMessage += "Term (months):\t\t\t\t   " + calC!!.getTerm() + "\n"
+        strMessage += "Monthly Pmt:\t\t\t\t\t  $" + String.format("%.0f", calC!!.getMonthlyPmt()) + "\n"
+        strMessage += "Mortgage:\t\t\t\t\t\t\t $" + String.format("%.0f", calC!!.getMortgage()) + "\n"
+        strMessage += "Property Taxes:\t\t\t\t $" + String.format("%.0f", calC!!.getTaxes()) + "\n"
+        strMessage += "Insurance:\t\t\t\t\t\t\t $" + String.format("%.0f", calC!!.getInsurance()) + "\n"
+        strMessage += "Electric:\t\t\t\t\t\t\t\t $" + String.format("%.0f", calC!!.getElectric()) + "\n"
+        strMessage += "Water:\t\t\t\t\t\t\t\t $" + String.format("%.0f", calC!!.getWater()) + "\n"
+        strMessage += "Gas:\t\t\t\t\t\t\t\t\t $" + String.format("%.0f", calC!!.getGas()) + "\n"
+        strMessage += "Total Reserves:\t\t\t\t $" + String.format("%.0f", calC!!.getTotalExpenses()) + "\n"
+        strMessage += "Real Estate Comm:\t\t\t $" + String.format("%.0f", calC!!.getRECost()) + "\n"
+        strMessage += "Commission %:\t\t\t\t " + String.format("%.0f", calC!!.getRealEstComm()) + "%\n"
+        strMessage += "Buyer Clos Cost:\t\t\t\t $" + String.format("%.0f", calC!!.getBCCost()) + "\n"
+        strMessage += "Closing Cost %:\t\t\t\t " + String.format("%.0f", calC!!.getBuyClosCost()) + "%\n"
+        strMessage += "Sell Clos Cost:\t\t\t\t\t $" + String.format("%.0f", calC!!.getSCCost()) + "\n"
+        strMessage += "Closing Cost %:\t\t\t\t " + String.format("%.0f", calC!!.getSellClosCost()) + "%\n"
+        strMessage += "Total Costs:\t\t\t\t\t\t $" + String.format("%.0f", calC!!.getTotalCost()) + "\n"
+        strMessage += "Out of Pocket Exp:\t\t\t $" + String.format("%.0f", calC!!.getOOPExp()) + "\n"
+        strMessage += "FMV/ARV:\t\t\t\t\t\t\t $" + String.format("%.0f", calC!!.getFMVARV()) + "\n"
+        strMessage += "Comparables:\t\t\t\t\t $" + String.format("%.0f", calC!!.getComparables()) + "\n"
+        strMessage += "Selling Price:\t\t\t\t\t $" + String.format("%.0f", calC!!.getSellingPrice()) + "\n"
+        strMessage += "Buy + Costs:\t\t\t\t\t\t $" + String.format("%.0f", calC!!.getTotalCost()) + "\n"
+        strMessage += "Gross Profit:\t\t\t\t\t\t $" + String.format("%.0f", calC!!.getGrossProfit()) + "\n"
+        strMessage += "Capital Gains:\t\t\t\t\t $" + String.format("%.0f", calC!!.getCapGains()) + "\n"
+        strMessage += "Net Profit:\t\t\t\t\t\t\t $" + String.format("%.0f", calC!!.getNetProfit()) + "\n"
+        strMessage += "Money Out:\t\t\t\t\t\t $" + String.format("%.0f", calC!!.getOOPExp()) + "\n"
+        strMessage += "Money In:\t\t\t\t\t\t\t $" + String.format("%.0f", calC!!.getNetProfit()) + "\n"
+        strMessage += "% Return:\t\t\t\t\t\t\t " + String.format("%.1f", calC!!.getROI()) + "%\n"
+        strMessage += "Cash on Cash Return:\t " + String.format("%.1f", calC!!.getCashOnCash()) + "%\n"
         val intEmailActivity = Intent(Intent.ACTION_SEND)
         intEmailActivity.putExtra(Intent.EXTRA_EMAIL, arrayOf<String>())
-        intEmailActivity.putExtra(Intent.EXTRA_SUBJECT, "Flipulator results for: " + locL!!.getAddress() + " " + locL!!.getCity() + ", " + locL!!.getState() + " " + locL!!.getZIPCode())
+        intEmailActivity.putExtra(Intent.EXTRA_SUBJECT, "Flipulator results for: " + calC!!.getAddress() + " " + calC!!.getCity() + ", " + calC!!.getState() + " " + calC!!.getZipCode())
         intEmailActivity.putExtra(Intent.EXTRA_TEXT, strMessage)
         intEmailActivity.type = "plain/text"
         startActivity(intEmailActivity)
     }
-*/
+
 
 /*
     @Throws(FileNotFoundException::class, IOException::class, WriteException::class)
