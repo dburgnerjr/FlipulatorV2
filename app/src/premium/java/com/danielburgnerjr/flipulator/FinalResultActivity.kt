@@ -46,6 +46,7 @@ class FinalResultActivity : FragmentActivity() {
 
         var intI = getIntent()
 
+        xlsSpreadsheet = ExcelSpreadsheet()
         calC = intI.getSerializableExtra("Calculate") as Calculate
 
         if (calC!!.getGrossProfit() < 30000.0) {
@@ -177,9 +178,9 @@ class FinalResultActivity : FragmentActivity() {
         myDir.mkdirs()
         val strFileNameXls = calC!!.getAddress() + " " + calC!!.getCity() + " " + calC!!.getState() + " " + calC!!.getZipCode() + ".xls"
         val file = File(myDir, strFileNameXls)
-
+        file.createNewFile()
         // create Excel spreadsheet
-            xlsSpreadsheet!!.createSpreadsheet(myDir, calC!!, strFileNameXls)
+        xlsSpreadsheet!!.createSpreadsheet(myDir, calC!!, strFileNameXls)
 
         val strSavedFile = "File saved as: $strFileNameXls"
         Toast.makeText(applicationContext, strSavedFile, Toast.LENGTH_SHORT).show()

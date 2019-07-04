@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.view.View
 import android.view.KeyEvent
 import android.widget.*
@@ -21,6 +22,7 @@ import com.google.android.gms.ads.MobileAds
 
 import java.io.File
 import java.io.IOException
+import java.io.FileNotFoundException
 
 import jxl.write.WriteException
 
@@ -274,14 +276,14 @@ class CalculateActivity : Activity() {
         }
     }
 
-    //@Throws(FileNotFoundException::class, IOException::class, WriteException::class)
+    @Throws(FileNotFoundException::class, IOException::class, WriteException::class)
     fun saveFile(view: View) {
-        Toast.makeText(applicationContext, "Coming soon", Toast.LENGTH_SHORT).show()
-        // saves results to text file
-
-        val myDir = File(applicationContext.getExternalFilesDir(null)!!.toString() + "/FlipulatorFree")
+        val myDir = File(getExternalFilesDir(null)?.toString() + "/FlipulatorFree")
+        Toast.makeText(applicationContext, myDir.toString(), Toast.LENGTH_SHORT).show()
         myDir.mkdirs()
         val strFileNameXls = calR!!.getAddress() + " " + calR!!.getCityStZip() + ".xls"
+        val file = File(myDir, strFileNameXls)
+        file.createNewFile()
 
         // create Excel spreadsheet
         xlsSpreadsheet!!.createSpreadsheet(myDir, calR!!, strFileNameXls)

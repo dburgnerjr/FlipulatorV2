@@ -10,10 +10,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 
 class MainActivityFragment : Fragment(), View.OnClickListener {
 
-    val myDir = Environment.getDataDirectory().toString() + "/Flipulator"
+    val myDir = Environment.getDataDirectory().toString() + "/FlipulatorPremium"
     val strPath = File(myDir)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -26,6 +27,7 @@ class MainActivityFragment : Fragment(), View.OnClickListener {
         val btnDonate: Button = view.findViewById(R.id.btnDonate)
         btnDonate.setOnClickListener(this)
         val btnOpenFiles: Button = view.findViewById(R.id.btnOpenFiles)
+        Toast.makeText(getActivity(), myDir, Toast.LENGTH_SHORT).show()
         val fFileArray = strPath.listFiles()
         if (fFileArray == null) {
             btnOpenFiles!!.setVisibility(View.INVISIBLE)
