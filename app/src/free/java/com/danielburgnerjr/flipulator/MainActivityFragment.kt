@@ -20,7 +20,7 @@ import com.google.android.gms.ads.MobileAds
 
 class MainActivityFragment : Fragment(), View.OnClickListener {
 
-    private val myDir = getContext()?.getExternalFilesDir("/data").toString() + "/FlipulatorFree"
+    private val myDir = File(getExternalFilesDir(null)?.toString() + "/FlipulatorFree")
     private val strPath = File(myDir)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
