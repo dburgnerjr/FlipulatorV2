@@ -1,5 +1,22 @@
 package com.danielburgnerjr.flipulator
 
+import android.app.Activity
+import android.app.AlertDialog
+import android.os.Bundle
+import android.content.DialogInterface
+import android.content.Intent
+import android.support.v4.app.Fragment
+import android.view.KeyEvent
+import android.view.View
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemClickListener
+import android.widget.ArrayAdapter
+import android.widget.ListView
+import android.widget.Toast
+
+import com.danielburgnerjr.flipulator.model.Calculate
+import com.danielburgnerjr.flipulator.util.ExcelSpreadsheet
+
 import java.io.File
 import java.io.FileReader
 import java.io.BufferedReader
@@ -15,30 +32,18 @@ import jxl.Cell
 import jxl.Sheet
 import jxl.Workbook
 import jxl.read.biff.BiffException
-import android.app.Activity
-import android.app.AlertDialog
-import android.os.Bundle
-import android.content.DialogInterface
-import android.content.Intent
-import android.support.v4.app.Fragment
-import android.view.KeyEvent
-import android.view.View
-import android.widget.AdapterView
-import android.widget.AdapterView.OnItemClickListener
-import android.widget.ArrayAdapter
-import android.widget.ListView
-import android.widget.Toast
 
 class OpenFilesActivityFragment : Fragment() {
+/*
 
-    internal var lvView: ListView
+    private var lvView: ListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.openfiles)
 
         // get the files and place it in a file array
-        val myDir = File(getApplicationContext().getExternalFilesDir(null) + "/FlipulatorFree")
+        val myDir = File(getActivity()?.getApplicationContext()?.getExternalFilesDir(null) + "/FlipulatorFree")
         val strPath = myDir.getPath()
         val fFileList = File(strPath)
         val fFileArray = fFileList.listFiles()
@@ -77,7 +82,7 @@ class OpenFilesActivityFragment : Fragment() {
             val newActivity: Intent
             var calC: Calculate? = null
             try {
-                val fPath = File(getApplicationContext().getExternalFilesDir(null) + "/FlipulatorFree")
+                val fPath = File(getActivity()?.getApplicationContext()?.getExternalFilesDir(null) + "/FlipulatorFree")
                 val strFilePathXLS = fPath.getPath() + "/" + itemValue + ".xls"
                 try {
                     val wbExcelFile = Workbook.getWorkbook(File(strFilePathXLS))
@@ -113,16 +118,6 @@ class OpenFilesActivityFragment : Fragment() {
                     val dRehabBudget = numRehabBudget.toDouble()
 
                     val strRehabType = celRehabType.getContents()
-                    var nRehabFlag = -1
-                    if (strRehabType == "Flat Rate") {
-                        nRehabFlag = 0
-                    }
-
-                    if (strRehabType == "Low" || strRehabType == "Medium" ||
-                            strRehabType == "High" || strRehabType == "Super-High" ||
-                            strRehabType == "Bulldozer") {
-                        nRehabFlag = 1
-                    }
 
                     calC = Calculate()
                     calC!!.setAddress(strAddress)
@@ -134,20 +129,20 @@ class OpenFilesActivityFragment : Fragment() {
                     calC!!.setSalesPrice(dSalesPrice)
                     calC!!.setBudgetItems(strBudgetItems)
                     calC!!.setBudget(dRehabBudget)
-                    calC!!.setRehabFlag(nRehabFlag)
+                    calC!!.setRTSel(strRehabType)
 
                 } catch (e: FileNotFoundException) {
-                    Toast.makeText(getApplicationContext(), "File Not Found", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(getActivity()?.getApplicationContext(), "File Not Found", Toast.LENGTH_SHORT).show()
                 } catch (e: BiffException) {
-                    Toast.makeText(getApplicationContext(), "Biff Exception", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(getActivity()?.getApplicationContext(), "Biff Exception", Toast.LENGTH_SHORT).show()
                 } catch (e: ParseException) {
-                    Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(getActivity()?.getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show()
                 }
 
             } catch (e: IOException) {
-                Toast.makeText(getApplicationContext(), "IO Exception", Toast.LENGTH_SHORT).show()
+                Toast.makeText(getActivity()?.getApplicationContext(), "IO Exception", Toast.LENGTH_SHORT).show()
             } finally {
-                newActivity = Intent(this@OpenFilesActivity, CalculateActivity::class.java)
+                newActivity = Intent(getActivity()?.getApplicationContext(), CalculateActivity::class.java)
                 newActivity.putExtra("Calculate", calC)
                 startActivity(newActivity)
                 finish()
@@ -155,14 +150,5 @@ class OpenFilesActivityFragment : Fragment() {
         }
 
     }
-
-    fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            val intI = Intent(this@OpenFilesActivity, MainActivity::class.java)
-            startActivity(intI)
-            finish()
-            return true
-        }
-        return super.onKeyDown(keyCode, event)
-    }
+*/
 }

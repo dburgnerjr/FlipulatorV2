@@ -11,7 +11,6 @@ class Calculate : Serializable {
     var dBathrooms: Double = 0.toDouble()        // number of bathrooms
     var dSalesPrice: Double = 0.toDouble()        // sales price
     var dFMVARV: Double = 0.toDouble()            // FMV/ARV
-    // returns budget
     var dBudget: Double = 0.toDouble()         // budget
     var strBudgetItems: String? = null    // list of items that need repair
     var dClosHoldCosts: Double = 0.toDouble()    // closing/holding costs
@@ -131,6 +130,7 @@ class Calculate : Serializable {
     fun setRTSel(strSel: String) {
         this.strRTSel = strSel
     }
+    
     fun calcBudgetRehabType(strT: String) {
         // determines budget based on type and square footage
         if (strT == "Low") {

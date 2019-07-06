@@ -20,8 +20,8 @@ import com.google.android.gms.ads.MobileAds
 
 class MainActivityFragment : Fragment(), View.OnClickListener {
 
-    private val myDir = File(getExternalFilesDir(null)?.toString() + "/FlipulatorFree")
-    private val strPath = File(myDir)
+    private val myDir = File(getActivity()?.getApplicationContext()?.getExternalFilesDir(null)?.toString() + "/FlipulatorFree")
+    //private val strPath = File(myDir)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -39,8 +39,8 @@ class MainActivityFragment : Fragment(), View.OnClickListener {
         val btnDonate: Button = view.findViewById(R.id.btnDonate)
         btnDonate.setOnClickListener(this)
         val btnOpenFiles: Button = view.findViewById(R.id.btnOpenFiles)
-        Toast.makeText(getActivity(), myDir, Toast.LENGTH_SHORT).show()
-        val fFileArray = strPath.listFiles()
+        Toast.makeText(getActivity()?.getApplicationContext(), myDir.toString(), Toast.LENGTH_SHORT).show()
+        val fFileArray = myDir.listFiles()
         if (fFileArray == null) {
             btnOpenFiles.setVisibility(View.INVISIBLE)
         } else {

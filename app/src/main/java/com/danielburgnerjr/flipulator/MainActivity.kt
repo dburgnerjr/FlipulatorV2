@@ -8,6 +8,8 @@ import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
+import java.io.File
 
 class MainActivity : AppCompatActivity() {
     protected var strPackName: String? = null

@@ -102,7 +102,7 @@ class CalculateActivity : Activity() {
 
         spnRehabType!!.onItemSelectedListener = object : OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View, position: Int, id: Long) {
-                if (position > 0) {
+                if (position >= 0) {
                     strRTSel = parentView.getItemAtPosition(position).toString()
                     calR!!.setSquareFootage(etSquareFootage!!.text.toString().toInt())
                     calR!!.setRTSel(strRTSel!!)
