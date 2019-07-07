@@ -20,10 +20,11 @@ import com.google.android.gms.ads.MobileAds
 
 class MainActivityFragment : Fragment(), View.OnClickListener {
 
-    private val myDir = File(getActivity()?.getApplicationContext()?.getExternalFilesDir(null)?.toString() + "/FlipulatorFree")
+    //private val myDir = File(getActivity()?.getApplicationContext()?.getExternalFilesDir(null)?.toString() + "/FlipulatorFree")
     //private val strPath = File(myDir)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val strPath = getArguments()!!.getString("path")
 
         val view: View = inflater.inflate(R.layout.fragment_main, container, false)
 
@@ -39,13 +40,13 @@ class MainActivityFragment : Fragment(), View.OnClickListener {
         val btnDonate: Button = view.findViewById(R.id.btnDonate)
         btnDonate.setOnClickListener(this)
         val btnOpenFiles: Button = view.findViewById(R.id.btnOpenFiles)
-        Toast.makeText(getActivity()?.getApplicationContext(), myDir.toString(), Toast.LENGTH_SHORT).show()
-        val fFileArray = myDir.listFiles()
-        if (fFileArray == null) {
+        Toast.makeText(getActivity()?.getApplicationContext(), strPath, Toast.LENGTH_SHORT).show()
+        //val fFileArray = myDir.listFiles()
+        //if (fFileArray == null) {
             btnOpenFiles.setVisibility(View.INVISIBLE)
-        } else {
-            btnOpenFiles.setOnClickListener(this)
-        }
+        //} else {
+            //btnOpenFiles.setOnClickListener(this)
+        //}
         val btnShare: Button = view.findViewById(R.id.btnShare)
         btnShare.setOnClickListener(this)
         val btnUpgrade: Button = view.findViewById(R.id.btnUpgrade)
