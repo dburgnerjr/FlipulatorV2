@@ -1,20 +1,18 @@
 package com.danielburgnerjr.flipulator;
 
-import android.app.Activity
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.os.Bundle
+import android.support.v4.app.FragmentActivity
 import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 
-import com.danielburgnerjr.flipulator.MainActivityFragment
-
 import java.io.File
 
-class MainActivity : Activity() {
+class MainActivity : FragmentActivity() {
     protected var strPackName: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
