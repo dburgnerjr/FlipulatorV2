@@ -17,7 +17,10 @@ class MainActivity : FragmentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val myDir = File(getApplicationContext()?.getExternalFilesDir(null)?.toString() + "/")
-        Toast.makeText(applicationContext, myDir.toString(), Toast.LENGTH_SHORT).show()
+        Toast.makeText(applicationContext, "MainActivity: " + myDir.toString(), Toast.LENGTH_LONG).show()
+
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
         val bundle = Bundle()
         bundle.putString("path", myDir.toString())
@@ -25,8 +28,17 @@ class MainActivity : FragmentActivity() {
         val fragobj = MainActivityFragment()
         fragobj.setArguments(bundle)
 
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        val manager = supportFragmentManager
+
+        // Begin the fragment transition using support fragment manager
+        val transaction = manager.beginTransaction()
+
+        // add the fragment on container
+        transaction.replace(R.id.main_fragment, fragobj)
+
+        // Finishing the transition
+        transaction.commit()
+
         strPackName = getApplicationContext().getPackageName()
     }
 

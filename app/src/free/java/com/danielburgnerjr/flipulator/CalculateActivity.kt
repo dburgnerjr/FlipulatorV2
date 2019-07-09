@@ -104,7 +104,8 @@ class CalculateActivity : Activity() {
             override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View, position: Int, id: Long) {
                 if (position >= 0) {
                     strRTSel = parentView.getItemAtPosition(position).toString()
-                    calR!!.setSquareFootage(etSquareFootage!!.text.toString().toInt())
+                    if ("" != etSquareFootage!!.text.toString())
+                        calR!!.setSquareFootage(etSquareFootage!!.text.toString().toInt())
                     calR!!.setRTSel(strRTSel!!)
                     when (strRTSel) {
                         "Low", "Medium", "High", "Super-High", "Bulldozer" -> calR!!.calcBudgetRehabType(strRTSel!!)
@@ -278,12 +279,14 @@ class CalculateActivity : Activity() {
 
     @Throws(FileNotFoundException::class, IOException::class, WriteException::class)
     fun saveFile(view: View) {
-        val myDir = File(getExternalFilesDir(null)?.toString() + "/FlipulatorFree")
-        Toast.makeText(applicationContext, myDir.toString(), Toast.LENGTH_SHORT).show()
-        myDir.mkdirs()
+        val myDir = File(getApplicationContext()?.getExternalFilesDir(null)?.toString() + "/")
+        if (!myDir.exists())
+            myDir.mkdirs();
+
         val strFileNameXls = calR!!.getAddress() + " " + calR!!.getCityStZip() + ".xls"
         val file = File(myDir, strFileNameXls)
-        file.createNewFile()
+        if (!file.exists())
+            file.createNewFile()
 
         // create Excel spreadsheet
         xlsSpreadsheet!!.createSpreadsheet(myDir, calR!!, strFileNameXls)

@@ -1,12 +1,8 @@
 package com.danielburgnerjr.flipulator
 
-import java.io.File
-
 import android.support.v4.app.Fragment
-import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.os.Bundle
-import android.os.Environment
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
@@ -18,15 +14,18 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
 
+import java.io.File
+
+
 class MainActivityFragment : Fragment(), View.OnClickListener {
 
     //private val myDir = File(getActivity()?.getApplicationContext()?.getExternalFilesDir(null)?.toString() + "/FlipulatorFree")
     //private val strPath = File(myDir)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val strPath = getArguments()!!.getString("path")
-
+        val strPath = getArguments()?.getString("path")
         val view: View = inflater.inflate(R.layout.fragment_main, container, false)
+        //val myDir = File(strPath)
 
         MobileAds.initialize(getActivity(), getString(R.string.admob_app_id))
         val mAdView = view.findViewById(R.id.adView) as AdView
@@ -40,7 +39,7 @@ class MainActivityFragment : Fragment(), View.OnClickListener {
         val btnDonate: Button = view.findViewById(R.id.btnDonate)
         btnDonate.setOnClickListener(this)
         val btnOpenFiles: Button = view.findViewById(R.id.btnOpenFiles)
-        Toast.makeText(getActivity()?.getApplicationContext(), strPath, Toast.LENGTH_SHORT).show()
+        Toast.makeText(getActivity()?.getApplicationContext(), "MainActivityFragment: " + strPath, Toast.LENGTH_LONG).show()
         //val fFileArray = myDir.listFiles()
         //if (fFileArray == null) {
             btnOpenFiles.setVisibility(View.INVISIBLE)
@@ -92,7 +91,7 @@ class MainActivityFragment : Fragment(), View.OnClickListener {
                 val newActivity = Intent(Intent.ACTION_VIEW, uri)
                 try {
                     startActivity(newActivity)
-                } catch (e: ActivityNotFoundException) {
+                } catch (e: Throwable) {
                     startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(getResources().getString(R.string.play_store_premium))))
                 }
             }
