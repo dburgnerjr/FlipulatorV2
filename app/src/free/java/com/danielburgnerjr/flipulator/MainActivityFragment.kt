@@ -23,8 +23,8 @@ class MainActivityFragment : Fragment(), View.OnClickListener {
     //private val strPath = File(myDir)
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val strPath = getArguments()?.getString("path")
         val view: View = inflater.inflate(R.layout.fragment_main, container, false)
+        val strPath = this.getArguments()!!.getString("path")
         //val myDir = File(strPath)
 
         MobileAds.initialize(getActivity(), getString(R.string.admob_app_id))
