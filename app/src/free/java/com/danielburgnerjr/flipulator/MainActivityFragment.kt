@@ -1,6 +1,6 @@
 package com.danielburgnerjr.flipulator
 
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.content.Intent
 import android.os.Bundle
 import android.net.Uri
@@ -24,7 +24,7 @@ class MainActivityFragment : Fragment(), View.OnClickListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view: View = inflater.inflate(R.layout.fragment_main, container, false)
-        val strPath = this.getArguments()!!.getString("path")
+        val strPath = this.getArguments()?.getString("path")
         //val myDir = File(strPath)
 
         MobileAds.initialize(getActivity(), getString(R.string.admob_app_id))
