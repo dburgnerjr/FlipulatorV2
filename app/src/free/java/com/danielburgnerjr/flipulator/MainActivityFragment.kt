@@ -24,7 +24,7 @@ class MainActivityFragment : Fragment(), View.OnClickListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view: View = inflater.inflate(R.layout.fragment_main, container, false)
-        val strPath = this.getArguments()?.getString("path")
+        //val strPath = this.getArguments()?.getString("path")
         //val myDir = File(strPath)
 
         MobileAds.initialize(getActivity(), getString(R.string.admob_app_id))
@@ -39,7 +39,7 @@ class MainActivityFragment : Fragment(), View.OnClickListener {
         val btnDonate: Button = view.findViewById(R.id.btnDonate)
         btnDonate.setOnClickListener(this)
         val btnOpenFiles: Button = view.findViewById(R.id.btnOpenFiles)
-        Toast.makeText(getActivity()?.getApplicationContext(), "MainActivityFragment: " + strPath, Toast.LENGTH_LONG).show()
+        //Toast.makeText(getActivity()?.getApplicationContext(), "MainActivityFragment: " + strPath, Toast.LENGTH_LONG).show()
         //val fFileArray = myDir.listFiles()
         //if (fFileArray == null) {
             btnOpenFiles.setVisibility(View.INVISIBLE)

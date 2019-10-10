@@ -15,7 +15,7 @@ import android.widget.TextView
 import android.widget.Toast
 import android.content.DialogInterface
 import android.content.Intent
-import android.support.v4.app.FragmentActivity
+import androidx.fragment.app.FragmentActivity
 
 import com.danielburgnerjr.flipulator.model.Calculate
 import com.danielburgnerjr.flipulator.util.ExcelSpreadsheet

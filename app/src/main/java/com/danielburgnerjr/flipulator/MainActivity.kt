@@ -16,11 +16,12 @@ class MainActivity : FragmentActivity() {
     protected var strPackName: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val myDir = File(getApplicationContext()?.getExternalFilesDir(null)?.toString() + "/")
-        //Toast.makeText(applicationContext, "MainActivity: " + myDir.toString(), Toast.LENGTH_LONG).show()
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val myDir = File(getApplicationContext()?.getExternalFilesDir(null)?.toString() + "/")
+        Toast.makeText(applicationContext, "MainActivity: " + myDir.toString(), Toast.LENGTH_LONG).show()
 
         val bundle = Bundle()
         bundle.putString("path", myDir.toString())
