@@ -21,7 +21,7 @@ class MainActivity : FragmentActivity() {
         setContentView(R.layout.activity_main)
 
         val myDir = File(getApplicationContext()?.getExternalFilesDir(null)?.toString() + "/")
-        Toast.makeText(applicationContext, "MainActivity: " + myDir.toString(), Toast.LENGTH_LONG).show()
+        //Toast.makeText(applicationContext, "MainActivity: " + myDir.toString(), Toast.LENGTH_LONG).show()
 
         val bundle = Bundle()
         bundle.putString("path", myDir.toString())

@@ -18,14 +18,12 @@ import java.io.File
 
 
 class MainActivityFragment : Fragment(), View.OnClickListener {
-
-    //private val myDir = File(getActivity()?.getApplicationContext()?.getExternalFilesDir(null)?.toString() + "/FlipulatorFree")
-    //private val strPath = File(myDir)
+    protected var strPath: String? = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view: View = inflater.inflate(R.layout.fragment_main, container, false)
-        //val strPath = this.getArguments()?.getString("path")
-        //val myDir = File(strPath)
+        strPath = this.getArguments()!!.getString("path")   // KotlinNPE occurs here
+        val myDir = File(strPath)
 
         MobileAds.initialize(getActivity(), getString(R.string.admob_app_id))
         val mAdView = view.findViewById(R.id.adView) as AdView
@@ -39,7 +37,7 @@ class MainActivityFragment : Fragment(), View.OnClickListener {
         val btnDonate: Button = view.findViewById(R.id.btnDonate)
         btnDonate.setOnClickListener(this)
         val btnOpenFiles: Button = view.findViewById(R.id.btnOpenFiles)
-        //Toast.makeText(getActivity()?.getApplicationContext(), "MainActivityFragment: " + strPath, Toast.LENGTH_LONG).show()
+        Toast.makeText(getActivity()?.getApplicationContext(), "MainActivityFragment: " + strPath, Toast.LENGTH_LONG).show()
         //val fFileArray = myDir.listFiles()
         //if (fFileArray == null) {
             btnOpenFiles.setVisibility(View.INVISIBLE)
