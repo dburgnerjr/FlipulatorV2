@@ -21,17 +21,25 @@ class MainActivity : FragmentActivity() {
         setContentView(R.layout.activity_main)
 
         val myDir = File(getApplicationContext()?.getExternalFilesDir(null)?.toString() + "/")
-        //Toast.makeText(applicationContext, "MainActivity: " + myDir.toString(), Toast.LENGTH_LONG).show()
+        // below line displays the path
+        Toast.makeText(applicationContext, "MainActivity: " + myDir.toString(), Toast.LENGTH_LONG).show()
 
         val bundle = Bundle()
         bundle.putString("path", myDir.toString())
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
+        // set MainActivityFragment Arguments
+        val fragobj = MainActivityFragment()
+        fragobj.setArguments(bundle)
 
-        val fragment = MainActivityFragment()
-        fragment.setArguments(bundle)
-        fragmentTransaction.add(R.id.main_fragment, fragment)
-        fragmentTransaction.commit()
+        val manager = supportFragmentManager
+
+        // Begin the fragment transition using support fragment manager
+        val transaction = manager.beginTransaction()
+
+        // add the fragment on container
+        transaction.add(R.id.main_fragment, fragobj)
+
+        // Finishing the transition
+        transaction.commit()
 
         strPackName = getApplicationContext().getPackageName()
     }

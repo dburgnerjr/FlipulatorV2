@@ -5,7 +5,6 @@ import java.io.File
 import androidx.fragment.app.Fragment
 import android.content.Intent
 import android.os.Bundle
-import android.os.Environment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,10 +12,10 @@ import android.widget.Button
 import android.widget.Toast
 
 class MainActivityFragment : Fragment(), View.OnClickListener {
-    protected var strPath: String? = ""
+    protected var strPath: String? = "if you can see this, the path is null"
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        strPath = this.getArguments()!!.getString("path")   // KotlinNPE occurs here
+        strPath?.let { this.getArguments()?.getString("path") }    // path is not showing up at all
         val myDir = File(strPath)
 
         val view: View = inflater.inflate(R.layout.fragment_main, container, false)
@@ -32,7 +31,7 @@ class MainActivityFragment : Fragment(), View.OnClickListener {
         val fFileArray = myDir.listFiles()
         if (fFileArray == null) {
 */
-            btnOpenFiles!!.setVisibility(View.INVISIBLE)
+            btnOpenFiles?.setVisibility(View.INVISIBLE)
 /*
         } else {
             btnOpenFiles.setOnClickListener(this)

@@ -21,10 +21,10 @@ class MainActivityFragment : Fragment(), View.OnClickListener {
     protected var strPath: String? = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view: View = inflater.inflate(R.layout.fragment_main, container, false)
-        strPath = this.getArguments()!!.getString("path")   // KotlinNPE occurs here
+        strPath?.let { getArguments()?.getString("path") }    // path is not showing up at all
         val myDir = File(strPath)
 
+        val view: View = inflater.inflate(R.layout.fragment_main, container, false)
         MobileAds.initialize(getActivity(), getString(R.string.admob_app_id))
         val mAdView = view.findViewById(R.id.adView) as AdView
         val adRequest = AdRequest.Builder().build()
@@ -40,7 +40,7 @@ class MainActivityFragment : Fragment(), View.OnClickListener {
         Toast.makeText(getActivity()?.getApplicationContext(), "MainActivityFragment: " + strPath, Toast.LENGTH_LONG).show()
         //val fFileArray = myDir.listFiles()
         //if (fFileArray == null) {
-            btnOpenFiles.setVisibility(View.INVISIBLE)
+            btnOpenFiles?.setVisibility(View.INVISIBLE)
         //} else {
             //btnOpenFiles.setOnClickListener(this)
         //}
