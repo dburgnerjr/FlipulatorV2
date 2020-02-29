@@ -13,7 +13,7 @@ class ProductAdapter(
 
     override fun getItemCount(): Int = list.size
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val textView = LayoutInflater.from(parent.context).inflate(R.layout.product_list, parent, false) as TextView
         val viewHolder = ViewHolder(textView)
         textView.setOnClickListener { onProductClicked(list[viewHolder.adapterPosition]) }

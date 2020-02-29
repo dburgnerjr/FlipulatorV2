@@ -4,20 +4,20 @@ import java.io.Serializable
 
 class Calculate : Serializable {
 
-    var strAddress: String? = null        // address
-    var strCityStZip: String? = null    // city state ZIP code
-    var nSquareFootage: Int = 0        // square footage
-    var nBedrooms: Int = 0            // number of bedrooms
-    var dBathrooms: Double = 0.toDouble()        // number of bathrooms
-    var dSalesPrice: Double = 0.toDouble()        // sales price
-    var dFMVARV: Double = 0.toDouble()            // FMV/ARV
-    var dBudget: Double = 0.toDouble()         // budget
-    var strBudgetItems: String? = null    // list of items that need repair
-    var dClosHoldCosts: Double = 0.toDouble()    // closing/holding costs
-    var dProfit: Double = 0.toDouble()            // profit
-    var dROI: Double = 0.toDouble()            // return on investment
-    var dCashOnCash: Double = 0.toDouble()        // cash on cash return
-    var strRTSel: String? = null
+    private var strAddress: String? = null        // address
+    private var strCityStZip: String? = null    // city state ZIP code
+    private var nSquareFootage: Int = 0        // square footage
+    private var nBedrooms: Int = 0            // number of bedrooms
+    private var dBathrooms: Double = 0.toDouble()        // number of bathrooms
+    private var dSalesPrice: Double = 0.toDouble()        // sales price
+    private var dFMVARV: Double = 0.toDouble()            // FMV/ARV
+    private var dBudget: Double = 0.toDouble()         // budget
+    private var strBudgetItems: String? = null    // list of items that need repair
+    private var dClosHoldCosts: Double = 0.toDouble()    // closing/holding costs
+    private var dProfit: Double = 0.toDouble()            // profit
+    private var dROI: Double = 0.toDouble()            // return on investment
+    private var dCashOnCash: Double = 0.toDouble()        // cash on cash return
+    private var strRTSel: String? = null
 
     fun getAddress(): String? {
         return strAddress

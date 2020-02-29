@@ -3,10 +3,10 @@ package com.danielburgnerjr.flipulator
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
 import android.view.View
 import android.view.KeyEvent
 import android.widget.*
@@ -69,35 +69,35 @@ class CalculateActivity : Activity() {
 
         calR = Calculate()
         xlsSpreadsheet = ExcelSpreadsheet()
-        etAddress = findViewById<EditText>(R.id.txtAddress)
-        etCityStZip = findViewById<EditText>(R.id.txtCityStZip)
-        etSquareFootage = findViewById<EditText>(R.id.txtSq_Footage)
-        etBedrooms = findViewById<EditText>(R.id.txtBedrooms)
-        etBathrooms = findViewById<EditText>(R.id.txtBathrooms)
-        etSalesPrice = findViewById<EditText>(R.id.txtSalePrice)
-        etFMVARV = findViewById<EditText>(R.id.txtFMVARV)
-        etBudgetItems = findViewById<EditText>(R.id.txtBudgetItems)
-        btnSave = findViewById<Button>(R.id.btnSave)
-        llEditInfo = findViewById<LinearLayout>(R.id.llEditInfo)
+        etAddress = findViewById(R.id.txtAddress)
+        etCityStZip = findViewById(R.id.txtCityStZip)
+        etSquareFootage = findViewById(R.id.txtSq_Footage)
+        etBedrooms = findViewById(R.id.txtBedrooms)
+        etBathrooms = findViewById(R.id.txtBathrooms)
+        etSalesPrice = findViewById(R.id.txtSalePrice)
+        etFMVARV = findViewById(R.id.txtFMVARV)
+        etBudgetItems = findViewById(R.id.txtBudgetItems)
+        btnSave = findViewById(R.id.btnSave)
+        llEditInfo = findViewById(R.id.llEditInfo)
 
         val aradAdapter = ArrayAdapter.createFromResource(
                 this, R.array.rehab_type_class, android.R.layout.simple_spinner_item)
         aradAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
-        tvRehabFlatRate = findViewById<TextView>(R.id.tvRehabBudget)
-        etRehabBudget = findViewById<EditText>(R.id.txtRehabBudget)
-        tvRehabType = findViewById<TextView>(R.id.tvRehabType)
-        spnRehabType = findViewById<Spinner>(R.id.spnRehabType)
-        tvClosHoldCosts = findViewById<TextView>(R.id.tvClosHoldCosts)
-        etClosHoldCosts = findViewById<EditText>(R.id.txtClosHoldCosts)
-        tvProfit = findViewById<TextView>(R.id.tvProfit)
-        etProfit = findViewById<EditText>(R.id.txtProfit)
-        tvROI = findViewById<TextView>(R.id.tvROI)
-        etROI = findViewById<EditText>(R.id.txtROI)
-        tvCashOnCash = findViewById<TextView>(R.id.tvCashOnCash)
-        etCashOnCash = findViewById<EditText>(R.id.txtCashOnCash)
+        tvRehabFlatRate = findViewById(R.id.tvRehabBudget)
+        etRehabBudget = findViewById(R.id.txtRehabBudget)
+        tvRehabType = findViewById(R.id.tvRehabType)
+        spnRehabType = findViewById(R.id.spnRehabType)
+        tvClosHoldCosts = findViewById(R.id.tvClosHoldCosts)
+        etClosHoldCosts = findViewById(R.id.txtClosHoldCosts)
+        tvProfit = findViewById(R.id.tvProfit)
+        etProfit = findViewById(R.id.txtProfit)
+        tvROI = findViewById(R.id.tvROI)
+        etROI = findViewById(R.id.txtROI)
+        tvCashOnCash = findViewById(R.id.tvCashOnCash)
+        etCashOnCash = findViewById(R.id.txtCashOnCash)
 
-        btnHelp = findViewById<Button>(R.id.txtHelp)
+        btnHelp = findViewById(R.id.txtHelp)
         spnRehabType!!.adapter = aradAdapter
 
         spnRehabType!!.onItemSelectedListener = object : OnItemSelectedListener {
@@ -146,7 +146,7 @@ class CalculateActivity : Activity() {
                     "High ($30/sf, Medium + new roof), Super-High ($40/sf, complete gut job), " +
                     "Bulldozer ($125/sf, demolition and rebuild).")
                     .setCancelable(false)
-                    .setNeutralButton("OK") { dialog, id ->
+                    .setNeutralButton("OK") { dialog, _ ->
                         // if this button is clicked, close
                         // current activity
                         dialog.cancel()
@@ -257,31 +257,31 @@ class CalculateActivity : Activity() {
             calR!!.setROI(calR!!.getFMVARV())
             calR!!.setCashOnCash(calR!!.getBudget())
             if (calR!!.getProfit() < 30000.0) {
-                val adAlertBox = AlertDialog.Builder(this)
-                        .setMessage("Your profit is below $30K! Would you like to make changes now?")
-                        .setPositiveButton("Yes") { arg0, arg1 -> }
-                        .setNegativeButton("No") { arg0, arg1 -> }
-                        .show()
+                val adAlertBox = AlertDialog.Builder(this).create()
+                adAlertBox.setMessage("Your profit is below $30K! Would you like to make changes now?")
+                adAlertBox.setButton(DialogInterface.BUTTON_POSITIVE,"Yes") { _, _ -> }
+                adAlertBox.setButton(DialogInterface.BUTTON_NEGATIVE,"No") { _, _ -> }
+                adAlertBox.show()
             }
 
             etClosHoldCosts!!.setText(String.format("$%.0f", calR!!.getClosHoldCosts()))
-            etClosHoldCosts!!.setEnabled(false)
+            etClosHoldCosts!!.isEnabled = false
             etProfit!!.setText(String.format("$%.0f", calR!!.getProfit()))
-            etProfit!!.setEnabled(false)
-            var strROI = String.format("%.1f", calR!!.getROI()) + "%"
+            etProfit!!.isEnabled = false
+            val strROI = String.format("%.1f", calR!!.getROI()) + "%"
             etROI!!.setText(strROI)
-            etROI!!.setEnabled(false)
-            var strCashOnCash = String.format("%.1f", calR!!.getCashOnCash()) + "%"
+            etROI!!.isEnabled = false
+            val strCashOnCash = String.format("%.1f", calR!!.getCashOnCash()) + "%"
             etCashOnCash!!.setText(strCashOnCash)
-            etCashOnCash!!.setEnabled(false)
+            etCashOnCash!!.isEnabled = false
         }
     }
 
     @Throws(FileNotFoundException::class, IOException::class, WriteException::class)
     fun saveFile(view: View) {
-        val myDir = File(getApplicationContext()?.getExternalFilesDir(null)?.toString() + "/")
+        val myDir = File(applicationContext?.getExternalFilesDir(null)?.toString() + "/")
         if (!myDir.exists())
-            myDir.mkdirs();
+            myDir.mkdirs()
 
         val strFileNameXls = calR!!.getAddress() + " " + calR!!.getCityStZip() + ".xls"
         val file = File(myDir, strFileNameXls)
@@ -296,15 +296,14 @@ class CalculateActivity : Activity() {
     }
 
     fun emailFile(view: View) {
-        val adAlertBox = AlertDialog.Builder(this)
-                .setMessage("Do you want to email results as text or as an Excel spreadsheet?")
-                .setPositiveButton("Text") { arg0, arg1 ->
+        val adAlertBox = AlertDialog.Builder(this).create()
+        adAlertBox.setMessage("Do you want to email results as text or as an Excel spreadsheet?")
+        adAlertBox.setButton(DialogInterface.BUTTON_POSITIVE,"Text") { _, _ ->
                     // do something when the button is clicked
                     emailPlainText()
                 }
-                .setNegativeButton("Excel") { arg0, arg1 ->
+        adAlertBox.setButton(DialogInterface.BUTTON_NEGATIVE,"Excel") { _, _ ->
                     // do something when the button is clicked
-                    //Toast.makeText(applicationContext, "Coming soon", Toast.LENGTH_SHORT).show()
                     try {
                         emailExcelSpreadsheet()
                     } catch (e: IOException) {
@@ -313,7 +312,7 @@ class CalculateActivity : Activity() {
                         Toast.makeText(applicationContext, e.toString(), Toast.LENGTH_SHORT).show()
                     }
                 }
-                .show()
+        adAlertBox.show()
     }
 
     private fun emailPlainText() {
@@ -366,16 +365,15 @@ class CalculateActivity : Activity() {
     }
 
     private fun exitByBackKey() {
-        val adAlertBox = AlertDialog.Builder(this)
-                .setMessage("Do you want to go back to main menu?")
-                .setPositiveButton("Yes") { arg0, arg1 ->
-                    // do something when the button is clicked
-                    val intB = Intent(this@CalculateActivity, MainActivity::class.java)
-                    startActivity(intB)
-                    finish()
-                    //close();
-                }
-                .setNegativeButton("No") { arg0, arg1 -> }
-                .show()
+        val adAlertBox = AlertDialog.Builder(this).create()
+        adAlertBox.setMessage("Do you want to go back to main menu?")
+        adAlertBox.setButton(DialogInterface.BUTTON_POSITIVE,"Yes") { _, _ ->
+            // do something when the button is clicked
+            val intB = Intent(this@CalculateActivity, MainActivity::class.java)
+            startActivity(intB)
+            finish()
+        }
+        adAlertBox.setButton(DialogInterface.BUTTON_NEGATIVE,"No") { _, _ -> }
+        adAlertBox.show()
     }
 }
