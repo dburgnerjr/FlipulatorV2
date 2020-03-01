@@ -14,6 +14,7 @@ import jxl.write.Number
 import jxl.write.NumberFormat
 import jxl.write.WritableCellFormat
 import jxl.write.WritableFont
+import jxl.write.WritableFont.*
 import jxl.write.WriteException
 
 class ExcelSpreadsheet {
@@ -21,6 +22,7 @@ class ExcelSpreadsheet {
     private var timesBold: WritableCellFormat? = null
     private var times: WritableCellFormat? = null
 
+    @Suppress("INACCESSIBLE_TYPE")
     @Throws(IOException::class, WriteException::class)
     fun createSpreadsheet(fDir: File, calC: Calculate, strXLSFile: String) {
         val fileXls = File(fDir, strXLSFile)
@@ -33,14 +35,14 @@ class ExcelSpreadsheet {
         val excelSheet = workbook.getSheet(0)
 
         // Lets create a times font
-        val times18ptHeader = WritableFont(WritableFont.ARIAL, 18, WritableFont.BOLD)
+        val times18ptHeader = WritableFont(ARIAL, 18, BOLD)
         // Define the cell format
         times = WritableCellFormat(times18ptHeader)
         // Lets automatically wrap the cells
         times!!.wrap = true
 
         // create a bold font
-        val times10ptBold = WritableFont(WritableFont.ARIAL, 10, WritableFont.BOLD, false)
+        val times10ptBold = WritableFont(ARIAL, 10, BOLD, false)
         timesBold = WritableCellFormat(times10ptBold)
         // Lets automatically wrap the cells
         timesBold!!.wrap = true

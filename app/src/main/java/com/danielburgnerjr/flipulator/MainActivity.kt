@@ -52,11 +52,11 @@ class MainActivity : FragmentActivity() {
     private fun exitByBackKey() {
         val adAlertBox = AlertDialog.Builder(this).create()
         adAlertBox.setMessage("Do you want to exit application?")
-        adAlertBox.setButton(DialogInterface.BUTTON_POSITIVE, "Yes") { arg0, arg1 ->
+        adAlertBox.setButton(DialogInterface.BUTTON_POSITIVE, "Yes") { _, _ ->
             // do something when the button is clicked
             finish()
         }
-        adAlertBox.setButton(DialogInterface.BUTTON_NEGATIVE, "No" ) { arg0, arg1 -> }
+        adAlertBox.setButton(DialogInterface.BUTTON_NEGATIVE, "No" ) { _, _ -> }
         adAlertBox.show()
     }
 }

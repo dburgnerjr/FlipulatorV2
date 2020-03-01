@@ -41,6 +41,7 @@
                     android:textColor="#454545"
                     android:ems="10"
                     android:hint="@string/address"
+                    android:autofillHints="@string/address"
                     android:inputType="text" />
             </LinearLayout>
 
@@ -68,6 +69,7 @@
                     android:textColor="#454545"
                     android:ems="10"
                     android:hint="@string/citystzip"
+                    android:autofillHints="@string/citystzip"
                     android:inputType="text" />
 
             </LinearLayout>
@@ -96,6 +98,7 @@
                     android:textColor="#454545"
                     android:ems="10"
                     android:hint="@string/sq_footage"
+                    android:autofillHints="@string/sq_footage"
                     android:inputType="numberDecimal" />
             </LinearLayout>
 
@@ -123,6 +126,7 @@
                     android:textColor="#454545"
                     android:ems="10"
                     android:hint="@string/bedrooms"
+                    android:autofillHints="@string/bedrooms"
                     android:inputType="numberDecimal" />
             </LinearLayout>
 
@@ -150,6 +154,7 @@
                     android:textColor="#454545"
                     android:ems="10"
                     android:hint="@string/bathrooms"
+                    android:autofillHints="@string/bathrooms"
                     android:inputType="numberDecimal" />
             </LinearLayout>
 
@@ -177,6 +182,7 @@
                     android:textColor="#454545"
                     android:ems="10"
                     android:hint="@string/salePrice"
+                    android:autofillHints="@string/salePrice"
                     android:inputType="numberDecimal" />
             </LinearLayout>
 
@@ -204,6 +210,7 @@
                     android:textColor="#454545"
                     android:ems="10"
                     android:hint="@string/FMVARV"
+                    android:autofillHints="@string/FMVARV"
                     android:inputType="numberDecimal" />
             </LinearLayout>
 
@@ -244,6 +251,7 @@
                     android:textColor="#454545"
                     android:ems="10"
                     android:hint="@string/budgetItems"
+                    android:autofillHints="@string/budgetItems"
                     android:imeOptions="actionDone" />
             </LinearLayout>
 
@@ -297,6 +305,7 @@
                     android:textColor="#454545"
                     android:ems="10"
                     android:hint="@string/rehab_budget"
+                    android:autofillHints="@string/rehab_budget"
                     android:imeOptions="actionDone"
                     android:inputType="numberDecimal" />
             </LinearLayout>
@@ -325,6 +334,7 @@
                     android:textSize="16sp"
                     android:textColor="#454545"
                     android:hint="@string/closholdcosts"
+                    android:autofillHints="@string/closholdcosts"
                     android:ems="10"
                     android:inputType="numberDecimal" />
             </LinearLayout>
@@ -354,6 +364,7 @@
                     android:textColor="#454545"
                     android:textStyle="bold"
                     android:hint="@string/profit"
+                    android:autofillHints="@string/profit"
                     android:ems="10"
                     android:inputType="numberDecimal" />
             </LinearLayout>
@@ -383,6 +394,7 @@
                     android:textColor="#454545"
                     android:textStyle="bold"
                     android:hint="@string/roi"
+                    android:autofillHints="@string/roi"
                     android:ems="10"
                     android:inputType="numberDecimal" />
             </LinearLayout>
@@ -412,6 +424,7 @@
                     android:textColor="#454545"
                     android:textStyle="bold"
                     android:hint="@string/cashoncash"
+                    android:autofillHints="@string/cashoncash"
                     android:ems="10"
                     android:inputType="numberDecimal" />
             </LinearLayout>
@@ -444,7 +457,8 @@
             android:background="#690"
             android:onClick="emailFile"
             android:text="@string/email"
-            android:textColor="#ffffff" />
+            android:textColor="#ffffff"
+            style="?android:attr/buttonBarButtonStyle" />
 
         <Button
             android:id="@+id/btnSave"
@@ -454,7 +468,8 @@
             android:onClick="saveFile"
             android:text="@string/save"
             android:background="#690"
-            android:textColor="#ffffff" />
+            android:textColor="#ffffff"
+            style="?android:attr/buttonBarButtonStyle" />
     </LinearLayout>
 
     <LinearLayout
@@ -471,7 +486,8 @@
             android:layout_weight="0.5"
             android:text="@string/help"
             android:background="#690"
-            android:textColor="#ffffff" />
+            android:textColor="#ffffff"
+            style="?android:attr/buttonBarButtonStyle" />
 
         <Button
             android:id="@+id/btnSubmit"
@@ -481,7 +497,8 @@
             android:onClick="nextPage"
             android:text="@string/submit"
             android:background="#690"
-            android:textColor="#ffffff" />
+            android:textColor="#ffffff"
+            style="?android:attr/buttonBarButtonStyle" />
     </LinearLayout>
 
     <LinearLayout
