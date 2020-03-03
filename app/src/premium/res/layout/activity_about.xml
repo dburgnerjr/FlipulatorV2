@@ -39,6 +39,7 @@
         android:id="@+id/Credits"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/WhatIsFlipulator"
         android:layout_alignLeft="@+id/WhatIsFlipulator"
         android:layout_below="@+id/WhatIsFlipulator"
         android:gravity="center_horizontal"
@@ -66,7 +67,7 @@
             android:id="@+id/textOriginalDesign"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textMobile"
+            android:layout_marginTop="15dp"
             android:textSize="20sp"
             android:textColor="#454545"
             android:text="@string/original_design" />

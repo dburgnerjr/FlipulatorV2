@@ -21,8 +21,11 @@ import android.widget.Toast
 import com.android.billingclient.api.*
 import kotlinx.android.synthetic.main.donate_activity.*
 
-class DonateActivity : AppCompatActivity(), PurchasesUpdatedListener {
+class DonateActivity : AppCompatActivity() {
 
+//}, PurchasesUpdatedListener {
+
+/*
     private lateinit var mBillingClient: BillingClient
     private lateinit var productAdapter: ProductAdapter
 
@@ -30,6 +33,7 @@ class DonateActivity : AppCompatActivity(), PurchasesUpdatedListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.donate_activity)
         setupBillingClient()
+*/
 
 /*
         val mGoogleSpinner: Spinner = findViewById(R.id.spnDonate)
@@ -81,6 +85,7 @@ class DonateActivity : AppCompatActivity(), PurchasesUpdatedListener {
         btnPayPal.visibility = View.GONE
 */
 
+/*
     }
 
     private fun setupBillingClient() {
@@ -170,4 +175,5 @@ class DonateActivity : AppCompatActivity(), PurchasesUpdatedListener {
         private val CATALOG_DEBUG = listOf("android.test.purchased", "android.test.canceled", "android.test.refunded", "android.test.item_unavailable")
         private val GOOGLE_CATALOG = listOf("donation1", "donation5", "donation10", "donation25", "donation50", "donation100")
     }
+*/
 }

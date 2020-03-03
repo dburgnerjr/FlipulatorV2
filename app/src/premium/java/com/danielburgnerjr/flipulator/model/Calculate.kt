@@ -2,7 +2,7 @@ package com.danielburgnerjr.flipulator.model
 
 import java.io.Serializable
 
-public class Calculate : Serializable {
+class Calculate : Serializable {
 
     // location/settings info
     private var address: String? = null                // address
