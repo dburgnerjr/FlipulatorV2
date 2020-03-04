@@ -60,6 +60,7 @@
             android:text="@string/prev"
             android:onClick="prevPage"
             android:background="#690"
+            style="?android:attr/buttonBarButtonStyle"
             android:textColor="#ffffff" />
 
         <Button
@@ -70,6 +71,7 @@
             android:text="@string/save"
             android:onClick="saveFile"
             android:background="#690"
+            style="?android:attr/buttonBarButtonStyle"
             android:textColor="#ffffff" />
     </LinearLayout>
 
@@ -89,6 +91,7 @@
             android:onClick="mainMenu"
             android:text="@string/main_menu"
             android:background="#690"
+            style="?android:attr/buttonBarButtonStyle"
             android:textColor="#ffffff" />
 
         <Button
@@ -99,6 +102,7 @@
             android:onClick="nextPage"
             android:text="@string/email"
             android:background="#690"
+            style="?android:attr/buttonBarButtonStyle"
             android:textColor="#ffffff" />
     </LinearLayout>
 
