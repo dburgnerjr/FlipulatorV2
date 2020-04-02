@@ -33,6 +33,7 @@
             android:label="Open Files"
             android:theme="@style/AppTheme" >
         </activity>
+        <activity android:name=".CalculateActivity" />
     </application>
 
 </manifest>

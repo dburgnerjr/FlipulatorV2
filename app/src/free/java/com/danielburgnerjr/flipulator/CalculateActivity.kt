@@ -376,4 +376,5 @@ class CalculateActivity : Activity() {
         adAlertBox.setButton(DialogInterface.BUTTON_NEGATIVE,"No") { _, _ -> }
         adAlertBox.show()
     }
+
 }
