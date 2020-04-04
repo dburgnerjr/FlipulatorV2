@@ -18,27 +18,29 @@ class LocationFinalResultFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val view: View = inflater.inflate(R.layout.fragment_location_fin_result, container, false)
-        intI = getActivity()!!.getIntent()
+        intI = activity!!.intent
 
         calC = intI!!.getSerializableExtra("Calculate") as Calculate
 
         val tvFinanceValue = view.findViewById<View>(R.id.txtFinanceType) as TextView
-        tvFinanceValue.setText(calC!!.getFinanceValue())
-        tvFinanceValue.setEnabled(false)
+        tvFinanceValue.text = calC!!.getFinanceValue()
+        tvFinanceValue.isEnabled = false
 
         val tvFRAddress = view.findViewById<View>(R.id.txtAddressFR) as TextView
         val tvFRCityStZip = view.findViewById<View>(R.id.txtCityStZip) as TextView
         val tvSF = view.findViewById<View>(R.id.txtSq_FootageFR) as TextView
         val tvBedBath = view.findViewById<View>(R.id.txtBedroomsBathrooms) as TextView
 
-        tvFRAddress.setText(calC!!.getAddress())
-        tvFRCityStZip.setText(calC!!.getCity() + ", " + calC!!.getState() + " " + calC!!.getZipCode())
-        tvSF.setText(calC!!.getSquareFootage().toString())
-        tvBedBath.setText(calC!!.getBedrooms().toString() + " BR/" + calC!!.getBathrooms().toString() + " BA")
-        tvFRAddress.setEnabled(false)
-        tvFRCityStZip.setEnabled(false)
-        tvSF.setEnabled(false)
-        tvBedBath.setEnabled(false)
+        tvFRAddress.text = calC!!.getAddress()
+        val strCityStZip = calC!!.getCity() + ", " + calC!!.getState() + " " + calC!!.getZipCode()
+        tvFRCityStZip.text = strCityStZip
+        tvSF.text = calC!!.getSquareFootage().toString()
+        val strBedBath = calC!!.getBedrooms().toString() + " BR/" + calC!!.getBathrooms().toString() + " BA"
+        tvBedBath.text = strBedBath
+        tvFRAddress.isEnabled = false
+        tvFRCityStZip.isEnabled = false
+        tvSF.isEnabled = false
+        tvBedBath.isEnabled = false
 
         return view
     }

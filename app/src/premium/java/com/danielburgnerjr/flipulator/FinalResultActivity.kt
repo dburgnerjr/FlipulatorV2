@@ -3,17 +3,12 @@ package com.danielburgnerjr.flipulator
 import android.app.AlertDialog
 import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
 
 import android.view.KeyEvent
 import android.view.View
-import android.widget.AdapterView
-import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import android.widget.TextView
 import android.widget.Toast
-import android.content.DialogInterface
 import android.content.Intent
 import androidx.fragment.app.FragmentActivity
 
@@ -21,11 +16,8 @@ import com.danielburgnerjr.flipulator.model.Calculate
 import com.danielburgnerjr.flipulator.util.ExcelSpreadsheet
 
 import java.io.*
-import java.text.DecimalFormat
-import java.util.Locale
 
 import jxl.write.WriteException
-
 
 class FinalResultActivity : FragmentActivity() {
 
@@ -44,24 +36,24 @@ class FinalResultActivity : FragmentActivity() {
         spnTimeFrame = findViewById<View>(R.id.spnTimeFrame) as Spinner
         spnTimeFrame!!.adapter = aradAdapter
 
-        var intI = getIntent()
+        var intI = intent
 
         xlsSpreadsheet = ExcelSpreadsheet()
         calC = intI.getSerializableExtra("Calculate") as Calculate
 
         if (calC!!.getGrossProfit() < 30000.0) {
             val adAlertBox = AlertDialog.Builder(this@FinalResultActivity)
-                    .setMessage("Your gross profit is below $30K! Would you like to make changes now?")
-                    .setPositiveButton("Yes") { arg0, arg1 ->
-                        // do something when the button is clicked
-                        intI = Intent(this@FinalResultActivity, LocationActivity::class.java)
-                        if (intI != null)
-                            intI!!.putExtra("Calculate", calC)
-                        startActivity(intI)
-                        finish()
-                    }
-                    .setNegativeButton("No") { arg0, arg1 -> }
-                    .show()
+            adAlertBox.setMessage("Your gross profit is below $30K! Would you like to make changes now?")
+            adAlertBox.setPositiveButton("Yes") { _, _ ->
+                // do something when the button is clicked
+                intI = Intent(this@FinalResultActivity, LocationActivity::class.java)
+                if (intI != null)
+                    intI!!.putExtra("Calculate", calC)
+                startActivity(intI)
+                finish()
+            }
+            adAlertBox.setNegativeButton("No") { _, _ -> }
+            adAlertBox.show()
         }
     }
 
@@ -83,22 +75,22 @@ class FinalResultActivity : FragmentActivity() {
 
     fun nextPage(view: View) {
         val adAlertBox = AlertDialog.Builder(this)
-                .setMessage("Do you want to email results as text or as an Excel spreadsheet?")
-                .setPositiveButton("Text") { arg0, arg1 ->
-                    // do something when the button is clicked
-                    emailPlainText()
-                }
-                .setNegativeButton("Excel") { arg0, arg1 ->
-                    // do something when the button is clicked
-                    try {
-                        emailExcelSpreadsheet()
-                    } catch (e: IOException) {
-                        Toast.makeText(applicationContext, e.toString(), Toast.LENGTH_SHORT).show()
-                    } catch (e: WriteException) {
-                        Toast.makeText(applicationContext, e.toString(), Toast.LENGTH_SHORT).show()
-                    }
-                }
-                .show()
+        adAlertBox.setMessage("Do you want to email results as text or as an Excel spreadsheet?")
+        adAlertBox.setPositiveButton("Text") { _, _ ->
+            // do something when the button is clicked
+            emailPlainText()
+        }
+        adAlertBox.setNegativeButton("Excel") { _, _ ->
+            // do something when the button is clicked
+            try {
+                emailExcelSpreadsheet()
+            } catch (e: IOException) {
+                Toast.makeText(applicationContext, e.toString(), Toast.LENGTH_SHORT).show()
+            } catch (e: WriteException) {
+                Toast.makeText(applicationContext, e.toString(), Toast.LENGTH_SHORT).show()
+            }
+        }
+        adAlertBox.show()
     }
 
     @Throws(IOException::class, WriteException::class)
@@ -121,7 +113,7 @@ class FinalResultActivity : FragmentActivity() {
 
     }
 
-    fun emailPlainText() {
+    private fun emailPlainText() {
         // email results of calculate to those parties concerned
         var strMessage = "Address:\t\t\t\t\t\t\t   " + calC!!.getAddress() + "\n"
         strMessage += "City/State/ZIP Code:\t\t " + calC!!.getCity() + ", " + calC!!.getState() + " " + calC!!.getZipCode() + "\n"

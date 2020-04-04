@@ -12,10 +12,10 @@ import android.widget.Button
 import android.widget.Toast
 
 class MainActivityFragment : Fragment(), View.OnClickListener {
-    protected var strPath: String? = "if you can see this, the path is null"
+    private var strPath: String = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        strPath?.let { this.getArguments()?.getString("path") }    // path is not showing up at all
+        strPath.let { arguments?.getString("path") }    // path is not showing up at all
         val myDir = File(strPath)
 
         val view: View = inflater.inflate(R.layout.fragment_main, container, false)
@@ -26,12 +26,12 @@ class MainActivityFragment : Fragment(), View.OnClickListener {
         val btnDonate: Button = view.findViewById(R.id.btnDonate)
         btnDonate.setOnClickListener(this)
         val btnOpenFiles: Button = view.findViewById(R.id.btnOpenFiles)
-        Toast.makeText(getActivity()?.getApplicationContext(), "MainActivityFragment: " + strPath, Toast.LENGTH_LONG).show()
+        Toast.makeText(activity?.applicationContext, "MainActivityFragment: $strPath", Toast.LENGTH_LONG).show()
 /*
         val fFileArray = myDir.listFiles()
         if (fFileArray == null) {
 */
-            btnOpenFiles?.setVisibility(View.INVISIBLE)
+            btnOpenFiles.visibility = View.INVISIBLE
 /*
         } else {
             btnOpenFiles.setOnClickListener(this)
@@ -42,41 +42,39 @@ class MainActivityFragment : Fragment(), View.OnClickListener {
         return view
     }
 
-    override fun onClick(v: View?) {
-        when (v?.id) {
-            R.id.btnAbout -> {
-                val intI = Intent(getActivity()?.getApplicationContext(), AboutActivity::class.java)
-                startActivity(intI)
-            }
+    override fun onClick(v: View?) = when (v?.id) {
+        R.id.btnAbout -> {
+            val intI = Intent(activity?.applicationContext, AboutActivity::class.java)
+            startActivity(intI)
+        }
 
-            R.id.btnCalculate -> {
-                val intI = Intent(getActivity()?.getApplicationContext(), LocationActivity::class.java)
-                startActivity(intI)
-            }
+        R.id.btnCalculate -> {
+            val intI = Intent(activity?.applicationContext, LocationActivity::class.java)
+            startActivity(intI)
+        }
 
-            R.id.btnDonate -> {
-                val intI = Intent(getActivity()?.getApplicationContext(), DonateActivity::class.java)
-                startActivity(intI)
-            }
+        R.id.btnDonate -> {
+            val intI = Intent(activity?.applicationContext, DonateActivity::class.java)
+            startActivity(intI)
+        }
 
-            R.id.btnOpenFiles -> {
-                val intI = Intent(getActivity()?.getApplicationContext(), OpenFilesActivity::class.java)
-                startActivity(intI)
-            }
+        R.id.btnOpenFiles -> {
+            val intI = Intent(activity?.applicationContext, OpenFilesActivity::class.java)
+            startActivity(intI)
+        }
 
-            R.id.btnShare -> {
-                val strPackName: String = getResources().getString(R.string.package_name)
-                val intI = Intent(Intent.ACTION_SEND)
-                intI.setType("text/plain")
-                intI.putExtra(Intent.EXTRA_SUBJECT, "Flipulator Premium")
-                var sAux = "\nLet me recommend you this application\n\n"
-                sAux = sAux + "https://play.google.com/store/apps/details?id=" + strPackName + "\n\n"
-                intI.putExtra(Intent.EXTRA_TEXT, sAux)
-                startActivity(Intent.createChooser(intI, "choose one"))
-            }
+        R.id.btnShare -> {
+            val strPackName: String = resources.getString(R.string.package_name)
+            val intI = Intent(Intent.ACTION_SEND)
+            intI.type = "text/plain"
+            intI.putExtra(Intent.EXTRA_SUBJECT, "Flipulator Premium")
+            var sAux = "\nLet me recommend you this application\n\n"
+            sAux = sAux + "https://play.google.com/store/apps/details?id=" + strPackName + "\n\n"
+            intI.putExtra(Intent.EXTRA_TEXT, sAux)
+            startActivity(Intent.createChooser(intI, "choose one"))
+        }
 
-            else -> {
-            }
+        else -> {
         }
     }
 }

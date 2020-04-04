@@ -29,7 +29,7 @@ class ReservesActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.calculate_activity_three)
 
-        val intI = getIntent()
+        val intI = intent
         calC = intI.getSerializableExtra("Calculate") as? Calculate
 
         etInsurance = findViewById<View>(R.id.txtInsurance) as EditText
@@ -51,7 +51,7 @@ class ReservesActivity : Activity() {
                     "Insurance and property taxes (annually) are divided by two while " +
                     "electric, gas and water (monthly) are multiplied by six.")
                     .setCancelable(false)
-                    .setNeutralButton("OK") { dialog, id ->
+                    .setNeutralButton("OK") { dialog, _ ->
                         // if this button is clicked, close
                         // current activity
                         dialog.cancel()
@@ -91,31 +91,37 @@ class ReservesActivity : Activity() {
     }
 
     fun nextPage(view: View) {
-        if ("" == etInsurance!!.text.toString()) {
-            Toast.makeText(applicationContext, "Must Enter Insurance For 6 Mos", Toast.LENGTH_SHORT).show()
-        } else if ("" == etTaxes!!.text.toString()) {
-            Toast.makeText(applicationContext, "Must Enter Property Taxes For 6 Mos", Toast.LENGTH_SHORT).show()
-        } else if ("" == etWater!!.text.toString()) {
-            Toast.makeText(applicationContext, "Must Enter Water Bill For 6 Mos", Toast.LENGTH_SHORT).show()
-        } else if ("" == etGas!!.text.toString()) {
-            Toast.makeText(applicationContext, "Must Enter Gas Bill For 6 Mos", Toast.LENGTH_SHORT).show()
-        } else if ("" == etElectric!!.text.toString()) {
+        when {
+            "" == etInsurance!!.text.toString() -> {
+                Toast.makeText(applicationContext, "Must Enter Insurance For 6 Mos", Toast.LENGTH_SHORT).show()
+            }
+            "" == etTaxes!!.text.toString() -> {
+                Toast.makeText(applicationContext, "Must Enter Property Taxes For 6 Mos", Toast.LENGTH_SHORT).show()
+            }
+            "" == etWater!!.text.toString() -> {
+                Toast.makeText(applicationContext, "Must Enter Water Bill For 6 Mos", Toast.LENGTH_SHORT).show()
+            }
+            "" == etGas!!.text.toString() -> {
+                Toast.makeText(applicationContext, "Must Enter Gas Bill For 6 Mos", Toast.LENGTH_SHORT).show()
+            }
+            "" == etElectric!!.text.toString() -> {
             Toast.makeText(applicationContext, "Must Enter Electric Bill For 6 Mos", Toast.LENGTH_SHORT).show()
-        } else {
+            }
+            else -> {
+                val intI = Intent(this, ClosExpPropMktInfoActivity::class.java)
 
-            val intI = Intent(this, ClosExpPropMktInfoActivity::class.java)
+                calC!!.setMortgage(calC!!.getMonthlyPmt() * 6)
+                calC!!.setInsurance(java.lang.Double.parseDouble(etInsurance!!.text.toString()))
+                calC!!.setTaxes(java.lang.Double.parseDouble(etTaxes!!.text.toString()))
+                calC!!.setWater(java.lang.Double.parseDouble(etWater!!.text.toString()))
+                calC!!.setGas(java.lang.Double.parseDouble(etGas!!.text.toString()))
+                calC!!.setElectric(java.lang.Double.parseDouble(etElectric!!.text.toString()))
+                calC!!.setTotalExpenses()
 
-            calC!!.setMortgage(calC!!.getMonthlyPmt() * 6)
-            calC!!.setInsurance(java.lang.Double.parseDouble(etInsurance!!.text.toString()))
-            calC!!.setTaxes(java.lang.Double.parseDouble(etTaxes!!.text.toString()))
-            calC!!.setWater(java.lang.Double.parseDouble(etWater!!.text.toString()))
-            calC!!.setGas(java.lang.Double.parseDouble(etGas!!.text.toString()))
-            calC!!.setElectric(java.lang.Double.parseDouble(etElectric!!.text.toString()))
-            calC!!.setTotalExpenses()
-
-            intI.putExtra("Calculate", calC)
-            startActivity(intI)
-            finish()
+                intI.putExtra("Calculate", calC)
+                startActivity(intI)
+                finish()
+            }
         }
     }
 

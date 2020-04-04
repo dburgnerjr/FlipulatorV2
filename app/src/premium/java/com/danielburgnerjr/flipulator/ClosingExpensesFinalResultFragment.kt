@@ -18,7 +18,7 @@ class ClosingExpensesFinalResultFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val view: View = inflater.inflate(R.layout.fragment_closing_expenses_final_result, container, false)
-        intI = getActivity()!!.getIntent()
+        intI = activity!!.intent
 
         calC = intI!!.getSerializableExtra("Calculate") as Calculate
 
@@ -33,30 +33,30 @@ class ClosingExpensesFinalResultFragment : Fragment() {
         val txtSellingPriceFR = view.findViewById<View>(R.id.txtSellingPriceFR) as TextView
 
         calC!!.setRECost(calC!!.getSellingPrice(), calC!!.getRealEstComm())
-        txtRealEstComm.setText(String.format("$%.0f", calC!!.getRECost()))
+        txtRealEstComm.text = String.format("$%.0f", calC!!.getRECost())
         val strRealEstCommPer = String.format("%.0f", calC!!.getRealEstComm()) + "%"
-        txtRealEstCommPer.setText(strRealEstCommPer)
+        txtRealEstCommPer.text = strRealEstCommPer
         calC!!.setBCCost(calC!!.getSalesPrice(), calC!!.getBuyClosCost())
-        txtBuyerClosCost.setText(String.format("$%.0f", calC!!.getBCCost()))
+        txtBuyerClosCost.text = String.format("$%.0f", calC!!.getBCCost())
         val strBuyerClosCostPer = String.format("%.0f", calC!!.getBuyClosCost()) + "%"
-        txtBuyerClosCostPer.setText(strBuyerClosCostPer)
+        txtBuyerClosCostPer.text = strBuyerClosCostPer
         calC!!.setSCCost(calC!!.getSalesPrice(), calC!!.getSellClosCost())
-        txtSellerClosCost.setText(String.format("$%.0f", calC!!.getSCCost()))
+        txtSellerClosCost.text = String.format("$%.0f", calC!!.getSCCost())
         val strSellerClosCostPer = String.format("%.0f", calC!!.getSellClosCost()) + "%"
-        txtSellerClosCostPer.setText(strSellerClosCostPer)
-        txtFMVARVFR.setText(String.format("$%.0f", calC!!.getFMVARV()))
-        txtComparablesFR.setText(String.format("$%.0f", calC!!.getComparables()))
-        txtSellingPriceFR.setText(String.format("$%.0f", calC!!.getSellingPrice()))
+        txtSellerClosCostPer.text = strSellerClosCostPer
+        txtFMVARVFR.text = String.format("$%.0f", calC!!.getFMVARV())
+        txtComparablesFR.text = String.format("$%.0f", calC!!.getComparables())
+        txtSellingPriceFR.text = String.format("$%.0f", calC!!.getSellingPrice())
 
-        txtRealEstComm.setEnabled(false)
-        txtRealEstCommPer.setEnabled(false)
-        txtBuyerClosCost.setEnabled(false)
-        txtBuyerClosCostPer.setEnabled(false)
-        txtSellerClosCost.setEnabled(false)
-        txtSellerClosCostPer.setEnabled(false)
-        txtFMVARVFR.setEnabled(false)
-        txtComparablesFR.setEnabled(false)
-        txtSellingPriceFR.setEnabled(false)
+        txtRealEstComm.isEnabled = false
+        txtRealEstCommPer.isEnabled = false
+        txtBuyerClosCost.isEnabled = false
+        txtBuyerClosCostPer.isEnabled = false
+        txtSellerClosCost.isEnabled = false
+        txtSellerClosCostPer.isEnabled = false
+        txtFMVARVFR.isEnabled = false
+        txtComparablesFR.isEnabled = false
+        txtSellingPriceFR.isEnabled = false
 
         return view
     }

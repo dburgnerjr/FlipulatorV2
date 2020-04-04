@@ -29,7 +29,7 @@ class ClosExpPropMktInfoActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.calculate_activity_four)
 
-        val intI = getIntent()
+        val intI = intent
 
         etRealEstComm = findViewById<View>(R.id.txtCommission) as EditText
         etBuyClosCost = findViewById<View>(R.id.txtBuyerClosCost) as EditText
@@ -51,7 +51,7 @@ class ClosExpPropMktInfoActivity : Activity() {
                     "cost percentage, fair market value/after repair value, comparables and " +
                     "selling price.")
                     .setCancelable(false)
-                    .setNeutralButton("OK") { dialog, id ->
+                    .setNeutralButton("OK") { dialog, _ ->
                         // if this button is clicked, close
                         // current activity
                         dialog.cancel()

@@ -38,24 +38,24 @@ class LocationActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.calculate_activity)
 
-        val intI = getIntent()
+        val intI = intent
 
-        etAddress = findViewById<EditText>(R.id.txtAddress)
-        etCity = findViewById<EditText>(R.id.txtCity)
-        etState = findViewById<EditText>(R.id.txtState)
-        etZIPCode = findViewById<EditText>(R.id.txtZIP_Code)
-        etSquareFootage = findViewById<EditText>(R.id.txtSq_Footage)
-        etBedrooms = findViewById<EditText>(R.id.txtBedrooms)
-        etBathrooms = findViewById<EditText>(R.id.txtBathrooms)
+        etAddress = findViewById(R.id.txtAddress)
+        etCity = findViewById(R.id.txtCity)
+        etState = findViewById(R.id.txtState)
+        etZIPCode = findViewById(R.id.txtZIP_Code)
+        etSquareFootage = findViewById(R.id.txtSq_Footage)
+        etBedrooms = findViewById(R.id.txtBedrooms)
+        etBathrooms = findViewById(R.id.txtBathrooms)
         spnFinanceType = findViewById(R.id.spnFinanceType)
-        btnHelp = findViewById<Button>(R.id.txtHelp)
+        btnHelp = findViewById(R.id.txtHelp)
 
         val aradAdapter = ArrayAdapter.createFromResource(
                 this, R.array.finance_type, android.R.layout.simple_spinner_item)
         aradAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spnFinanceType!!.adapter = aradAdapter
 
-        spnFinanceType!!.setOnItemSelectedListener(object : OnItemSelectedListener {
+        spnFinanceType!!.onItemSelectedListener = object : OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View, position: Int, id: Long) {
                 nFinance = position
                 strFinance = parentView.getItemAtPosition(position).toString()
@@ -64,7 +64,7 @@ class LocationActivity : Activity() {
             override fun onNothingSelected(parentView: AdapterView<*>) {
                 // your code here
             }
-        })
+        }
 
         // add button listener
         btnHelp!!.setOnClickListener {
@@ -77,7 +77,7 @@ class LocationActivity : Activity() {
             alertDialogBuilder.setMessage("Enter the address, city, state, ZIP code and square footage of the property, " +
                     "including the number of bedrooms and bathrooms.  Please include the finance type.")
                     .setCancelable(false)
-                    .setNeutralButton("OK") { dialog, id ->
+                    .setNeutralButton("OK") { dialog, _ ->
                         // if this button is clicked, close
                         // current activity
                         dialog.cancel()
@@ -121,40 +121,48 @@ class LocationActivity : Activity() {
     }
 
     fun nextPage(view: View) {
+        when {
+            "" == etAddress!!.text.toString() -> {
+                Toast.makeText(applicationContext, "Must Enter Address", Toast.LENGTH_SHORT).show()
+            }
+            "" == etCity!!.text.toString() -> {
+                Toast.makeText(applicationContext, "Must Enter City", Toast.LENGTH_SHORT).show()
+            }
+            "" == etState!!.text.toString() -> {
+                Toast.makeText(applicationContext, "Must Enter State", Toast.LENGTH_SHORT).show()
+            }
+            "" == etZIPCode!!.text.toString() -> {
+                Toast.makeText(applicationContext, "Must Enter ZIP Code", Toast.LENGTH_SHORT).show()
+            }
+            "" == etSquareFootage!!.text.toString() -> {
+                Toast.makeText(applicationContext, "Must Enter Square Footage", Toast.LENGTH_SHORT).show()
+            }
+            "" == etBedrooms!!.text.toString() -> {
+                Toast.makeText(applicationContext, "Must Enter Bedrooms", Toast.LENGTH_SHORT).show()
+            }
+            "" == etBathrooms!!.text.toString() -> {
+                Toast.makeText(applicationContext, "Must Enter Bathrooms", Toast.LENGTH_SHORT).show()
+            }
+            else -> {
+                val intI = Intent(this, SalesMortgageActivity::class.java)
 
-        if ("" == etAddress!!.text.toString()) {
-            Toast.makeText(applicationContext, "Must Enter Address", Toast.LENGTH_SHORT).show()
-        } else if ("" == etCity!!.text.toString()) {
-            Toast.makeText(applicationContext, "Must Enter City", Toast.LENGTH_SHORT).show()
-        } else if ("" == etState!!.text.toString()) {
-            Toast.makeText(applicationContext, "Must Enter State", Toast.LENGTH_SHORT).show()
-        } else if ("" == etZIPCode!!.text.toString()) {
-            Toast.makeText(applicationContext, "Must Enter ZIP Code", Toast.LENGTH_SHORT).show()
-        } else if ("" == etSquareFootage!!.text.toString()) {
-            Toast.makeText(applicationContext, "Must Enter Square Footage", Toast.LENGTH_SHORT).show()
-        } else if ("" == etBedrooms!!.text.toString()) {
-            Toast.makeText(applicationContext, "Must Enter Bedrooms", Toast.LENGTH_SHORT).show()
-        } else if ("" == etBathrooms!!.text.toString()) {
-            Toast.makeText(applicationContext, "Must Enter Bathrooms", Toast.LENGTH_SHORT).show()
-        } else {
-            val intI = Intent(this, SalesMortgageActivity::class.java)
+                if (calC == null)
+                    calC = Calculate()
 
-            if (calC == null)
-                calC = Calculate()
+                calC!!.setAddress(etAddress!!.text.toString())
+                calC!!.setCity(etCity!!.text.toString())
+                calC!!.setState(etState!!.text.toString())
+                calC!!.setZipCode(etZIPCode!!.text.toString())
+                calC!!.setSquareFootage(Integer.parseInt(etSquareFootage!!.text.toString()))
+                calC!!.setBedrooms(Integer.parseInt(etBedrooms!!.text.toString()))
+                calC!!.setBathrooms(java.lang.Double.parseDouble(etBathrooms!!.text.toString()))
+                calC!!.setFinance(nFinance)
+                calC!!.setFinanceValue(strFinance)
 
-            calC!!.setAddress(etAddress!!.text.toString())
-            calC!!.setCity(etCity!!.text.toString())
-            calC!!.setState(etState!!.text.toString())
-            calC!!.setZipCode(etZIPCode!!.text.toString())
-            calC!!.setSquareFootage(Integer.parseInt(etSquareFootage!!.text.toString()))
-            calC!!.setBedrooms(Integer.parseInt(etBedrooms!!.text.toString()))
-            calC!!.setBathrooms(java.lang.Double.parseDouble(etBathrooms!!.text.toString()))
-            calC!!.setFinance(nFinance)
-            calC!!.setFinanceValue(strFinance)
-
-            intI.putExtra("Calculate", calC)
-            startActivity(intI)
-            finish()
+                intI.putExtra("Calculate", calC)
+                startActivity(intI)
+                finish()
+            }
         }
     }
 
