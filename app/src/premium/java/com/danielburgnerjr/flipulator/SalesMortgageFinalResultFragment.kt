@@ -18,7 +18,7 @@ class SalesMortgageFinalResultFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val view: View = inflater.inflate(R.layout.fragment_sales_mortgage_final_result, container, false)
-        intI = getActivity()!!.getIntent()
+        intI = activity!!.intent
 
         calC = intI!!.getSerializableExtra("Calculate") as Calculate
 
@@ -32,27 +32,27 @@ class SalesMortgageFinalResultFragment : Fragment() {
         val tvTerm = view.findViewById<View>(R.id.txtTermFR) as TextView
         val tvMonthlyPmt = view.findViewById<View>(R.id.txtMonthlyPmt) as TextView
 
-        tvSalesPrice.setText(String.format("$%.0f", calC!!.getSalesPrice()))
+        tvSalesPrice.text = String.format("$%.0f", calC!!.getSalesPrice())
         val strPercentDown = String.format("%.0f", calC!!.getPercentDown()) + "%"
-        tvPercentDown.setText(strPercentDown)
-        tvOfferBid.setText(String.format("$%.0f", calC!!.getOfferBid()))
-        tvRehabBudget.setText(String.format("$%.0f", calC!!.getBudget()))
-        tvRehabBudgetItems.setText(calC!!.getBudgetItems())
-        tvDownPayment.setText(String.format("$%.0f", calC!!.getDownPayment()))
+        tvPercentDown.text = strPercentDown
+        tvOfferBid.text = String.format("$%.0f", calC!!.getOfferBid())
+        tvRehabBudget.text = String.format("$%.0f", calC!!.getBudget())
+        tvRehabBudgetItems.text = calC!!.getBudgetItems()
+        tvDownPayment.text = String.format("$%.0f", calC!!.getDownPayment())
         val strInterestRate = String.format("%.0f", calC!!.getInterestRate()) + "%"
-        tvInterestRate.setText(strInterestRate)
-        tvTerm.setText(calC!!.getTerm().toString())
-        tvMonthlyPmt.setText(String.format("$%.0f", calC!!.getMonthlyPmt()))
+        tvInterestRate.text = strInterestRate
+        tvTerm.text = calC!!.getTerm().toString()
+        tvMonthlyPmt.text = String.format("$%.0f", calC!!.getMonthlyPmt())
 
-        tvSalesPrice.setEnabled(false)
-        tvPercentDown.setEnabled(false)
-        tvOfferBid.setEnabled(false)
-        tvRehabBudget.setEnabled(false)
-        tvRehabBudgetItems.setEnabled(false)
-        tvDownPayment.setEnabled(false)
-        tvInterestRate.setEnabled(false)
-        tvTerm.setEnabled(false)
-        tvMonthlyPmt.setEnabled(false)
+        tvSalesPrice.isEnabled = false
+        tvPercentDown.isEnabled = false
+        tvOfferBid.isEnabled = false
+        tvRehabBudget.isEnabled = false
+        tvRehabBudgetItems.isEnabled = false
+        tvDownPayment.isEnabled = false
+        tvInterestRate.isEnabled = false
+        tvTerm.isEnabled = false
+        tvMonthlyPmt.isEnabled = false
 
         return view
     }

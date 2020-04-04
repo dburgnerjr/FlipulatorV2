@@ -41,28 +41,28 @@ class SalesMortgageActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.calculate_activity_two)
 
-        val intI = getIntent()
+        val intI = intent
         calC = intI.getSerializableExtra("Calculate") as? Calculate
 
-        etSalesPrice = findViewById(R.id.txtSalePrice) as EditText
-        etPercentDown = findViewById(R.id.txtPercentDown) as EditText
-        etOfferBid = findViewById(R.id.txtOfferBid) as EditText
-        etInterestRate = findViewById(R.id.txtInterestRate) as EditText
-        etTerm = findViewById(R.id.txtTerm) as EditText
-        etBudgetItems = findViewById(R.id.txtBudgetItems) as EditText
+        etSalesPrice = findViewById(R.id.txtSalePrice)
+        etPercentDown = findViewById(R.id.txtPercentDown)
+        etOfferBid = findViewById(R.id.txtOfferBid)
+        etInterestRate = findViewById(R.id.txtInterestRate)
+        etTerm = findViewById(R.id.txtTerm)
+        etBudgetItems = findViewById(R.id.txtBudgetItems)
 
         val aradAdapter = ArrayAdapter.createFromResource(
                 this, R.array.rehab_type, android.R.layout.simple_spinner_item)
         aradAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
-        tvRehabFlatRate = findViewById(R.id.tvRehabBudget) as TextView
-        etRehabBudget = findViewById(R.id.txtRehabBudget) as EditText
-        tvRehabType = findViewById(R.id.tvRehabType) as TextView
-        spnRehabType = findViewById(R.id.spnRehabType) as Spinner
+        tvRehabFlatRate = findViewById(R.id.tvRehabBudget)
+        etRehabBudget = findViewById(R.id.txtRehabBudget)
+        tvRehabType = findViewById(R.id.tvRehabType)
+        spnRehabType = findViewById(R.id.spnRehabType)
         btnHelp = findViewById<View>(R.id.txtHelp) as Button
         spnRehabType!!.adapter = aradAdapter
 
-        spnRehabType!!.setOnItemSelectedListener(object : OnItemSelectedListener {
+        spnRehabType!!.onItemSelectedListener = object : OnItemSelectedListener {
             override fun onItemSelected(parentView: AdapterView<*>, selectedItemView: View, position: Int, id: Long) {
                 if (position > 0) {
                     strRTSel = parentView.getItemAtPosition(position).toString()
@@ -77,7 +77,7 @@ class SalesMortgageActivity : Activity() {
             override fun onNothingSelected(parentView: AdapterView<*>) {
                 // your code here
             }
-        })
+        }
 
         // add button listener
         btnHelp!!.setOnClickListener {
@@ -94,7 +94,7 @@ class SalesMortgageActivity : Activity() {
                     "bathrooms, High ($30/sf, Medium + new roof), Super-High ($40/sf, complete " +
                     "gut job), Bulldozer ($125/sf, demolition and rebuild).")
                     .setCancelable(false)
-                    .setNeutralButton("OK") { dialog, id ->
+                    .setNeutralButton("OK") { dialog, _ ->
                         // if this button is clicked, close
                         // current activity
                         dialog.cancel()
@@ -156,7 +156,7 @@ class SalesMortgageActivity : Activity() {
             Toast.makeText(applicationContext, "Must Enter Term", Toast.LENGTH_SHORT).show()
         } else if ("" == etBudgetItems!!.text.toString()) {
             Toast.makeText(applicationContext, "Must Enter Budget Items", Toast.LENGTH_SHORT).show()
-        } else if (("Flat Rate" == spnRehabType!!.getSelectedItem().toString()) && ("" == etRehabBudget!!.text.toString())) {
+        } else if (("Flat Rate" == spnRehabType!!.selectedItem.toString()) && ("" == etRehabBudget!!.text.toString())) {
             Toast.makeText(applicationContext, "Must Enter Flat Rate Budget or Rehab Type", Toast.LENGTH_SHORT).show()
         } else {
             val intI = Intent(this, ReservesActivity::class.java)
@@ -167,7 +167,7 @@ class SalesMortgageActivity : Activity() {
             calC!!.setTerm(Integer.parseInt(etTerm!!.text.toString()))
             calC!!.setBudgetItems(etBudgetItems!!.text.toString())
             calC!!.setRehab(nRehab)
-            if (("Flat Rate" == spnRehabType!!.getSelectedItem().toString()))
+            if (("Flat Rate" == spnRehabType!!.selectedItem.toString()))
                 calC!!.setBudget(java.lang.Double.parseDouble(etRehabBudget!!.text.toString()))
             calC!!.setDownPayment()
             calC!!.setLoanAmount()

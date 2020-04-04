@@ -17,12 +17,12 @@ import jxl.write.WritableFont
 import jxl.write.WritableFont.*
 import jxl.write.WriteException
 
+@Suppress("INACCESSIBLE_TYPE")
 class ExcelSpreadsheet {
 
     private var timesBold: WritableCellFormat? = null
     private var times: WritableCellFormat? = null
 
-    @Suppress("INACCESSIBLE_TYPE")
     @Throws(IOException::class, WriteException::class)
     fun createSpreadsheet(fDir: File, calC: Calculate, strXLSFile: String) {
         val fileXls = File(fDir, strXLSFile)
@@ -725,121 +725,103 @@ class ExcelSpreadsheet {
         excelSheet.addCell(lblRehab)
         val lblRehabType = Label(1, 64, calC.getRehab().toString() + "", timesBold)
         excelSheet.addCell(lblRehabType)
-        val lblFinance: Label
-        lblFinance = Label(2, 64, "Finance Type", timesBold)
+        val lblFinance = Label(2, 64, "Finance Type", timesBold)
         excelSheet.addCell(lblFinance)
         val lblFinanceType = Label(3, 64, calC.getFinance()!!.toString() + "", timesBold)
         excelSheet.addCell(lblFinanceType)
-        val lblBudgetItems: Label
-        lblBudgetItems = Label(0, 65, "Budget Items", timesBold)
+        val lblBudgetItems = Label(0, 65, "Budget Items", timesBold)
         excelSheet.addCell(lblBudgetItems)
         val lblBudgetItemsList = Label(1, 65, calC.getBudgetItems(), timesBold)
         excelSheet.addCell(lblBudgetItemsList)
         excelSheet.mergeCells(1, 65, 4, 67)
 
         // location info - owner carry
-        val lblPropAddressOwnerCarry: Label
-        lblPropAddressOwnerCarry = Label(7, 1, "Property Address:", timesBold)
+        val lblPropAddressOwnerCarry = Label(7, 1, "Property Address:", timesBold)
         excelSheet.addCell(lblPropAddressOwnerCarry)
         excelSheet.mergeCells(8, 1, 11, 1)
         val lblStreetAddressOC = Label(8, 1, calC.getAddress(), timesBold)
         excelSheet.addCell(lblStreetAddressOC)
 
-        val lblCityOwnerCarry: Label
-        lblCityOwnerCarry = Label(7, 2, "City:", timesBold)
+        val lblCityOwnerCarry = Label(7, 2, "City:", timesBold)
         excelSheet.addCell(lblCityOwnerCarry)
         val lblCityOC = Label(8, 2, calC.getCity(), timesBold)
         excelSheet.addCell(lblCityOC)
 
-        val lblStOwnerCarry: Label
-        lblStOwnerCarry = Label(7, 3, "State:", timesBold)
+        val lblStOwnerCarry = Label(7, 3, "State:", timesBold)
         excelSheet.addCell(lblStOwnerCarry)
         val lblStOC = Label(8, 3, calC.getState(), timesBold)
         excelSheet.addCell(lblStOC)
 
-        val lblZipOwnerCarry: Label
-        lblZipOwnerCarry = Label(7, 4, "ZIP:", timesBold)
+        val lblZipOwnerCarry = Label(7, 4, "ZIP:", timesBold)
         excelSheet.addCell(lblZipOwnerCarry)
         val lblZipOC = Label(8, 4, calC.getZipCode(), timesBold)
         excelSheet.addCell(lblZipOC)
 
-        val lblSquareFootageOwnerCarry: Label
-        lblSquareFootageOwnerCarry = Label(9, 2, "Square Footage:", timesBold)
+        val lblSquareFootageOwnerCarry = Label(9, 2, "Square Footage:", timesBold)
         excelSheet.addCell(lblSquareFootageOwnerCarry)
         excelSheet.mergeCells(10, 2, 11, 2)
         val lblSquareFootageOC = Label(10, 2, calC.getSquareFootage()!!.toString() + "", timesBold)
         excelSheet.addCell(lblSquareFootageOC)
 
-        val lblBROwnerCarry: Label
-        lblBROwnerCarry = Label(9, 3, "BR:", timesBold)
+        val lblBROwnerCarry = Label(9, 3, "BR:", timesBold)
         excelSheet.addCell(lblBROwnerCarry)
         excelSheet.mergeCells(10, 3, 11, 3)
         val lblBROC = Label(10, 3, calC.getBedrooms()!!.toString() + "", timesBold)
         excelSheet.addCell(lblBROC)
 
-        val lblBAOwnerCarry: Label
-        lblBAOwnerCarry = Label(9, 4, "BA:", timesBold)
+        val lblBAOwnerCarry = Label(9, 4, "BA:", timesBold)
         excelSheet.addCell(lblBAOwnerCarry)
         excelSheet.mergeCells(10, 4, 11, 4)
         val lblBAOC = Label(10, 4, calC.getBathrooms()!!.toString() + "", timesBold)
         excelSheet.addCell(lblBAOC)
 
         // sales info - owner carry
-        val lblSalesPriceOwnerCarry: Label
-        lblSalesPriceOwnerCarry = Label(7, 8, "Sales Price:", timesBold)
+        val lblSalesPriceOwnerCarry = Label(7, 8, "Sales Price:", timesBold)
         excelSheet.addCell(lblSalesPriceOwnerCarry)
         val nbrSalesPriceOC = Number(8, 8, calC.getSalesPrice(), wcfDollar)
         excelSheet.addCell(nbrSalesPriceOC)
 
-        val lblPercentDownOwnerCarry: Label
-        lblPercentDownOwnerCarry = Label(7, 10, "Percent Down:", timesBold)
+        val lblPercentDownOwnerCarry = Label(7, 10, "Percent Down:", timesBold)
         excelSheet.addCell(lblPercentDownOwnerCarry)
         val nbrPercentDownOC = Number(8, 10, calC.getPercentDown()!! / 100, wcfPercent)
         excelSheet.addCell(nbrPercentDownOC)
 
-        val lblOfferBidOwnerCarry: Label
-        lblOfferBidOwnerCarry = Label(7, 12, "Offer/Bid Price:", timesBold)
+        val lblOfferBidOwnerCarry = Label(7, 12, "Offer/Bid Price:", timesBold)
         excelSheet.addCell(lblOfferBidOwnerCarry)
         val nbrOfferBidOC = Number(8, 12, calC.getOfferBid(), wcfDollar)
         excelSheet.addCell(nbrOfferBidOC)
 
-        val lblRehabOwnerCarry: Label
-        lblRehabOwnerCarry = Label(7, 14, "Rehab Budget:", timesBold)
+        val lblRehabOwnerCarry = Label(7, 14, "Rehab Budget:", timesBold)
         excelSheet.addCell(lblRehabOwnerCarry)
         val nbrRehabOC = Number(8, 14, calC.getBudget(), wcfDollar)
         excelSheet.addCell(nbrRehabOC)
 
         // mortgage info - owner carry
-        val lblDownPaymentOwnerCarry: Label
-        lblDownPaymentOwnerCarry = Label(9, 8, "Down Payment:", timesBold)
+        val lblDownPaymentOwnerCarry = Label(9, 8, "Down Payment:", timesBold)
         excelSheet.addCell(lblDownPaymentOwnerCarry)
         buf = StringBuffer()
         buf.append("SUM(I11*I9)")
         val forDownPaymentOC = Formula(10, 8, buf.toString(), wcfDollar)
         excelSheet.addCell(forDownPaymentOC)
 
-        val lblLoanAmountOwnerCarry: Label
-        lblLoanAmountOwnerCarry = Label(9, 10, "Loan Amount:", timesBold)
+        val lblLoanAmountOwnerCarry = Label(9, 10, "Loan Amount:", timesBold)
         excelSheet.addCell(lblLoanAmountOwnerCarry)
         buf = StringBuffer()
         buf.append("(I13-K9)")
         val forLoanAmountOC = Formula(10, 10, buf.toString(), wcfDollar)
         excelSheet.addCell(forLoanAmountOC)
 
-        val lblInterestRateOwnerCarry: Label
-        lblInterestRateOwnerCarry = Label(9, 12, "Interest Rate:", timesBold)
+        val lblInterestRateOwnerCarry = Label(9, 12, "Interest Rate:", timesBold)
         excelSheet.addCell(lblInterestRateOwnerCarry)
         val nbrInterestRateOC = Number(10, 12, calC.getInterestRate()!! / 100, wcfPercentTwoPlaces)
         excelSheet.addCell(nbrInterestRateOC)
 
-        val lblTermOwnerCarry: Label
-        lblTermOwnerCarry = Label(9, 14, "Term:", timesBold)
+        val lblTermOwnerCarry = Label(9, 14, "Term:", timesBold)
         excelSheet.addCell(lblTermOwnerCarry)
         val nbrTermOC = Number(10, 14, calC.getTerm()!!.toDouble())
         excelSheet.addCell(nbrTermOC)
 
-        val lblMonthlyPmtOwnerCarry: Label
-        lblMonthlyPmtOwnerCarry = Label(9, 16, "Monthly Pmt:", timesBold)
+        val lblMonthlyPmtOwnerCarry = Label(9, 16, "Monthly Pmt:", timesBold)
         excelSheet.addCell(lblMonthlyPmtOwnerCarry)
         buf = StringBuffer()
         buf.append("SUM(K13*K11/12)")
@@ -847,24 +829,19 @@ class ExcelSpreadsheet {
         excelSheet.addCell(forMonthlyPmtOC)
 
         // reserves info - owner carry
-        val lblMonthlyReservesOwnerCarry: Label
-        lblMonthlyReservesOwnerCarry = Label(8, 19, "Monthly", timesBold)
+        val lblMonthlyReservesOwnerCarry = Label(8, 19, "Monthly", timesBold)
         excelSheet.addCell(lblMonthlyReservesOwnerCarry)
 
-        val lblSixMonthReservesOwnerCarry: Label
-        lblSixMonthReservesOwnerCarry = Label(9, 19, "6 Months", timesBold)
+        val lblSixMonthReservesOwnerCarry = Label(9, 19, "6 Months", timesBold)
         excelSheet.addCell(lblSixMonthReservesOwnerCarry)
 
-        val lblNineMonthReservesOwnerCarry: Label
-        lblNineMonthReservesOwnerCarry = Label(10, 19, "9 Months", timesBold)
+        val lblNineMonthReservesOwnerCarry = Label(10, 19, "9 Months", timesBold)
         excelSheet.addCell(lblNineMonthReservesOwnerCarry)
 
-        val lblTwelveMonthReservesOwnerCarry: Label
-        lblTwelveMonthReservesOwnerCarry = Label(11, 19, "12 Months", timesBold)
+        val lblTwelveMonthReservesOwnerCarry = Label(11, 19, "12 Months", timesBold)
         excelSheet.addCell(lblTwelveMonthReservesOwnerCarry)
 
-        val lblMortgageReservesOwnerCarry: Label
-        lblMortgageReservesOwnerCarry = Label(7, 20, "Mortgage", timesBold)
+        val lblMortgageReservesOwnerCarry = Label(7, 20, "Mortgage", timesBold)
         excelSheet.addCell(lblMortgageReservesOwnerCarry)
 
         buf = StringBuffer()
@@ -887,8 +864,7 @@ class ExcelSpreadsheet {
         val forMortgageAnnualOC = Formula(11, 20, buf.toString(), wcfDollar)
         excelSheet.addCell(forMortgageAnnualOC)
 
-        val lblTaxesReservesOwnerCarry: Label
-        lblTaxesReservesOwnerCarry = Label(7, 22, "Taxes", timesBold)
+        val lblTaxesReservesOwnerCarry = Label(7, 22, "Taxes", timesBold)
         excelSheet.addCell(lblTaxesReservesOwnerCarry)
 
         buf = StringBuffer()
@@ -909,8 +885,7 @@ class ExcelSpreadsheet {
         val forTaxesAnnualOC = Formula(11, 22, buf.toString(), wcfDollar)
         excelSheet.addCell(forTaxesAnnualOC)
 
-        val lblInsuranceReservesOwnerCarry: Label
-        lblInsuranceReservesOwnerCarry = Label(7, 24, "Insurance", timesBold)
+        val lblInsuranceReservesOwnerCarry = Label(7, 24, "Insurance", timesBold)
         excelSheet.addCell(lblInsuranceReservesOwnerCarry)
 
         buf = StringBuffer()
@@ -931,8 +906,7 @@ class ExcelSpreadsheet {
         val forInsuranceAnnualOC = Formula(11, 24, buf.toString(), wcfDollar)
         excelSheet.addCell(forInsuranceAnnualOC)
 
-        val lblWaterReservesOwnerCarry: Label
-        lblWaterReservesOwnerCarry = Label(7, 26, "Water", timesBold)
+        val lblWaterReservesOwnerCarry = Label(7, 26, "Water", timesBold)
         excelSheet.addCell(lblWaterReservesOwnerCarry)
 
         buf = StringBuffer()
@@ -953,8 +927,7 @@ class ExcelSpreadsheet {
         val forWaterAnnualOC = Formula(11, 26, buf.toString(), wcfDollar)
         excelSheet.addCell(forWaterAnnualOC)
 
-        val lblGasReservesOwnerCarry: Label
-        lblGasReservesOwnerCarry = Label(7, 28, "Gas", timesBold)
+        val lblGasReservesOwnerCarry = Label(7, 28, "Gas", timesBold)
         excelSheet.addCell(lblGasReservesOwnerCarry)
 
         buf = StringBuffer()
@@ -975,8 +948,7 @@ class ExcelSpreadsheet {
         val forGasAnnualOC = Formula(11, 28, buf.toString(), wcfDollar)
         excelSheet.addCell(forGasAnnualOC)
 
-        val lblElectricReservesOwnerCarry: Label
-        lblElectricReservesOwnerCarry = Label(7, 30, "Electric", timesBold)
+        val lblElectricReservesOwnerCarry = Label(7, 30, "Electric", timesBold)
         excelSheet.addCell(lblElectricReservesOwnerCarry)
 
         buf = StringBuffer()
@@ -997,8 +969,7 @@ class ExcelSpreadsheet {
         val forElectricAnnualOC = Formula(11, 30, buf.toString(), wcfDollar)
         excelSheet.addCell(forElectricAnnualOC)
 
-        val lblTotalReservesOwnerCarry: Label
-        lblTotalReservesOwnerCarry = Label(7, 32, "Total Expenses", timesBold)
+        val lblTotalReservesOwnerCarry = Label(7, 32, "Total Expenses", timesBold)
         excelSheet.addCell(lblTotalReservesOwnerCarry)
 
         buf = StringBuffer()
@@ -1022,8 +993,7 @@ class ExcelSpreadsheet {
         excelSheet.addCell(forTotalAnnualOC)
 
         // closing expenses - owner carry
-        val lblRealEstateCommissionOwnerCarry: Label
-        lblRealEstateCommissionOwnerCarry = Label(7, 36, "Real Estate Commission", timesBold)
+        val lblRealEstateCommissionOwnerCarry = Label(7, 36, "Real Estate Commission", timesBold)
         excelSheet.addCell(lblRealEstateCommissionOwnerCarry)
 
         buf = StringBuffer()
@@ -1031,15 +1001,13 @@ class ExcelSpreadsheet {
         val forRealEstateCommissionOC = Formula(8, 36, buf.toString(), wcfDollar)
         excelSheet.addCell(forRealEstateCommissionOC)
 
-        val lblCommissionPercentageOwnerCarry: Label
-        lblCommissionPercentageOwnerCarry = Label(9, 36, "Commission %", timesBold)
+        val lblCommissionPercentageOwnerCarry = Label(9, 36, "Commission %", timesBold)
         excelSheet.addCell(lblCommissionPercentageOwnerCarry)
 
         val nbrCommissionPercentageOC = Number(10, 36, calC.getRealEstComm() / 100, wcfPercentTwoPlaces)
         excelSheet.addCell(nbrCommissionPercentageOC)
 
-        val lblBuyerClosingCostOwnerCarry: Label
-        lblBuyerClosingCostOwnerCarry = Label(7, 38, "Buyer Closing Costs", timesBold)
+        val lblBuyerClosingCostOwnerCarry = Label(7, 38, "Buyer Closing Costs", timesBold)
         excelSheet.addCell(lblBuyerClosingCostOwnerCarry)
 
         buf = StringBuffer()
@@ -1047,15 +1015,13 @@ class ExcelSpreadsheet {
         val forBuyerClosingCostOC = Formula(8, 38, buf.toString(), wcfDollar)
         excelSheet.addCell(forBuyerClosingCostOC)
 
-        val lblBuyerClosingCostPercentageOwnerCarry: Label
-        lblBuyerClosingCostPercentageOwnerCarry = Label(9, 38, "Closing Costs %", timesBold)
+        val lblBuyerClosingCostPercentageOwnerCarry = Label(9, 38, "Closing Costs %", timesBold)
         excelSheet.addCell(lblBuyerClosingCostPercentageOwnerCarry)
 
         val nbrBuyerClosingCostPercentageOC = Number(10, 38, calC.getBuyClosCost() / 100, wcfPercentTwoPlaces)
         excelSheet.addCell(nbrBuyerClosingCostPercentageOC)
 
-        val lblSellerClosingCostOwnerCarry: Label
-        lblSellerClosingCostOwnerCarry = Label(7, 39, "Seller Closing Costs", timesBold)
+        val lblSellerClosingCostOwnerCarry = Label(7, 39, "Seller Closing Costs", timesBold)
         excelSheet.addCell(lblSellerClosingCostOwnerCarry)
 
         buf = StringBuffer()
@@ -1063,27 +1029,22 @@ class ExcelSpreadsheet {
         val forSellerClosingCostOC = Formula(8, 39, buf.toString(), wcfDollar)
         excelSheet.addCell(forSellerClosingCostOC)
 
-        val lblSellerClosingCostPercentageOwnerCarry: Label
-        lblSellerClosingCostPercentageOwnerCarry = Label(9, 39, "Closing Costs %", timesBold)
+        val lblSellerClosingCostPercentageOwnerCarry = Label(9, 39, "Closing Costs %", timesBold)
         excelSheet.addCell(lblSellerClosingCostPercentageOwnerCarry)
 
         val nbrSellerClosingCostPercentageOC = Number(10, 39, calC.getSellClosCost() / 100, wcfPercentTwoPlaces)
         excelSheet.addCell(nbrSellerClosingCostPercentageOC)
 
-        val lblSixMonthClosExpOwnerCarry: Label
-        lblSixMonthClosExpOwnerCarry = Label(9, 41, "6 Months", timesBold)
+        val lblSixMonthClosExpOwnerCarry = Label(9, 41, "6 Months", timesBold)
         excelSheet.addCell(lblSixMonthClosExpOwnerCarry)
 
-        val lblNineMonthClosExpOwnerCarry: Label
-        lblNineMonthClosExpOwnerCarry = Label(10, 41, "9 Months", timesBold)
+        val lblNineMonthClosExpOwnerCarry = Label(10, 41, "9 Months", timesBold)
         excelSheet.addCell(lblNineMonthClosExpOwnerCarry)
 
-        val lblTwelveMonthClosExpOwnerCarry: Label
-        lblTwelveMonthClosExpOwnerCarry = Label(11, 41, "12 Months", timesBold)
+        val lblTwelveMonthClosExpOwnerCarry = Label(11, 41, "12 Months", timesBold)
         excelSheet.addCell(lblTwelveMonthClosExpOwnerCarry)
 
-        val lblTotalCostsOwnerCarry: Label
-        lblTotalCostsOwnerCarry = Label(7, 42, "Total Costs", timesBold)
+        val lblTotalCostsOwnerCarry = Label(7, 42, "Total Costs", timesBold)
         excelSheet.addCell(lblTotalCostsOwnerCarry)
 
         buf = StringBuffer()
@@ -1101,8 +1062,7 @@ class ExcelSpreadsheet {
         val forTotalCostsAnnualOC = Formula(11, 42, buf.toString(), wcfDollar)
         excelSheet.addCell(forTotalCostsAnnualOC)
 
-        val lblOutOfPocketOwnerCarry: Label
-        lblOutOfPocketOwnerCarry = Label(7, 43, "Out of Pocket Expenses", timesBold)
+        val lblOutOfPocketOwnerCarry = Label(7, 43, "Out of Pocket Expenses", timesBold)
         excelSheet.addCell(lblOutOfPocketOwnerCarry)
 
         buf = StringBuffer()
@@ -1121,20 +1081,16 @@ class ExcelSpreadsheet {
         excelSheet.addCell(forOutOfPocketAnnualOC)
 
         // property market info - owner carry
-        val lblSixMonthPropMktOwnerCarry: Label
-        lblSixMonthPropMktOwnerCarry = Label(9, 46, "6 Months", timesBold)
+        val lblSixMonthPropMktOwnerCarry = Label(9, 46, "6 Months", timesBold)
         excelSheet.addCell(lblSixMonthPropMktOwnerCarry)
 
-        val lblNineMonthPropMktOwnerCarry: Label
-        lblNineMonthPropMktOwnerCarry = Label(10, 46, "9 Months", timesBold)
+        val lblNineMonthPropMktOwnerCarry = Label(10, 46, "9 Months", timesBold)
         excelSheet.addCell(lblNineMonthPropMktOwnerCarry)
 
-        val lblTwelveMonthPropMktOwnerCarry: Label
-        lblTwelveMonthPropMktOwnerCarry = Label(11, 46, "12 Months", timesBold)
+        val lblTwelveMonthPropMktOwnerCarry = Label(11, 46, "12 Months", timesBold)
         excelSheet.addCell(lblTwelveMonthPropMktOwnerCarry)
 
-        val lblFMVARVOwnerCarry: Label
-        lblFMVARVOwnerCarry = Label(7, 47, "FMV/ARV", timesBold)
+        val lblFMVARVOwnerCarry = Label(7, 47, "FMV/ARV", timesBold)
         excelSheet.addCell(lblFMVARVOwnerCarry)
 
         val nbrFMVARVSixMonthOC = Number(9, 47, calC.getFMVARV(), wcfDollar)
@@ -1146,8 +1102,7 @@ class ExcelSpreadsheet {
         val nbrFMVARVAnnualOC = Number(11, 47, calC.getFMVARV(), wcfDollar)
         excelSheet.addCell(nbrFMVARVAnnualOC)
 
-        val lblComparablesOwnerCarry: Label
-        lblComparablesOwnerCarry = Label(7, 48, "Comparables", timesBold)
+        val lblComparablesOwnerCarry = Label(7, 48, "Comparables", timesBold)
         excelSheet.addCell(lblComparablesOwnerCarry)
 
         val nbrComparablesSixMonthOC = Number(9, 48, calC.getComparables(), wcfDollar)
@@ -1159,8 +1114,7 @@ class ExcelSpreadsheet {
         val nbrComparablesAnnualOC = Number(11, 48, calC.getComparables(), wcfDollar)
         excelSheet.addCell(nbrComparablesAnnualOC)
 
-        val lblSellingPriceOwnerCarry: Label
-        lblSellingPriceOwnerCarry = Label(7, 49, "Selling Price", timesBold)
+        val lblSellingPriceOwnerCarry = Label(7, 49, "Selling Price", timesBold)
         excelSheet.addCell(lblSellingPriceOwnerCarry)
 
         val nbrSellingPriceSixMonthOC = Number(9, 49, calC.getSellingPrice(), wcfDollar)
@@ -1172,8 +1126,7 @@ class ExcelSpreadsheet {
         val nbrSellingPriceAnnualOC = Number(11, 49, calC.getSellingPrice(), wcfDollar)
         excelSheet.addCell(nbrSellingPriceAnnualOC)
 
-        val lblBuyerCostsOwnerCarry: Label
-        lblBuyerCostsOwnerCarry = Label(7, 51, "Buyer's Costs", timesBold)
+        val lblBuyerCostsOwnerCarry = Label(7, 51, "Buyer's Costs", timesBold)
         excelSheet.addCell(lblBuyerCostsOwnerCarry)
 
         buf = StringBuffer()
@@ -1191,8 +1144,7 @@ class ExcelSpreadsheet {
         val forBuyerCostsAnnualOC = Formula(11, 51, buf.toString(), wcfDollar)
         excelSheet.addCell(forBuyerCostsAnnualOC)
 
-        val lblGrossProfitOwnerCarry: Label
-        lblGrossProfitOwnerCarry = Label(7, 52, "Gross Profit", timesBold)
+        val lblGrossProfitOwnerCarry = Label(7, 52, "Gross Profit", timesBold)
         excelSheet.addCell(lblGrossProfitOwnerCarry)
 
         buf = StringBuffer()
@@ -1210,8 +1162,7 @@ class ExcelSpreadsheet {
         val forGrossProfitAnnualOC = Formula(11, 52, buf.toString(), wcfDollar)
         excelSheet.addCell(forGrossProfitAnnualOC)
 
-        val lblCapitalGainsOwnerCarry: Label
-        lblCapitalGainsOwnerCarry = Label(7, 53, "Capital Gains", timesBold)
+        val lblCapitalGainsOwnerCarry = Label(7, 53, "Capital Gains", timesBold)
         excelSheet.addCell(lblCapitalGainsOwnerCarry)
 
         buf = StringBuffer()
@@ -1229,8 +1180,7 @@ class ExcelSpreadsheet {
         val forCapitalGainsAnnualOC = Formula(11, 53, buf.toString(), wcfDollar)
         excelSheet.addCell(forCapitalGainsAnnualOC)
 
-        val lblNetProfitOwnerCarry: Label
-        lblNetProfitOwnerCarry = Label(7, 54, "Net Profit", timesBold)
+        val lblNetProfitOwnerCarry = Label(7, 54, "Net Profit", timesBold)
         excelSheet.addCell(lblNetProfitOwnerCarry)
 
         buf = StringBuffer()
@@ -1248,8 +1198,7 @@ class ExcelSpreadsheet {
         val forNetProfitAnnualOC = Formula(11, 54, buf.toString(), wcfDollar)
         excelSheet.addCell(forNetProfitAnnualOC)
 
-        val lblRateOfReturnOwnerCarry: Label
-        lblRateOfReturnOwnerCarry = Label(7, 56, "Rate of Return", timesBold)
+        val lblRateOfReturnOwnerCarry = Label(7, 56, "Rate of Return", timesBold)
         excelSheet.addCell(lblRateOfReturnOwnerCarry)
 
         buf = StringBuffer()
@@ -1268,20 +1217,16 @@ class ExcelSpreadsheet {
         excelSheet.addCell(forRateOfReturnAnnualOC)
 
         // rate of return info - owner carry
-        val lblSixMonthRateReturnOwnerCarry: Label
-        lblSixMonthRateReturnOwnerCarry = Label(9, 59, "6 Months", timesBold)
+        val lblSixMonthRateReturnOwnerCarry = Label(9, 59, "6 Months", timesBold)
         excelSheet.addCell(lblSixMonthRateReturnOwnerCarry)
 
-        val lblNineMonthRateReturnOwnerCarry: Label
-        lblNineMonthRateReturnOwnerCarry = Label(10, 59, "9 Months", timesBold)
+        val lblNineMonthRateReturnOwnerCarry = Label(10, 59, "9 Months", timesBold)
         excelSheet.addCell(lblNineMonthRateReturnOwnerCarry)
 
-        val lblTwelveMonthRateReturnOwnerCarry: Label
-        lblTwelveMonthRateReturnOwnerCarry = Label(11, 59, "12 Months", timesBold)
+        val lblTwelveMonthRateReturnOwnerCarry = Label(11, 59, "12 Months", timesBold)
         excelSheet.addCell(lblTwelveMonthRateReturnOwnerCarry)
 
-        val lblMoneyOutOwnerCarry: Label
-        lblMoneyOutOwnerCarry = Label(7, 60, "Money Out", timesBold)
+        val lblMoneyOutOwnerCarry = Label(7, 60, "Money Out", timesBold)
         excelSheet.addCell(lblMoneyOutOwnerCarry)
 
         buf = StringBuffer()
@@ -1299,8 +1244,7 @@ class ExcelSpreadsheet {
         val forMoneyOutAnnualOC = Formula(11, 60, buf.toString(), wcfDollar)
         excelSheet.addCell(forMoneyOutAnnualOC)
 
-        val lblMoneyInOwnerCarry: Label
-        lblMoneyInOwnerCarry = Label(7, 61, "Money In", timesBold)
+        val lblMoneyInOwnerCarry = Label(7, 61, "Money In", timesBold)
         excelSheet.addCell(lblMoneyInOwnerCarry)
 
         buf = StringBuffer()
@@ -1318,8 +1262,7 @@ class ExcelSpreadsheet {
         val forMoneyInAnnualOC = Formula(11, 61, buf.toString(), wcfDollar)
         excelSheet.addCell(forMoneyInAnnualOC)
 
-        val lblCashCashReturnOwnerCarry: Label
-        lblCashCashReturnOwnerCarry = Label(7, 62, "Cash on Cash Return", timesBold)
+        val lblCashCashReturnOwnerCarry = Label(7, 62, "Cash on Cash Return", timesBold)
         excelSheet.addCell(lblCashCashReturnOwnerCarry)
 
         buf = StringBuffer()
@@ -1338,108 +1281,92 @@ class ExcelSpreadsheet {
         excelSheet.addCell(forCashCashReturnAnnualOC)
 
         // location info - finance rehab
-        val lblPropAddressFinRehab: Label
-        lblPropAddressFinRehab = Label(13, 1, "Property Address:", timesBold)
+        val lblPropAddressFinRehab = Label(13, 1, "Property Address:", timesBold)
         excelSheet.addCell(lblPropAddressFinRehab)
         excelSheet.mergeCells(14, 1, 17, 1)
         val lblStreetAddressFR = Label(14, 1, calC.getAddress(), timesBold)
         excelSheet.addCell(lblStreetAddressFR)
 
-        val lblCityFinRehab: Label
-        lblCityFinRehab = Label(13, 2, "City:", timesBold)
+        val lblCityFinRehab = Label(13, 2, "City:", timesBold)
         excelSheet.addCell(lblCityFinRehab)
         val lblCityFR = Label(14, 2, calC.getCity(), timesBold)
         excelSheet.addCell(lblCityFR)
 
-        val lblStFinRehab: Label
-        lblStFinRehab = Label(13, 3, "State:", timesBold)
+        val lblStFinRehab = Label(13, 3, "State:", timesBold)
         excelSheet.addCell(lblStFinRehab)
         val lblStFR = Label(14, 3, calC.getState(), timesBold)
         excelSheet.addCell(lblStFR)
 
-        val lblZipFinRehab: Label
-        lblZipFinRehab = Label(13, 4, "ZIP:", timesBold)
+        val lblZipFinRehab = Label(13, 4, "ZIP:", timesBold)
         excelSheet.addCell(lblZipFinRehab)
         val lblZipFR = Label(14, 4, calC.getZipCode(), timesBold)
         excelSheet.addCell(lblZipFR)
 
-        val lblSquareFootageFinRehab: Label
-        lblSquareFootageFinRehab = Label(15, 2, "Square Footage:", timesBold)
+        val lblSquareFootageFinRehab = Label(15, 2, "Square Footage:", timesBold)
         excelSheet.addCell(lblSquareFootageFinRehab)
         excelSheet.mergeCells(16, 2, 17, 2)
         val lblSquareFootageFR = Label(16, 2, calC.getSquareFootage()!!.toString() + "", timesBold)
         excelSheet.addCell(lblSquareFootageFR)
 
-        val lblBRFinRehab: Label
-        lblBRFinRehab = Label(15, 3, "BR:", timesBold)
+        val lblBRFinRehab = Label(15, 3, "BR:", timesBold)
         excelSheet.addCell(lblBRFinRehab)
         excelSheet.mergeCells(16, 3, 17, 3)
         val lblBRFR = Label(16, 3, calC.getBedrooms()!!.toString() + "", timesBold)
         excelSheet.addCell(lblBRFR)
 
-        val lblBAFinRehab: Label
-        lblBAFinRehab = Label(15, 4, "BA:", timesBold)
+        val lblBAFinRehab = Label(15, 4, "BA:", timesBold)
         excelSheet.addCell(lblBAFinRehab)
         excelSheet.mergeCells(16, 4, 17, 4)
         val lblBAFR = Label(16, 4, calC.getBathrooms()!!.toString() + "", timesBold)
         excelSheet.addCell(lblBAFR)
 
         // sales info - finance rehab
-        val lblSalesPriceFinRehab: Label
-        lblSalesPriceFinRehab = Label(13, 8, "Sales Price:", timesBold)
+        val lblSalesPriceFinRehab = Label(13, 8, "Sales Price:", timesBold)
         excelSheet.addCell(lblSalesPriceFinRehab)
         val nbrSalesPriceFR = Number(14, 8, calC.getSalesPrice(), wcfDollar)
         excelSheet.addCell(nbrSalesPriceFR)
 
-        val lblPercentDownFinRehab: Label
-        lblPercentDownFinRehab = Label(13, 10, "Percent Down:", timesBold)
+        val lblPercentDownFinRehab = Label(13, 10, "Percent Down:", timesBold)
         excelSheet.addCell(lblPercentDownFinRehab)
         val nbrPercentDownFR = Number(14, 10, calC.getPercentDown()!! / 100, wcfPercent)
         excelSheet.addCell(nbrPercentDownFR)
 
-        val lblOfferBidFinRehab: Label
-        lblOfferBidFinRehab = Label(13, 12, "Offer/Bid Price:", timesBold)
+        val lblOfferBidFinRehab = Label(13, 12, "Offer/Bid Price:", timesBold)
         excelSheet.addCell(lblOfferBidFinRehab)
         val nbrOfferBidFR = Number(14, 12, calC.getOfferBid(), wcfDollar)
         excelSheet.addCell(nbrOfferBidFR)
 
-        val lblRehabFinRehab: Label
-        lblRehabFinRehab = Label(13, 14, "Rehab Budget:", timesBold)
+        val lblRehabFinRehab = Label(13, 14, "Rehab Budget:", timesBold)
         excelSheet.addCell(lblRehabFinRehab)
         val nbrRehabFR = Number(14, 14, calC.getBudget(), wcfDollar)
         excelSheet.addCell(nbrRehabFR)
 
         // mortgage info - finance rehab
-        val lblDownPaymentFinRehab: Label
-        lblDownPaymentFinRehab = Label(15, 8, "Down Payment:", timesBold)
+        val lblDownPaymentFinRehab = Label(15, 8, "Down Payment:", timesBold)
         excelSheet.addCell(lblDownPaymentFinRehab)
         buf = StringBuffer()
         buf.append("SUM(O11*O9)")
         val forDownPaymentFR = Formula(16, 8, buf.toString(), wcfDollar)
         excelSheet.addCell(forDownPaymentFR)
 
-        val lblLoanAmountFinRehab: Label
-        lblLoanAmountFinRehab = Label(15, 10, "Loan Amount:", timesBold)
+        val lblLoanAmountFinRehab = Label(15, 10, "Loan Amount:", timesBold)
         excelSheet.addCell(lblLoanAmountFinRehab)
         buf = StringBuffer()
         buf.append("(O13+O15-Q9)")
         val forLoanAmountFR = Formula(16, 10, buf.toString(), wcfDollar)
         excelSheet.addCell(forLoanAmountFR)
 
-        val lblInterestRateFinRehab: Label
-        lblInterestRateFinRehab = Label(15, 12, "Interest Rate:", timesBold)
+        val lblInterestRateFinRehab = Label(15, 12, "Interest Rate:", timesBold)
         excelSheet.addCell(lblInterestRateFinRehab)
         val nbrInterestRateFR = Number(16, 12, calC.getInterestRate()!! / 100, wcfPercentTwoPlaces)
         excelSheet.addCell(nbrInterestRateFR)
 
-        val lblTermFinRehab: Label
-        lblTermFinRehab = Label(15, 14, "Term:", timesBold)
+        val lblTermFinRehab = Label(15, 14, "Term:", timesBold)
         excelSheet.addCell(lblTermFinRehab)
         val nbrTermFR = Number(16, 14, calC.getTerm()!!.toDouble())
         excelSheet.addCell(nbrTermFR)
 
-        val lblMonthlyPmtFinRehab: Label
-        lblMonthlyPmtFinRehab = Label(15, 16, "Monthly Pmt:", timesBold)
+        val lblMonthlyPmtFinRehab = Label(15, 16, "Monthly Pmt:", timesBold)
         excelSheet.addCell(lblMonthlyPmtFinRehab)
         buf = StringBuffer()
         buf.append("SUM(Q13*Q11/12)")
@@ -1447,24 +1374,19 @@ class ExcelSpreadsheet {
         excelSheet.addCell(forMonthlyPmtFR)
 
         // reserves info - finance rehab
-        val lblMonthlyReservesFinRehab: Label
-        lblMonthlyReservesFinRehab = Label(14, 19, "Monthly", timesBold)
+        val lblMonthlyReservesFinRehab = Label(14, 19, "Monthly", timesBold)
         excelSheet.addCell(lblMonthlyReservesFinRehab)
 
-        val lblSixMonthReservesFinRehab: Label
-        lblSixMonthReservesFinRehab = Label(15, 19, "6 Months", timesBold)
+        val lblSixMonthReservesFinRehab = Label(15, 19, "6 Months", timesBold)
         excelSheet.addCell(lblSixMonthReservesFinRehab)
 
-        val lblNineMonthReservesFinRehab: Label
-        lblNineMonthReservesFinRehab = Label(16, 19, "9 Months", timesBold)
+        val lblNineMonthReservesFinRehab = Label(16, 19, "9 Months", timesBold)
         excelSheet.addCell(lblNineMonthReservesFinRehab)
 
-        val lblTwelveMonthReservesFinRehab: Label
-        lblTwelveMonthReservesFinRehab = Label(17, 19, "12 Months", timesBold)
+        val lblTwelveMonthReservesFinRehab = Label(17, 19, "12 Months", timesBold)
         excelSheet.addCell(lblTwelveMonthReservesFinRehab)
 
-        val lblMortgageReservesFinRehab: Label
-        lblMortgageReservesFinRehab = Label(13, 20, "Mortgage", timesBold)
+        val lblMortgageReservesFinRehab = Label(13, 20, "Mortgage", timesBold)
         excelSheet.addCell(lblMortgageReservesFinRehab)
 
         buf = StringBuffer()
@@ -1487,8 +1409,7 @@ class ExcelSpreadsheet {
         val forMortgageAnnualFR = Formula(17, 20, buf.toString(), wcfDollar)
         excelSheet.addCell(forMortgageAnnualFR)
 
-        val lblTaxesReservesFinRehab: Label
-        lblTaxesReservesFinRehab = Label(13, 22, "Taxes", timesBold)
+        val lblTaxesReservesFinRehab = Label(13, 22, "Taxes", timesBold)
         excelSheet.addCell(lblTaxesReservesFinRehab)
 
         buf = StringBuffer()
@@ -1509,8 +1430,7 @@ class ExcelSpreadsheet {
         val forTaxesAnnualFR = Formula(17, 22, buf.toString(), wcfDollar)
         excelSheet.addCell(forTaxesAnnualFR)
 
-        val lblInsuranceReservesFinRehab: Label
-        lblInsuranceReservesFinRehab = Label(13, 24, "Insurance", timesBold)
+        val lblInsuranceReservesFinRehab = Label(13, 24, "Insurance", timesBold)
         excelSheet.addCell(lblInsuranceReservesFinRehab)
 
         buf = StringBuffer()
@@ -1531,8 +1451,7 @@ class ExcelSpreadsheet {
         val forInsuranceAnnualFR = Formula(17, 24, buf.toString(), wcfDollar)
         excelSheet.addCell(forInsuranceAnnualFR)
 
-        val lblWaterReservesFinRehab: Label
-        lblWaterReservesFinRehab = Label(13, 26, "Water", timesBold)
+        val lblWaterReservesFinRehab = Label(13, 26, "Water", timesBold)
         excelSheet.addCell(lblWaterReservesFinRehab)
 
         buf = StringBuffer()
@@ -1553,8 +1472,7 @@ class ExcelSpreadsheet {
         val forWaterAnnualFR = Formula(17, 26, buf.toString(), wcfDollar)
         excelSheet.addCell(forWaterAnnualFR)
 
-        val lblGasReservesFinRehab: Label
-        lblGasReservesFinRehab = Label(13, 28, "Gas", timesBold)
+        val lblGasReservesFinRehab = Label(13, 28, "Gas", timesBold)
         excelSheet.addCell(lblGasReservesFinRehab)
 
         buf = StringBuffer()
@@ -1575,8 +1493,7 @@ class ExcelSpreadsheet {
         val forGasAnnualFR = Formula(17, 28, buf.toString(), wcfDollar)
         excelSheet.addCell(forGasAnnualFR)
 
-        val lblElectricReservesFinRehab: Label
-        lblElectricReservesFinRehab = Label(13, 30, "Electric", timesBold)
+        val lblElectricReservesFinRehab = Label(13, 30, "Electric", timesBold)
         excelSheet.addCell(lblElectricReservesFinRehab)
 
         buf = StringBuffer()
@@ -1597,8 +1514,7 @@ class ExcelSpreadsheet {
         val forElectricAnnualFR = Formula(17, 30, buf.toString(), wcfDollar)
         excelSheet.addCell(forElectricAnnualFR)
 
-        val lblTotalReservesFinRehab: Label
-        lblTotalReservesFinRehab = Label(13, 32, "Total Expenses", timesBold)
+        val lblTotalReservesFinRehab = Label(13, 32, "Total Expenses", timesBold)
         excelSheet.addCell(lblTotalReservesFinRehab)
 
         buf = StringBuffer()
@@ -1622,8 +1538,7 @@ class ExcelSpreadsheet {
         excelSheet.addCell(forTotalAnnualFR)
 
         // closing expenses - finance rehab
-        val lblRealEstateCommissionFinRehab: Label
-        lblRealEstateCommissionFinRehab = Label(13, 36, "Real Estate Commission", timesBold)
+        val lblRealEstateCommissionFinRehab = Label(13, 36, "Real Estate Commission", timesBold)
         excelSheet.addCell(lblRealEstateCommissionFinRehab)
 
         buf = StringBuffer()
@@ -1631,15 +1546,13 @@ class ExcelSpreadsheet {
         val forRealEstateCommissionFR = Formula(14, 36, buf.toString(), wcfDollar)
         excelSheet.addCell(forRealEstateCommissionFR)
 
-        val lblCommissionPercentageFinRehab: Label
-        lblCommissionPercentageFinRehab = Label(15, 36, "Commission %", timesBold)
+        val lblCommissionPercentageFinRehab = Label(15, 36, "Commission %", timesBold)
         excelSheet.addCell(lblCommissionPercentageFinRehab)
 
         val nbrCommissionPercentageFR = Number(16, 36, calC.getRealEstComm() / 100, wcfPercentTwoPlaces)
         excelSheet.addCell(nbrCommissionPercentageFR)
 
-        val lblBuyerClosingCostFinRehab: Label
-        lblBuyerClosingCostFinRehab = Label(13, 38, "Buyer Closing Costs", timesBold)
+        val lblBuyerClosingCostFinRehab = Label(13, 38, "Buyer Closing Costs", timesBold)
         excelSheet.addCell(lblBuyerClosingCostFinRehab)
 
         buf = StringBuffer()
@@ -1647,15 +1560,13 @@ class ExcelSpreadsheet {
         val forBuyerClosingCostFR = Formula(14, 38, buf.toString(), wcfDollar)
         excelSheet.addCell(forBuyerClosingCostFR)
 
-        val lblBuyerClosingCostPercentageFinRehab: Label
-        lblBuyerClosingCostPercentageFinRehab = Label(15, 38, "Closing Costs %", timesBold)
+        val lblBuyerClosingCostPercentageFinRehab = Label(15, 38, "Closing Costs %", timesBold)
         excelSheet.addCell(lblBuyerClosingCostPercentageFinRehab)
 
         val nbrBuyerClosingCostPercentageFR = Number(16, 38, calC.getBuyClosCost() / 100, wcfPercentTwoPlaces)
         excelSheet.addCell(nbrBuyerClosingCostPercentageFR)
 
-        val lblSellerClosingCostFinRehab: Label
-        lblSellerClosingCostFinRehab = Label(13, 39, "Seller Closing Costs", timesBold)
+        val lblSellerClosingCostFinRehab = Label(13, 39, "Seller Closing Costs", timesBold)
         excelSheet.addCell(lblSellerClosingCostFinRehab)
 
         buf = StringBuffer()
@@ -1663,27 +1574,22 @@ class ExcelSpreadsheet {
         val forSellerClosingCostFR = Formula(14, 39, buf.toString(), wcfDollar)
         excelSheet.addCell(forSellerClosingCostFR)
 
-        val lblSellerClosingCostPercentageFinRehab: Label
-        lblSellerClosingCostPercentageFinRehab = Label(15, 39, "Closing Costs %", timesBold)
+        val lblSellerClosingCostPercentageFinRehab = Label(15, 39, "Closing Costs %", timesBold)
         excelSheet.addCell(lblSellerClosingCostPercentageFinRehab)
 
         val nbrSellerClosingCostPercentageFR = Number(16, 39, calC.getSellClosCost() / 100, wcfPercentTwoPlaces)
         excelSheet.addCell(nbrSellerClosingCostPercentageFR)
 
-        val lblSixMonthClosExpFinRehab: Label
-        lblSixMonthClosExpFinRehab = Label(15, 41, "6 Months", timesBold)
+        val lblSixMonthClosExpFinRehab = Label(15, 41, "6 Months", timesBold)
         excelSheet.addCell(lblSixMonthClosExpFinRehab)
 
-        val lblNineMonthClosExpFinRehab: Label
-        lblNineMonthClosExpFinRehab = Label(16, 41, "9 Months", timesBold)
+        val lblNineMonthClosExpFinRehab = Label(16, 41, "9 Months", timesBold)
         excelSheet.addCell(lblNineMonthClosExpFinRehab)
 
-        val lblTwelveMonthClosExpFinRehab: Label
-        lblTwelveMonthClosExpFinRehab = Label(17, 41, "12 Months", timesBold)
+        val lblTwelveMonthClosExpFinRehab = Label(17, 41, "12 Months", timesBold)
         excelSheet.addCell(lblTwelveMonthClosExpFinRehab)
 
-        val lblTotalCostsFinRehab: Label
-        lblTotalCostsFinRehab = Label(13, 42, "Total Costs", timesBold)
+        val lblTotalCostsFinRehab = Label(13, 42, "Total Costs", timesBold)
         excelSheet.addCell(lblTotalCostsFinRehab)
 
         buf = StringBuffer()
@@ -1701,8 +1607,7 @@ class ExcelSpreadsheet {
         val forTotalCostsAnnualFR = Formula(17, 42, buf.toString(), wcfDollar)
         excelSheet.addCell(forTotalCostsAnnualFR)
 
-        val lblOutOfPocketFinRehab: Label
-        lblOutOfPocketFinRehab = Label(13, 43, "Out of Pocket Expenses", timesBold)
+        val lblOutOfPocketFinRehab = Label(13, 43, "Out of Pocket Expenses", timesBold)
         excelSheet.addCell(lblOutOfPocketFinRehab)
 
         buf = StringBuffer()
@@ -1721,20 +1626,16 @@ class ExcelSpreadsheet {
         excelSheet.addCell(forOutOfPocketAnnualFR)
 
         // property market info - fin rehab
-        val lblSixMonthPropMktFinRehab: Label
-        lblSixMonthPropMktFinRehab = Label(15, 46, "6 Months", timesBold)
+        val lblSixMonthPropMktFinRehab = Label(15, 46, "6 Months", timesBold)
         excelSheet.addCell(lblSixMonthPropMktFinRehab)
 
-        val lblNineMonthPropMktFinRehab: Label
-        lblNineMonthPropMktFinRehab = Label(16, 46, "9 Months", timesBold)
+        val lblNineMonthPropMktFinRehab = Label(16, 46, "9 Months", timesBold)
         excelSheet.addCell(lblNineMonthPropMktFinRehab)
 
-        val lblTwelveMonthPropMktFinRehab: Label
-        lblTwelveMonthPropMktFinRehab = Label(17, 46, "12 Months", timesBold)
+        val lblTwelveMonthPropMktFinRehab = Label(17, 46, "12 Months", timesBold)
         excelSheet.addCell(lblTwelveMonthPropMktFinRehab)
 
-        val lblFMVARVFinRehab: Label
-        lblFMVARVFinRehab = Label(13, 47, "FMV/ARV", timesBold)
+        val lblFMVARVFinRehab = Label(13, 47, "FMV/ARV", timesBold)
         excelSheet.addCell(lblFMVARVFinRehab)
 
         val nbrFMVARVSixMonthFR = Number(15, 47, calC.getFMVARV(), wcfDollar)
@@ -1746,8 +1647,7 @@ class ExcelSpreadsheet {
         val nbrFMVARVAnnualFR = Number(17, 47, calC.getFMVARV(), wcfDollar)
         excelSheet.addCell(nbrFMVARVAnnualFR)
 
-        val lblComparablesFinRehab: Label
-        lblComparablesFinRehab = Label(13, 48, "Comparables", timesBold)
+        val lblComparablesFinRehab = Label(13, 48, "Comparables", timesBold)
         excelSheet.addCell(lblComparablesFinRehab)
 
         val nbrComparablesSixMonthFR = Number(15, 48, calC.getComparables(), wcfDollar)
@@ -1759,8 +1659,7 @@ class ExcelSpreadsheet {
         val nbrComparablesAnnualFR = Number(17, 48, calC.getComparables(), wcfDollar)
         excelSheet.addCell(nbrComparablesAnnualFR)
 
-        val lblSellingPriceFinRehab: Label
-        lblSellingPriceFinRehab = Label(13, 49, "Selling Price", timesBold)
+        val lblSellingPriceFinRehab = Label(13, 49, "Selling Price", timesBold)
         excelSheet.addCell(lblSellingPriceFinRehab)
 
         val nbrSellingPriceSixMonthFR = Number(15, 49, calC.getSellingPrice(), wcfDollar)
@@ -1772,8 +1671,7 @@ class ExcelSpreadsheet {
         val nbrSellingPriceAnnualFR = Number(17, 49, calC.getSellingPrice(), wcfDollar)
         excelSheet.addCell(nbrSellingPriceAnnualFR)
 
-        val lblBuyerCostsFinRehab: Label
-        lblBuyerCostsFinRehab = Label(13, 51, "Buyer's Costs", timesBold)
+        val lblBuyerCostsFinRehab = Label(13, 51, "Buyer's Costs", timesBold)
         excelSheet.addCell(lblBuyerCostsFinRehab)
 
         buf = StringBuffer()
@@ -1791,8 +1689,7 @@ class ExcelSpreadsheet {
         val forBuyerCostsAnnualFR = Formula(17, 51, buf.toString(), wcfDollar)
         excelSheet.addCell(forBuyerCostsAnnualFR)
 
-        val lblGrossProfitFinRehab: Label
-        lblGrossProfitFinRehab = Label(13, 52, "Gross Profit", timesBold)
+        val lblGrossProfitFinRehab = Label(13, 52, "Gross Profit", timesBold)
         excelSheet.addCell(lblGrossProfitFinRehab)
 
         buf = StringBuffer()
@@ -1810,8 +1707,7 @@ class ExcelSpreadsheet {
         val forGrossProfitAnnualFR = Formula(17, 52, buf.toString(), wcfDollar)
         excelSheet.addCell(forGrossProfitAnnualFR)
 
-        val lblCapitalGainsFinRehab: Label
-        lblCapitalGainsFinRehab = Label(13, 53, "Capital Gains", timesBold)
+        val lblCapitalGainsFinRehab = Label(13, 53, "Capital Gains", timesBold)
         excelSheet.addCell(lblCapitalGainsFinRehab)
 
         buf = StringBuffer()
@@ -1829,8 +1725,7 @@ class ExcelSpreadsheet {
         val forCapitalGainsAnnualFR = Formula(17, 53, buf.toString(), wcfDollar)
         excelSheet.addCell(forCapitalGainsAnnualFR)
 
-        val lblNetProfitFinRehab: Label
-        lblNetProfitFinRehab = Label(13, 54, "Net Profit", timesBold)
+        val lblNetProfitFinRehab = Label(13, 54, "Net Profit", timesBold)
         excelSheet.addCell(lblNetProfitFinRehab)
 
         buf = StringBuffer()
@@ -1848,8 +1743,7 @@ class ExcelSpreadsheet {
         val forNetProfitAnnualFR = Formula(17, 54, buf.toString(), wcfDollar)
         excelSheet.addCell(forNetProfitAnnualFR)
 
-        val lblRateOfReturnFinRehab: Label
-        lblRateOfReturnFinRehab = Label(13, 56, "Rate of Return", timesBold)
+        val lblRateOfReturnFinRehab = Label(13, 56, "Rate of Return", timesBold)
         excelSheet.addCell(lblRateOfReturnFinRehab)
 
         buf = StringBuffer()
@@ -1868,20 +1762,16 @@ class ExcelSpreadsheet {
         excelSheet.addCell(forRateOfReturnAnnualFR)
 
         // rate of return info - finance rehab
-        val lblSixMonthRateReturnFinRehab: Label
-        lblSixMonthRateReturnFinRehab = Label(15, 59, "6 Months", timesBold)
+        val lblSixMonthRateReturnFinRehab = Label(15, 59, "6 Months", timesBold)
         excelSheet.addCell(lblSixMonthRateReturnFinRehab)
 
-        val lblNineMonthRateReturnFinRehab: Label
-        lblNineMonthRateReturnFinRehab = Label(16, 59, "9 Months", timesBold)
+        val lblNineMonthRateReturnFinRehab = Label(16, 59, "9 Months", timesBold)
         excelSheet.addCell(lblNineMonthRateReturnFinRehab)
 
-        val lblTwelveMonthRateReturnFinRehab: Label
-        lblTwelveMonthRateReturnFinRehab = Label(17, 59, "12 Months", timesBold)
+        val lblTwelveMonthRateReturnFinRehab = Label(17, 59, "12 Months", timesBold)
         excelSheet.addCell(lblTwelveMonthRateReturnFinRehab)
 
-        val lblMoneyOutFinRehab: Label
-        lblMoneyOutFinRehab = Label(13, 60, "Money Out", timesBold)
+        val lblMoneyOutFinRehab = Label(13, 60, "Money Out", timesBold)
         excelSheet.addCell(lblMoneyOutFinRehab)
 
         buf = StringBuffer()
@@ -1899,8 +1789,7 @@ class ExcelSpreadsheet {
         val forMoneyOutAnnualFR = Formula(17, 60, buf.toString(), wcfDollar)
         excelSheet.addCell(forMoneyOutAnnualFR)
 
-        val lblMoneyInFinRehab: Label
-        lblMoneyInFinRehab = Label(13, 61, "Money In", timesBold)
+        val lblMoneyInFinRehab = Label(13, 61, "Money In", timesBold)
         excelSheet.addCell(lblMoneyInFinRehab)
 
         buf = StringBuffer()
@@ -1918,8 +1807,7 @@ class ExcelSpreadsheet {
         val forMoneyInAnnualFR = Formula(17, 61, buf.toString(), wcfDollar)
         excelSheet.addCell(forMoneyInAnnualFR)
 
-        val lblCashCashReturnFinRehab: Label
-        lblCashCashReturnFinRehab = Label(13, 62, "Cash on Cash Return", timesBold)
+        val lblCashCashReturnFinRehab = Label(13, 62, "Cash on Cash Return", timesBold)
         excelSheet.addCell(lblCashCashReturnFinRehab)
 
         buf = StringBuffer()

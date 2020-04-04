@@ -1,6 +1,5 @@
 package com.danielburgnerjr.flipulator
 
-import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -23,12 +22,12 @@ class ReservesFinalResultFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val view: View = inflater.inflate(R.layout.fragment_reserves_final_result, container, false)
-        intI = getActivity()!!.getIntent()
+        intI = activity!!.intent
 
         calC = intI!!.getSerializableExtra("Calculate") as Calculate
 
         val aradAdapter = ArrayAdapter.createFromResource(
-                getActivity()?.getApplicationContext()!!, R.array.time_frame, android.R.layout.simple_spinner_item)
+                activity?.applicationContext!!, R.array.time_frame, android.R.layout.simple_spinner_item)
         aradAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
         spnTimeFrame = view.findViewById<View>(R.id.spnTimeFrame) as Spinner
@@ -68,37 +67,37 @@ class ReservesFinalResultFragment : Fragment() {
                 }
                 calC!!.setTimeFrameFactor(dTimeFrameFactor)
 
-                tvMortPmt.setText(String.format("$%.0f", calC!!.getMortgage()!!.times(dTimeFrameFactor)))
-                tvInsurance.setText(String.format("$%.0f", calC!!.getInsurance()!!.times(dTimeFrameFactor)))
-                tvTaxes.setText(String.format("$%.0f", calC!!.getTaxes()!!.times(dTimeFrameFactor)))
-                tvWater.setText(String.format("$%.0f", calC!!.getWater()!!.times(dTimeFrameFactor)))
-                tvGas.setText(String.format("$%.0f", calC!!.getGas()!!.times(dTimeFrameFactor)))
-                tvElectric.setText(String.format("$%.0f", calC!!.getElectric()!!.times(dTimeFrameFactor)))
-                tvTotalExpenses.setText(String.format("$%.0f", calC!!.getTotalExpenses()!!.times(dTimeFrameFactor)))
+                tvMortPmt.text = String.format("$%.0f", calC!!.getMortgage()!!.times(dTimeFrameFactor))
+                tvInsurance.text = String.format("$%.0f", calC!!.getInsurance()!!.times(dTimeFrameFactor))
+                tvTaxes.text = String.format("$%.0f", calC!!.getTaxes()!!.times(dTimeFrameFactor))
+                tvWater.text = String.format("$%.0f", calC!!.getWater()!!.times(dTimeFrameFactor))
+                tvGas.text = String.format("$%.0f", calC!!.getGas()!!.times(dTimeFrameFactor))
+                tvElectric.text = String.format("$%.0f", calC!!.getElectric()!!.times(dTimeFrameFactor))
+                tvTotalExpenses.text = String.format("$%.0f", calC!!.getTotalExpenses()!!.times(dTimeFrameFactor))
                 calC!!.setTotalCost(calC!!.getOfferBid(), calC!!.getBudget(), calC!!.getTotalExpenses()!!.times(calC!!.getTimeFrameFactor()))
-                txtTotalCostsFR.setText(String.format("$%.0f", calC!!.getTotalCost()))
+                txtTotalCostsFR.text = String.format("$%.0f", calC!!.getTotalCost())
 
-                if (calC!!.getFinance()!!.equals(2)) calC!!.setOOPExp(calC!!.getDownPayment(), calC!!.getTotalExpenses()!!.times(calC!!.getTimeFrameFactor()), 0.0)
+                if (calC!!.getFinance()!! == 2) calC!!.setOOPExp(calC!!.getDownPayment(), calC!!.getTotalExpenses()!!.times(calC!!.getTimeFrameFactor()), 0.0)
                 // if finance rehab flag is selected, set out of pocket expenses as follows
                 else calC!!.setOOPExp(calC!!.getDownPayment(), calC!!.getTotalExpenses()!!.times(calC!!.getTimeFrameFactor()), calC!!.getBudget())
 
-                txtOOPExpFR.setText(String.format("$%.0f", calC!!.getOOPExp()))
+                txtOOPExpFR.text = String.format("$%.0f", calC!!.getOOPExp())
                 calC!!.setTotalCost(calC!!.getOfferBid(), calC!!.getBudget(), calC!!.getTotalExpenses()!!.times(calC!!.getTimeFrameFactor()))
                 calC!!.setGrossProfit(calC!!.getSellingPrice())
                 calC!!.setCapGains()
                 calC!!.setNetProfit()
                 calC!!.setROI(calC!!.getSellingPrice())
                 calC!!.setCashOnCash()
-                txtBuyerCostsFR.setText(String.format("$%.0f", calC!!.getTotalCost()))
-                txtGrossProfitFR.setText(String.format("$%.0f", calC!!.getGrossProfit()))
-                txtCapGainsFR.setText(String.format("$%.0f", calC!!.getCapGains()))
-                txtNetProfitFR.setText(String.format("$%.0f", calC!!.getNetProfit()))
-                txtMoneyOutFR.setText(String.format("$%.0f", calC!!.getOOPExp()))
-                txtMoneyInFR.setText(String.format("$%.0f", calC!!.getNetProfit()))
+                txtBuyerCostsFR.text = String.format("$%.0f", calC!!.getTotalCost())
+                txtGrossProfitFR.text = String.format("$%.0f", calC!!.getGrossProfit())
+                txtCapGainsFR.text = String.format("$%.0f", calC!!.getCapGains())
+                txtNetProfitFR.text = String.format("$%.0f", calC!!.getNetProfit())
+                txtMoneyOutFR.text = String.format("$%.0f", calC!!.getOOPExp())
+                txtMoneyInFR.text = String.format("$%.0f", calC!!.getNetProfit())
                 val strPercReturn = String.format("%.1f", calC!!.getROI()) + "%"
-                txtPercReturnFR.setText(strPercReturn)
+                txtPercReturnFR.text = strPercReturn
                 val strCashCashRet = String.format("%.1f", calC!!.getCashOnCash()) + "%"
-                txtCashCashRetFR.setText(strCashCashRet)
+                txtCashCashRetFR.text = strCashCashRet
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
@@ -106,23 +105,23 @@ class ReservesFinalResultFragment : Fragment() {
             }
         }
 
-        tvMortPmt.setEnabled(false)
-        tvInsurance.setEnabled(false)
-        tvTaxes.setEnabled(false)
-        tvWater.setEnabled(false)
-        tvGas.setEnabled(false)
-        tvElectric.setEnabled(false)
-        tvTotalExpenses.setEnabled(false)
-        txtTotalCostsFR.setEnabled(false)
-        txtOOPExpFR.setEnabled(false)
-        txtBuyerCostsFR.setEnabled(false)
-        txtGrossProfitFR.setEnabled(false)
-        txtCapGainsFR.setEnabled(false)
-        txtNetProfitFR.setEnabled(false)
-        txtMoneyOutFR.setEnabled(false)
-        txtMoneyInFR.setEnabled(false)
-        txtPercReturnFR.setEnabled(false)
-        txtCashCashRetFR.setEnabled(false)
+        tvMortPmt.isEnabled = false
+        tvInsurance.isEnabled = false
+        tvTaxes.isEnabled = false
+        tvWater.isEnabled = false
+        tvGas.isEnabled = false
+        tvElectric.isEnabled = false
+        tvTotalExpenses.isEnabled = false
+        txtTotalCostsFR.isEnabled = false
+        txtOOPExpFR.isEnabled = false
+        txtBuyerCostsFR.isEnabled = false
+        txtGrossProfitFR.isEnabled = false
+        txtCapGainsFR.isEnabled = false
+        txtNetProfitFR.isEnabled = false
+        txtMoneyOutFR.isEnabled = false
+        txtMoneyInFR.isEnabled = false
+        txtPercReturnFR.isEnabled = false
+        txtCashCashRetFR.isEnabled = false
 
         return view
     }
