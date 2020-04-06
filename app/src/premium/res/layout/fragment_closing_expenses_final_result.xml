@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
@@ -44,6 +43,8 @@
             android:layout_height="40sp"
             android:layout_weight="0.5"
             android:ems="10"
+            android:hint="@string/realestcomm"
+            android:autofillHints="@string/realestcomm"
             android:textColor="#454545"
             android:textSize="16sp"
             android:inputType="numberDecimal" />
@@ -73,6 +74,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:hint="@string/commission"
+            android:autofillHints="@string/commission"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -99,6 +102,8 @@
             android:layout_weight="0.5"
             android:ems="10"
             android:textColor="#454545"
+            android:hint="@string/buyerClosCost"
+            android:autofillHints="@string/buyerClosCost"
             android:textSize="16sp"
             android:inputType="numberDecimal" />
     </LinearLayout>
@@ -127,6 +132,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:hint="@string/bccPercentage"
+            android:autofillHints="@string/bccPercentage"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -154,6 +161,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:hint="@string/sellClosCost"
+            android:autofillHints="@string/sellClosCost"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -181,6 +190,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:hint="@string/sccPercentage"
+            android:autofillHints="@string/sccPercentage"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -226,6 +237,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:hint="@string/FMVARV"
+            android:autofillHints="@string/FMVARV"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -253,6 +266,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:hint="@string/comparables"
+            android:autofillHints="@string/comparables"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -280,6 +295,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:hint="@string/sellingPrice"
+            android:autofillHints="@string/sellingPrice"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
