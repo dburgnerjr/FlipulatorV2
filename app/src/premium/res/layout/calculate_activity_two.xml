@@ -29,6 +29,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:hint="@string/salePrice"
+            android:autofillHints="@string/salePrice"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -55,6 +57,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:hint="@string/percentDown"
+            android:autofillHints="@string/percentDown"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -81,6 +85,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:hint="@string/offerBid"
+            android:autofillHints="@string/offerBid"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -107,6 +113,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:hint="@string/interestRate"
+            android:autofillHints="@string/interestRate"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -133,6 +141,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:hint="@string/term"
+            android:autofillHints="@string/term"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -168,7 +178,9 @@
             android:lines="4"
             android:minLines="2"
             android:maxLines="4"
-            android:gravity="top|left"
+            android:gravity="top|start"
+            android:hint="@string/budgetItems"
+            android:autofillHints="@string/budgetItems"
             android:textColor="#454545"
             android:textSize="16sp"
             android:ems="10"
@@ -225,6 +237,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:hint="@string/rehab_budget"
+            android:autofillHints="@string/rehab_budget"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -267,6 +281,7 @@
             android:onClick="prevPage"
             android:text="@string/prev"
             android:background="#690"
+            style="?android:attr/buttonBarButtonStyle"
             android:textColor="#ffffff" />
 
         <Button
@@ -277,6 +292,7 @@
             android:onClick="nextPage"
             android:text="@string/next"
             android:background="#690"
+            style="?android:attr/buttonBarButtonStyle"
             android:textColor="#ffffff" />
     </LinearLayout>
 

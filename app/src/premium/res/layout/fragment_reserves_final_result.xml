@@ -54,6 +54,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:autofillHints="@string/mortPmt"
+            android:hint="@string/mortPmt"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -80,6 +82,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:autofillHints="@string/insurance"
+            android:hint="@string/insurance"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -106,6 +110,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:autofillHints="@string/taxes"
+            android:hint="@string/taxes"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -132,6 +138,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:autofillHints="@string/water"
+            android:hint="@string/water"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -158,6 +166,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:autofillHints="@string/gas"
+            android:hint="@string/gas"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -184,6 +194,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:autofillHints="@string/electric"
+            android:hint="@string/electric"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -211,6 +223,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:autofillHints="@string/totres"
+            android:hint="@string/totres"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -256,6 +270,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:autofillHints="@string/totalCosts"
+            android:hint="@string/totalCosts"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -283,6 +299,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:autofillHints="@string/outOfPocketExp"
+            android:hint="@string/outOfPocketExp"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -310,6 +328,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:autofillHints="@string/buyerCosts"
+            android:hint="@string/buyerCosts"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -337,6 +357,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:autofillHints="@string/grossProfit"
+            android:hint="@string/grossProfit"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -364,6 +386,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:autofillHints="@string/capGains"
+            android:hint="@string/capGains"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -391,6 +415,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:autofillHints="@string/netProfit"
+            android:hint="@string/netProfit"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -436,6 +462,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:autofillHints="@string/moneyOut"
+            android:hint="@string/moneyOut"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -463,6 +491,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:autofillHints="@string/moneyIn"
+            android:hint="@string/moneyIn"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -492,6 +522,8 @@
             android:textColor="#454545"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:autofillHints="@string/percReturn"
+            android:hint="@string/percReturn"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -521,6 +553,8 @@
             android:textColor="#454545"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:autofillHints="@string/cashCashRet"
+            android:hint="@string/cashCashRet"
             android:inputType="numberDecimal" />
     </LinearLayout>
 

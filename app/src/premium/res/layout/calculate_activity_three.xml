@@ -29,6 +29,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:hint="@string/insurance"
+            android:autofillHints="@string/insurance"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -55,6 +57,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:hint="@string/taxes"
+            android:autofillHints="@string/taxes"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -81,6 +85,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:hint="@string/water"
+            android:autofillHints="@string/water"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -107,6 +113,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:hint="@string/gas"
+            android:autofillHints="@string/gas"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -133,6 +141,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:hint="@string/electric"
+            android:autofillHints="@string/electric"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -175,6 +185,7 @@
             android:onClick="prevPage"
             android:text="@string/prev"
             android:background="#690"
+            style="?android:attr/buttonBarButtonStyle"
             android:textColor="#ffffff" />
 
         <Button
@@ -185,6 +196,7 @@
             android:onClick="nextPage"
             android:text="@string/next"
             android:background="#690"
+            style="?android:attr/buttonBarButtonStyle"
             android:textColor="#ffffff" />
     </LinearLayout>
 

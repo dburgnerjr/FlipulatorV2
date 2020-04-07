@@ -30,6 +30,7 @@
             android:textColor="#454545"
             android:textSize="16sp"
             android:hint="@string/address"
+            android:autofillHints="@string/address"
             android:inputType="text" />
     </LinearLayout>
 
@@ -56,6 +57,7 @@
             android:ems="10"
             android:textSize="16sp"
             android:hint="@string/city"
+            android:autofillHints="@string/city"
             android:textColor="#454545"
             android:inputType="text" />
     </LinearLayout>
@@ -83,6 +85,7 @@
             android:ems="10"
             android:textColor="#454545"
             android:hint="@string/state"
+            android:autofillHints="@string/state"
             android:textSize="16sp"
             android:inputType="text" />
     </LinearLayout>
@@ -109,6 +112,7 @@
             android:layout_weight="0.5"
             android:ems="10"
             android:hint="@string/zip_code"
+            android:autofillHints="@string/zip_code"
             android:textColor="#454545"
             android:textSize="16sp"
             android:inputType="text" />
@@ -136,6 +140,7 @@
             android:layout_weight="0.5"
             android:ems="10"
             android:hint="@string/sq_footage"
+            android:autofillHints="@string/sq_footage"
             android:textColor="#454545"
             android:textSize="16sp"
             android:inputType="numberDecimal" />
@@ -164,6 +169,7 @@
             android:ems="10"
             android:textColor="#454545"
             android:hint="@string/bedrooms"
+            android:autofillHints="@string/bedrooms"
             android:textSize="16sp"
             android:inputType="numberDecimal" />
     </LinearLayout>
@@ -191,6 +197,7 @@
             android:ems="10"
             android:textColor="#454545"
             android:hint="@string/bathrooms"
+            android:autofillHints="@string/bathrooms"
             android:textSize="16sp"
             android:inputType="numberDecimal" />
     </LinearLayout>
@@ -259,6 +266,7 @@
             android:onClick="prevPage"
             android:text="@string/prev"
             android:background="#690"
+            style="?android:attr/buttonBarButtonStyle"
             android:textColor="#ffffff" />
 
         <Button
@@ -269,6 +277,7 @@
             android:onClick="nextPage"
             android:text="@string/next"
             android:background="#690"
+            style="?android:attr/buttonBarButtonStyle"
             android:textColor="#ffffff" />
     </LinearLayout>
 

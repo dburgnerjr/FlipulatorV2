@@ -29,6 +29,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:hint="@string/commission"
+            android:autofillHints="@string/commission"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -55,6 +57,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:hint="@string/buyerClosCost"
+            android:autofillHints="@string/buyerClosCost"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -81,6 +85,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:hint="@string/sellClosCost"
+            android:autofillHints="@string/sellClosCost"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -107,6 +113,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:hint="@string/FMVARV"
+            android:autofillHints="@string/FMVARV"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -133,6 +141,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:hint="@string/comparables"
+            android:autofillHints="@string/comparables"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -159,6 +169,8 @@
             android:ems="10"
             android:textColor="#454545"
             android:textSize="16sp"
+            android:hint="@string/sellingPrice"
+            android:autofillHints="@string/sellingPrice"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -201,6 +213,7 @@
             android:onClick="prevPage"
             android:text="@string/prev"
             android:background="#690"
+            style="?android:attr/buttonBarButtonStyle"
             android:textColor="#ffffff" />
 
         <Button
@@ -211,6 +224,7 @@
             android:onClick="nextPage"
             android:text="@string/next"
             android:background="#690"
+            style="?android:attr/buttonBarButtonStyle"
             android:textColor="#ffffff" />
     </LinearLayout>
 
